@@ -1,0 +1,52 @@
+[
+    {
+        "id": 10,
+        "nombre": "Alineación y balanceo",
+        "cod": "AB"
+    },
+    {
+        "id": 9,
+        "nombre": "Lavado y aspirado",
+        "cod": "LA"
+    },
+    {
+        "id": 8,
+        "nombre": "Lavado de chasis",
+        "cod": "LC"
+    },
+    {
+        "id": 7,
+        "nombre": "Engrase general",
+        "cod": "EG"
+    },
+    {
+        "id": 6,
+        "nombre": "Cambio de bujías",
+        "cod": "CB"
+    },
+    {
+        "id": 5,
+        "nombre": "Cambio de neumáticos traseros",
+        "cod": "CNT"
+    },
+    {
+        "id": 4,
+        "nombre": "Cambio de neumáticos delanteros",
+        "cod": "CND"
+    },
+    {
+        "id": 3,
+        "nombre": "Cambio de filtro de aire",
+        "cod": "CFAI"
+    },
+    {
+        "id": 2,
+        "nombre": "Cambio de filtro de aceite",
+        "cod": "CFA"
+    },
+    {
+        "id": 1,
+        "nombre": "Cambio de aceite",
+        "cod": "CA"
+    }
+]

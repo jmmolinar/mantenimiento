@@ -1,0 +1,42 @@
+[
+    {
+        "id_area": 1,
+        "nombre": "Área 11"
+    },
+    {
+        "id_area": 2,
+        "nombre": "Área 21"
+    },
+    {
+        "id_area": 3,
+        "nombre": "Área 31"
+    },
+    {
+        "id_area": 4,
+        "nombre": "Área 41"
+    },
+    {
+        "id_area": 5,
+        "nombre": "Área 51"
+    },
+    {
+        "id_area": 6,
+        "nombre": "Área 61"
+    },
+    {
+        "id_area": 7,
+        "nombre": "Área 71"
+    },
+    {
+        "id_area": 8,
+        "nombre": "Área 81"
+    },
+    {
+        "id_area": 9,
+        "nombre": "Área 91"
+    },
+    {
+        "id_area": 10,
+        "nombre": "Área 101"
+    }
+]

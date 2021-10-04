@@ -1,0 +1,122 @@
+{
+    "results": [
+        {
+            "gender": "male",
+            "name": {
+                "title": "Mr",
+                "first": "Marvin",
+                "last": "Schultheiß"
+            },
+            "location": {
+                "street": {
+                    "number": 5011,
+                    "name": "Lerchenweg"
+                },
+                "city": "Werder (Havel)",
+                "state": "Niedersachsen",
+                "country": "Germany",
+                "postcode": 29310,
+                "coordinates": {
+                    "latitude": "34.6504",
+                    "longitude": "60.6914"
+                },
+                "timezone": {
+                    "offset": "-10:00",
+                    "description": "Hawaii"
+                }
+            },
+            "email": "marvin.schultheiss@example.com",
+            "login": {
+                "uuid": "c189f837-29b2-484c-bcff-963b22cb4b40",
+                "username": "silverwolf992",
+                "password": "prophet",
+                "salt": "BkLTlIqV",
+                "md5": "3a8aef2bb6df364cba8482ddf4a58053",
+                "sha1": "9106bf33e54a10333f9df8e31037a2f49e89fa77",
+                "sha256": "5c1a2c2778fc1caeb684d1f70849614c15965e107c5450c836fb7fa687ae7e28"
+            },
+            "dob": {
+                "date": "1978-02-28T16:07:15.961Z",
+                "age": 43
+            },
+            "registered": {
+                "date": "2009-09-10T11:44:09.907Z",
+                "age": 12
+            },
+            "phone": "0611-7737209",
+            "cell": "0170-6186941",
+            "id": {
+                "name": "",
+                "value": null
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/men/20.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/men/20.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/men/20.jpg"
+            },
+            "nat": "DE"
+        },
+        {
+            "gender": "male",
+            "name": {
+                "title": "Mr",
+                "first": "Sigmund",
+                "last": "Wild"
+            },
+            "location": {
+                "street": {
+                    "number": 5659,
+                    "name": "Industriestraße"
+                },
+                "city": "Neustrelitz",
+                "state": "Nordrhein-Westfalen",
+                "country": "Germany",
+                "postcode": 81193,
+                "coordinates": {
+                    "latitude": "74.2830",
+                    "longitude": "-169.0050"
+                },
+                "timezone": {
+                    "offset": "+4:00",
+                    "description": "Abu Dhabi, Muscat, Baku, Tbilisi"
+                }
+            },
+            "email": "sigmund.wild@example.com",
+            "login": {
+                "uuid": "a1daf722-dfa9-4699-8338-a0fb08a8cbbe",
+                "username": "redleopard818",
+                "password": "lllllll",
+                "salt": "mlINd9Rd",
+                "md5": "8a508e75dd0ef23fc92c9290ee41c88a",
+                "sha1": "0f02aa3e148c0a99b0c1fa9ce46c76f2d24f8b28",
+                "sha256": "1b26ecf03609926ccbd80f80a279807116104e2fea7f3f47f15dc9a1ef7860c2"
+            },
+            "dob": {
+                "date": "1983-06-21T02:45:20.795Z",
+                "age": 38
+            },
+            "registered": {
+                "date": "2014-11-15T09:24:13.420Z",
+                "age": 7
+            },
+            "phone": "0662-3493385",
+            "cell": "0176-8467782",
+            "id": {
+                "name": "",
+                "value": null
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/men/91.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/men/91.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/men/91.jpg"
+            },
+            "nat": "DE"
+        }
+    ],
+    "info": {
+        "seed": "dd5b99dc3112e406",
+        "results": 2,
+        "page": 1,
+        "version": "1.3"
+    }
+}

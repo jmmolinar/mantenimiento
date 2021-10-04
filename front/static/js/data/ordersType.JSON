@@ -1,0 +1,10 @@
+[
+    {
+        "id_tipo_mantenimiento": 1,
+        "nombre": "Preventivo"
+    },
+    {
+        "id_tipo_mantenimiento": 2,
+        "nombre": "Correctivo"
+    }
+]

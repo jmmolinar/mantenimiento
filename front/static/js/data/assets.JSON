@@ -1,0 +1,273 @@
+[
+    {
+        "id": 8,
+        "activo": "MAQ-A8",
+        "tipo": "Máquina",
+        "marca": "Caterpillar",
+        "modelo": "Retroexcavadora 150G LC",
+        "anio": "2018",
+        "plan": "Plan CATERPILLAR",
+        "planes_activo": [
+            {
+                "id": "11",
+                "nombre": "Plan GENERAL"
+            },
+            {
+                "id": "2",
+                "nombre": "Plan CATERPILLAR"
+            }
+        ],
+        "gps_imei": "850085008500852",
+        "area": "Área 101",
+        "bodega": "Sede Central",
+        "km": null,
+        "mant_en_km": null,
+        "horas": "820 Horas",
+        "mant_en_horas": "250 Horas",
+        "mant_realizadas": 6,
+        "seguro_obligatorio": "",
+        "vencimiento_seguro_obligatorio": "2022-08-10",
+        "padron_vehicular": "padronVehicular_8.pdf",
+        "vencimiento_padron_vehicular": "2022-08-10",
+        "permiso_circulacion": "permisoCirculacion_8.pdf",
+        "vencimiento_permiso_circulacion": "2022-08-10",
+        "revision_tecnica": "revisionTecnica_8.pdf",
+        "vencimiento_revision_tecnica": "2022-08-10"
+    },
+    {
+        "id": 7,
+        "activo": "MAQ-A4",
+        "tipo": "Máquina",
+        "marca": "Caterpillar",
+        "modelo": "Retroexcavadora 130G LC",
+        "anio": "2020",
+        "plan": "Plan CATERPILLAR",
+        "planes_activo": [],
+        "gps_imei": "850085008500851",
+        "area": "Área 101",
+        "bodega": "Sede Central",
+        "km": null,
+        "mant_en_km": null,
+        "horas": "310 Horas",
+        "mant_en_horas": null,
+        "mant_realizadas": 5,
+        "seguro_obligatorio": "seguroObligatorio_7.pdf",
+        "vencimiento_seguro_obligatorio": "2022-08-10",
+        "padron_vehicular": "padronVehicular_7.pdf",
+        "vencimiento_padron_vehicular": "2022-08-10",
+        "permiso_circulacion": "permisoCirculacion_7.pdf",
+        "vencimiento_permiso_circulacion": "2022-08-10",
+        "revision_tecnica": "revisionTecnica_7.pdf",
+        "vencimiento_revision_tecnica": "2022-08-10"
+    },
+    {
+        "id": 6,
+        "activo": "MAQ-A3",
+        "tipo": "Máquina",
+        "marca": "Caterpillar",
+        "modelo": "Retroexcavadora 130G LC",
+        "anio": "2019",
+        "plan": "Plan CATERPILLAR",
+        "planes_activo": [
+            {
+                "id": "11",
+                "nombre": "Plan GENERAL"
+            },
+            {
+                "id": "2",
+                "nombre": "Plan CATERPILLAR"
+            }
+        ],
+        "gps_imei": "850085008500850",
+        "area": "Área 101",
+        "bodega": "Sede Central",
+        "km": null,
+        "mant_en_km": null,
+        "horas": "720 Horas",
+        "mant_en_horas": "300 Horas",
+        "mant_realizadas": 3,
+        "seguro_obligatorio": "seguroObligatorio_6.pdf",
+        "vencimiento_seguro_obligatorio": "2022-08-10",
+        "padron_vehicular": "padronVehicular_6.pdf",
+        "vencimiento_padron_vehicular": "2022-08-10",
+        "permiso_circulacion": "permisoCirculacion_6.pdf",
+        "vencimiento_permiso_circulacion": "2022-08-10",
+        "revision_tecnica": "revisionTecnica_6.pdf",
+        "vencimiento_revision_tecnica": "2022-08-10"
+    },
+    {
+        "id": 5,
+        "activo": "PATENTE-A1",
+        "tipo": "Vehículo",
+        "marca": "Toyota",
+        "modelo": "Tundra",
+        "anio": "2020",
+        "plan": "Plan TOYOTA",
+        "planes_activo": [
+            {
+                "id": "11",
+                "nombre": "Plan GENERAL"
+            },
+            {
+                "id": "5",
+                "nombre": "Plan TOYOTA"
+            }
+        ],
+        "gps_imei": "850085008500851",
+        "area": "Área 51",
+        "bodega": "Sede Norte",
+        "km": "10200 Km",
+        "mant_en_km": "800 Km",
+        "horas": null,
+        "mant_en_horas": null,
+        "mant_realizadas": 2,
+        "seguro_obligatorio": "seguroObligatorio_5.pdf",
+        "vencimiento_seguro_obligatorio": "2022-08-10",
+        "padron_vehicular": "padronVehicular_5.pdf",
+        "vencimiento_padron_vehicular": "2022-08-10",
+        "permiso_circulacion": "permisoCirculacion_5.pdf",
+        "vencimiento_permiso_circulacion": "2022-08-10",
+        "revision_tecnica": "revisionTecnica_5.pdf",
+        "vencimiento_revision_tecnica": "2022-08-10"
+    },
+    {
+        "id": 4,
+        "activo": "PATENTE-B1",
+        "tipo": "Vehículo",
+        "marca": "Ford",
+        "modelo": "F150",
+        "anio": "2019",
+        "plan": "Plan FORD",
+        "planes_activo": [
+            {
+                "id": "11",
+                "nombre": "Plan GENERAL"
+            },
+            {
+                "id": "6",
+                "nombre": "Plan FORD"
+            }
+        ],
+        "gps_imei": "850085008500852",
+        "area": "Área 51",
+        "bodega": "Sede Norte",
+        "km": "14120 Km",
+        "mant_en_km": "1000 Km",
+        "horas": null,
+        "mant_en_horas": null,
+        "mant_realizadas": 4,
+        "seguro_obligatorio": "seguroObligatorio_4.pdf",
+        "vencimiento_seguro_obligatorio": "2022-08-10",
+        "padron_vehicular": "padronVehicular_4.pdf",
+        "vencimiento_padron_vehicular": "2022-08-10",
+        "permiso_circulacion": "permisoCirculacion_4.pdf",
+        "vencimiento_permiso_circulacion": "2022-08-10",
+        "revision_tecnica": "revisionTecnica_4.pdf",
+        "vencimiento_revision_tecnica": "2022-08-10"
+    },
+    {
+        "id": 3,
+        "activo": "PATENTE-C1",
+        "tipo": "Vehículo",
+        "marca": "Chevrolet",
+        "modelo": "Suburban",
+        "anio": "2019",
+        "plan": "Plan CHEVROLET",
+        "planes_activo": [
+            {
+                "id": "11",
+                "nombre": "Plan GENERAL"
+            },
+            {
+                "id": "8",
+                "nombre": "Plan CHEVROLET"
+            }
+        ],
+        "gps_imei": "850085008500853",
+        "area": "Área 71",
+        "bodega": "Sede Sur B",
+        "km": "1200 Km",
+        "mant_en_km": "1000 Km",
+        "horas": null,
+        "mant_en_horas": null,
+        "mant_realizadas": 6,
+        "seguro_obligatorio": "seguroObligatorio_3.pdf",
+        "vencimiento_seguro_obligatorio": "2022-08-10",
+        "padron_vehicular": "padronVehicular_3.pdf",
+        "vencimiento_padron_vehicular": "2022-08-10",
+        "permiso_circulacion": "permisoCirculacion_3.pdf",
+        "vencimiento_permiso_circulacion": "2022-08-10",
+        "revision_tecnica": "revisionTecnica_·.pdf",
+        "vencimiento_revision_tecnica": "2022-08-10"
+    },
+    {
+        "id": 2,
+        "activo": "MAQ-A1",
+        "tipo": "Máquina",
+        "marca": "Komatsu",
+        "modelo": "Retroexcavadora 100T",
+        "anio": "2020",
+        "plan": "Plan KOMATSU",
+        "planes_activo": [
+            {
+                "id": "11",
+                "nombre": "Plan GENERAL"
+            },
+            {
+                "id": "9",
+                "nombre": "Plan KOMATSU"
+            }
+        ],
+        "gps_imei": "850085008500854",
+        "area": "Área 101",
+        "bodega": "Sede Central",
+        "km": null,
+        "mant_en_km": null,
+        "horas": "612 Horas",
+        "mant_en_horas": "300 Horas",
+        "mant_realizadas": 2,
+        "seguro_obligatorio": "seguroObligatorio_2.pdf",
+        "vencimiento_seguro_obligatorio": "2022-08-10",
+        "padron_vehicular": "padronVehicular_2.pdf",
+        "vencimiento_padron_vehicular": "2022-08-10",
+        "permiso_circulacion": "permisoCirculacion_2.pdf",
+        "vencimiento_permiso_circulacion": "2022-08-10",
+        "revision_tecnica": "revisionTecnica_2.pdf",
+        "vencimiento_revision_tecnica": "2022-08-10"
+    },
+    {
+        "id": 1,
+        "activo": "MAQ-A2",
+        "tipo": "Máquina",
+        "marca": "John Deere",
+        "modelo": "Sports Turf",
+        "anio": "2021",
+        "plan": "Plan JOHN DEERE",
+        "planes_activo": [
+            {
+                "id": "11",
+                "nombre": "Plan GENERAL"
+            },
+            {
+                "id": "10",
+                "nombre": "Plan JOHN DEERE"
+            }
+        ],
+        "gps_imei": "850085008500855",
+        "area": "Área 101",
+        "bodega": "Sede Central",
+        "km": null,
+        "mant_en_km": null,
+        "horas": "120 Horas",
+        "mant_en_horas": "380 Horas",
+        "mant_realizadas": 1,
+        "seguro_obligatorio": "seguroObligatorio_1.pdf",
+        "vencimiento_seguro_obligatorio": "2022-08-10",
+        "padron_vehicular": "padronVehicular_1.pdf",
+        "vencimiento_padron_vehicular": "2022-08-10",
+        "permiso_circulacion": "permisoCirculacion_1.pdf",
+        "vencimiento_permiso_circulacion": "2022-08-10",
+        "revision_tecnica": "revisionTecnica_1.pdf",
+        "vencimiento_revision_tecnica": "2022-08-10"
+    }
+]

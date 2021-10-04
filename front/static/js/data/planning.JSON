@@ -1,0 +1,578 @@
+[
+    {
+        "id": 11,
+        "nombre": "Plan GENERAL",
+        "por_km": false,
+        "por_hora": false,
+        "por_periodo": true,
+        "servicios_plan": [
+            {
+                "id": 10,
+                "nombre": "Alineación y balanceo",
+                "limite_km": "",
+                "limite_hora": "",
+                "periodo_inicio": "2021-05-24",
+                "periodo_cada": 2,
+                "periodo_frecuencia_cada": "Meses"
+            },
+            {
+                "id": 9,
+                "nombre": "Lavado y aspirado",
+                "limite_km": "",
+                "limite_hora": "",
+                "periodo_inicio": "2021-06-24",
+                "periodo_cada": 3,
+                "periodo_frecuencia_cada": "Semanas"
+            },
+            {
+                "id": 8,
+                "nombre": "Lavado de chasis",
+                "limite_km": "",
+                "limite_hora": "",
+                "periodo_inicio": "2021-07-24",
+                "periodo_cada": 60,
+                "periodo_frecuencia_cada": "Días"
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "nombre": "Plan JOHN DEERE",
+        "por_km": false,
+        "por_hora": true,
+        "por_periodo": false,
+        "servicios_plan": [
+            {
+                "id": 7,
+                "nombre": "Engrase general",
+                "limite_km": "",
+                "limite_hora": "800",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 6,
+                "nombre": "Cambio de bujías",
+                "limite_km": "",
+                "limite_hora": "500",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 3,
+                "nombre": "Cambio de filtro de aire",
+                "limite_km": "",
+                "limite_hora": "300",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 2,
+                "nombre": "Cambio de filtro de aceite",
+                "limite_km": "",
+                "limite_hora": "300",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "limite_km": "",
+                "limite_hora": "200",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "nombre": "Plan KOMATSU",
+        "por_km": false,
+        "por_hora": true,
+        "por_periodo": false,
+        "servicios_plan": [
+            {
+                "id": 7,
+                "nombre": "Engrase general",
+                "limite_km": "",
+                "limite_hora": "900",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 6,
+                "nombre": "Cambio de bujías",
+                "limite_km": "",
+                "limite_hora": "600",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 3,
+                "nombre": "Cambio de filtro de aire",
+                "limite_km": "",
+                "limite_hora": "400",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 2,
+                "nombre": "Cambio de filtro de aceite",
+                "limite_km": "",
+                "limite_hora": "400",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "limite_km": "",
+                "limite_hora": "200",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "nombre": "Plan CHEVROLET",
+        "por_km": true,
+        "por_hora": false,
+        "por_periodo": false,
+        "servicios_plan": [
+            {
+                "id": 7,
+                "nombre": "Engrase general",
+                "limite_km": "1000",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 6,
+                "nombre": "Cambio de bujías",
+                "limite_km": "700",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 3,
+                "nombre": "Cambio de filtro de aire",
+                "limite_km": "500",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 2,
+                "nombre": "Cambio de filtro de aceite",
+                "limite_km": "500",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "limite_km": "300",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "nombre": "Plan FIAT",
+        "por_km": true,
+        "por_hora": false,
+        "por_periodo": false,
+        "servicios_plan": [
+            {
+                "id": 7,
+                "nombre": "Engrase general",
+                "limite_km": "1100",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 6,
+                "nombre": "Cambio de bujías",
+                "limite_km": "700",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 3,
+                "nombre": "Cambio de filtro de aire",
+                "limite_km": "500",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 2,
+                "nombre": "Cambio de filtro de aceite",
+                "limite_km": "500",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "limite_km": "400",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "nombre": "Plan FORD",
+        "por_km": true,
+        "por_hora": false,
+        "por_periodo": false,
+        "servicios_plan": [
+            {
+                "id": 7,
+                "nombre": "Engrase general",
+                "limite_km": "1000",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 6,
+                "nombre": "Cambio de bujías",
+                "limite_km": "700",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 3,
+                "nombre": "Cambio de filtro de aire",
+                "limite_km": "500",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 2,
+                "nombre": "Cambio de filtro de aceite",
+                "limite_km": "500",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "limite_km": "300",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "nombre": "Plan TOYOTA",
+        "por_km": true,
+        "por_hora": false,
+        "por_periodo": false,
+        "servicios_plan": [
+            {
+                "id": 7,
+                "nombre": "Engrase general",
+                "limite_km": "1200",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 6,
+                "nombre": "Cambio de bujías",
+                "limite_km": "800",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 3,
+                "nombre": "Cambio de filtro de aire",
+                "limite_km": "600",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 2,
+                "nombre": "Cambio de filtro de aceite",
+                "limite_km": "600",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "limite_km": "400",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "nombre": "Plan ESTÁNDAR",
+        "por_km": true,
+        "por_hora": false,
+        "por_periodo": false,
+        "servicios_plan": [
+            {
+                "id": 7,
+                "nombre": "Engrase general",
+                "limite_km": "1000",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 6,
+                "nombre": "Cambio de bujías",
+                "limite_km": "700",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 3,
+                "nombre": "Cambio de filtro de aire",
+                "limite_km": "500",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 2,
+                "nombre": "Cambio de filtro de aceite",
+                "limite_km": "500",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "limite_km": "300",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "nombre": "Plan MAZDA",
+        "por_km": true,
+        "por_hora": false,
+        "por_periodo": false,
+        "servicios_plan": [
+            {
+                "id": 7,
+                "nombre": "Engrase general",
+                "limite_km": "1000",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 6,
+                "nombre": "Cambio de bujías",
+                "limite_km": "700",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 3,
+                "nombre": "Cambio de filtro de aire",
+                "limite_km": "500",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 2,
+                "nombre": "Cambio de filtro de aceite",
+                "limite_km": "500",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "limite_km": "300",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "nombre": "Plan CATERPILLAR",
+        "por_km": false,
+        "por_hora": true,
+        "por_periodo": false,
+        "servicios_plan": [
+            {
+                "id": 7,
+                "nombre": "Engrase general",
+                "limite_km": "",
+                "limite_hora": "1000",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 6,
+                "nombre": "Cambio de bujías",
+                "limite_km": "",
+                "limite_hora": "700",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 3,
+                "nombre": "Cambio de filtro de aire",
+                "limite_km": "",
+                "limite_hora": "500",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": "2",
+                "nombre": "Cambio de filtro de aceite",
+                "limite_km": "",
+                "limite_hora": "500",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "limite_km": "",
+                "limite_hora": "300",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "nombre": "Plan IVECO",
+        "por_km": true,
+        "por_hora": false,
+        "por_periodo": false,
+        "servicios_plan": [
+            {
+                "id": 7,
+                "nombre": "Engrase general",
+                "limite_km": "1000",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 6,
+                "nombre": "Cambio de bujías",
+                "limite_km": "700",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 3,
+                "nombre": "Cambio de filtro de aire",
+                "limite_km": "500",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 2,
+                "nombre": "Cambio de filtro de aceite",
+                "limite_km": "500",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "limite_km": "300",
+                "limite_hora": "",
+                "periodo_inicio": "",
+                "periodo_cada": "",
+                "periodo_frecuencia_cada": ""
+            }
+        ]
+    }
+]

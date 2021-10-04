@@ -1,0 +1,238 @@
+/*
+.select-option {
+    background-color: #FFFFFF;
+    border: 1px solid #8492A6;
+    border-radius: 5px;
+    width: 266px;
+    height: 48px;
+}
+
+.my-control-label {
+    float: left;
+    text-align: left;
+}
+
+.my-control-group {
+    margin-bottom: 2px;
+    display: table-row-group;
+    text-align: left;
+}
+
+.radio-button {
+    display: flow-root;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    padding: 10px;
+}
+
+.my-controls {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}*/
+
+
+.order-identity {
+    background-color: rgb(239, 239, 239);
+}
+
+.order-identity > h1,h2,h3 {  
+    /*background-color: lightblue;*/
+    line-height: 28px;
+}
+
+.border-1px {
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.border-dashed-1px {
+    border: 1px dashed #cccccc;
+    border-radius: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.border-transparent-1px {
+    border: 1px transparent #cccccc;
+    border-radius: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.border-table-status-order-transparent-1px {
+    border: 1px transparent #cccccc;
+    border-radius: 5px;
+    padding-right: 10px;
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-bottom: 10px;
+}
+
+.categories-container-scroll {
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 280px;
+    overflow-y: auto;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.whiteiconcolor {color:white;}
+
+/*Sólo para llegar al elemento*/
+.only-to-id-url {
+    text-align: center;
+}
+
+.hidden{
+    display: none;
+}
+
+.search {
+    max-width: 300px;
+    /*margin: 0 auto;*/
+    position: relative;
+}
+
+.search input {
+    width: 100%;
+    padding: 5px;
+    /*border: 1px solid #cecece;
+    border-radius: 3px;*/
+}
+
+.search i {
+    position: absolute;
+    cursor: pointer;
+    right: -2px;
+    top: 10px;
+}
+
+.new-alert {
+    color: #333;
+    border: 1px solid #979797;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight:lighter;
+    margin: 5px;
+    display: table;
+    background-color: white;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #dcdcdc));
+}
+
+.new-alert-use {
+    color: black;
+    background-color: #ffd7b5;
+    border-color: #ffb38a; /*#ff9248;*/
+}
+
+.new-color-alert {
+    color: black;
+}
+/*.new-alert .new-close{
+    top: 0px;
+}*/
+
+.no-margin {
+    margin : 0px;
+}
+
+.new-padding-top-bottom  {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.new-flex{
+    display: flex;
+    /*align-items: flex-end;*/
+}
+
+.new-div-range-date-table {
+    margin-top:15px; 
+    margin-right: 5px;
+}
+
+.new-div-documents {
+    display: grid;
+}
+
+.new-input-file {
+    position:absolute;
+    /*margin-left: 300px;*/
+    z-index:2;
+    top:0;
+    left:0;
+    filter: alpha(opacity=0);
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    opacity:0;
+    background-color:transparent;
+    color:transparent;
+}
+
+.new-div-file-upload {
+    position:relative;
+    margin-bottom: 3px;
+}
+
+.new-span-margin-bottom {
+    margin-bottom: 5px;
+}
+
+/**Estilos para árbol de estados*/
+.contenedor-arbol,
+.contenedor-arbol ul,
+.contenedor-arbol li {
+    position: relative;
+}
+
+.contenedor-arbol ul {
+    list-style: none;
+}
+
+.contenedor-arbol li::before,
+.contenedor-arbol li::after {
+    content: "";
+    position: absolute;
+    left: -12px;
+}
+
+.contenedor-arbol li::before {
+    border-top: 2px solid #5bb75b;
+    top: 9px;
+    width: 8px;
+    height: 0;
+}
+
+.contenedor-arbol li::after {
+    /*border-left: 2px solid rgb(239, 239, 239);*/
+    border-left: 2px solid #5bb75b;
+    height: 100%;
+    width: 0px;
+    top: 2px;
+}
+
+.contenedor-arbol ul>li:last-child::after {
+    height: 8px;
+}
+/***/

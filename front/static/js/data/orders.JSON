@@ -1,0 +1,853 @@
+[
+    {
+        "id_orden": 14,
+        "patente_activo": "MAQ-A3",
+        "km_recorridos": null,
+        "horas_uso": "920 Horas",
+        "area_vehiculo": "Área 101",
+        "tipo_orden": "Preventivo",
+        "tipo_activo": "Máquina",
+        "estado_orden": "Planificado",
+        "estados_posibles": {},
+        "historial_estados": [
+            {
+                "id_estado": 1,
+                "nombre_estado": "Por planificar",
+                "fecha_estado": "2021-08-06",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 2,
+                "nombre_estado": "Planificado",
+                "fecha_estado": "2021-08-08",
+                "estado_asignado_por": "Usuario",
+                "estado_actual": true
+            }
+        ],
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "fecha_creacion": "2021-08-06",
+        "rango_fecha_orden": true,
+        "fecha_inicio": "2021-08-21",
+        "fecha_limite": "2021-08-23",
+        "servicios_orden": [
+            {
+                "id": 6,
+                "nombre": "Cambio de bujías",
+                "costo": "200000"
+            },
+            {
+                "id": 2,
+                "nombre": "Cambio de filtro de aceite",
+                "costo": "320000"
+            }
+        ],
+        "taller_orden": "Taller DDD",
+        "observaciones": "",
+        "total": "520000",
+        "title": "Órden 14",
+        "start": "2021-08-21T12:30:00",
+        "end": "2021-08-23T16:30:00",
+        "allDay": false
+    },
+    {
+        "id_orden": 13,
+        "patente_activo": "MAQ-A8",
+        "km_recorridos": null,
+        "horas_uso": "820 Horas",
+        "area_vehiculo": "Área 101",
+        "tipo_orden": "Preventivo",
+        "tipo_activo": "Máquina",
+        "estado_orden": "Planificado",
+        "estados_posibles": {},
+        "historial_estados": [
+            {
+                "id_estado": 1,
+                "nombre_estado": "Por planificar",
+                "fecha_estado": "2021-07-30",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 2,
+                "nombre_estado": "Planificado",
+                "fecha_estado": "2021-07-31",
+                "estado_asignado_por": "Usuario",
+                "estado_actual": true
+            }
+        ],
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "fecha_creacion": "2021-07-30",
+        "rango_fecha_orden": true,
+        "fecha_inicio": "2021-08-15",
+        "fecha_limite": "2021-08-17",
+        "servicios_orden": [
+            {
+                "id": 7,
+                "nombre": "Engrase general",
+                "costo": "100000"
+            },
+            {
+                "id": 5,
+                "nombre": "Cambio de neumáticos traseros",
+                "costo": "200000"
+            }
+        ],
+        "taller_orden": "Taller CCC",
+        "observaciones": "",
+        "total": "300000",
+        "title": "Órden 13",
+        "start": "2021-08-15",
+        "end": "2021-08-17",
+        "allDay": true
+    },
+    {
+        "id_orden": 12,
+        "patente_activo": "MAQ-A3",
+        "km_recorridos": null,
+        "horas_uso": "720 Horas",
+        "area_vehiculo": "Área 101",
+        "tipo_orden": "Preventivo",
+        "tipo_activo": "Máquina",
+        "estado_orden": "Completado",
+        "estados_posibles": {},
+        "historial_estados": [
+            {
+                "id_estado": 1,
+                "nombre_estado": "Por planificar",
+                "fecha_estado": "2021-06-15",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 2,
+                "nombre_estado": "Planificado",
+                "fecha_estado": "2021-06-20",
+                "estado_asignado_por": "Usuario",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 5,
+                "nombre_estado": "En taller",
+                "fecha_estado": "2021-07-05",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 7,
+                "nombre_estado": "Salida de taller",
+                "fecha_estado": "2021-07-06",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 8,
+                "nombre_estado": "Completado",
+                "fecha_estado": "2021-07-06",
+                "estado_asignado_por": "Usuario",
+                "estado_actual": true,
+                "documento_completado": "documentoCompletado_12.pdf"
+            }
+        ],
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "fecha_creacion": "2021-06-15",
+        "rango_fecha_orden": true,
+        "fecha_inicio": "2021-07-05",
+        "fecha_limite": "2021-07-07",
+        "servicios_orden": [
+            {
+                "id": 7,
+                "nombre": "Engrase general",
+                "costo": "100000"
+            }
+        ],
+        "taller_orden": "Taller BBB",
+        "observaciones": "",
+        "total": "100000",
+        "title": "Órden 12",
+        "start": "2021-07-05T12:30:00",
+        "end": "2021-07-07T16:30:00",
+        "allDay": false
+    },
+    {
+        "id_orden": 11,
+        "patente_activo": "PATENTE-A1",
+        "km_recorridos": "10200 Km",
+        "horas_uso": null,
+        "area_vehiculo": "Área 51",
+        "tipo_orden": "Preventivo",
+        "tipo_activo": "Vehículo",
+        "estado_orden": "Completado con retraso",
+        "estados_posibles": {},
+        "historial_estados": [
+            {
+                "id_estado": 1,
+                "nombre_estado": "Por planificar",
+                "fecha_estado": "2021-06-15",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 3,
+                "nombre_estado": "Retrasado",
+                "fecha_estado": "2021-07-01",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 4,
+                "nombre_estado": "Planificado con retraso",
+                "fecha_estado": "2021-07-10",
+                "estado_asignado_por": "Usuario",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 5,
+                "nombre_estado": "En taller",
+                "fecha_estado": "2021-07-14",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 6,
+                "nombre_estado": "Retraso en taller",
+                "fecha_estado": "2021-07-17",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 7,
+                "nombre_estado": "Salida de taller",
+                "fecha_estado": "2021-07-19",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 9,
+                "nombre_estado": "Completado con retraso",
+                "fecha_estado": "2021-07-19",
+                "estado_asignado_por": "Usuario",
+                "estado_actual": true,
+                "documento_completado": "documentoCompletado_11.pdf"
+            }
+        ],
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "fecha_creacion": "2021-06-15",
+        "rango_fecha_orden": true,
+        "fecha_inicio": "2021-07-14",
+        "fecha_limite": "2021-07-16",
+        "servicios_orden": [
+            {
+                "id": 5,
+                "nombre": "Cambio de neumáticos traseros",
+                "costo": "200000"
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "costo": "300000"
+            }
+        ],
+        "taller_orden": "Taller AAA",
+        "observaciones": "prueba",
+        "total": "500000",
+        "title": "Órden 11",
+        "start": "2021-07-14",
+        "end": "2021-07-16",
+        "allDay": true
+    },
+    {
+        "id_orden": 10,
+        "patente_activo": "MAQ-A3",
+        "km_recorridos": null,
+        "horas_uso": "720 Horas",
+        "area_vehiculo": "Área 101",
+        "tipo_orden": "Preventivo",
+        "tipo_activo": "Máquina",
+        "estado_orden": "Retrasado",
+        "estados_posibles": {},
+        "historial_estados": [
+            {
+                "id_estado": 1,
+                "nombre_estado": "Por planificar",
+                "fecha_estado": "2021-06-30",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 3,
+                "nombre_estado": "Retrasado",
+                "fecha_estado": "2021-07-10",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": true
+            }
+        ],
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "fecha_creacion": "2021-06-30",
+        "rango_fecha_orden": true,
+        "fecha_inicio": "",
+        "fecha_limite": "",
+        "servicios_orden": [
+            {
+                "id": 5,
+                "nombre": "Cambio de neumáticos traseros",
+                "costo": ""
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "costo": ""
+            }
+        ],
+        "taller_orden": "Taller AAA",
+        "observaciones": "",
+        "total": "",
+        "title": "Órden 10",
+        "start": "",
+        "end": "",
+        "allDay": true
+    },
+    {
+        "id_orden": 9,
+        "patente_activo": "AAAA9",
+        "km_recorridos": "22146 Km",
+        "horas_uso": null,
+        "area_vehiculo": "Área 11",
+        "tipo_orden": "Preventivo",
+        "tipo_activo": "Vehículo",
+        "estado_orden": "Por planificar",
+        "estados_posibles": {},
+        "historial_estados": [
+            {
+                "id_estado": 1,
+                "nombre_estado": "Por planificar",
+                "fecha_estado": "2021-06-25",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": true
+            }
+        ],
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "fecha_creacion": "2021-06-25",
+        "rango_fecha_orden": true,
+        "fecha_inicio": "",
+        "fecha_limite": "",
+        "servicios_orden": [
+            {
+                "id": 5,
+                "nombre": "Cambio de neumáticos traseros",
+                "costo": ""
+            },
+            {
+                "id": 4,
+                "nombre": "Cambio de neumáticos delanteros",
+                "costo": ""
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "costo": ""
+            }
+        ],
+        "taller_orden": "Taller CCC",
+        "observaciones": "prueba",
+        "total": "",
+        "title": "Órden 9",
+        "start": "",
+        "end": "",
+        "allDay": true
+    },
+    {
+        "id_orden": 8,
+        "patente_activo": "AAAA3",
+        "km_recorridos": "12146 Km",
+        "horas_uso": null,
+        "area_vehiculo": "Área 21",
+        "tipo_orden": "Preventivo",
+        "tipo_activo": "Vehículo",
+        "estado_orden": "No realizado",
+        "estados_posibles": {},
+        "historial_estados": [
+            {
+                "id_estado": 1,
+                "nombre_estado": "Por planificar",
+                "fecha_estado": "2021-05-01",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 2,
+                "nombre_estado": "Planificado",
+                "fecha_estado": "2021-05-10",
+                "estado_asignado_por": "Usuario",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 10,
+                "nombre_estado": "No realizado",
+                "fecha_estado": "2021-05-30",
+                "estado_asignado_por": "Usuario",
+                "estado_actual": true
+            }
+        ],
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "fecha_creacion": "2021-05-01",
+        "rango_fecha_orden": true,
+        "fecha_inicio": "2021-05-24",
+        "fecha_limite": "2021-05-26",
+        "servicios_orden": [
+            {
+                "id": 5,
+                "nombre": "Cambio de neumáticos traseros",
+                "costo": "200000"
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "costo": "300000"
+            }
+        ],
+        "taller_orden": "Taller AAA",
+        "observaciones": "probando",
+        "total": "500000",
+        "title": "Órden 8",
+        "start": "2021-05-24",
+        "end": "2021-05-26",
+        "allDay": true
+    },
+    {
+        "id_orden": 7,
+        "patente_activo": "AAA66-P",
+        "km_recorridos": "12146 Km",
+        "horas_uso": null,
+        "area_vehiculo": "Área 21",
+        "tipo_orden": "Preventivo",
+        "tipo_activo": "Vehículo",
+        "estado_orden": "En taller",
+        "estados_posibles": {},
+        "historial_estados": [
+            {
+                "id_estado": 1,
+                "nombre_estado": "Por planificar",
+                "fecha_estado": "2021-07-01",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 2,
+                "nombre_estado": "Planificado",
+                "fecha_estado": "2021-07-15",
+                "estado_asignado_por": "Usuario",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 5,
+                "nombre_estado": "En taller",
+                "fecha_estado": "2021-07-21",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": true
+            }
+        ],
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "fecha_creacion": "2021-07-01",
+        "rango_fecha_orden": true,
+        "fecha_inicio": "2021-07-21",
+        "fecha_limite": "2021-07-23",
+        "servicios_orden": [
+            {
+                "id": 5,
+                "nombre": "Cambio de neumáticos traseros",
+                "costo": "200000"
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "costo": "300000"
+            }
+        ],
+        "taller_orden": "Taller AAA",
+        "observaciones": "probando",
+        "total": "500000",
+        "title": "Órden 7",
+        "start": "2021-07-21",
+        "end": "2021-07-23",
+        "allDay": true
+    },
+    {
+        "id_orden": 6,
+        "patente_activo": "AAAA4",
+        "km_recorridos": "12000 Km",
+        "horas_uso": null,
+        "area_vehiculo": "Área 21",
+        "tipo_orden": "Preventivo",
+        "tipo_activo": "Vehículo",
+        "estado_orden": "Planificado",
+        "estados_posibles": {},
+        "historial_estados": [
+            {
+                "id_estado": 1,
+                "nombre_estado": "Por planificar",
+                "fecha_estado": "2021-07-05",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 2,
+                "nombre_estado": "Planificado",
+                "fecha_estado": "2021-07-15",
+                "estado_asignado_por": "Usuario",
+                "estado_actual": true
+            }
+        ],
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "fecha_creacion": "2021-07-05",
+        "rango_fecha_orden": true,
+        "fecha_inicio": "2021-07-26",
+        "fecha_limite": "2021-07-28",
+        "servicios_orden": [
+            {
+                "id": 5,
+                "nombre": "Cambio de neumáticos traseros",
+                "costo": "200000"
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "costo": "300000"
+            }
+        ],
+        "taller_orden": "Taller AAA",
+        "observaciones": "probando",
+        "total": "500000",
+        "title": "Órden 6",
+        "start": "2021-07-26",
+        "end": "2021-07-28",
+        "allDay": true
+    },
+    {
+        "id_orden": 5,
+        "patente_activo": "AAAA5",
+        "km_recorridos": "1200 Km",
+        "horas_uso": null,
+        "area_vehiculo": "Área 21",
+        "tipo_orden": "Preventivo",
+        "tipo_activo": "Vehículo",
+        "estado_orden": "Planificado",
+        "estados_posibles": {},
+        "historial_estados": [
+            {
+                "id_estado": 1,
+                "nombre_estado": "Por planificar",
+                "fecha_estado": "2021-07-08",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 2,
+                "nombre_estado": "Planificado",
+                "fecha_estado": "2021-07-18",
+                "estado_asignado_por": "Usuario",
+                "estado_actual": true
+            }
+        ],
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "fecha_creacion": "2021-07-08",
+        "rango_fecha_orden": true,
+        "fecha_inicio": "2021-07-28",
+        "fecha_limite": "2021-07-30",
+        "servicios_orden": [
+            {
+                "id": 5,
+                "nombre": "Cambio de neumáticos traseros",
+                "costo": "300000"
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "costo": "300000"
+            }
+        ],
+        "taller_orden": "Taller AAA",
+        "observaciones": "probando",
+        "total": "600000",
+        "title": "Órden 5",
+        "start": "2021-07-28",
+        "end": "2021-07-30",
+        "allDay": true
+    },
+    {
+        "id_orden": 4,
+        "patente_activo": "ZZZ88-P",
+        "km_recorridos": "500 Km",
+        "horas_uso": null,
+        "area_vehiculo": "Área 21",
+        "tipo_orden": "Correctivo",
+        "tipo_activo": "Vehículo",
+        "estado_orden": "Completado",
+        "estados_posibles": {},
+        "historial_estados": [
+            {
+                "id_estado": 2,
+                "nombre_estado": "Planificado",
+                "fecha_estado": "2021-05-15",
+                "estado_asignado_por": "Usuario",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 5,
+                "nombre_estado": "En taller",
+                "fecha_estado": "2021-05-24",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 7,
+                "nombre_estado": "Salida de taller",
+                "fecha_estado": "2021-05-26",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 8,
+                "nombre_estado": "Completado",
+                "fecha_estado": "2021-05-26",
+                "estado_asignado_por": "Usuario",
+                "estado_actual": true,
+                "documento_completado": "documentoCompletado_4.pdf"
+            }
+        ],
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "fecha_creacion": "2021-05-15",
+        "rango_fecha_orden": true,
+        "fecha_inicio": "2021-05-24",
+        "fecha_limite": "2021-05-26",
+        "servicios_orden": [
+            {
+                "id": 5,
+                "nombre": "Cambio de neumáticos traseros",
+                "costo": "300000"
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "costo": "300000"
+            }
+        ],
+        "taller_orden": "Taller AAA",
+        "observaciones": "probando",
+        "total": "600000",
+        "title": "Órden 4",
+        "start": "2021-05-24",
+        "end": "2021-05-26",
+        "allDay": true
+    },
+    {
+        "id_orden": 3,
+        "patente_activo": "YYY77-P",
+        "km_recorridos": "1500 Km",
+        "horas_uso": null,
+        "area_vehiculo": "Área 21",
+        "tipo_orden": "Correctivo",
+        "tipo_activo": "Vehículo",
+        "estado_orden": "Completado",
+        "estados_posibles": {},
+        "historial_estados": [
+            {
+                "id_estado": 2,
+                "nombre_estado": "Planificado",
+                "fecha_estado": "2021-05-10",
+                "estado_asignado_por": "Usuario",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 5,
+                "nombre_estado": "En taller",
+                "fecha_estado": "2021-05-24",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 7,
+                "nombre_estado": "Salida de taller",
+                "fecha_estado": "2021-05-26",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 8,
+                "nombre_estado": "Completado",
+                "fecha_estado": "2021-05-26",
+                "estado_asignado_por": "Usuario",
+                "estado_actual": true,
+                "documento_completado": "documentoCompletado_3.pdf"
+            }
+        ],
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "fecha_creacion": "2021-05-10",
+        "rango_fecha_orden": true,
+        "fecha_inicio": "2021-05-24",
+        "fecha_limite": "2021-05-26",
+        "servicios_orden": [
+            {
+                "id": 5,
+                "nombre": "Cambio de neumáticos traseros",
+                "costo": "300000"
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "costo": "300000"
+            }
+        ],
+        "taller_orden": "Taller AAA",
+        "observaciones": "probando",
+        "total": "600000",
+        "title": "Órden 3",
+        "start": "2021-05-24",
+        "end": "2021-05-26",
+        "allDay": true
+    },
+    {
+        "id_orden": 2,
+        "patente_activo": "XXX66-P",
+        "km_recorridos": "13000 Km",
+        "horas_uso": null,
+        "area_vehiculo": "Área 21",
+        "tipo_orden": "Preventivo",
+        "tipo_activo": "Vehículo",
+        "estado_orden": "Retrasado",
+        "estados_posibles": {},
+        "historial_estados": [
+            {
+                "id_estado": 1,
+                "nombre_estado": "Por planificar",
+                "fecha_estado": "2021-06-30",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 3,
+                "nombre_estado": "Retrasado",
+                "fecha_estado": "2021-07-10",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": true
+            }
+        ],
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "fecha_creacion": "2021-06-30",
+        "rango_fecha_orden": true,
+        "fecha_inicio": "",
+        "fecha_limite": "",
+        "servicios_orden": [
+            {
+                "id": 5,
+                "nombre": "Cambio de neumáticos traseros",
+                "costo": "200000"
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "costo": "300000"
+            }
+        ],
+        "taller_orden": "Taller AAA",
+        "observaciones": "probando",
+        "total": "500000",
+        "title": "Órden 2",
+        "start": "",
+        "end": "",
+        "allDay": true
+    },
+    {
+        "id_orden": 1,
+        "patente_activo": "OOO66-P",
+        "km_recorridos": "16000 Km",
+        "horas_uso": null,
+        "area_vehiculo": "Área 21",
+        "tipo_orden": "Preventivo",
+        "tipo_activo": "Vehículo",
+        "estado_orden": "Retrasado",
+        "estados_posibles": {},
+        "historial_estados": [
+            {
+                "id_estado": 1,
+                "nombre_estado": "Por planificar",
+                "fecha_estado": "2021-06-28",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": false
+            },
+            {
+                "id_estado": 3,
+                "nombre_estado": "Retrasado",
+                "fecha_estado": "2021-07-06",
+                "estado_asignado_por": "Sistema",
+                "estado_actual": true
+            }
+        ],
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "fecha_creacion": "2021-06-28",
+        "rango_fecha_orden": true,
+        "fecha_inicio": "",
+        "fecha_limite": "",
+        "servicios_orden": [
+            {
+                "id": 5,
+                "nombre": "Cambio de neumáticos traseros",
+                "costo": "200000"
+            },
+            {
+                "id": 1,
+                "nombre": "Cambio de aceite",
+                "costo": "300000"
+            }
+        ],
+        "taller_orden": "Taller AAA",
+        "observaciones": "probando",
+        "total": "500000",
+        "title": "Órden 1",
+        "start": "",
+        "end": "",
+        "allDay": true
+    }
+]

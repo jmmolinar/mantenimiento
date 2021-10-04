@@ -1,0 +1,17 @@
+[
+    {
+        "id": 3,
+        "nombre": "Herramienta",
+        "cantidad_activos": "20"
+    },
+    {
+        "id": 2,
+        "nombre": "Máquina",
+        "cantidad_activos": "20"
+    },
+    {
+        "id": 1,
+        "nombre": "Vehículo",
+        "cantidad_activos": "1000"
+    }
+]

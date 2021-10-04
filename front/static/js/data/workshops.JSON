@@ -1,0 +1,52 @@
+[
+    {
+        "id": 5,
+        "nombre": "Taller EEE",
+        "comuna": "Viña del Mar",
+        "region": "Valparaíso",
+        "calle": "Agua Santa",
+        "num_calle": "311",
+        "latitud": "-33.0466072",
+        "longitud": "-71.5654153"
+    },
+    {
+        "id": 4,
+        "nombre": "Taller DDD",
+        "comuna": "Villarrica",
+        "region": "Araucanía",
+        "calle": "San Martín",
+        "num_calle": "460",
+        "latitud": "-39.2771416",
+        "longitud": "-72.2271881"
+    },
+    {
+        "id": 3,
+        "nombre": "Taller CCC",
+        "comuna": "Valdivia",
+        "region": "Los Ríos",
+        "calle": "Las Encinas",
+        "num_calle": "51",
+        "latitud": "-39.8100413",
+        "longitud": "-73.2529351"
+    },
+    {
+        "id": 2,
+        "nombre": "Taller BBB",
+        "comuna": "Iquique",
+        "region": "Tarapacá",
+        "calle": "Serrano",
+        "num_calle": "132",
+        "latitud": "-20.213486",
+        "longitud": "-70.1541984"
+    },
+    {
+        "id": 1,
+        "nombre": "Taller AAA",
+        "comuna": "Ñuñoa",
+        "region": "Metropolitana de Santiago",
+        "calle": "Irarrázaval",
+        "num_calle": "1220",
+        "latitud": "-33.4530769",
+        "longitud": "-70.6188521"
+    }
+]

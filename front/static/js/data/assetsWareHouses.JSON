@@ -1,0 +1,57 @@
+[
+    {
+        "id": 5,
+        "nombre": "Sede Oeste",
+        "comuna": "Viña del Mar",
+        "region": "Valparaíso",
+        "calle": "Agua Santa",
+        "num_calle": "311",
+        "latitud": "-33.0466072",
+        "longitud": "-71.5654153",
+        "cantidad_activos": "50"
+    },
+    {
+        "id": 4,
+        "nombre": "Sede Sur A",
+        "comuna": "Villarrica",
+        "region": "Araucanía",
+        "calle": "San Martín",
+        "num_calle": "460",
+        "latitud": "-39.2771416",
+        "longitud": "-72.2271881",
+        "cantidad_activos": "4"
+    },
+    {
+        "id": 3,
+        "nombre": "Sede Sur B",
+        "comuna": "Valdivia",
+        "region": "Los Ríos",
+        "calle": "Las Encinas",
+        "num_calle": "51",
+        "latitud": "-39.8100413",
+        "longitud": "-73.2529351",
+        "cantidad_activos": "8"
+    },
+    {
+        "id": 2,
+        "nombre": "Sede Norte",
+        "comuna": "Iquique",
+        "region": "Tarapacá",
+        "calle": "Serrano",
+        "num_calle": "132",
+        "latitud": "-20.213486",
+        "longitud": "-70.1541984",
+        "cantidad_activos": "110"
+    },
+    {
+        "id": 1,
+        "nombre": "Sede Central",
+        "comuna": "Ñuñoa",
+        "region": "Metropolitana de Santiago",
+        "calle": "Irarrázaval",
+        "num_calle": "1220",
+        "latitud": "-33.4530769",
+        "longitud": "-70.6188521",
+        "cantidad_activos": "120"
+    }
+]
