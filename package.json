@@ -13,5 +13,13 @@
     "express": "^4.17.1"
   },
   "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmmolinar/mantenimiento.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jmmolinar/mantenimiento/issues"
+  },
+  "homepage": "https://github.com/jmmolinar/mantenimiento#readme",
   "description": ""
 }

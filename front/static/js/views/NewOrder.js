@@ -6,6 +6,7 @@ import {
     loadSelectContent,
     loadSelectContentAndSelected,
     listSelect,
+    currentDate,
     getJson,
     listAllElement
 } from "./Options.js"
@@ -240,7 +241,8 @@ export default class extends AbstractView {
                                         </label>
                                     </div>
                                     <div class="row-fluid">
-                                        <input class="span3" id="rangeStartDate" type="date" value="" ${requeridoPorRango}>
+                                        <input class="span3" id="newRangeStartDate" type="date" value="" ${requeridoPorRango}
+                                            min="${currentDate()}">
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -250,7 +252,7 @@ export default class extends AbstractView {
                                         </label>
                                     </div>
                                     <div class="row-fluid">
-                                        <input class="span3" id="rangeEndDate" type="date" value="" ${requeridoPorRango} disabled>
+                                        <input class="span3" id="newRangeEndDate" type="date" value="" ${requeridoPorRango} disabled>
                                     </div>
                                 </div>
                             </div>
@@ -324,7 +326,7 @@ const fillOrderOptions = () => {
         loadSelectContent(optionTipoActivo, selectTipoActivo);
 
         // Select activo -- emplea los datos obtenidos en getJson();
-        
+
         const selectActivo = document.getElementById('orderAsset');
         const optionActivo = listSelect(getActivos, "activo"); // Paso la clave "activo"
         loadSelectContent(optionActivo, selectActivo);
@@ -543,7 +545,24 @@ $(document).ready(function () {
     })
 
 
-    $('div #pages').on('change','input#rangeStartDate', e => {
+    //Habilitar Fecha Límite luego de Asignar Fecha Inicial
+    //Asignar como mínimo de fecha límite, la fecha inicial
+    $('div #pages').on('change', 'input#newRangeStartDate', e => {
+
+        if (e.target.value) {
+            console.log("Fecha inicial: " + e.target.value)
+            $("#newRangeEndDate").removeAttr("disabled");
+            $("#newRangeEndDate").attr("min", e.target.value);
+            $("#newRangeEndDate").on('change', 'input#newRangeEndDate', l =>{
+                if(l.target.value){
+                    console.log("Fecha límite: " + l.target.value)
+                }
+            })
+
+        } else {
+            $("#newRangeEndDate").attr("disabled", "true");
+            $("#newRangeEndDate").val("");
+        }
 
 
     })

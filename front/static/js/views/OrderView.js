@@ -5,7 +5,8 @@ import {
     loadSelectContent,
     loadSelectContentAndSelected,
     listSelect,
-    listAllElement
+    listAllElement,
+    currentDate
 } from "./Options.js"
 
 let getTipoMantenimiento = ``;
@@ -244,7 +245,8 @@ export default class extends AbstractView {
                                                 </label>
                                             </div>
                                             <div class="row-fluid">
-                                                <input class="span4" id="rangeStartDate" type="date" value="${order.fecha_inicio}" ${requeridoPorRango}>
+                                                <input class="span4" id="rangeStartDate" type="date" value="${order.fecha_inicio}" ${requeridoPorRango}
+                                                    min="${currentDate()}">
                                             </div>
                                         </div>
                                         <div class="control-group">
@@ -576,6 +578,27 @@ $(document).ready(function () {
 
             $(`input[name=${propForInputLabel}]`).removeAttr("required");
         }
+
+    })
+
+    //Habilitar Fecha Límite luego de Asignar Fecha Inicial
+    //Asignar como mínimo de fecha límite, la fecha inicial
+    $('div #pages').on('change', 'input#rangeStartDate', e => {
+
+        if (e.target.value) {
+            console.log("Fecha inicial: " + e.target.value)
+            $("#rangeEndDate").removeAttr("disabled");
+            $("#rangeEndDate").attr("min", e.target.value);
+            $("#rangeEndDate").on('change', 'input#rangeEndDate', l =>{
+                if(l.target.value){
+                    console.log("Fecha límite: " + l.target.value)
+                }
+            })
+        } else {
+            $("#rangeEndDate").attr("disabled", "true");
+            $("#rangeEndDate").val("");
+        }
+
 
     })
 
