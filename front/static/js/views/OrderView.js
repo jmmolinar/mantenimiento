@@ -589,17 +589,15 @@ $(document).ready(function () {
             console.log("Fecha inicial: " + e.target.value)
             $("#rangeEndDate").removeAttr("disabled");
             $("#rangeEndDate").attr("min", e.target.value);
-            $("#rangeEndDate").on('change', 'input#rangeEndDate', l =>{
-                if(l.target.value){
-                    console.log("Fecha límite: " + l.target.value)
-                }
-            })
         } else {
             $("#rangeEndDate").attr("disabled", "true");
             $("#rangeEndDate").val("");
         }
-
-
+    })
+    $('div #pages').on('change', 'input#rangeEndDate', l =>{
+        if(l.target.value){
+            console.log("Fecha límite: " + l.target.value)
+        }
     })
 
 

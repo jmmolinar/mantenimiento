@@ -553,18 +553,15 @@ $(document).ready(function () {
             console.log("Fecha inicial: " + e.target.value)
             $("#newRangeEndDate").removeAttr("disabled");
             $("#newRangeEndDate").attr("min", e.target.value);
-            $("#newRangeEndDate").on('change', 'input#newRangeEndDate', l =>{
-                if(l.target.value){
-                    console.log("Fecha límite: " + l.target.value)
-                }
-            })
-
         } else {
             $("#newRangeEndDate").attr("disabled", "true");
             $("#newRangeEndDate").val("");
         }
-
-
+    })
+    $('div #pages').on('change', 'input#newRangeEndDate', l =>{
+        if(l.target.value){
+            console.log("Fecha límite: " + l.target.value)
+        }
     })
 
     //Agregar o quitar la opción de adjuntar archivo al colocar en estados COMPLETADO ó COMPLETADO CON RETRASO
