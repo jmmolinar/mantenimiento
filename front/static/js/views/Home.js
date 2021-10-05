@@ -15,11 +15,11 @@ export default class extends AbstractView {
 
         let optionsAssetsHTML = `<div id="optionsAssetsHTML">
         <h1></h1>
-        <a class="btn btn-primary" href="">Órden <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-        <a class="btn btn-primary" href="">Activo <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-        <a class="btn btn-primary" href="">Bodega <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-        <a class="btn btn-primary" href="">Plan <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-        <a class="btn btn-primary" href="">Taller <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+        <a class="btn btn-primary" href="/ordenes/nuevo">Órden <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+        <a class="btn btn-primary" href="/activos/nuevo">Activo <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+        <a class="btn btn-primary" href="/bodegas/nuevo">Bodega <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+        <a class="btn btn-primary" href="/planes/nuevo">Plan <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+        <a class="btn btn-primary" href="/talleres/nuevo">Taller <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
         </div>
         `;
 

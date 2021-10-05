@@ -137,155 +137,153 @@ export default class extends AbstractView {
 
 
         fillOrder = `<h1></h1>
-                    <form id="orderFormQuery_new">
+            <form id="orderFormQuery_new">
 
-                        <!--IDENTIFICADOR DE LA ORDEN-->
-                        <div id="orderId_new" class="control-group order-identity border-transparent-1px">
-                            <h1>Nueva orden</h1>
-                        </div>
+                <!--IDENTIFICADOR DE LA ORDEN-->
+                <div id="orderId_new" class="control-group order-identity border-transparent-1px">
+                    <h1>Nueva orden</h1>
+                </div>
 
-                        <!--PRIMEROS DATOS DEL ACTIVO-->
-                        <div id="orderData_new" class="row-fluid control-group border-transparent-1px">
+                <!--PRIMEROS DATOS DEL ACTIVO-->
+                <div id="orderData_new" class="row-fluid control-group border-transparent-1px">
 
-                            <div class="span6">
+                    <div class="span6">
                         
-                                <!--TIPO DE MANTENIMIENTO DE LA ORDEN-->
-                                <div class="control-group">
-                                    <label class="span4" for="orderType">
-                                        <h5>Mantenimiento</h5>
-                                    </label>
-                                    <div class="controls">
-                                        <select id="orderType" required>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <!--ESTADO DE LA ORDEN-->
-                                <div class="control-group">
-                                    <label class="span4" for="orderStatus">
-                                        <h5>Estado</h5>
-                                    </label>
-                                    <div class="controls">
-                                        <select id="orderStatus" required>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <!--ÁREA DEL ACTIVO-->
-                                <div class="control-group">
-                                    <label class="span4" for="orderAreasOptions">
-                                        <h5>Área</h5>
-                                    </label>
-                                    <div class="controls">
-                                        <select id="orderAreasOptions" required>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <!--PROVEEDOR DE SERVICIO - TALLER-->
-                                <div id="serviceProvider" class="control-group">
-                                    <label class="span4" for="orderProvider">
-                                        <h5>Taller de servicio</h5>
-                                    </label>
-                                    <div class="controls">
-                                        <select id="orderProvider" required>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <!--TIPO DE ACTIVO-->
-                                <div class="control-group">
-                                    <label class="span4" for="orderAssetType">
-                                        <h5>Tipo de activo</h5>
-                                    </label>
-                                    <div class="controls">
-                                        <select id="orderAssetType" required>
-                                        </select>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <!--SELECCION DE ACTIVO-->
-                        <div class="control-group border-transparent-1px">
-                            <div class="row-fluid">
-                                <label id="labelOrderAsset" class="span4" for="orderAsset">
-                                    <h5>Seleccionar activos <i class="fa fa-plus-circle" aria-hidden="true"></i></h5>
-                                </label>
-                            </div>
-                            <div class="control-group">
-                                <div class="control">
-                                    <select multiple="multiple" id="orderAsset" name="orderAsset[]" required class="${ocultoActivos}">
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                                
-
-
-
-                        <!--RANGO DE FECHAS-->
-                        <div id="datesRange" class="control-group border-transparent-1px">
-                            <div class="row-fluid">
-                                <label class="span4">
-                                    <h5>Rango de fechas</h5>
-                                </label>
-                            </div>
-                            <div id="range">
-                                <div class="control-group">
-                                    <div class="row-fluid">
-                                        <label class="span4">
-                                            Fecha inicial
-                                        </label>
-                                    </div>
-                                    <div class="row-fluid">
-                                        <input class="span3" id="newRangeStartDate" type="date" value="" ${requeridoPorRango}
-                                            min="${currentDate()}">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <div class="row-fluid">
-                                        <label class="span4">
-                                            Fecha límite
-                                        </label>
-                                    </div>
-                                    <div class="row-fluid">
-                                        <input class="span3" id="newRangeEndDate" type="date" value="" ${requeridoPorRango} disabled>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--CATEGORÍA DE SERVICIO-->
-                        <div id="orderServiceCategories_new" class="control-group border-transparent-1px"></div>
-
-                        <!--Observaciones-->
-                        <div id="notes" class="control-group border-transparent-1px">
-                            <label class="span2" for="orderNotes">
-                                <h5>Observaciones</h5>
+                        <!--TIPO DE MANTENIMIENTO DE LA ORDEN-->
+                        <div class="control-group">
+                            <label class="span4" for="orderType">
+                                <h5>Mantenimiento</h5>
                             </label>
                             <div class="controls">
-                                <textarea class="span12" cols="10" id="orderNotes" maxlength="1000"></textarea>
+                                <select id="orderType" required>
+                                </select>
                             </div>
                         </div>
 
-                        <!--TOTAL EN COSTOS DE LA ORDEN-->
-                        <div id="totalCost" class="control-group">
-                            <label class="span12 text-right order-identity border-transparent-1px">
-                                <h3>Total: <span class="add-on">$ </span></h3>
+                        <!--ESTADO DE LA ORDEN-->
+                        <div class="control-group">
+                            <label class="span4" for="orderStatus">
+                                <h5>Estado</h5>
                             </label>
-                        </div>
-
-                        <!--GUARDAR / CANCELAR-->
-                        <div id="orderActionButtons_new" class="control-group">
-                            <div class="span12 text-right border-transparent-1px">
-                                <a id="saveOrder_new" class="btn btn-primary" href="/ordenes">Guardar</a>
-                                <a id="dontSaveOrder_new" class="btn btn-primary" href="/ordenes">Cancelar</a>
+                            <div class="controls">
+                                <select id="orderStatus" required>
+                                </select>
                             </div>
                         </div>
-                    </form>`;
+
+                        <!--ÁREA DEL ACTIVO-->
+                        <div class="control-group">
+                            <label class="span4" for="orderAreasOptions">
+                                <h5>Área</h5>
+                            </label>
+                            <div class="controls">
+                                <select id="orderAreasOptions" required>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!--PROVEEDOR DE SERVICIO - TALLER-->
+                        <div id="serviceProvider" class="control-group">
+                            <label class="span4" for="orderProvider">
+                                <h5>Taller de servicio</h5>
+                            </label>
+                            <div class="controls">
+                                <select id="orderProvider" required>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!--TIPO DE ACTIVO-->
+                        <div class="control-group">
+                            <label class="span4" for="orderAssetType">
+                                <h5>Tipo de activo</h5>
+                            </label>
+                            <div class="controls">
+                                <select id="orderAssetType" required>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!--SELECCION DE ACTIVO-->
+                <div class="control-group border-transparent-1px">
+                    <div class="row-fluid">
+                        <label id="labelOrderAsset" class="span4" for="orderAsset">
+                            <h5>Seleccionar activos <i class="fa fa-plus-circle" aria-hidden="true"></i></h5>
+                        </label>
+                    </div>
+                    <div class="control-group">
+                        <div class="control">
+                            <select multiple="multiple" id="orderAsset" name="orderAsset[]" required class="${ocultoActivos}">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                                
+
+                <!--RANGO DE FECHAS-->
+                <div id="datesRange" class="control-group border-transparent-1px">
+                    <div class="row-fluid">
+                        <label class="span4">
+                            <h5>Rango de fechas</h5>
+                        </label>
+                    </div>
+                    <div id="range">
+                        <div class="control-group">
+                            <div class="row-fluid">
+                                <label class="span4">
+                                    Fecha inicial
+                                </label>
+                            </div>
+                            <div class="row-fluid">
+                                <input class="span3" id="newRangeStartDate" type="date" value="" ${requeridoPorRango}
+                                    min="${currentDate()}">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="row-fluid">
+                                <label class="span4">
+                                    Fecha límite
+                                </label>
+                            </div>
+                            <div class="row-fluid">
+                                <input class="span3" id="newRangeEndDate" type="date" value="" ${requeridoPorRango} disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--CATEGORÍA DE SERVICIO-->
+                <div id="orderServiceCategories_new" class="control-group border-transparent-1px"></div>
+
+                <!--Observaciones-->
+                <div id="notes" class="control-group border-transparent-1px">
+                    <label class="span2" for="orderNotes">
+                        <h5>Observaciones</h5>
+                    </label>
+                    <div class="controls">
+                        <textarea class="span12" cols="10" id="orderNotes" maxlength="1000"></textarea>
+                    </div>
+                </div>
+
+                <!--TOTAL EN COSTOS DE LA ORDEN-->
+                <div id="totalCost" class="control-group">
+                    <label class="span12 text-right order-identity border-transparent-1px">
+                        <h3>Total: <span class="add-on">$ </span></h3>
+                    </label>
+                </div>
+
+                <!--GUARDAR / CANCELAR-->
+                <div id="orderActionButtons_new" class="control-group">
+                    <div class="span12 text-right border-transparent-1px">
+                        <a id="saveOrder_new" class="btn btn-primary" href="/ordenes">Guardar</a>
+                        <a id="dontSaveOrder_new" class="btn btn-primary" href="/ordenes">Cancelar</a>
+                    </div>
+                </div>
+            </form>`;
 
         orderHTML = orderHTML.concat(fillOrder)
 
