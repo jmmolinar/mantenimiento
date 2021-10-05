@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Consultar Tipo Activo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="/front/static/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="/front/static/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+    <link href="/front/static/css/style.css" rel="stylesheet" media="screen">
+    <!-- DataTable -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" />
+</body>
+</head>
+
+<body>
+    <main>
+        <!--<h1>Hello, world!</h1>-->
+        <header class="container-fluid border-bottom">
+            <div class="row-fluid">
+                <div class="span2">
+                    <h1></h1>
+                    <button href="/" class="text-dark text-decoration-none">
+                        <h1>Cabecera</h1>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div id="leftMenu" class="span2">
+                    <h1></h1>
+                    <!--Sidebar content-->
+                    <div class='dropdown'>
+                        <div class="accordion" id='tree_accordion'>
+                            <!-- CONTENT HERE -->
+                            <div class='accordion-group'>
+                                <div class='accordion-heading green'>
+                                    <a class='btn btn-inverse accordion-toggle' data-toggle='collapse'
+                                        href='#mantenimientos-collapse'>
+                                        Mantenimientos
+                                        <span class="caret"></span>
+                                    </a>
+                                </div>
+                                <div class='accordion-body collapse in' id='mantenimientos-collapse'>
+                                    <ul class="nav nav-list">
+                                        <li><a id="loadOrdersTable" tabindex="-1" href="#/ordenes">Ordenes</a></li>
+                                        <li><a id="loadAssetsTable" tabindex="-1" href="#/activos">Activos</a></li>
+                                        <li><a id="loadAssetsWareHousesTable" tabindex="-1" href="#/bodegas">Bodegas de
+                                                activos</a></li>
+                                        <li><a id="loadAssetsTypeTable" tabindex="-1" href="#/tipos">Tipos de
+                                                activos</a></li>
+                                        <li><a id="loadServiceCategoriesTable" tabindex="-1"
+                                                href="#/categorias">Categorías de servicio</a></li>
+                                        <li><a id="loadPlanningTable" tabindex="-1" href="#/planes">Planes de
+                                                mantenimiento</a></li>
+                                        <li><a id="loadWorkshopsTable" tabindex="-1" href="#/talleres">Proveedor de
+                                                servicios</a></li>
+                                    </ul>
+                                </div>
+                                <div class='accordion-heading green'>
+                                    <a class='btn btn-inverse accordion-toggle' data-toggle='collapse'
+                                        href='#notificaciones-collapse'>
+                                        Notificaciones
+                                        <span class="caret"></span>
+                                    </a>
+                                </div>
+                                <div class='accordion-body collapse in' id='notificaciones-collapse'>
+                                    <ul class="nav nav-list">
+                                        <li><a tabindex="-1" href="#">Recibidos</a></li>
+                                        <li><a tabindex="-1" href="#">Enviados</a></li>
+                                        <li><a tabindex="-1" href="#">Redactar</a></li>
+                                        <li><a tabindex="-1" href="#">Papelera</a></li>
+                                    </ul>
+                                </div>
+                                <div class='accordion-heading green'>
+                                    <a class='btn btn-inverse accordion-toggle' data-toggle='collapse' href='#reportes-collapse'>
+                                        Reportes
+                                        <span class="caret"></span>
+                                    </a>
+                                </div>
+                                <div class='accordion-body collapse in' id='reportes-collapse'>
+                                    <ul class="nav nav-list">
+                                        <li><a tabindex="-1" href="#">Dashboard</a></li>
+                                        <li><a tabindex="-1" href="#">Calendario</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="assetTypeForm" class="span10">
+                    <h1></h1>
+                    <!--<form class="form-horizontal">-->
+                    <form id="formAssetTypeQuery">
+                        <!--IDENTIFICADOR DEl TIPO DE ACTIVO-->
+                        <div id="assetTypeId" class="control-group order-identity border-transparent-1px">
+                            <h1>Tipo de activo 3</h1>
+                            <h3>Herramienta</h3>
+                        </div>
+                        <!--DATOS DEL TIPO DE ACTIVO-->
+                        <div id="firstAssetTypeData" class="control-group border-transparent-1px">
+                            <!--NOMBRE DEL TIPO DE ACTIVO-->
+                            <div class="control-group">
+                                <label class="span1" for="assetTypeName">
+                                    <h5>Nombre</h5>
+                                </label>
+                                <div class="controls">
+                                    <input class="span12" id="assetTypeName" type="text" min="3" maxlength="100"
+                                        value="Herramienta" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--GUARDAR / CANCELAR-->
+                        <div id="actionAssetTypeButtons" class="control-group">
+                            <div class="span12 text-right border-transparent-1px">
+                                <a id="saveAssetType" class="btn btn-inverse" href="#/tipos">Guardar</a>
+                                <a id="dontSaveAssetType" class="btn btn-inverse" href="#/tipos" disabled>Cancelar</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="/front/static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/front/static/js/tables.js"></script>
+    <script src="/front/static/js/pages.js"></script>
+    <!-- DataTable -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+</body>
+
+</html>
