@@ -303,36 +303,40 @@ const fillOrderOptions = () => {
 
     window.onload = function () {
 
-        // Select tipo de mantenimiento -- emplea los datos obtenidos en getJson();
-        const selectTipoMantenimiento = document.getElementById('orderType');
-        const optionTipoMantenimiento = listSelect(getTiposMantenimientos, "nombre"); // Paso la clave "nombre"
-        loadSelectContent(optionTipoMantenimiento, selectTipoMantenimiento);
+        $(document).ready(function () {
 
-        // Select estado -- emplea los datos obtenidos en getJson();
-        const selectEstado = document.getElementById('orderStatus');
-        const optionEstado = listSelect(getEstados, "nombre"); // Paso la clave "nombre"
-        loadSelectContent(optionEstado, selectEstado);
+            // Select tipo de mantenimiento -- emplea los datos obtenidos en getJson();
+            const selectTipoMantenimiento = document.getElementById('orderType');
+            const optionTipoMantenimiento = listSelect(getTiposMantenimientos, "nombre"); // Paso la clave "nombre"
+            loadSelectContent(optionTipoMantenimiento, selectTipoMantenimiento);
 
-        // Select area -- emplea los datos obtenidos en getJson();
-        const selectArea = document.getElementById('orderAreasOptions');
-        const optionArea = listSelect(getAreas, "nombre"); // Paso la clave "nombre"
-        loadSelectContent(optionArea, selectArea);
+            // Select estado -- emplea los datos obtenidos en getJson();
+            const selectEstado = document.getElementById('orderStatus');
+            const optionEstado = listSelect(getEstados, "nombre"); // Paso la clave "nombre"
+            loadSelectContent(optionEstado, selectEstado);
 
-        // Select tipo de activo -- emplea los datos obtenidos en getJson();
-        const selectTipoActivo = document.getElementById('orderAssetType');
-        const optionTipoActivo = listSelect(getTiposActivos, "nombre"); // Paso la clave "nombre"
-        loadSelectContent(optionTipoActivo, selectTipoActivo);
+            // Select area -- emplea los datos obtenidos en getJson();
+            const selectArea = document.getElementById('orderAreasOptions');
+            const optionArea = listSelect(getAreas, "nombre"); // Paso la clave "nombre"
+            loadSelectContent(optionArea, selectArea);
 
-        // Select activo -- emplea los datos obtenidos en getJson();
+            // Select tipo de activo -- emplea los datos obtenidos en getJson();
+            const selectTipoActivo = document.getElementById('orderAssetType');
+            const optionTipoActivo = listSelect(getTiposActivos, "nombre"); // Paso la clave "nombre"
+            loadSelectContent(optionTipoActivo, selectTipoActivo);
 
-        const selectActivo = document.getElementById('orderAsset');
-        const optionActivo = listSelect(getActivos, "activo"); // Paso la clave "activo"
-        loadSelectContent(optionActivo, selectActivo);
+            // Select activo -- emplea los datos obtenidos en getJson();
 
-        // Select taller -- emplea los datos obtenidos en getJson();
-        const selectTaller = document.getElementById('orderProvider');
-        const optionTaller = listSelect(getTalleres, "nombre"); // Paso la clave "nombre"
-        loadSelectContent(optionTaller, selectTaller)
+            const selectActivo = document.getElementById('orderAsset');
+            const optionActivo = listSelect(getActivos, "activo"); // Paso la clave "activo"
+            loadSelectContent(optionActivo, selectActivo);
+
+            // Select taller -- emplea los datos obtenidos en getJson();
+            const selectTaller = document.getElementById('orderProvider');
+            const optionTaller = listSelect(getTalleres, "nombre"); // Paso la clave "nombre"
+            loadSelectContent(optionTaller, selectTaller)
+
+        });
 
     };
 }
@@ -556,8 +560,8 @@ $(document).ready(function () {
             $("#newRangeEndDate").val("");
         }
     })
-    $('div #pages').on('change', 'input#newRangeEndDate', l =>{
-        if(l.target.value){
+    $('div #pages').on('change', 'input#newRangeEndDate', l => {
+        if (l.target.value) {
             console.log("Fecha límite: " + l.target.value)
         }
     })
