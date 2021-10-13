@@ -27,9 +27,9 @@ let identificadorGlobal = '';
 //let getTiposActivos = [];
 //let getActivos = [];
 //let getTalleres = [];
-/*let ordersTypeJSON = 'http://192.168.0.15:8080/static/js/data/ordersType.JSON';
+/*let ordersTypeJSON = 'http://192.168.0.12:8080/static/js/data/ordersType.JSON';
 let titleOrdersTypeJSON = "Tipos de mantenimientos";
-let stateJSON = 'http://192.168.0.15:8080/static/js/data/state.JSON';
+let stateJSON = 'http://192.168.0.12:8080/static/js/data/state.JSON';
 let titleStateJSON = 'Estados';*/
 
 export default class extends AbstractView {
@@ -369,7 +369,7 @@ const fillOrderCategories = () => {
 
     $.ajax({
         type: 'GET',
-        url: 'http://192.168.0.15:8080/static/js/data/serviceCategories.JSON',
+        url: 'http://192.168.0.12:8080/static/js/data/serviceCategories.JSON',
         dataType: 'json',
         success: function (data, status, jqXHR) {
 
