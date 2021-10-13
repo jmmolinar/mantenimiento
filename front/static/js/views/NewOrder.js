@@ -301,7 +301,9 @@ const fillOrderOptions = () => {
 
     console.log("Dentro del fillOrderOptions en NewOrder")
 
-    window.onload = function () {
+    //window.onload = function () {
+
+    $(window).on("load", function() {
 
         $(document).ready(function () {
 
@@ -338,7 +340,7 @@ const fillOrderOptions = () => {
 
         });
 
-    };
+    });
 }
 
 const fillOrderCategories = () => {
