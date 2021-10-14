@@ -253,7 +253,7 @@ export default class extends AbstractView {
                             </div>
                             <div class="row-fluid">
                                 <input class="span4" id="newRangeStartDate" type="datetime-local" value="" ${requeridoPorRango}
-                                    min="${currentDate()}">
+                                    min="${currentDate().slice(0,16)}">
                             </div>
                         </div>
                         <div class="control-group">
@@ -452,18 +452,15 @@ const fillOrderCategories = () => {
     })
 }
 
-
 const guardarJSON = () => {
 
-    nuevaOrdenJSON.fechaCreacion = new Date().toISOString().slice(0,19); 
+    //nuevaOrdenJSON.fechaCreacion = new Date().toISOString().slice(0,19);
+    nuevaOrdenJSON.fechaCreacion = currentDate();
     nuevaOrdenJSON.fechaInicial = document.getElementById('newRangeStartDate').value;
     nuevaOrdenJSON.fechaFinal = document.getElementById('newRangeEndDate').value;
     nuevaOrdenJSON.nombreTipoOrden = document.getElementById('orderType').value;
 
-    alert("Fecha creación " + nuevaOrdenJSON.fechaCreacion + 
-        "\nFecha inicial " + nuevaOrdenJSON.fechaInicial +
-        "\nFecha final " + nuevaOrdenJSON.fechaFinal +
-        "\nTipo orden " + nuevaOrdenJSON.nombreTipoOrden);
+    sessionStorage.setItem('NuevaOrden', JSON.stringify(nuevaOrdenJSON));
 
     /*"idTipoOrden": null,
     "activoIdActivo": null,
@@ -478,10 +475,16 @@ const guardarJSON = () => {
 
 }
 
+const mostrarSTORAGE = () => {
+    alert("\n\nMostrando eL sessionStorage:\n\n" + sessionStorage.getItem('NuevaOrden'));
+    sessionStorage.removeItem('NuevaOrden')
+}
+
 $(document).ready(function () {
 
     $('div #pages').on('click', 'a#saveOrder_new', function () {
         guardarJSON();
+        mostrarSTORAGE();
     });
 
     $('div #pages').on('click', 'label[id=labelOrderAsset]', function () {

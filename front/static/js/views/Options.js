@@ -120,17 +120,17 @@ const currentDate = () => {
 
     let hh = today.getHours();
     let ms = today.getMinutes();
+    let ss = today.getSeconds();
 
     if (dd < 10) {dd = '0' + dd;}
-
     if (mm < 10) {mm = '0' + mm;}
 
     if (hh < 10) {hh = '0' + hh;}
-
     if (ms < 10) {ms = '0' + ms;}
+    if (ss < 10) {ss = '0' + ss;}
 
-    console.log("currentDate(): " + yyyy + '-' + mm + '-' + dd + 'T' + hh + ':' + ms);
-    return today = yyyy + '-' + mm + '-' + dd + 'T' + hh + ':' + ms;
+    console.log("currentDate(): " + yyyy + '-' + mm + '-' + dd + 'T' + hh + ':' + ms + ':' + ss);
+    return today = yyyy + '-' + mm + '-' + dd + 'T' + hh + ':' + ms + ':' + ss;
 
 }
 

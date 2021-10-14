@@ -246,7 +246,7 @@ export default class extends AbstractView {
                                             </div>
                                             <div class="row-fluid">
                                                 <input class="span4" id="rangeStartDate" type="datetime-local" value="${order.fecha_inicio}" ${requeridoPorRango}
-                                                    min="${currentDate()}">
+                                                    min="${currentDate().slice(0,16)}">
                                             </div>
                                         </div>
                                         <div class="control-group">
