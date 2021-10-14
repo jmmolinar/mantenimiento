@@ -13,14 +13,14 @@
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-08-06",
+                "fecha_estado": "2021-08-06T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
-                "fecha_estado": "2021-08-08",
+                "fecha_estado": "2021-08-08T12:30",
                 "estado_asignado_por": "Usuario",
                 "estado_actual": true
             }
@@ -29,10 +29,10 @@
         "periodo_inicio": null,
         "periodo_cada": null,
         "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-08-06",
+        "fecha_creacion": "2021-08-06T12:30",
         "rango_fecha_orden": true,
-        "fecha_inicio": "2021-08-21",
-        "fecha_limite": "2021-08-23",
+        "fecha_inicio": "2021-08-21T12:30",
+        "fecha_limite": "2021-08-23T16:30",
         "servicios_orden": [
             {
                 "id": 6,
@@ -49,8 +49,8 @@
         "observaciones": "",
         "total": "520000",
         "title": "Órden 14",
-        "start": "2021-08-21T12:30:00",
-        "end": "2021-08-23T16:30:00",
+        "start": "2021-08-21T12:30",
+        "end": "2021-08-23T16:30",
         "allDay": false
     },
     {
@@ -67,14 +67,14 @@
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-07-30",
+                "fecha_estado": "2021-07-30T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
-                "fecha_estado": "2021-07-31",
+                "fecha_estado": "2021-07-31T12:30",
                 "estado_asignado_por": "Usuario",
                 "estado_actual": true
             }
@@ -83,10 +83,10 @@
         "periodo_inicio": null,
         "periodo_cada": null,
         "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-07-30",
+        "fecha_creacion": "2021-07-30T12:30",
         "rango_fecha_orden": true,
-        "fecha_inicio": "2021-08-15",
-        "fecha_limite": "2021-08-17",
+        "fecha_inicio": "2021-08-15T12:30",
+        "fecha_limite": "2021-08-17T12:30",
         "servicios_orden": [
             {
                 "id": 7,
@@ -103,9 +103,9 @@
         "observaciones": "",
         "total": "300000",
         "title": "Órden 13",
-        "start": "2021-08-15",
-        "end": "2021-08-17",
-        "allDay": true
+        "start": "2021-08-15T12:30",
+        "end": "2021-08-17T12:30",
+        "allDay": false
     },
     {
         "id_orden": 12,
@@ -121,35 +121,35 @@
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-06-15",
+                "fecha_estado": "2021-06-15T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
-                "fecha_estado": "2021-06-20",
+                "fecha_estado": "2021-06-20T12:30",
                 "estado_asignado_por": "Usuario",
                 "estado_actual": false
             },
             {
                 "id_estado": 5,
                 "nombre_estado": "En taller",
-                "fecha_estado": "2021-07-05",
+                "fecha_estado": "2021-07-05T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 7,
                 "nombre_estado": "Salida de taller",
-                "fecha_estado": "2021-07-06",
+                "fecha_estado": "2021-07-06T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 8,
                 "nombre_estado": "Completado",
-                "fecha_estado": "2021-07-06",
+                "fecha_estado": "2021-07-06T12:31",
                 "estado_asignado_por": "Usuario",
                 "estado_actual": true,
                 "documento_completado": "documentoCompletado_12.pdf"
@@ -159,10 +159,10 @@
         "periodo_inicio": null,
         "periodo_cada": null,
         "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-06-15",
+        "fecha_creacion": "2021-06-15T12:30",
         "rango_fecha_orden": true,
-        "fecha_inicio": "2021-07-05",
-        "fecha_limite": "2021-07-07",
+        "fecha_inicio": "2021-07-05T12:30",
+        "fecha_limite": "2021-07-07T12:30",
         "servicios_orden": [
             {
                 "id": 7,
@@ -174,8 +174,8 @@
         "observaciones": "",
         "total": "100000",
         "title": "Órden 12",
-        "start": "2021-07-05T12:30:00",
-        "end": "2021-07-07T16:30:00",
+        "start": "2021-07-05T12:30",
+        "end": "2021-07-07T12:30",
         "allDay": false
     },
     {
@@ -192,49 +192,49 @@
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-06-15",
+                "fecha_estado": "2021-06-15T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 3,
                 "nombre_estado": "Retrasado",
-                "fecha_estado": "2021-07-01",
+                "fecha_estado": "2021-07-01T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 4,
                 "nombre_estado": "Planificado con retraso",
-                "fecha_estado": "2021-07-10",
+                "fecha_estado": "2021-07-10T12:30",
                 "estado_asignado_por": "Usuario",
                 "estado_actual": false
             },
             {
                 "id_estado": 5,
                 "nombre_estado": "En taller",
-                "fecha_estado": "2021-07-14",
+                "fecha_estado": "2021-07-14T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 6,
                 "nombre_estado": "Retraso en taller",
-                "fecha_estado": "2021-07-17",
+                "fecha_estado": "2021-07-17T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 7,
                 "nombre_estado": "Salida de taller",
-                "fecha_estado": "2021-07-19",
+                "fecha_estado": "2021-07-19T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 9,
                 "nombre_estado": "Completado con retraso",
-                "fecha_estado": "2021-07-19",
+                "fecha_estado": "2021-07-19T12:31",
                 "estado_asignado_por": "Usuario",
                 "estado_actual": true,
                 "documento_completado": "documentoCompletado_11.pdf"
@@ -244,10 +244,10 @@
         "periodo_inicio": null,
         "periodo_cada": null,
         "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-06-15",
+        "fecha_creacion": "2021-06-15T12:30",
         "rango_fecha_orden": true,
-        "fecha_inicio": "2021-07-14",
-        "fecha_limite": "2021-07-16",
+        "fecha_inicio": "2021-07-14T12:30",
+        "fecha_limite": "2021-07-16T12:30",
         "servicios_orden": [
             {
                 "id": 5,
@@ -264,9 +264,9 @@
         "observaciones": "prueba",
         "total": "500000",
         "title": "Órden 11",
-        "start": "2021-07-14",
-        "end": "2021-07-16",
-        "allDay": true
+        "start": "2021-07-14T12:30",
+        "end": "2021-07-16T12:30",
+        "allDay": false
     },
     {
         "id_orden": 10,
@@ -282,14 +282,14 @@
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-06-30",
+                "fecha_estado": "2021-06-30T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 3,
                 "nombre_estado": "Retrasado",
-                "fecha_estado": "2021-07-10",
+                "fecha_estado": "2021-07-10T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": true
             }
@@ -298,7 +298,7 @@
         "periodo_inicio": null,
         "periodo_cada": null,
         "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-06-30",
+        "fecha_creacion": "2021-06-30T12:30",
         "rango_fecha_orden": true,
         "fecha_inicio": "",
         "fecha_limite": "",
@@ -320,7 +320,7 @@
         "title": "Órden 10",
         "start": "",
         "end": "",
-        "allDay": true
+        "allDay": false
     },
     {
         "id_orden": 9,
@@ -336,7 +336,7 @@
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-06-25",
+                "fecha_estado": "2021-06-25T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": true
             }
@@ -345,7 +345,7 @@
         "periodo_inicio": null,
         "periodo_cada": null,
         "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-06-25",
+        "fecha_creacion": "2021-06-25T12:30",
         "rango_fecha_orden": true,
         "fecha_inicio": "",
         "fecha_limite": "",
@@ -372,7 +372,7 @@
         "title": "Órden 9",
         "start": "",
         "end": "",
-        "allDay": true
+        "allDay": false
     },
     {
         "id_orden": 8,
@@ -388,21 +388,21 @@
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-05-01",
+                "fecha_estado": "2021-05-01T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
-                "fecha_estado": "2021-05-10",
+                "fecha_estado": "2021-05-10T12:30",
                 "estado_asignado_por": "Usuario",
                 "estado_actual": false
             },
             {
                 "id_estado": 10,
                 "nombre_estado": "No realizado",
-                "fecha_estado": "2021-05-30",
+                "fecha_estado": "2021-05-30T12:30",
                 "estado_asignado_por": "Usuario",
                 "estado_actual": true
             }
@@ -411,10 +411,10 @@
         "periodo_inicio": null,
         "periodo_cada": null,
         "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-05-01",
+        "fecha_creacion": "2021-05-01T12:30",
         "rango_fecha_orden": true,
-        "fecha_inicio": "2021-05-24",
-        "fecha_limite": "2021-05-26",
+        "fecha_inicio": "2021-05-24T12:30",
+        "fecha_limite": "2021-05-26T12:30",
         "servicios_orden": [
             {
                 "id": 5,
@@ -431,9 +431,9 @@
         "observaciones": "probando",
         "total": "500000",
         "title": "Órden 8",
-        "start": "2021-05-24",
-        "end": "2021-05-26",
-        "allDay": true
+        "start": "2021-05-24T12:30",
+        "end": "2021-05-26T12:30",
+        "allDay": false
     },
     {
         "id_orden": 7,
@@ -449,21 +449,21 @@
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-07-01",
+                "fecha_estado": "2021-07-01T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
-                "fecha_estado": "2021-07-15",
+                "fecha_estado": "2021-07-15T12:30",
                 "estado_asignado_por": "Usuario",
                 "estado_actual": false
             },
             {
                 "id_estado": 5,
                 "nombre_estado": "En taller",
-                "fecha_estado": "2021-07-21",
+                "fecha_estado": "2021-07-21T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": true
             }
@@ -472,10 +472,10 @@
         "periodo_inicio": null,
         "periodo_cada": null,
         "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-07-01",
+        "fecha_creacion": "2021-07-01T12:30",
         "rango_fecha_orden": true,
-        "fecha_inicio": "2021-07-21",
-        "fecha_limite": "2021-07-23",
+        "fecha_inicio": "2021-07-21T12:30",
+        "fecha_limite": "2021-07-23T12:30",
         "servicios_orden": [
             {
                 "id": 5,
@@ -492,9 +492,9 @@
         "observaciones": "probando",
         "total": "500000",
         "title": "Órden 7",
-        "start": "2021-07-21",
-        "end": "2021-07-23",
-        "allDay": true
+        "start": "2021-07-21T12:30",
+        "end": "2021-07-23T12:30",
+        "allDay": false
     },
     {
         "id_orden": 6,
@@ -510,14 +510,14 @@
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-07-05",
+                "fecha_estado": "2021-07-05T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
-                "fecha_estado": "2021-07-15",
+                "fecha_estado": "2021-07-15T12:30",
                 "estado_asignado_por": "Usuario",
                 "estado_actual": true
             }
@@ -526,10 +526,10 @@
         "periodo_inicio": null,
         "periodo_cada": null,
         "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-07-05",
+        "fecha_creacion": "2021-07-05T12:30",
         "rango_fecha_orden": true,
-        "fecha_inicio": "2021-07-26",
-        "fecha_limite": "2021-07-28",
+        "fecha_inicio": "2021-07-26T12:30",
+        "fecha_limite": "2021-07-28T12:30",
         "servicios_orden": [
             {
                 "id": 5,
@@ -546,9 +546,9 @@
         "observaciones": "probando",
         "total": "500000",
         "title": "Órden 6",
-        "start": "2021-07-26",
-        "end": "2021-07-28",
-        "allDay": true
+        "start": "2021-07-26T12:30",
+        "end": "2021-07-28T12:30",
+        "allDay": false
     },
     {
         "id_orden": 5,
@@ -564,14 +564,14 @@
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-07-08",
+                "fecha_estado": "2021-07-08T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
-                "fecha_estado": "2021-07-18",
+                "fecha_estado": "2021-07-18T12:30",
                 "estado_asignado_por": "Usuario",
                 "estado_actual": true
             }
@@ -580,10 +580,10 @@
         "periodo_inicio": null,
         "periodo_cada": null,
         "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-07-08",
+        "fecha_creacion": "2021-07-08T12:30",
         "rango_fecha_orden": true,
-        "fecha_inicio": "2021-07-28",
-        "fecha_limite": "2021-07-30",
+        "fecha_inicio": "2021-07-28T12:30",
+        "fecha_limite": "2021-07-30T12:30",
         "servicios_orden": [
             {
                 "id": 5,
@@ -600,9 +600,9 @@
         "observaciones": "probando",
         "total": "600000",
         "title": "Órden 5",
-        "start": "2021-07-28",
-        "end": "2021-07-30",
-        "allDay": true
+        "start": "2021-07-28T12:30",
+        "end": "2021-07-30T12:30",
+        "allDay": false
     },
     {
         "id_orden": 4,
@@ -618,28 +618,28 @@
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
-                "fecha_estado": "2021-05-15",
+                "fecha_estado": "2021-05-15T12:30",
                 "estado_asignado_por": "Usuario",
                 "estado_actual": false
             },
             {
                 "id_estado": 5,
                 "nombre_estado": "En taller",
-                "fecha_estado": "2021-05-24",
+                "fecha_estado": "2021-05-24T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 7,
                 "nombre_estado": "Salida de taller",
-                "fecha_estado": "2021-05-26",
+                "fecha_estado": "2021-05-26T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 8,
                 "nombre_estado": "Completado",
-                "fecha_estado": "2021-05-26",
+                "fecha_estado": "2021-05-26T12:31",
                 "estado_asignado_por": "Usuario",
                 "estado_actual": true,
                 "documento_completado": "documentoCompletado_4.pdf"
@@ -649,10 +649,10 @@
         "periodo_inicio": null,
         "periodo_cada": null,
         "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-05-15",
+        "fecha_creacion": "2021-05-15T12:30",
         "rango_fecha_orden": true,
-        "fecha_inicio": "2021-05-24",
-        "fecha_limite": "2021-05-26",
+        "fecha_inicio": "2021-05-24T12:30",
+        "fecha_limite": "2021-05-26T12:30",
         "servicios_orden": [
             {
                 "id": 5,
@@ -669,9 +669,9 @@
         "observaciones": "probando",
         "total": "600000",
         "title": "Órden 4",
-        "start": "2021-05-24",
-        "end": "2021-05-26",
-        "allDay": true
+        "start": "2021-05-24T12:30",
+        "end": "2021-05-26T12:30",
+        "allDay": false
     },
     {
         "id_orden": 3,
@@ -687,28 +687,28 @@
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
-                "fecha_estado": "2021-05-10",
+                "fecha_estado": "2021-05-10T12:30",
                 "estado_asignado_por": "Usuario",
                 "estado_actual": false
             },
             {
                 "id_estado": 5,
                 "nombre_estado": "En taller",
-                "fecha_estado": "2021-05-24",
+                "fecha_estado": "2021-05-24T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 7,
                 "nombre_estado": "Salida de taller",
-                "fecha_estado": "2021-05-26",
+                "fecha_estado": "2021-05-26T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 8,
                 "nombre_estado": "Completado",
-                "fecha_estado": "2021-05-26",
+                "fecha_estado": "2021-05-26T12:31",
                 "estado_asignado_por": "Usuario",
                 "estado_actual": true,
                 "documento_completado": "documentoCompletado_3.pdf"
@@ -718,10 +718,10 @@
         "periodo_inicio": null,
         "periodo_cada": null,
         "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-05-10",
+        "fecha_creacion": "2021-05-10T12:30",
         "rango_fecha_orden": true,
-        "fecha_inicio": "2021-05-24",
-        "fecha_limite": "2021-05-26",
+        "fecha_inicio": "2021-05-24T12:30",
+        "fecha_limite": "2021-05-26T12:30",
         "servicios_orden": [
             {
                 "id": 5,
@@ -738,9 +738,9 @@
         "observaciones": "probando",
         "total": "600000",
         "title": "Órden 3",
-        "start": "2021-05-24",
-        "end": "2021-05-26",
-        "allDay": true
+        "start": "2021-05-24T12:30",
+        "end": "2021-05-26T12:30",
+        "allDay": false
     },
     {
         "id_orden": 2,
@@ -756,14 +756,14 @@
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-06-30",
+                "fecha_estado": "2021-06-30T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 3,
                 "nombre_estado": "Retrasado",
-                "fecha_estado": "2021-07-10",
+                "fecha_estado": "2021-07-10T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": true
             }
@@ -772,7 +772,7 @@
         "periodo_inicio": null,
         "periodo_cada": null,
         "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-06-30",
+        "fecha_creacion": "2021-06-30T12:30",
         "rango_fecha_orden": true,
         "fecha_inicio": "",
         "fecha_limite": "",
@@ -794,7 +794,7 @@
         "title": "Órden 2",
         "start": "",
         "end": "",
-        "allDay": true
+        "allDay": false
     },
     {
         "id_orden": 1,
@@ -810,14 +810,14 @@
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-06-28",
+                "fecha_estado": "2021-06-28T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": false
             },
             {
                 "id_estado": 3,
                 "nombre_estado": "Retrasado",
-                "fecha_estado": "2021-07-06",
+                "fecha_estado": "2021-07-06T12:30",
                 "estado_asignado_por": "Sistema",
                 "estado_actual": true
             }
@@ -826,7 +826,7 @@
         "periodo_inicio": null,
         "periodo_cada": null,
         "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-06-28",
+        "fecha_creacion": "2021-06-28T12:30",
         "rango_fecha_orden": true,
         "fecha_inicio": "",
         "fecha_limite": "",
@@ -848,6 +848,6 @@
         "title": "Órden 1",
         "start": "",
         "end": "",
-        "allDay": true
+        "allDay": false
     }
 ]

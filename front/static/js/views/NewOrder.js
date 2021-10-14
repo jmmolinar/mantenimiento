@@ -27,10 +27,23 @@ let identificadorGlobal = '';
 //let getTiposActivos = [];
 //let getActivos = [];
 //let getTalleres = [];
-/*let ordersTypeJSON = 'http://192.168.0.12:8080/static/js/data/ordersType.JSON';
-let titleOrdersTypeJSON = "Tipos de mantenimientos";
-let stateJSON = 'http://192.168.0.12:8080/static/js/data/state.JSON';
-let titleStateJSON = 'Estados';*/
+
+//VARIABLE PARA JSON
+let nuevaOrdenJSON = {
+    "fechaCreacion": "",
+    "fechaInicial": "",
+    "fechaFinal": "",
+    "nombreTipoOrden": "",
+    "activoIdActivo": null,
+    "nombreTallerServicio": "",
+    "observaciones": "",
+    "estadoIdEstado": 2,
+    "ordenCategorias":[],
+    "title": "",
+    "start": "",
+    "end": "",
+    "allDay": false
+};
 
 export default class extends AbstractView {
     constructor(params) {
@@ -161,7 +174,7 @@ export default class extends AbstractView {
                         </div>
 
                         <!--ESTADO DE LA ORDEN-->
-                        <div class="control-group">
+                        <!--<div class="control-group">
                             <label class="span4" for="orderStatus">
                                 <h5>Estado</h5>
                             </label>
@@ -169,7 +182,7 @@ export default class extends AbstractView {
                                 <select id="orderStatus" required>
                                 </select>
                             </div>
-                        </div>
+                        </div>-->
 
                         <!--ÁREA DEL ACTIVO-->
                         <div class="control-group">
@@ -239,7 +252,7 @@ export default class extends AbstractView {
                                 </label>
                             </div>
                             <div class="row-fluid">
-                                <input class="span3" id="newRangeStartDate" type="date" value="" ${requeridoPorRango}
+                                <input class="span4" id="newRangeStartDate" type="datetime-local" value="" ${requeridoPorRango}
                                     min="${currentDate()}">
                             </div>
                         </div>
@@ -250,7 +263,7 @@ export default class extends AbstractView {
                                 </label>
                             </div>
                             <div class="row-fluid">
-                                <input class="span3" id="newRangeEndDate" type="date" value="" ${requeridoPorRango} disabled>
+                                <input class="span4" id="newRangeEndDate" type="datetime-local" value="" ${requeridoPorRango} disabled>
                             </div>
                         </div>
                     </div>
@@ -313,9 +326,9 @@ const fillOrderOptions = () => {
             loadSelectContent(optionTipoMantenimiento, selectTipoMantenimiento);
 
             // Select estado -- emplea los datos obtenidos en getJson();
-            const selectEstado = document.getElementById('orderStatus');
+            /*const selectEstado = document.getElementById('orderStatus');
             const optionEstado = listSelect(getEstados, "nombre"); // Paso la clave "nombre"
-            loadSelectContent(optionEstado, selectEstado);
+            loadSelectContent(optionEstado, selectEstado);*/
 
             // Select area -- emplea los datos obtenidos en getJson();
             const selectArea = document.getElementById('orderAreasOptions');
@@ -440,7 +453,36 @@ const fillOrderCategories = () => {
 }
 
 
+const guardarJSON = () => {
+
+    nuevaOrdenJSON.fechaCreacion = new Date().toISOString().slice(0,19); 
+    nuevaOrdenJSON.fechaInicial = document.getElementById('newRangeStartDate').value;
+    nuevaOrdenJSON.fechaFinal = document.getElementById('newRangeEndDate').value;
+    nuevaOrdenJSON.nombreTipoOrden = document.getElementById('orderType').value;
+
+    alert("Fecha creación " + nuevaOrdenJSON.fechaCreacion + 
+        "\nFecha inicial " + nuevaOrdenJSON.fechaInicial +
+        "\nFecha final " + nuevaOrdenJSON.fechaFinal +
+        "\nTipo orden " + nuevaOrdenJSON.nombreTipoOrden);
+
+    /*"idTipoOrden": null,
+    "activoIdActivo": null,
+    "idTallerServicio": null,
+    "observaciones": "",
+    "estadoIdEstado": 2,
+    "ordenCategorias":[],
+    "title": "",
+    "start": "",
+    "end": "",
+    "allDay": false*/
+
+}
+
 $(document).ready(function () {
+
+    $('div #pages').on('click', 'a#saveOrder_new', function () {
+        guardarJSON();
+    });
 
     $('div #pages').on('click', 'label[id=labelOrderAsset]', function () {
         $('#orderAsset').multiSelect();

@@ -162,8 +162,8 @@ export default class extends AbstractView {
                             <td>${orden.estado_orden} <a data-toggle="tooltip" title="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
                             <!--<td>${orden.estado_orden} <a href="" data-toggle="popover" title="${orden.estado_orden}" data-content="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>-->  
                             <td>${orden.area_vehiculo}</td>
-                            <td>${orden.fecha_creacion}</td>
-                            <td>${orden.fecha_inicio}</td>
+                            <td>${orden.fecha_creacion.slice(0,10)}</td>
+                            <td>${orden.fecha_inicio.slice(0,10)}</td>
                             <td>${orden.taller_orden}</td>
                             <!--<td>${formatGetCategoriasActivoNombre}</td>
                             <td>${formatGetCategoriasActivoCosto}</td>-->

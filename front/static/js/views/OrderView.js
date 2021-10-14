@@ -245,7 +245,7 @@ export default class extends AbstractView {
                                                 </label>
                                             </div>
                                             <div class="row-fluid">
-                                                <input class="span4" id="rangeStartDate" type="date" value="${order.fecha_inicio}" ${requeridoPorRango}
+                                                <input class="span4" id="rangeStartDate" type="datetime-local" value="${order.fecha_inicio}" ${requeridoPorRango}
                                                     min="${currentDate()}">
                                             </div>
                                         </div>
@@ -256,7 +256,7 @@ export default class extends AbstractView {
                                                 </label>
                                             </div>
                                             <div class="row-fluid">
-                                                <input class="span4" id="rangeEndDate" type="date" value="${order.fecha_limite}" ${requeridoPorRango}>
+                                                <input class="span4" id="rangeEndDate" type="datetime-local" value="${order.fecha_limite}" ${requeridoPorRango}>
                                             </div>
                                         </div>
                                     </div>

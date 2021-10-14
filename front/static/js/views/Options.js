@@ -118,11 +118,19 @@ const currentDate = () => {
     let mm = today.getMonth() + 1; //January is 0!
     let yyyy = today.getFullYear();
 
+    let hh = today.getHours();
+    let ms = today.getMinutes();
+
     if (dd < 10) {dd = '0' + dd;}
 
     if (mm < 10) {mm = '0' + mm;}
 
-    return today = yyyy + '-' + mm + '-' + dd;
+    if (hh < 10) {hh = '0' + hh;}
+
+    if (ms < 10) {ms = '0' + ms;}
+
+    console.log("currentDate(): " + yyyy + '-' + mm + '-' + dd + 'T' + hh + ':' + ms);
+    return today = yyyy + '-' + mm + '-' + dd + 'T' + hh + ':' + ms;
 
 }
 
