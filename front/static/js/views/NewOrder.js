@@ -33,9 +33,9 @@ let nuevaOrdenJSON = {
     "fechaCreacion": "",
     "fechaInicial": "",
     "fechaFinal": "",
-    "nombreTipoOrden": "",
+    "tipoOrdenidTipoOrden": null,
     "activoIdActivo": null,
-    "nombreTallerServicio": "",
+    "tallerServicioIdTallerServicio": null,
     "observaciones": "",
     "estadoIdEstado": 2,
     "ordenCategorias":[],
@@ -457,34 +457,39 @@ const guardarJSON = () => {
     //nuevaOrdenJSON.fechaCreacion = new Date().toISOString().slice(0,19);
     nuevaOrdenJSON.fechaCreacion = currentDate();
     nuevaOrdenJSON.fechaInicial = document.getElementById('newRangeStartDate').value;
+    nuevaOrdenJSON.start = nuevaOrdenJSON.fechaInicial;
     nuevaOrdenJSON.fechaFinal = document.getElementById('newRangeEndDate').value;
-    nuevaOrdenJSON.nombreTipoOrden = document.getElementById('orderType').value;
+    nuevaOrdenJSON.end = nuevaOrdenJSON.fechaFinal;
+    nuevaOrdenJSON.observaciones = document.getElementById('orderNotes').value;
+    //nuevaOrdenJSON.activoIdActivo = --- for por activo 
+    //nuevaOrdenJSON.ordenCategorias = [] -- estructura parecida a ordenEstados
+    //nuevaOrdenJSON.title = 
+    //nuevaOrdenJSON.allDay = false
+    
+    const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType').value);
+    if(tipoOrden){
+        nuevaOrdenJSON.tipoOrdenidTipoOrden = tipoOrden.id_tipo_mantenimiento;
+    }
+
+    const taller = getTalleres.find((taller) => taller.nombre == document.getElementById('orderProvider').value);
+    if(taller){
+        nuevaOrdenJSON.tallerServicioIdTallerServicio = taller.id;
+    }
 
     sessionStorage.setItem('NuevaOrden', JSON.stringify(nuevaOrdenJSON));
 
-    /*"idTipoOrden": null,
-    "activoIdActivo": null,
-    "idTallerServicio": null,
-    "observaciones": "",
-    "estadoIdEstado": 2,
-    "ordenCategorias":[],
-    "title": "",
-    "start": "",
-    "end": "",
-    "allDay": false*/
-
 }
 
-const mostrarSTORAGE = () => {
+const mostrarStorageJSON = () => {
     alert("\n\nMostrando eL sessionStorage:\n\n" + sessionStorage.getItem('NuevaOrden'));
-    sessionStorage.removeItem('NuevaOrden')
+    //sessionStorage.removeItem('NuevaOrden')
 }
 
 $(document).ready(function () {
 
     $('div #pages').on('click', 'a#saveOrder_new', function () {
         guardarJSON();
-        mostrarSTORAGE();
+        mostrarStorageJSON();
     });
 
     $('div #pages').on('click', 'label[id=labelOrderAsset]', function () {
