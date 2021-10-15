@@ -455,33 +455,57 @@ const fillOrderCategories = () => {
 const guardarJSON = () => {
 
     //nuevaOrdenJSON.fechaCreacion = new Date().toISOString().slice(0,19);
-    nuevaOrdenJSON.fechaCreacion = currentDate();
-    nuevaOrdenJSON.fechaInicial = document.getElementById('newRangeStartDate').value;
-    nuevaOrdenJSON.start = nuevaOrdenJSON.fechaInicial;
-    nuevaOrdenJSON.fechaFinal = document.getElementById('newRangeEndDate').value;
-    nuevaOrdenJSON.end = nuevaOrdenJSON.fechaFinal;
-    nuevaOrdenJSON.observaciones = document.getElementById('orderNotes').value;
+    //nuevaOrdenJSON.fechaCreacion = currentDate();
+    //nuevaOrdenJSON.fechaInicial = document.getElementById('newRangeStartDate').value;
+    //nuevaOrdenJSON.start = nuevaOrdenJSON.fechaInicial;
+    //nuevaOrdenJSON.fechaFinal = document.getElementById('newRangeEndDate').value;
+    //nuevaOrdenJSON.end = nuevaOrdenJSON.fechaFinal;
+    //nuevaOrdenJSON.observaciones = document.getElementById('orderNotes').value;
     //nuevaOrdenJSON.activoIdActivo = --- for por activo 
     //nuevaOrdenJSON.ordenCategorias = [] -- estructura parecida a ordenEstados
     //nuevaOrdenJSON.title = 
     //nuevaOrdenJSON.allDay = false
     
-    const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType').value);
-    if(tipoOrden){
-        nuevaOrdenJSON.tipoOrdenidTipoOrden = tipoOrden.id_tipo_mantenimiento;
+    
+    let contador = 0;
+    const activosSeleccionados = document.getElementsByClassName('ms-elem-selection ms-selected');
+    for (const element of activosSeleccionados){
+
+        contador++;
+        //alert(element.textContent);
+
+        const activo = getActivos.find((activo) => activo.activo == element.textContent);
+        if(activo){
+            nuevaOrdenJSON.activoIdActivo = activo.id;
+        }
+
+        const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType').value);
+        if(tipoOrden){
+            nuevaOrdenJSON.tipoOrdenidTipoOrden = tipoOrden.id_tipo_mantenimiento;
+        }
+
+        const taller = getTalleres.find((taller) => taller.nombre == document.getElementById('orderProvider').value);
+        if(taller){
+            nuevaOrdenJSON.tallerServicioIdTallerServicio = taller.id;
+        }
+
+        nuevaOrdenJSON.fechaCreacion = currentDate();
+        nuevaOrdenJSON.fechaInicial = document.getElementById('newRangeStartDate').value;
+        nuevaOrdenJSON.start = nuevaOrdenJSON.fechaInicial;
+        nuevaOrdenJSON.fechaFinal = document.getElementById('newRangeEndDate').value;
+        nuevaOrdenJSON.end = nuevaOrdenJSON.fechaFinal;
+        nuevaOrdenJSON.observaciones = document.getElementById('orderNotes').value;
+
+        sessionStorage.setItem(`NuevaOrden_${contador}`, JSON.stringify(nuevaOrdenJSON));
+
     }
 
-    const taller = getTalleres.find((taller) => taller.nombre == document.getElementById('orderProvider').value);
-    if(taller){
-        nuevaOrdenJSON.tallerServicioIdTallerServicio = taller.id;
-    }
-
-    sessionStorage.setItem('NuevaOrden', JSON.stringify(nuevaOrdenJSON));
+    //sessionStorage.setItem('NuevaOrden', JSON.stringify(nuevaOrdenJSON));
 
 }
 
 const mostrarStorageJSON = () => {
-    alert("\n\nMostrando eL sessionStorage:\n\n" + sessionStorage.getItem('NuevaOrden'));
+    //alert("\n\nMostrando eL sessionStorage:\n\n" + sessionStorage.getItem('NuevaOrden'));
     //sessionStorage.removeItem('NuevaOrden')
 }
 
