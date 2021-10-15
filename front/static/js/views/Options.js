@@ -195,6 +195,12 @@ let titleTalleresJSON = 'Talleres';
 let getTalleres = [];
 getTalleres = getJson(talleresJSON, titleTalleresJSON);
 
+//Categorías de servicio
+let categoriasJSON = 'http://192.168.0.12:8080/static/js/data/serviceCategories.JSON';
+let titleCategoriasJSON = 'Categorías';
+let getCategorias = [];
+getCategorias = getJson(categoriasJSON, getCategorias);
+
 let estados = [
     {
         "id_estado": 1,
@@ -1087,6 +1093,7 @@ export {
     getTiposActivos,
     getActivos,
     getTalleres,
+    getCategorias,
     loadSelectContent,
     loadDivSelected,
     loadSelectContentAndSelected,

@@ -2,7 +2,7 @@ import AbstractView from "./AbstractView.js";
 import {
     tiposMantenimiento, estados, tiposActivos, areas, talleres,
     frecuenciaPeriodo, getTiposMantenimientos, getEstados, getAreas,
-    getTiposActivos, getActivos, getTalleres,
+    getTiposActivos, getActivos, getTalleres, getCategorias,
     loadSelectContent,
     loadSelectContentAndSelected,
     listSelect,
@@ -37,7 +37,8 @@ let nuevaOrdenJSON = {
     "activoIdActivo": null,
     "tallerServicioIdTallerServicio": null,
     "observaciones": "",
-    "estadoIdEstado": 2,
+    //"estadoIdEstado": 2,
+    "ordenEstados": [],
     "ordenCategorias":[],
     "title": "",
     "start": "",
@@ -453,26 +454,22 @@ const fillOrderCategories = () => {
 }
 
 const guardarJSON = () => {
-
-    //nuevaOrdenJSON.fechaCreacion = new Date().toISOString().slice(0,19);
-    //nuevaOrdenJSON.fechaCreacion = currentDate();
-    //nuevaOrdenJSON.fechaInicial = document.getElementById('newRangeStartDate').value;
-    //nuevaOrdenJSON.start = nuevaOrdenJSON.fechaInicial;
-    //nuevaOrdenJSON.fechaFinal = document.getElementById('newRangeEndDate').value;
-    //nuevaOrdenJSON.end = nuevaOrdenJSON.fechaFinal;
-    //nuevaOrdenJSON.observaciones = document.getElementById('orderNotes').value;
-    //nuevaOrdenJSON.activoIdActivo = --- for por activo 
-    //nuevaOrdenJSON.ordenCategorias = [] -- estructura parecida a ordenEstados
-    //nuevaOrdenJSON.title = 
-    //nuevaOrdenJSON.allDay = false
     
-    
-    let contador = 0;
+    let contadorOrdenes = 0;
     const activosSeleccionados = document.getElementsByClassName('ms-elem-selection ms-selected');
+    //Se crean tantas órdenes como activos hayan sido seleccionados
     for (const element of activosSeleccionados){
 
-        contador++;
-        //alert(element.textContent);
+        contadorOrdenes++;
+        
+        nuevaOrdenJSON.fechaCreacion = currentDate();
+        nuevaOrdenJSON.fechaInicial = document.getElementById('newRangeStartDate').value;
+        nuevaOrdenJSON.start = nuevaOrdenJSON.fechaInicial;
+        nuevaOrdenJSON.fechaFinal = document.getElementById('newRangeEndDate').value;
+        nuevaOrdenJSON.end = nuevaOrdenJSON.fechaFinal;
+        nuevaOrdenJSON.observaciones = document.getElementById('orderNotes').value;
+        //nuevaOrdenJSON.title = 
+        nuevaOrdenJSON.allDay = false
 
         const activo = getActivos.find((activo) => activo.activo == element.textContent);
         if(activo){
@@ -489,24 +486,72 @@ const guardarJSON = () => {
             nuevaOrdenJSON.tallerServicioIdTallerServicio = taller.id;
         }
 
-        nuevaOrdenJSON.fechaCreacion = currentDate();
-        nuevaOrdenJSON.fechaInicial = document.getElementById('newRangeStartDate').value;
-        nuevaOrdenJSON.start = nuevaOrdenJSON.fechaInicial;
-        nuevaOrdenJSON.fechaFinal = document.getElementById('newRangeEndDate').value;
-        nuevaOrdenJSON.end = nuevaOrdenJSON.fechaFinal;
-        nuevaOrdenJSON.observaciones = document.getElementById('orderNotes').value;
+        let estadoNuevaOrdenJSON = {
+            //"ordenIdOrden: "
+            "estadoIdEstado": 2,
+            "idUsuario": 1, //1 temporalmente hasta implementar sincronización con usuario conectado
+            "fechaAsignado": nuevaOrdenJSON.fechaCreacion
+        }
+        nuevaOrdenJSON.ordenCategorias.push(estadoNuevaOrdenJSON);
 
-        sessionStorage.setItem(`NuevaOrden_${contador}`, JSON.stringify(nuevaOrdenJSON));
+
+        const categoriasSeleccionadas = document.getElementById('categoriesContainer').getElementsByClassName('row-fluid');
+        let contCategory = 0;
+        for (const cat of categoriasSeleccionadas){
+            contCategory++;
+            //Label de categoría
+            let labelCategoryCheckbox = document.getElementById(`labelCategoryCheckbox_${contCategory}`);
+            //Input type checkbox de categoría
+            let categoryCheckbox = document.getElementById(`categoryCheckbox_${contCategory}`);
+            //Input type number del costo de la categoría
+            let appendedPrependedInput = document.getElementById(`appendedPrependedInput_${contCategory}`);
+
+            if(categoryCheckbox.checked){
+
+                //alert("Texto: " + labelCategoryCheckbox.textContent.trim() + " - Costo: " + appendedPrependedInput.value)
+                const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelCategoryCheckbox.textContent.trim());
+                if(category){
+
+                    let categoriasNuevaOrdenJSON = {
+                        //"ordenIdOrden: "
+                        "categoriaServicioIdCategoriaServicio": category.id,
+                        "costo": appendedPrependedInput.value,
+                        "fechaCategoriaAsignada": nuevaOrdenJSON.fechaCreacion,
+                        "observacionCategoria":""
+                    }
+
+                    nuevaOrdenJSON.ordenCategorias.push(categoriasNuevaOrdenJSON);
+                }
+            }
+
+        }
+
+        sessionStorage.setItem(`NuevaOrden_${contadorOrdenes}`, JSON.stringify(nuevaOrdenJSON));
 
     }
 
-    //sessionStorage.setItem('NuevaOrden', JSON.stringify(nuevaOrdenJSON));
+}
+
+const removerVariablesStorageJSON = () => {
+
+    let contadorOrdenes = 0;
+    const activosSeleccionados = document.getElementsByClassName('ms-elem-selection ms-selected');
+    for (const element of activosSeleccionados){
+        contadorOrdenes++;
+        sessionStorage.removeItem(`NuevaOrden_${contadorOrdenes}`);
+    }
 
 }
 
 const mostrarStorageJSON = () => {
-    //alert("\n\nMostrando eL sessionStorage:\n\n" + sessionStorage.getItem('NuevaOrden'));
-    //sessionStorage.removeItem('NuevaOrden')
+
+    let contadorOrdenes = 0;
+    const activosSeleccionados = document.getElementsByClassName('ms-elem-selection ms-selected');
+    for (const element of activosSeleccionados){
+        contadorOrdenes++;
+        console.log(`\n\nNuevaOrden_${contadorOrdenes}\n\n` + sessionStorage.getItem(`NuevaOrden_${contadorOrdenes}`));
+        sessionStorage.removeItem(`NuevaOrden_${contadorOrdenes}`);
+    }
 }
 
 $(document).ready(function () {
