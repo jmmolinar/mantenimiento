@@ -60,7 +60,7 @@ export default class extends AbstractView {
         let uso = ''
         let radioSeleccionadoPeriodo = ''
         let radioSeleccionadoRango = ''
-        let requeridoPorRango = ''
+        let requeridoPorRango = 'required' //''
         let requeridoPorPeriodo = ''
         let requeridoAdjuntoCompletado = ''
         let tiempoTaller = '';
@@ -151,7 +151,7 @@ export default class extends AbstractView {
 
 
         fillOrder = `<h1></h1>
-            <form id="orderFormQuery_new">
+            <form id="orderFormQuery_new" action="/ordenes" >
 
                 <!--IDENTIFICADOR DE LA ORDEN-->
                 <div id="orderId_new" class="control-group order-identity border-transparent-1px">
@@ -293,8 +293,10 @@ export default class extends AbstractView {
                 <!--GUARDAR / CANCELAR-->
                 <div id="orderActionButtons_new" class="control-group">
                     <div class="span12 text-right border-transparent-1px">
-                        <a id="saveOrder_new" class="btn btn-primary" href="/ordenes">Guardar</a>
-                        <a id="dontSaveOrder_new" class="btn btn-primary" href="/ordenes">Cancelar</a>
+                        <!--<a id="saveOrder_new" class="btn btn-primary" href="/ordenes">Guardar</a>
+                        <a id="dontSaveOrder_new" class="btn btn-primary" href="/ordenes">Cancelar</a>-->
+                        <button id="saveOrder_new" class="btn btn-primary" type="submit">Guardar</button>
+                        <button id="dontSaveOrder_new" class="btn btn-primary" type="submit">Cancelar</button>
                     </div>
                 </div>
             </form>`;
@@ -492,7 +494,7 @@ const guardarJSON = () => {
             "idUsuario": 1, //1 temporalmente hasta implementar sincronización con usuario conectado
             "fechaAsignado": nuevaOrdenJSON.fechaCreacion
         }
-        nuevaOrdenJSON.ordenCategorias.push(estadoNuevaOrdenJSON);
+        nuevaOrdenJSON.ordenEstados.push(estadoNuevaOrdenJSON);
 
 
         const categoriasSeleccionadas = document.getElementById('categoriesContainer').getElementsByClassName('row-fluid');
@@ -550,13 +552,13 @@ const mostrarStorageJSON = () => {
     for (const element of activosSeleccionados){
         contadorOrdenes++;
         console.log(`\n\nNuevaOrden_${contadorOrdenes}\n\n` + sessionStorage.getItem(`NuevaOrden_${contadorOrdenes}`));
-        sessionStorage.removeItem(`NuevaOrden_${contadorOrdenes}`);
+        //sessionStorage.removeItem(`NuevaOrden_${contadorOrdenes}`);
     }
 }
 
 $(document).ready(function () {
 
-    $('div #pages').on('click', 'a#saveOrder_new', function () {
+    $('div #pages').on('click', 'button#saveOrder_new', function () {
         guardarJSON();
         mostrarStorageJSON();
     });
