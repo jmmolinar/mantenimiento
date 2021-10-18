@@ -1,6 +1,7 @@
 import AbstractView from "./AbstractView.js";
 import {
     regiones,
+    //getRegiones,
     loadSelectContent,
     loadSelectContentAndSelected,
     listSelect,

@@ -1,7 +1,8 @@
 import AbstractView from "./AbstractView.js";
 import TableLanguage from "./TableLanguage.js";
 import {
-    areas, bodegas, tiposActivos, marcas, planes,
+    areas, bodegas, tiposActivos, marcas, planes, 
+    getAreas, getBodegas, getTiposActivos, getActivos, getPlanes,
     listAllElement,
     loadSelectContent,
     loadSelectContentAndSelected,
@@ -94,17 +95,6 @@ export default class extends AbstractView {
                                         </div>
                                     </div>
 
-                                    <!--BODEGA DEL ACTIVO-->
-                                    <div class="control-group">
-                                        <label class="span2" for="assetWareHousesOptions">
-                                            <h5>Bodega</h5>
-                                        </label>
-                                        <div class="controls">
-                                            <select id="assetWareHousesOptions" required>
-                                            </select>
-                                        </div>
-                                    </div>
-
                                     <!--TIPO DE ACTIVO-->
                                     <div class="control-group">
                                         <label class="span2" for="assetType">
@@ -112,6 +102,17 @@ export default class extends AbstractView {
                                         </label>
                                         <div class="controls">
                                             <select id="assetType" required>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!--PATENTE-->
+                                    <div class="control-group">
+                                        <label class="span2" for="assetPatent">
+                                            <h5>Patente</h5>
+                                        </label>
+                                        <div class="controls">
+                                            <select id="assetPatent" required>
                                             </select>
                                         </div>
                                     </div>
@@ -171,6 +172,17 @@ export default class extends AbstractView {
                                         </div>
                                     </div>
 
+                                    <!--BODEGA DEL ACTIVO-->
+                                    <div class="control-group">
+                                        <label class="span2" for="assetWareHousesOptions">
+                                            <h5>Bodega</h5>
+                                        </label>
+                                        <div class="controls">
+                                            <select id="assetWareHousesOptions" required>
+                                            </select>
+                                        </div>
+                                    </div>
+
                                     <!--PLANES DE MANTENIMIENTO DEL ACTIVO-->
                                     <div class="control-group">
                                         <label class="span2" for="assetPlan">
@@ -185,6 +197,7 @@ export default class extends AbstractView {
                                             <div class="controls btn-group" id="buttonsSelectedPlan"></div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
 
@@ -368,45 +381,53 @@ export default class extends AbstractView {
 const fillOptions = () => {
 
     console.log("Entré al fillOptions en NewAsset")
-    $(document).ready(function () {
 
-        // Select area
-        const selectArea = document.getElementById('assetAreasOptions');
-        //console.log("Id del select: " + selectArea.id);
-        const optionArea = listSelect(areas, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionArea, selectArea, getArea);
-        console.log("Área seleccionada: " + getArea);
+    $(window).on("load", function () {
 
-        // Select bodega
-        const selectBodega = document.getElementById('assetWareHousesOptions');
-        const optionBodega = listSelect(bodegas, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionBodega, selectBodega, getBodega);
-        console.log("Bodega seleccionada: " + getBodega);
+        $(document).ready(function () {
 
-        // Select tipo de activo
-        const selectTipoActivo = document.getElementById('assetType');
-        const optionTipoActivo = listSelect(tiposActivos, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionTipoActivo, selectTipoActivo, getTipoActivo);
-        console.log("Tipo de activo seleccionado: " + getTipoActivo);
+            // Select area -- emplea los datos obtenidos en getJson();
+            const selectArea = document.getElementById('assetAreasOptions');
+            const optionArea = listSelect(getAreas, "nombre"); // Paso la clave "nombre"
+            loadSelectContent(optionArea, selectArea);
 
-        // Select Marca
-        const selectMarca = document.getElementById('assetBrand');
-        const optionMarca = listSelect(marcas, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionMarca, selectMarca, getMarca);
-        console.log("Marca seleccionada: " + getMarca);
+            // Select bodega -- emplea los datos obtenidos en getJson();
+            const selectBodega = document.getElementById('assetWareHousesOptions');
+            const optionBodega = listSelect(getBodegas, "nombre"); // Paso la clave "nombre"
+            loadSelectContent(optionBodega, selectBodega)
 
-        // Select Anio
-        const selectAnio = document.getElementById('assetYear');
-        listAnioAndSelected(selectAnio, getAnio);
+            // Select tipo de activo -- emplea los datos obtenidos en getJson();
+            const selectTipoActivo = document.getElementById('assetType');
+            const optionTipoActivo = listSelect(getTiposActivos, "nombre"); // Paso la clave "nombre"
+            loadSelectContent(optionTipoActivo, selectTipoActivo);
 
-        // Solo listado de Planes para agregar
-        const selectPlan = document.getElementById('assetPlan');
-        const optionPlan = listSelect(planes, "nombre"); // Paso la clave "nombre"
-        loadSelectContent(optionPlan, selectPlan);
+            // Select activo -- emplea los datos obtenidos en getJson();
+            // Se debe hacer una verificación para mostrar solo los activos que no han sido creados en el módulo de mantenimiento
+            const selectActivo = document.getElementById('assetPatent');
+            const optionActivo = listSelect(getActivos, "activo"); // Paso la clave "activo"
+            loadSelectContent(optionActivo, selectActivo);
 
-        // Div con Planes del Activo
-        const divPlanes = document.getElementById('buttonsSelectedPlan');
-        loadDivSelected(divPlanes, getPlanesActivo, "nombre"); // Paso la clave "nombre"
+            // Select Marca desde Options.js
+            const selectMarca = document.getElementById('assetBrand');
+            const optionMarca = listSelect(marcas, "nombre"); // Paso la clave "nombre"
+            loadSelectContentAndSelected(optionMarca, selectMarca, getMarca);
+            //console.log("Marca seleccionada: " + getMarca);
+
+            // Select Anio desde Options.js
+            const selectAnio = document.getElementById('assetYear');
+            listAnioAndSelected(selectAnio, getAnio);
+
+            // Solo listado de Planes para agregar
+            // Select planes -- emplea los datos obtenidos en getJson();
+            const selectPlan = document.getElementById('assetPlan');
+            const optionPlan = listSelect(getPlanes, "nombre"); // Paso la clave "nombre"
+            loadSelectContent(optionPlan, selectPlan);
+
+            // Div con Planes del Activo
+            const divPlanes = document.getElementById('buttonsSelectedPlan');
+            loadDivSelected(divPlanes, getPlanesActivo, "nombre"); // Paso la clave "nombre"
+
+        });
 
     });
 

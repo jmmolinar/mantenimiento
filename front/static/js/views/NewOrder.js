@@ -344,7 +344,6 @@ const fillOrderOptions = () => {
             loadSelectContent(optionTipoActivo, selectTipoActivo);
 
             // Select activo -- emplea los datos obtenidos en getJson();
-
             const selectActivo = document.getElementById('orderAsset');
             const optionActivo = listSelect(getActivos, "activo"); // Paso la clave "activo"
             loadSelectContent(optionActivo, selectActivo);

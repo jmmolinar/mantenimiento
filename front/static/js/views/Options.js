@@ -195,11 +195,29 @@ let titleTalleresJSON = 'Talleres';
 let getTalleres = [];
 getTalleres = getJson(talleresJSON, titleTalleresJSON);
 
+//Bodegas
+let bodegasJSON = 'http://192.168.0.12:8080/static/js/data/assetsWareHouses.JSON';
+let titleBodegasJSON = 'Bodegas';
+let getBodegas = [];
+getBodegas = getJson(bodegasJSON, titleBodegasJSON);
+
 //Categorías de servicio
 let categoriasJSON = 'http://192.168.0.12:8080/static/js/data/serviceCategories.JSON';
 let titleCategoriasJSON = 'Categorías';
 let getCategorias = [];
-getCategorias = getJson(categoriasJSON, getCategorias);
+getCategorias = getJson(categoriasJSON, titleCategoriasJSON);
+
+//Planes de mantenimiento
+let planesJSON = 'http://192.168.0.12:8080/static/js/data/planning.JSON';
+let titlePlanesJSON = 'Planes';
+let getPlanes = [];
+getPlanes = getJson(planesJSON, titlePlanesJSON);
+
+//Regiones
+/*let regionesJSON = 'http://192.168.0.12:8080/static/js/data/regions.JSON';
+let titleRegionesJSON = 'Regiones';
+let getRegiones = [];
+getRegiones = getJson(regionesJSON, titleRegionesJSON);*/
 
 let estados = [
     {
@@ -1093,7 +1111,10 @@ export {
     getTiposActivos,
     getActivos,
     getTalleres,
+    getBodegas,
     getCategorias,
+    getPlanes,
+    //getRegiones,
     loadSelectContent,
     loadDivSelected,
     loadSelectContentAndSelected,
