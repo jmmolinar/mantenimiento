@@ -633,6 +633,7 @@ $(document).ready(function () {
             buttonChild.setAttribute("data-dismiss", "alert");
             buttonChild.textContent = `x`;
             let strongChild = document.createElement("strong");
+            strongChild.setAttribute("class", "name-plan");
             strongChild.innerHTML = `${e.target.value}`;
 
             divChild.appendChild(buttonChild);
