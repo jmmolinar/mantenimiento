@@ -463,6 +463,9 @@ const guardarJSON = () => {
     for (const element of activosSeleccionados){
 
         contadorOrdenes++;
+
+        nuevaOrdenJSON.ordenEstados = []; // reinicio el estado por cada activo
+        nuevaOrdenJSON.ordenCategorias = []; // reinicio las categorías por cada activo
         
         nuevaOrdenJSON.fechaCreacion = currentDate();
         nuevaOrdenJSON.fechaInicial = document.getElementById('newRangeStartDate').value;
