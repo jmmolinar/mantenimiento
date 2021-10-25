@@ -22,7 +22,7 @@ let nuevoPlanJSON = {
     "porKm": false,
     "porHora": false,
     "porPeriodo": false,
-    "planCategorias":[]
+    "planCategorias": []
 };
 
 export default class extends AbstractView {
@@ -292,7 +292,7 @@ const fillPlanServiceCategories = () => {
                     <div id="labelTextAndlabelLimit_${cont}" name="textAndLimit" class="row-fluid">
                         <div id="labelText_${cont}" class="span5">
                             <label id="labelCategoryCheckbox_${cont}" class="checkbox" name="${category.nombre}">
-                                <b>${category.id}</b> - <b>${category.cod}</b> - ${category.nombre}
+                                <b>${category.cod}</b> - ${category.nombre}
                                 <input type="checkbox" id="categoryCheckbox_${cont}" value="option_${cont}"
                                 ${checkboxSeleccionado} for="categoryLimit_${cont}">
                             </label>
@@ -314,7 +314,7 @@ const fillPlanServiceCategories = () => {
                 <div id="labelTextStartFrecuency_${cont}" name="textStartFrecuency" class="control-group">
                     <div id="labelTextPeriodo_${cont}" class="span10">
                         <label id="labelPeriodoCategoryCheckbox_${cont}" class="checkbox" name="${category.nombre}">
-                            <b>${category.id}</b> - <b>${category.cod}</b> - ${category.nombre}
+                            <b>${category.cod}</b> - ${category.nombre}
                             <input type="checkbox" id="categoryPeriodoCheckbox_${cont}" value="option_${cont}"
                                 ${checkboxSeleccionado} for="categoryPeriodo_${cont}">
                         </label>
@@ -324,7 +324,7 @@ const fillPlanServiceCategories = () => {
                             <span name="fechaInicio" class="add-on">Inicio</span>
                             <input class="span5" id="frequencyStartDate_${cont}" type="date" value="${inicio}" 
                                 name="categoryPeriodo_${cont}" ${requeridoPorPeriodo}
-                                min="${currentDate().slice(0,10)}">
+                                min="${currentDate().slice(0, 10)}">
                         </div>
                     </div>
                     <div id="labelFrecuencyPeriodo_${cont}" class="row-fluid" name="frecuencyPeriodo">
@@ -417,24 +417,130 @@ const guardarPlanJSON = () => {
     let plansRadios2 = document.getElementById(`plansRadios2`);
     let plansRadios3 = document.getElementById(`plansRadios3`);
 
-    if(plansRadios1.checked){
+    if (plansRadios1.checked) {
         nuevoPlanJSON.porPeriodo = true;
     } else {
-        if(plansRadios2.checked){
+        if (plansRadios2.checked) {
             nuevoPlanJSON.porKm = true;
         } else {
-            if(plansRadios3.checked){
+            if (plansRadios3.checked) {
                 nuevoPlanJSON.porHora = true;
             }
         }
     }
 
-    
 
+    if (plansRadios1.checked) {
+
+        const categoriasPeriodoSeleccionadas = document.getElementById('planPeriodoCategories').getElementsByClassName('control-group');
+        let contCategory = 0;
+        for (const cat of categoriasPeriodoSeleccionadas) {
+            contCategory++;
+            //Label de categoría
+            let labelPeriodoCategoryCheckbox = document.getElementById(`labelPeriodoCategoryCheckbox_${contCategory}`);
+            //Input type checkbox de categoría
+            let categoryPeriodoCheckbox = document.getElementById(`categoryPeriodoCheckbox_${contCategory}`);
+            //Input type date de fecha de inicio de la categoría
+            let frequencyStartDate = document.getElementById(`frequencyStartDate_${contCategory}`);
+            //Input type number del Cada de la categoría
+            let frequencyCount = document.getElementById(`frequencyCount_${contCategory}`);
+            //Select de la frecuencia de la categoría
+            let frequencyType = document.getElementById(`frequencyType_${contCategory}`);
+
+            if (categoryPeriodoCheckbox.checked) {
+
+                const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelPeriodoCategoryCheckbox.textContent.trim());
+                if (category) {
+
+                    let categoriasNuevoPlanJSON = {
+                        //"planMantenimientoIdPlanMantenimiento":
+                        "categoriaServicioIdCategoriaServicio": category.id,
+                        "rangoKm": null,
+                        "rangoHoras": null,
+                        "periodoFecha": frequencyStartDate.value,
+                        "periodoCada": frequencyCount.value,
+                        "periodoFrecuencia": frequencyType.value
+                    }
+
+                    nuevoPlanJSON.planCategorias.push(categoriasNuevoPlanJSON);
+
+                }
+            }
+        }
+    }
+
+    if (plansRadios2.checked || plansRadios3.checked) {
+
+        const categoriasSeleccionadas = document.getElementById('planCategories').getElementsByClassName('control-group');
+        let contCategory = 0;
+        for (const cat of categoriasSeleccionadas) {
+            contCategory++;
+            //Label de categoría
+            let labelCategoryCheckbox = document.getElementById(`labelCategoryCheckbox_${contCategory}`);
+            //Input type checkbox de categoría
+            let categoryCheckbox = document.getElementById(`categoryCheckbox_${contCategory}`);
+            //Input type number del costo de la categoría
+            let appendedPrependedInput = document.getElementById(`appendedPrependedInput_${contCategory}`);
+
+            if (categoryCheckbox.checked) {
+
+                let limiteKm = null;
+                let limiteHoras = null;
+                if(plansRadios2.checked){
+                    limiteKm = appendedPrependedInput.value
+                } else {
+                    if(plansRadios3.checked){
+                        limiteHoras = appendedPrependedInput.value
+                    }
+                }
+
+                const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelCategoryCheckbox.textContent.trim());
+                if (category) {
+
+                    let categoriasNuevoPlanJSON = {
+                        //"planMantenimientoIdPlanMantenimiento":
+                        "categoriaServicioIdCategoriaServicio": category.id,
+                        "rangoKm": limiteKm,
+                        "rangoHoras": limiteHoras,
+                        "periodoFecha": null,
+                        "periodoCada": null,
+                        "periodoFrecuencia": null
+                    }
+
+                    nuevoPlanJSON.planCategorias.push(categoriasNuevoPlanJSON);
+
+                }
+            }
+
+        }
+
+    }
+
+    sessionStorage.setItem(`NuevoPlan`, JSON.stringify(nuevoPlanJSON));
+
+}
+
+const removerVariablePlanStorageJSON = () => {
+
+    sessionStorage.removeItem(`NuevoPlan`);
+
+}
+
+const mostrarPlanStorageJSON = () => {
+
+    console.log(`\n\nNuevoPlan\n\n` + sessionStorage.getItem(`NuevoPlan`));
+    alert(`\n\nNuevoPlan\n\n` + JSON.stringify(nuevoPlanJSON, undefined, 4));
+    //sessionStorage.removeItem(`NuevoActivo`);
 }
 
 
 $(document).ready(function () {
+
+    $('div #pages').on('click', 'button#savePlan_new', function () {
+        guardarPlanJSON();
+        mostrarPlanStorageJSON();
+    });
+
 
     //FILTRO DE CATEGORÍAS POR KILÓMETROS Y POR HORAS
     $('div #pages').on('click', 'input[id=busqueda]', function () {
