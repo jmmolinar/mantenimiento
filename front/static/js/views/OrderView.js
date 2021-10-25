@@ -34,7 +34,7 @@ export default class extends AbstractView {
 
         $.ajax({
             type: 'GET',
-            url: 'http://192.168.0.12:8080/static/js/data/orders.JSON',
+            url: 'http://192.168.1.114:8080/static/js/data/orders.JSON',
             dataType: 'json',
             success: function (data, status, jqXHR) {
 
@@ -412,7 +412,7 @@ const fillOrderCategories = () => {
 
     $.ajax({
         type: 'GET',
-        url: 'http://192.168.0.12:8080/static/js/data/serviceCategories.JSON',
+        url: 'http://192.168.1.114:8080/static/js/data/serviceCategories.JSON',
         dataType: 'json',
         success: function (data, status, jqXHR) {
 
