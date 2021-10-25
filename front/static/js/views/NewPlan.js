@@ -4,7 +4,8 @@ import {
     listAllElement,
     loadSelectContent,
     loadSelectContentAndSelected,
-    listSelect
+    listSelect,
+    currentDate
 } from "./Options.js";
 
 let getCategoriasPlan = [];
@@ -13,6 +14,16 @@ let getFrecuenciaPeriodo = '';
 let getNombrePlan = '';
 let identificadorGlobal = '';
 let modalidad = '';
+
+
+//VARIABLE PARA JSON
+let nuevoPlanJSON = {
+    "nombre": "",
+    "porKm": false,
+    "porHora": false,
+    "porPeriodo": false,
+    "planCategorias":[]
+};
 
 export default class extends AbstractView {
     constructor(params) {
@@ -52,7 +63,7 @@ export default class extends AbstractView {
         //console.log("Vericando id del plan: " + plan.id)
 
         fillPlan = `<h1></h1>
-                    <form id="planFormQuery_new">
+                    <form id="planFormQuery_new" action="/planes">
 
                         <!--IDENTIFICADOR DEL PLAN-->
                         <div id="planId_new" class="control-group order-identity border-transparent-1px">
@@ -124,8 +135,10 @@ export default class extends AbstractView {
                         <!--GUARDAR / CANCELAR-->
                         <div id="planActionButtons_new" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <a id="savePlan_new" class="btn btn-primary" href="/planes">Guardar</a>
-                                <a id="dontSavePlan_new" class="btn btn-primary" href="/planes">Cancelar</a>
+                                <!--<a id="savePlan_new" class="btn btn-primary" href="/planes">Guardar</a>
+                                <a id="dontSavePlan_new" class="btn btn-primary" href="/planes">Cancelar</a>-->
+                                <button id="savePlan_new" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSavePlan_new" class="btn btn-primary" type="submit">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
@@ -310,7 +323,8 @@ const fillPlanServiceCategories = () => {
                         <div class="span5">
                             <span name="fechaInicio" class="add-on">Inicio</span>
                             <input class="span5" id="frequencyStartDate_${cont}" type="date" value="${inicio}" 
-                                name="categoryPeriodo_${cont}" ${requeridoPorPeriodo}>
+                                name="categoryPeriodo_${cont}" ${requeridoPorPeriodo}
+                                min="${currentDate().slice(0,10)}">
                         </div>
                     </div>
                     <div id="labelFrecuencyPeriodo_${cont}" class="row-fluid" name="frecuencyPeriodo">
@@ -391,6 +405,31 @@ const fillFrecuencyOptions = () => {
         }
 
     });
+
+}
+
+const guardarPlanJSON = () => {
+
+    nuevoPlanJSON.planCategorias = []; // reinicio las categorías
+    nuevoPlanJSON.nombre = document.getElementById('planName_new').value;
+
+    let plansRadios1 = document.getElementById(`plansRadios1`);
+    let plansRadios2 = document.getElementById(`plansRadios2`);
+    let plansRadios3 = document.getElementById(`plansRadios3`);
+
+    if(plansRadios1.checked){
+        nuevoPlanJSON.porPeriodo = true;
+    } else {
+        if(plansRadios2.checked){
+            nuevoPlanJSON.porKm = true;
+        } else {
+            if(plansRadios3.checked){
+                nuevoPlanJSON.porHora = true;
+            }
+        }
+    }
+
+    
 
 }
 

@@ -1,5 +1,11 @@
 import AbstractView from "./AbstractView.js";
 
+//VARIABLE PARA JSON
+let nuevaCategoriaJSON = {
+    "nombre": "",
+    "codigo": ""
+};
+
 export default class extends AbstractView {
     constructor(params) {
         super(params);
@@ -28,7 +34,7 @@ export default class extends AbstractView {
         //    console.log("Vericando const categoria: " + categoria)
 
         fillCategory = `<h1></h1>
-                    <form id="categoryFormQuery_new">
+                    <form id="categoryFormQuery_new" action="/categorias">
                         <!--IDENTIFICADOR DE LA CATEGORÍA-->
                         <div id="categoryId_new" class="control-group order-identity border-transparent-1px">
                             <h1>Nueva categoría</h1>
@@ -60,8 +66,10 @@ export default class extends AbstractView {
                         <!--GUARDAR / CANCELAR-->
                         <div id="categoryActionButtons_new" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <a id="saveCategory_new" class="btn btn-primary" href="/categorias">Guardar</a>
-                                <a id="dontSaveCategory_new" class="btn btn-primary" href="/categorias">Cancelar</a>
+                                <!--<a id="saveCategory_new" class="btn btn-primary" href="/categorias">Guardar</a>
+                                <a id="dontSaveCategory_new" class="btn btn-primary" href="/categorias">Cancelar</a>-->
+                                <button id="saveCategory_new" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSaveCategory_new" class="btn btn-primary" type="submit">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
@@ -84,3 +92,34 @@ export default class extends AbstractView {
         return categoryHTML;
     }
 }
+
+const guardarCategoriaJSON = () => {
+    
+    nuevaCategoriaJSON.nombre = document.getElementById('categoryName_new').value;
+    nuevaCategoriaJSON.codigo = document.getElementById('categoryCode_new').value;
+
+    sessionStorage.setItem(`NuevaCategoria`, JSON.stringify(nuevaCategoriaJSON));
+}
+
+const removerVariableCategoriaStorageJSON = () => {
+
+    sessionStorage.removeItem(`NuevaCategoria`);
+
+}
+
+const mostrarCategoriaStorageJSON = () => {
+
+    console.log(`\n\nNuevaCategoria\n\n` + sessionStorage.getItem(`NuevaCategoria`));
+    //alert(`\n\nNuevaCategoria\n\n` + JSON.stringify(nuevaCategoriaJSON, undefined, 4));
+    //sessionStorage.removeItem(`NuevoActivo`);
+}
+
+$(document).ready(function () {
+
+
+    $('div #pages').on('click', 'button#saveCategory_new', function () {
+        guardarCategoriaJSON();
+        mostrarCategoriaStorageJSON();
+    });
+
+});

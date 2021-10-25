@@ -549,6 +549,7 @@ const removerVariableActivoStorageJSON = () => {
 const mostrarActivoStorageJSON = () => {
 
     console.log(`\n\nNuevoActivo\n\n` + sessionStorage.getItem(`NuevoActivo`));
+    //alert(`\n\nNuevoActivo\n\n` + JSON.stringify(nuevoActivoJSON, undefined, 4));
     //sessionStorage.removeItem(`NuevoActivo`);
 }
 

@@ -15,6 +15,19 @@ let comunasRegionCambiada = [];
 let getLatitud = ``;
 let getLongitud = ``;
 
+
+//VARIABLE PARA JSON
+let nuevaBodegaJSON = {
+    "nombre": "",
+    "region": "",
+    "comuna": "",
+    "calle": "",
+    "numero": "",
+    "latitud": null,
+    "longitud": null,
+    "idGeocercaCabecera": null
+};
+
 export default class extends AbstractView {
     constructor(params) {
         super(params);
@@ -49,7 +62,7 @@ export default class extends AbstractView {
         //console.log("Vericando const bodega: " + bodega)
 
         fillWareHouse = `<h1></h1>
-                    <form id="wareHouseFormQuery_new">
+                    <form id="wareHouseFormQuery_new" action="/bodegas">
                         <!--IDENTIFICADOR DE LA BODEGA-->
                         <div id="wareHouseId_new" class="control-group order-identity border-transparent-1px">
                             <h1>Nueva bodega</h1>
@@ -157,8 +170,10 @@ export default class extends AbstractView {
                         <!--GUARDAR / CANCELAR-->
                         <div id="wareHouseActionButtons_new" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <a id="saveWareHouse_new" class="btn btn-primary" href="/bodegas">Guardar</a>
-                                <a id="dontSaveWareHouse_new" class="btn btn-primary" href="/bodegas">Cancelar</a>
+                                <!--<a id="saveWareHouse_new" class="btn btn-primary" href="/bodegas">Guardar</a>
+                                <a id="dontSaveWareHouse_new" class="btn btn-primary" href="/bodegas">Cancelar</a>-->
+                                <button id="saveWareHouse_new" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSaveWareHouse_new" class="btn btn-primary" type="submit">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
@@ -218,3 +233,48 @@ const fillOptions = () => {
     });
 
 }
+
+const guardarBodegaJSON = () => {
+
+    nuevaBodegaJSON.nombre = document.getElementById('wareHouseName_new').value;
+
+    let selectRegion = document.getElementById('wareHouseRegionOptions');
+    nuevaBodegaJSON.region = selectRegion.options[selectRegion.selectedIndex].text;
+
+    let selectComuna = document.getElementById('wareHouseCommuneOptions');
+    nuevaBodegaJSON.comuna = selectComuna.options[selectComuna.selectedIndex].text;
+
+    nuevaBodegaJSON.calle = document.getElementById('streetWareHouse').value;
+    nuevaBodegaJSON.numero = document.getElementById('numStreetWareHouse').value;
+    nuevaBodegaJSON.latitud = document.getElementById('latitudeWareHouse').value;
+    nuevaBodegaJSON.longitud = document.getElementById('longitudeWareHouse').value;
+
+    //Por ahora valor de referencia
+    //Debe tener valor de relación idGeocercaCabecera en BD de Plataforma
+    nuevaBodegaJSON.idGeocercaCabecera = 0;
+
+    sessionStorage.setItem(`NuevaBodega`, JSON.stringify(nuevaBodegaJSON));
+
+}
+
+const removerVariableBodegaStorageJSON = () => {
+
+    sessionStorage.removeItem(`NuevaBodega`);
+
+}
+
+const mostrarBodegaStorageJSON = () => {
+
+    console.log(`\n\nNuevaBodega\n\n` + sessionStorage.getItem(`NuevaBodega`));
+    alert(`\n\nNuevaBodega\n\n` + JSON.stringify(nuevaBodegaJSON, undefined, 4));
+    //sessionStorage.removeItem(`NuevoActivo`);
+}
+
+$(document).ready(function () {
+
+    $('div #pages').on('click', 'button#saveWareHouse_new', function () {
+        guardarBodegaJSON();
+        mostrarBodegaStorageJSON();
+    });
+
+})

@@ -15,6 +15,18 @@ let comunasRegionCambiada = [];
 let getLatitud = ``;
 let getLongitud = ``;
 
+//VARIABLE PARA JSON
+let nuevoTallerJSON = {
+    "nombre": "",
+    "region": "",
+    "comuna": "",
+    "calle": "",
+    "numero": "",
+    "latitud": null,
+    "longitud": null,
+    "idGeocercaCabecera": null
+};
+
 export default class extends AbstractView {
     constructor(params) {
         super(params);
@@ -49,7 +61,7 @@ export default class extends AbstractView {
         //console.log("Vericando const taller: " + taller)
 
         fillWorkshop = `<h1></h1>
-                    <form id="workshopFormQuery_new">
+                    <form id="workshopFormQuery_new" action"/talleres">
                         <!--IDENTIFICADOR DEL TALLER-->
                         <div id="workshopId_new" class="control-group order-identity border-transparent-1px">
                             <h1>Taller nuevo</h1>
@@ -155,8 +167,10 @@ export default class extends AbstractView {
                         <!--GUARDAR / CANCELAR-->
                         <div id="workshopActionButtons_new" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <a id="saveWorkshop_new" class="btn btn-primary" href="/talleres">Guardar</a>
-                                <a id="dontSaveWorkshop_new" class="btn btn-primary" href="/talleres">Cancelar</a>
+                                <!--<a id="saveWorkshop_new" class="btn btn-primary" href="/talleres">Guardar</a>
+                                <a id="dontSaveWorkshop_new" class="btn btn-primary" href="/talleres">Cancelar</a>-->
+                                <button id="saveWorkshop_new" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSaveWorkshop_new" class="btn btn-primary" type="submit">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
@@ -214,3 +228,48 @@ const fillOptions = () => {
     });
 
 }
+
+const guardarTallerJSON = () => {
+
+    nuevoTallerJSON.nombre = document.getElementById('workshopName_new').value;
+
+    let selectRegion = document.getElementById('workshopRegionOptions');
+    nuevoTallerJSON.region = selectRegion.options[selectRegion.selectedIndex].text;
+
+    let selectComuna = document.getElementById('workshopCommuneOptions');
+    nuevoTallerJSON.comuna = selectComuna.options[selectComuna.selectedIndex].text;
+
+    nuevoTallerJSON.calle = document.getElementById('streetWorkshop').value;
+    nuevoTallerJSON.numero = document.getElementById('numStreetWorkshop').value;
+    nuevoTallerJSON.latitud = document.getElementById('latitudeWorkshop').value;
+    nuevoTallerJSON.longitud = document.getElementById('longitudeWorkshop').value;
+
+    //Por ahora valor de referencia
+    //Debe tener valor de relación idGeocercaCabecera en BD de Plataforma
+    nuevoTallerJSON.idGeocercaCabecera = 0;
+
+    sessionStorage.setItem(`NuevoTaller`, JSON.stringify(nuevoTallerJSON));
+
+}
+
+const removerVariableTallerStorageJSON = () => {
+
+    sessionStorage.removeItem(`NuevoTaller`);
+
+}
+
+const mostrarTallerStorageJSON = () => {
+
+    console.log(`\n\nNuevoTaller\n\n` + sessionStorage.getItem(`NuevoTaller`));
+    alert(`\n\nNuevoTaller\n\n` + JSON.stringify(nuevoTallerJSON, undefined, 4));
+    //sessionStorage.removeItem(`NuevoActivo`);
+}
+
+$(document).ready(function () {
+
+    $('div #pages').on('click', 'button#saveWorkshop_new', function () {
+        guardarTallerJSON();
+        mostrarTallerStorageJSON();
+    });
+
+})
