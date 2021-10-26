@@ -15,6 +15,8 @@ let getNombrePlan = '';
 let identificadorGlobal = '';
 let modalidad = '';
 
+//Variable para validar que al menos se tenga una categoría seleccionada
+let banderaSeleccion = false;
 
 //VARIABLE PARA JSON
 let nuevoPlanJSON = {
@@ -449,6 +451,8 @@ const guardarPlanJSON = () => {
 
             if (categoryPeriodoCheckbox.checked) {
 
+                banderaSeleccion = true;
+
                 const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelPeriodoCategoryCheckbox.textContent.trim());
                 if (category) {
 
@@ -484,12 +488,14 @@ const guardarPlanJSON = () => {
 
             if (categoryCheckbox.checked) {
 
+                banderaSeleccion = true;
+
                 let limiteKm = null;
                 let limiteHoras = null;
-                if(plansRadios2.checked){
+                if (plansRadios2.checked) {
                     limiteKm = appendedPrependedInput.value
                 } else {
-                    if(plansRadios3.checked){
+                    if (plansRadios3.checked) {
                         limiteHoras = appendedPrependedInput.value
                     }
                 }
@@ -516,7 +522,9 @@ const guardarPlanJSON = () => {
 
     }
 
-    sessionStorage.setItem(`NuevoPlan`, JSON.stringify(nuevoPlanJSON));
+    //Comento para crear la variable JSON en el evento
+    //sessionStorage.setItem(`NuevoPlan`, JSON.stringify(nuevoPlanJSON));
+
 
 }
 
@@ -536,9 +544,129 @@ const mostrarPlanStorageJSON = () => {
 
 $(document).ready(function () {
 
-    $('div #pages').on('click', 'button#savePlan_new', function () {
-        guardarPlanJSON();
-        mostrarPlanStorageJSON();
+    //Verificación de checkbox de categorías para poder guardar el JSON
+    $('div #pages').on('click', 'button#savePlan_new', function (e) {
+
+        let postBanderaSeleccionPeriodo = false;
+        let postBanderaSeleccion = false;
+
+        guardarPlanJSON(); // Llenado de datos del objeto para el JSON
+
+        if ($('#planName_new').val().length != '') {
+
+            if (banderaSeleccion == false) {
+
+                alert("Debe seleccionar al menos una categoría");
+                e.preventDefault();
+
+                if ($('#plansRadios1').is(':checked')) {
+                    $('#planPeriodoCategories').css("background-color", 'beige')
+                }
+                if ($('#plansRadios2').is(':checked') || $('#plansRadios3').is(':checked')) {
+                    $('#planCategories').css("background-color", 'beige')
+                }
+
+            } else {
+                if ($('#plansRadios1').is(':checked')) {
+
+                    $('#planPeriodoCategories').css("background-color", 'beige');
+
+                    const postCategoriasPeriodo = document.getElementById('planPeriodoCategories').getElementsByClassName('control-group');
+                    let cont = 0;
+                    for (const cat of postCategoriasPeriodo) {
+                        cont++;
+                        if ($(`#categoryPeriodoCheckbox_${cont}`).is(':checked')) {
+
+                            if ($(`#frequencyStartDate_${cont}`).val().length >= 1
+                                && $(`#frequencyCount_${cont}`).val() >= 1  && $(`#frequencyType_${cont}`).val().trim() != ''){
+
+                                postBanderaSeleccionPeriodo = true;
+                                console.log("Poniendo postBanderaSeleccionPeriodo en TRUE");
+
+                            } else {
+                                $(`#labelTextStartFrecuency_${cont}`).attr('class', 'new-border-missing-category');
+                            }
+
+                        }
+                    }
+                    if (postBanderaSeleccionPeriodo == false) {
+                        alert("Recuerde seleccionar y asignar datos de categoría");
+                        e.preventDefault();
+                    }
+                } else {
+                    if ($('#plansRadios2').is(':checked') || $('#plansRadios3').is(':checked')) {
+
+                        $('#planCategories').css("background-color", 'beige');
+
+                        const postCategorias = document.getElementById('planCategories').getElementsByClassName('control-group');
+                        let cont = 0;
+                        for (const cat of postCategorias) {
+                            cont++;
+                            if ($(`#categoryCheckbox_${cont}`).is(':checked')) {
+
+                                if ($(`#appendedPrependedInput_${cont}`).val().length >= 1) {
+                                    
+                                    postBanderaSeleccion = true;
+                                    console.log("Poniendo postBanderaSeleccion en TRUE");
+                                } else {
+                                    $(`#labelTextAndlabelLimit_${cont}`).attr('class', 'new-border-missing-category');
+                                }
+
+                            }
+                        }
+                        if (postBanderaSeleccion == false) {
+                            alert("Recuerde seleccionar y asignar datos de categoría")
+                            e.preventDefault();
+                        }
+                    }
+
+                }
+
+            }
+
+            //Creación del JSON
+            //Para PERIODO
+            if ($('#plansRadios1').is(':checked') && banderaSeleccion == true && postBanderaSeleccionPeriodo == true) {
+                
+                alert("Entré a la creación del JSON periodo");
+
+                // Remuevo lo checked que se hayan seleccionado teniendo km u horas seleccionado
+                postBanderaSeleccion == false // Retorno a false la bandera de selecciones en km u horas
+                const postCategoriasPrevJSON = document.getElementById('planCategories').getElementsByClassName('control-group');
+                let cont = 0;
+                for (const cat of postCategoriasPrevJSON) {
+                    cont++;
+                    $(`#categoryCheckbox_${cont}`).removeAttr('checked');
+                }
+                ////////
+
+                sessionStorage.setItem(`NuevoPlan`, JSON.stringify(nuevoPlanJSON));
+                mostrarPlanStorageJSON();
+
+            } else {
+                //Para KM u HORAS
+                if (($('#plansRadios2').is(':checked') || $('#plansRadios3').is(':checked')) && banderaSeleccion == true && postBanderaSeleccion == true) {
+                    
+                    alert("Entré a la creación del JSON km u horas");
+                    
+                    // Remuevo lo checked que se hayan seleccionado teniendo Por período seleccionado
+                    postBanderaSeleccionPeriodo == false // En false la bandera de selecciones en período
+                    const postCategoriasPeriodoPrevJSON = document.getElementById('planPeriodoCategories').getElementsByClassName('control-group');
+                    let cont = 0;
+                    for (const cat of postCategoriasPeriodoPrevJSON) {
+                        cont++;
+                        $(`#categoryPeriodoCheckbox_${cont}`).removeAttr('checked');
+                    }
+                    ////////
+
+                    sessionStorage.setItem(`NuevoPlan`, JSON.stringify(nuevoPlanJSON));
+                    mostrarPlanStorageJSON();
+                    
+                }
+
+            }
+        }
+
     });
 
 
@@ -787,7 +915,7 @@ $(document).ready(function () {
     $('div #pages').on('click', 'input#plansRadios1', function () {
 
         $(`#planPeriodoServiceCategories_new`).show(1000, function () {
-            console.log('Mostrando datos por Kilómetro');
+            console.log('Mostrando datos por Período');
             $(`#planPeriodoServiceCategories_new`).removeClass("hidden");
             $('html, body').animate({
                 scrollTop: $(`#planPeriodoServiceCategories_new`).offset().top

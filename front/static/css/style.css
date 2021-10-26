@@ -199,6 +199,14 @@
     margin-bottom: 5px;
 }
 
+.new-border-missing-category{
+    margin-bottom: 10px;
+    padding: 10px;
+    /*border: PowderBlue 1px solid;*/
+    border: #e48400 1px solid;
+    border-radius: 5px;
+}
+
 /**Estilos para árbol de estados*/
 .contenedor-arbol,
 .contenedor-arbol ul,
