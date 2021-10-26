@@ -28,6 +28,9 @@ let identificadorGlobal = '';
 //let getActivos = [];
 //let getTalleres = [];
 
+//Variable para validar que al menos se tenga una categoría seleccionada
+let banderaSeleccionCategoria = false;
+
 //VARIABLE PARA JSON
 let nuevaOrdenJSON = {
     "fechaCreacion": "",
@@ -39,7 +42,7 @@ let nuevaOrdenJSON = {
     "observaciones": "",
     //"estadoIdEstado": 2,
     "ordenEstados": [],
-    "ordenCategorias":[],
+    "ordenCategorias": [],
     "title": "",
     "start": "",
     "end": "",
@@ -231,7 +234,8 @@ export default class extends AbstractView {
                     </div>
                     <div class="control-group">
                         <div class="control">
-                            <select multiple="multiple" id="orderAsset" name="orderAsset[]" required class="${ocultoActivos}">
+                            <!--<select multiple="multiple" id="orderAsset" name="orderAsset[]" required class="${ocultoActivos}">-->
+                            <select multiple="multiple" id="orderAsset" class="${ocultoActivos}">
                             </select>
                         </div>
                     </div>
@@ -254,7 +258,7 @@ export default class extends AbstractView {
                             </div>
                             <div class="row-fluid">
                                 <input class="span4" id="newRangeStartDate" type="datetime-local" value="" ${requeridoPorRango}
-                                    min="${currentDate().slice(0,16)}">
+                                    min="${currentDate().slice(0, 16)}">
                             </div>
                         </div>
                         <div class="control-group">
@@ -319,7 +323,7 @@ const fillOrderOptions = () => {
 
     //window.onload = function () {
 
-    $(window).on("load", function() {
+    $(window).on("load", function () {
 
         $(document).ready(function () {
 
@@ -454,18 +458,23 @@ const fillOrderCategories = () => {
     })
 }
 
-const guardarJSON = () => {
+const guardarOrdenParaJSON = () => {
+
+
+    console.log("Entré a la función")
     
     let contadorOrdenes = 0;
     const activosSeleccionados = document.getElementsByClassName('ms-elem-selection ms-selected');
     //Se crean tantas órdenes como activos hayan sido seleccionados
-    for (const element of activosSeleccionados){
+    for (const element of activosSeleccionados) {
+
+        console.log("Entré al for de activosSeleccionados")
 
         contadorOrdenes++;
 
         nuevaOrdenJSON.ordenEstados = []; // reinicio el estado por cada activo
         nuevaOrdenJSON.ordenCategorias = []; // reinicio las categorías por cada activo
-        
+
         nuevaOrdenJSON.fechaCreacion = currentDate();
         nuevaOrdenJSON.fechaInicial = document.getElementById('newRangeStartDate').value;
         nuevaOrdenJSON.start = nuevaOrdenJSON.fechaInicial;
@@ -476,17 +485,17 @@ const guardarJSON = () => {
         nuevaOrdenJSON.allDay = false
 
         const activo = getActivos.find((activo) => activo.activo == element.textContent);
-        if(activo){
+        if (activo) {
             nuevaOrdenJSON.activoIdActivo = activo.id;
         }
 
         const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType').value);
-        if(tipoOrden){
+        if (tipoOrden) {
             nuevaOrdenJSON.tipoOrdenidTipoOrden = tipoOrden.id_tipo_mantenimiento;
         }
 
         const taller = getTalleres.find((taller) => taller.nombre == document.getElementById('orderProvider').value);
-        if(taller){
+        if (taller) {
             nuevaOrdenJSON.tallerServicioIdTallerServicio = taller.id;
         }
 
@@ -501,7 +510,7 @@ const guardarJSON = () => {
 
         const categoriasSeleccionadas = document.getElementById('categoriesContainer').getElementsByClassName('row-fluid');
         let contCategory = 0;
-        for (const cat of categoriasSeleccionadas){
+        for (const cat of categoriasSeleccionadas) {
             contCategory++;
             //Label de categoría
             let labelCategoryCheckbox = document.getElementById(`labelCategoryCheckbox_${contCategory}`);
@@ -510,28 +519,38 @@ const guardarJSON = () => {
             //Input type number del costo de la categoría
             let appendedPrependedInput = document.getElementById(`appendedPrependedInput_${contCategory}`);
 
-            if(categoryCheckbox.checked){
+            if (categoryCheckbox.checked) {
 
-                //alert("Texto: " + labelCategoryCheckbox.textContent.trim() + " - Costo: " + appendedPrependedInput.value)
-                const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelCategoryCheckbox.textContent.trim());
-                if(category){
+                console.log("Entré al checked")
+                
 
-                    let categoriasNuevaOrdenJSON = {
-                        //"ordenIdOrden": 
-                        "categoriaServicioIdCategoriaServicio": category.id,
-                        "costo": appendedPrependedInput.value,
-                        "fechaCategoriaAsignada": nuevaOrdenJSON.fechaCreacion,
-                        "observacionCategoria":""
+                if (appendedPrependedInput.value > 0) {
+
+                    banderaSeleccionCategoria = true;
+
+                    //alert("Texto: " + labelCategoryCheckbox.textContent.trim() + " - Costo: " + appendedPrependedInput.value)
+                    const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelCategoryCheckbox.textContent.trim());
+                    if (category) {
+
+                        let categoriasNuevaOrdenJSON = {
+                            //"ordenIdOrden": 
+                            "categoriaServicioIdCategoriaServicio": category.id,
+                            "costo": appendedPrependedInput.value,
+                            "fechaCategoriaAsignada": nuevaOrdenJSON.fechaCreacion,
+                            "observacionCategoria": ""
+                        }
+
+                        nuevaOrdenJSON.ordenCategorias.push(categoriasNuevaOrdenJSON);
                     }
-
-                    nuevaOrdenJSON.ordenCategorias.push(categoriasNuevaOrdenJSON);
                 }
             }
 
         }
 
-        sessionStorage.setItem(`NuevaOrden_${contadorOrdenes}`, JSON.stringify(nuevaOrdenJSON));
-
+        if (banderaSeleccionCategoria == true) {
+            alert("cambió el valor de banderaSeleccionCategoria a TRUE")
+            sessionStorage.setItem(`NuevaOrden_${contadorOrdenes}`, JSON.stringify(nuevaOrdenJSON));
+        }
     }
 
 }
@@ -540,7 +559,7 @@ const removerVariablesStorageJSON = () => {
 
     let contadorOrdenes = 0;
     const activosSeleccionados = document.getElementsByClassName('ms-elem-selection ms-selected');
-    for (const element of activosSeleccionados){
+    for (const element of activosSeleccionados) {
         contadorOrdenes++;
         sessionStorage.removeItem(`NuevaOrden_${contadorOrdenes}`);
     }
@@ -551,7 +570,7 @@ const mostrarStorageJSON = () => {
 
     let contadorOrdenes = 0;
     const activosSeleccionados = document.getElementsByClassName('ms-elem-selection ms-selected');
-    for (const element of activosSeleccionados){
+    for (const element of activosSeleccionados) {
         contadorOrdenes++;
         console.log(`\n\nNuevaOrden_${contadorOrdenes}\n\n` + sessionStorage.getItem(`NuevaOrden_${contadorOrdenes}`));
         //sessionStorage.removeItem(`NuevaOrden_${contadorOrdenes}`);
@@ -560,9 +579,39 @@ const mostrarStorageJSON = () => {
 
 $(document).ready(function () {
 
-    $('div #pages').on('click', 'button#saveOrder_new', function () {
-        guardarJSON();
+    $('div #pages').on('click', 'button#saveOrder_new', function (e) {
+
+        guardarOrdenParaJSON();
+
+        //REPARAR ESTO
+        /*if(!$('#ms-orderAsset')){
+            alert("Debe seleccionar activos")
+        } else {
+            if(!$('.ms-selected')){
+                alert("Debe seleccionar al menos 1 activo")
+            }
+        }*/
+
+        if ($('#orderType').val().length != ''
+            && $('#orderAreasOptions').val().length != ''
+            && $('#orderProvider').val().length != ''
+            && $('#orderAssetType').val().length != ''
+            && $('#newRangeStartDate').val().length != ''
+            && $('#newRangeEndDate').val().length != '') {
+
+
+            if (banderaSeleccionCategoria == false) {
+
+                alert("Debe seleccionar al menos una categoría y asignar el costo");
+                e.preventDefault();
+                $('#categoriesContainer').css("background-color", 'beige')
+
+            }
+
+        }
+
         mostrarStorageJSON();
+
     });
 
     $('div #pages').on('click', 'label[id=labelOrderAsset]', function () {

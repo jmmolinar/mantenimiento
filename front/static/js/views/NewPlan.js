@@ -453,7 +453,7 @@ const guardarPlanParaJSON = () => {
 
                 banderaSeleccion = true;
 
-                if (frequencyStartDate.value != '' && frequencyCount.value >= 1 && frequencyStartDate.value != '') {
+                if (frequencyStartDate.value != '' && frequencyCount.value >= 1 && frequencyType.value != '') {
 
                     const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelPeriodoCategoryCheckbox.textContent.trim());
                     if (category) {

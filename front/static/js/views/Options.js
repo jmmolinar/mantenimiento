@@ -129,7 +129,7 @@ const currentDate = () => {
     if (ms < 10) {ms = '0' + ms;}
     if (ss < 10) {ss = '0' + ss;}
 
-    console.log("currentDate(): " + yyyy + '-' + mm + '-' + dd + 'T' + hh + ':' + ms + ':' + ss);
+    //console.log("currentDate(): " + yyyy + '-' + mm + '-' + dd + 'T' + hh + ':' + ms + ':' + ss);
     return today = yyyy + '-' + mm + '-' + dd + 'T' + hh + ':' + ms + ':' + ss;
 
 }
