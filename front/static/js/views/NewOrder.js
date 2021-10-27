@@ -461,9 +461,10 @@ const fillOrderCategories = () => {
 
 const guardarOrdenParaJSON = () => {
 
+    banderaSeleccionCategoria = false; // Reinicio a false para verificar de nuevo la selección de categorías
 
     console.log("Entré a la función")
-    
+
     let contadorOrdenes = 0;
     const activosSeleccionados = document.getElementsByClassName('ms-elem-selection ms-selected');
     //Se crean tantas órdenes como activos hayan sido seleccionados
@@ -509,6 +510,7 @@ const guardarOrdenParaJSON = () => {
         nuevaOrdenJSON.ordenEstados.push(estadoNuevaOrdenJSON);
 
 
+        let costoRequerido = false;
         const categoriasSeleccionadas = document.getElementById('categoriesContainer').getElementsByClassName('row-fluid');
         let contCategory = 0;
         for (const cat of categoriasSeleccionadas) {
@@ -524,9 +526,18 @@ const guardarOrdenParaJSON = () => {
 
                 console.log("Entré al checked")
 
-                if (appendedPrependedInput.value > 0) {
+                banderaSeleccionCategoria = true;
 
-                    banderaSeleccionCategoria = true;
+                //Si está requerido el costo es porque su input checkbox está checked
+                if (appendedPrependedInput.required
+                    && appendedPrependedInput.value <= 0) {
+
+                    alert(`Verifique el costo en: ${labelCategoryCheckbox.textContent.trim()}`);
+                    costoRequerido = true;
+                    //banderaSeleccionCategoria = false; //En caso de que se hayan desseleccionado los checkbox
+                }
+
+                if (appendedPrependedInput.value > 0) {
 
                     //alert("Texto: " + labelCategoryCheckbox.textContent.trim() + " - Costo: " + appendedPrependedInput.value)
                     const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelCategoryCheckbox.textContent.trim());
@@ -547,12 +558,11 @@ const guardarOrdenParaJSON = () => {
 
         }
 
-        //COMENTO PARA CREAR EL JSON EN EL EVENTO LUEGO DE VERIFICAR TODOS LOS CHECKED Y NO 
-        //CREAR EL JSON SOLO CON LA VERIFICACIÓN DE banderaSeleccionCategoria
-        /*if (banderaSeleccionCategoria == true) {
-            alert("cambió el valor de banderaSeleccionCategoria a TRUE")
+        //Creación del JSON
+        if (banderaSeleccionCategoria == true && costoRequerido == false) {
+            alert("cambió el valor de banderaSeleccionCategoria a TRUE y costoRequerido a FALSE")
             sessionStorage.setItem(`NuevaOrden_${contadorOrdenes}`, JSON.stringify(nuevaOrdenJSON));
-        }*/
+        }
     }
 
 }
@@ -607,7 +617,9 @@ $(document).ready(function () {
                 e.preventDefault();
                 $('#categoriesContainer').css("background-color", 'beige')
 
-            } else {
+            } 
+            
+            /*else {
 
                 //VUELVO A RECORRER ANTES DE CREAR EL JSON PARA VERIFICAR SI HAY NUEVOS CHECKED SIN SU COSTO AGREGADO
                 const categoriasSeleccionadas = document.getElementById('categoriesContainer').getElementsByClassName('row-fluid');
@@ -617,11 +629,12 @@ $(document).ready(function () {
                     contCategory++;
 
                     //Si está requerido el costo es porque su input checkbox está checked
-                    if($(`#appendedPrependedInput_${contCategory}`).attr("required")
-                        && $(`#appendedPrependedInput_${contCategory}`).val() <= 0){
+                    if ($(`#appendedPrependedInput_${contCategory}`).attr("required")
+                        && $(`#appendedPrependedInput_${contCategory}`).val() <= 0) {
 
                         alert("Verifique el costo en: " + $(`#labelCategoryCheckbox_${contCategory}`).text())
                         costoRequerido = true;
+                        banderaSeleccionCategoria = false; //En caso de que se hayan desseleccionado los checkbox
                     }
 
                 }
@@ -631,7 +644,7 @@ $(document).ready(function () {
                     sessionStorage.setItem(`NuevaOrden_${contadorOrdenes}`, JSON.stringify(nuevaOrdenJSON));
                 }
 
-            }
+            }*/
 
         }
 
