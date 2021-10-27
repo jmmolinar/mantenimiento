@@ -436,7 +436,7 @@ const fillOrderCategories = () => {
                         <div id="labelCost_${cont}" class="controls">
                             <div class="input-prepend input-append">
                                 <span class="add-on">$</span>
-                                <input id="appendedPrependedInput_${cont}" type="number" step="0.01" min="0"
+                                <input id="appendedPrependedInput_${cont}" type="number" step="0.01" min="1"
                                     maxlength="10" value="${costo}" placeholder="e.g. 1.78" ${requerido} ${deshabilitado} name="categoryCost_${cont}">
                             </div>
                         </div>
@@ -532,9 +532,8 @@ const guardarOrdenParaJSON = () => {
                 if (appendedPrependedInput.required
                     && appendedPrependedInput.value <= 0) {
 
-                    alert(`Verifique el costo en: ${labelCategoryCheckbox.textContent.trim()}`);
+                    //alert(`Verifique el costo en: ${labelCategoryCheckbox.textContent.trim()}`);
                     costoRequerido = true;
-                    //banderaSeleccionCategoria = false; //En caso de que se hayan desseleccionado los checkbox
                 }
 
                 if (appendedPrependedInput.value > 0) {
@@ -560,7 +559,7 @@ const guardarOrdenParaJSON = () => {
 
         //Creación del JSON
         if (banderaSeleccionCategoria == true && costoRequerido == false) {
-            alert("cambió el valor de banderaSeleccionCategoria a TRUE y costoRequerido a FALSE")
+            //alert("cambió el valor de banderaSeleccionCategoria a TRUE y costoRequerido a FALSE")
             sessionStorage.setItem(`NuevaOrden_${contadorOrdenes}`, JSON.stringify(nuevaOrdenJSON));
         }
     }
@@ -584,8 +583,10 @@ const mostrarStorageJSON = () => {
     const activosSeleccionados = document.getElementsByClassName('ms-elem-selection ms-selected');
     for (const element of activosSeleccionados) {
         contadorOrdenes++;
-        console.log(`\n\nNuevaOrden_${contadorOrdenes}\n\n` + sessionStorage.getItem(`NuevaOrden_${contadorOrdenes}`));
-        //sessionStorage.removeItem(`NuevaOrden_${contadorOrdenes}`);
+        if(sessionStorage.getItem(`NuevaOrden_${contadorOrdenes}`)){
+            console.log(`\n\nNuevaOrden_${contadorOrdenes}\n\n` + sessionStorage.getItem(`NuevaOrden_${contadorOrdenes}`));
+            //sessionStorage.removeItem(`NuevaOrden_${contadorOrdenes}`);
+        }
     }
 }
 
@@ -618,33 +619,6 @@ $(document).ready(function () {
                 $('#categoriesContainer').css("background-color", 'beige')
 
             } 
-            
-            /*else {
-
-                //VUELVO A RECORRER ANTES DE CREAR EL JSON PARA VERIFICAR SI HAY NUEVOS CHECKED SIN SU COSTO AGREGADO
-                const categoriasSeleccionadas = document.getElementById('categoriesContainer').getElementsByClassName('row-fluid');
-                let contCategory = 0;
-                let costoRequerido = false;
-                for (const cat of categoriasSeleccionadas) {
-                    contCategory++;
-
-                    //Si está requerido el costo es porque su input checkbox está checked
-                    if ($(`#appendedPrependedInput_${contCategory}`).attr("required")
-                        && $(`#appendedPrependedInput_${contCategory}`).val() <= 0) {
-
-                        alert("Verifique el costo en: " + $(`#labelCategoryCheckbox_${contCategory}`).text())
-                        costoRequerido = true;
-                        banderaSeleccionCategoria = false; //En caso de que se hayan desseleccionado los checkbox
-                    }
-
-                }
-
-                if(costoRequerido == false){
-                    alert("cambió el valor de banderaSeleccionCategoria a TRUE y costoRequerido a FALSE")
-                    sessionStorage.setItem(`NuevaOrden_${contadorOrdenes}`, JSON.stringify(nuevaOrdenJSON));
-                }
-
-            }*/
 
         }
 

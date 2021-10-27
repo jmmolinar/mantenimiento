@@ -18,6 +18,12 @@ let modalidad = '';
 //Variable para validar que al menos se tenga una categoría seleccionada
 let banderaSeleccion = false;
 
+//Variable para validar requeridos - en el proceso cambia a true
+let inputAndSelectRequeridos = false;
+
+// Se creará el JSON si las dos variables anteriores están en:
+// banderaSeleccion = true y inputAndSelectRequeridos = false
+
 //VARIABLE PARA JSON
 let nuevoPlanJSON = {
     "nombre": "",
@@ -252,6 +258,7 @@ const fillPlanServiceCategories = () => {
                 cont++;
                 let checkboxSeleccionado = '';
                 let requerido = '';
+                let deshabilitado = "disabled"
                 let requeridoPorPeriodo = '';
                 let limite = '';
                 let inicio = '';
@@ -302,9 +309,9 @@ const fillPlanServiceCategories = () => {
                         <div id="labelLimit_${cont}" class="controls">
                             <div class="input-prepend input-append">
                                 <span name="medida" class="add-on">${modalidad}</span>
-                                <input id="appendedPrependedInput_${cont}" type="number" step="1" min="0"
+                                <input id="appendedPrependedInput_${cont}" type="number" step="1" min="1"
                                     maxlength="10" value="${limite}" placeholder="e.g. 100" 
-                                    ${requerido} name="categoryLimit_${cont}">
+                                    ${requerido} ${deshabilitado} name="categoryLimit_${cont}">
                             </div>
                         </div>
                     </div>
@@ -325,7 +332,7 @@ const fillPlanServiceCategories = () => {
                         <div class="span5">
                             <span name="fechaInicio" class="add-on">Inicio</span>
                             <input class="span5" id="frequencyStartDate_${cont}" type="date" value="${inicio}" 
-                                name="categoryPeriodo_${cont}" ${requeridoPorPeriodo}
+                                name="categoryPeriodo_${cont}" ${requeridoPorPeriodo} ${deshabilitado}
                                 min="${currentDate().slice(0, 10)}">
                         </div>
                     </div>
@@ -334,10 +341,10 @@ const fillPlanServiceCategories = () => {
                             <span name="fechaCada" class="add-on">Cada</span>
                             <input class="span2" id="frequencyCount_${cont}" type="number" 
                                 value="${cada}" placeholder="" 
-                                name="categoryPeriodo_${cont}" ${requeridoPorPeriodo} 
+                                name="categoryPeriodo_${cont}" ${requeridoPorPeriodo} ${deshabilitado}
                                 min="1">
                             <select class="span3" id="frequencyType_${cont}" 
-                                ${requeridoPorPeriodo}
+                                ${requeridoPorPeriodo} ${deshabilitado}
                                 name="categoryPeriodo_${cont}">
                                 <!--<option placeholder="-"></option>--><!--Esta linea se debe mantener-->
                             </select>
@@ -412,6 +419,12 @@ const fillFrecuencyOptions = () => {
 
 const guardarPlanParaJSON = () => {
 
+    banderaSeleccion = false; // reinicio bandera a false
+    inputAndSelectRequeridos = false; // reinicio bandera de requeridos
+    let banderaPorPeriodo = false;
+    let banderaPorKm = false;
+    let banderaPorHoras = false;
+
     nuevoPlanJSON.planCategorias = []; // reinicio las categorías
     nuevoPlanJSON.nombre = document.getElementById('planName_new').value;
 
@@ -420,13 +433,22 @@ const guardarPlanParaJSON = () => {
     let plansRadios3 = document.getElementById(`plansRadios3`);
 
     if (plansRadios1.checked) {
-        nuevoPlanJSON.porPeriodo = true;
+        banderaPorPeriodo = true;
+        banderaPorKm = false;
+        banderaPorHoras = false;
+        nuevoPlanJSON.porPeriodo = banderaPorPeriodo;
     } else {
         if (plansRadios2.checked) {
-            nuevoPlanJSON.porKm = true;
+            banderaPorPeriodo = false;
+            banderaPorKm = true;
+            banderaPorHoras = false;
+            nuevoPlanJSON.porKm = banderaPorKm;
         } else {
             if (plansRadios3.checked) {
-                nuevoPlanJSON.porHora = true;
+                banderaPorPeriodo = false;
+                banderaPorKm = false;
+                banderaPorHoras = true;
+                nuevoPlanJSON.porHora = banderaPorHoras;
             }
         }
     }
@@ -453,7 +475,33 @@ const guardarPlanParaJSON = () => {
 
                 banderaSeleccion = true;
 
-                if (frequencyStartDate.value != '' && frequencyCount.value >= 1 && frequencyType.value != '') {
+                //Si FECHA DE INICIO es requerido es porque su input checkbox está checked
+                if (frequencyStartDate.required
+                    && frequencyStartDate.value == '') {
+                        
+                    inputAndSelectRequeridos = true;
+
+                }
+
+                //Si el Cada requerido es porque su input checkbox está checked
+                if (frequencyCount.required
+                    && frequencyCount.value < 1) {
+                        
+                    inputAndSelectRequeridos = true;
+
+                }
+
+                //Si la frecuencia es requerida es porque su input checkbox está checked
+                if (frequencyType.required
+                    && frequencyType.options[frequencyType.selectedIndex].text == '') {
+                        
+                    inputAndSelectRequeridos = true;
+
+                }
+
+                if (frequencyStartDate.value != '' 
+                    && frequencyCount.value >= 1 
+                    && frequencyType.options[frequencyType.selectedIndex].text != '') {
 
                     const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelPeriodoCategoryCheckbox.textContent.trim());
                     if (category) {
@@ -465,7 +513,8 @@ const guardarPlanParaJSON = () => {
                             "rangoHoras": null,
                             "periodoFecha": frequencyStartDate.value,
                             "periodoCada": frequencyCount.value,
-                            "periodoFrecuencia": frequencyType.value
+                            //"periodoFrecuencia": frequencyType.value
+                            "periodoFrecuencia": frequencyType.options[frequencyType.selectedIndex].text
                         }
 
                         nuevoPlanJSON.planCategorias.push(categoriasNuevoPlanJSON);
@@ -500,6 +549,13 @@ const guardarPlanParaJSON = () => {
             if (categoryCheckbox.checked) {
 
                 banderaSeleccion = true;
+
+                //Si está requerido el límite es porque su input checkbox está checked
+                if (appendedPrependedInput.required
+                    && appendedPrependedInput.value <= 0) {
+
+                    inputAndSelectRequeridos = true;
+                }
 
                 if (appendedPrependedInput.value >= 1) {
 
@@ -543,7 +599,7 @@ const guardarPlanParaJSON = () => {
             document.getElementById(`frequencyCount_${contCategory}`).value = '';
             document.getElementById(`frequencyCount_${contCategory}`).required = false;
             //Select de la frecuencia de la categoría
-            document.getElementById(`frequencyType_${contCategory}`).value = '';
+            document.getElementById(`frequencyType_${contCategory}`).selectedIndex = 0;
             document.getElementById(`frequencyType_${contCategory}`).required = false;
 
         }
@@ -552,6 +608,12 @@ const guardarPlanParaJSON = () => {
 
     //Comento para crear la variable JSON para evitar el submit si no se han seleccionado categorías
     //sessionStorage.setItem(`NuevoPlan`, JSON.stringify(nuevoPlanJSON));
+
+    //Creación del JSON
+    if (banderaSeleccion == true && inputAndSelectRequeridos == false) {
+        //alert("cambió el valor de banderaSeleccion a TRUE y inputAndSelectRequeridos a FALSE")
+        sessionStorage.setItem(`NuevoPlan`, JSON.stringify(nuevoPlanJSON));
+    }
 
 }
 
@@ -591,12 +653,13 @@ $(document).ready(function () {
                     $('#planCategories').css("background-color", 'beige')
                 }
 
-            } else {
+            } 
+            /*else {
 
                 sessionStorage.setItem(`NuevoPlan`, JSON.stringify(nuevoPlanJSON));
                 //mostrarPlanStorageJSON();
 
-            }
+            }*/
         }
 
     });
@@ -828,17 +891,24 @@ $(document).ready(function () {
         if ($(this).is(':checked')) {
 
             $(`input[name=${propForInputLabel}]`).attr("required", "required");
+            $(`input[name=${propForInputLabel}]`).removeAttr("disabled");
             // Si las categorías por período no están ocultas
             if (!$(`#planPeriodoServiceCategories_new`).is(":hidden")) {
                 $(`select[name=${propForInputLabel}]`).attr("required", "required"); //Para Frecuencia en Periodo
+                $(`select[name=${propForInputLabel}]`).removeAttr("disabled"); //Para Frecuencia en Periodo
             }
 
         } else {
 
             $(`input[name=${propForInputLabel}]`).removeAttr("required");
+            $(`input[name=${propForInputLabel}]`).val('');
+            $(`input[name=${propForInputLabel}]`).attr("disabled", "disabled");
             // Si las categorías por período no están ocultas
             if (!$(`#planPeriodoServiceCategories_new`).is(":hidden")) {
                 $(`select[name = ${propForInputLabel}]`).removeAttr("required"); //Para Frecuencia en Periodo
+                //$("#provincia option[value=").attr("selected",true);
+                $(`select[name = ${propForInputLabel}]`).prop("selectedIndex",0);
+                $(`select[name = ${propForInputLabel}]`).attr("disabled", "disabled"); //Para Frecuencia en Periodo
             }
         }
 
