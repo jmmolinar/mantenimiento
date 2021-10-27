@@ -437,17 +437,23 @@ const guardarPlanParaJSON = () => {
         banderaPorKm = false;
         banderaPorHoras = false;
         nuevoPlanJSON.porPeriodo = banderaPorPeriodo;
+        nuevoPlanJSON.porKm = banderaPorKm;
+        nuevoPlanJSON.porHora = banderaPorHoras;
     } else {
         if (plansRadios2.checked) {
             banderaPorPeriodo = false;
             banderaPorKm = true;
             banderaPorHoras = false;
+            nuevoPlanJSON.porPeriodo = banderaPorPeriodo;
             nuevoPlanJSON.porKm = banderaPorKm;
+            nuevoPlanJSON.porHora = banderaPorHoras;
         } else {
             if (plansRadios3.checked) {
                 banderaPorPeriodo = false;
                 banderaPorKm = false;
                 banderaPorHoras = true;
+                nuevoPlanJSON.porPeriodo = banderaPorPeriodo;
+                nuevoPlanJSON.porKm = banderaPorKm;
                 nuevoPlanJSON.porHora = banderaPorHoras;
             }
         }
@@ -478,7 +484,7 @@ const guardarPlanParaJSON = () => {
                 //Si FECHA DE INICIO es requerido es porque su input checkbox está checked
                 if (frequencyStartDate.required
                     && frequencyStartDate.value == '') {
-                        
+
                     inputAndSelectRequeridos = true;
 
                 }
@@ -486,7 +492,7 @@ const guardarPlanParaJSON = () => {
                 //Si el Cada requerido es porque su input checkbox está checked
                 if (frequencyCount.required
                     && frequencyCount.value < 1) {
-                        
+
                     inputAndSelectRequeridos = true;
 
                 }
@@ -494,13 +500,13 @@ const guardarPlanParaJSON = () => {
                 //Si la frecuencia es requerida es porque su input checkbox está checked
                 if (frequencyType.required
                     && frequencyType.options[frequencyType.selectedIndex].text == '') {
-                        
+
                     inputAndSelectRequeridos = true;
 
                 }
 
-                if (frequencyStartDate.value != '' 
-                    && frequencyCount.value >= 1 
+                if (frequencyStartDate.value != ''
+                    && frequencyCount.value >= 1
                     && frequencyType.options[frequencyType.selectedIndex].text != '') {
 
                     const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelPeriodoCategoryCheckbox.textContent.trim());
@@ -653,7 +659,7 @@ $(document).ready(function () {
                     $('#planCategories').css("background-color", 'beige')
                 }
 
-            } 
+            }
             /*else {
 
                 sessionStorage.setItem(`NuevoPlan`, JSON.stringify(nuevoPlanJSON));
@@ -907,7 +913,7 @@ $(document).ready(function () {
             if (!$(`#planPeriodoServiceCategories_new`).is(":hidden")) {
                 $(`select[name = ${propForInputLabel}]`).removeAttr("required"); //Para Frecuencia en Periodo
                 //$("#provincia option[value=").attr("selected",true);
-                $(`select[name = ${propForInputLabel}]`).prop("selectedIndex",0);
+                $(`select[name = ${propForInputLabel}]`).prop("selectedIndex", 0);
                 $(`select[name = ${propForInputLabel}]`).attr("disabled", "disabled"); //Para Frecuencia en Periodo
             }
         }
