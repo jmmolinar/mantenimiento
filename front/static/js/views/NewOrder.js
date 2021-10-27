@@ -410,6 +410,7 @@ const fillOrderCategories = () => {
                 cont++;
                 let checkboxSeleccionado = ''
                 let requerido = '';
+                let deshabilitado = "disabled"
                 let costo = '';
                 //costoTotal += costo; 
 
@@ -436,7 +437,7 @@ const fillOrderCategories = () => {
                             <div class="input-prepend input-append">
                                 <span class="add-on">$</span>
                                 <input id="appendedPrependedInput_${cont}" type="number" step="0.01" min="0"
-                                    maxlength="10" value="${costo}" placeholder="e.g. 1.78" ${requerido} name="categoryCost_${cont}">
+                                    maxlength="10" value="${costo}" placeholder="e.g. 1.78" ${requerido} ${deshabilitado} name="categoryCost_${cont}">
                             </div>
                         </div>
                     </div>
@@ -522,7 +523,6 @@ const guardarOrdenParaJSON = () => {
             if (categoryCheckbox.checked) {
 
                 console.log("Entré al checked")
-                
 
                 if (appendedPrependedInput.value > 0) {
 
@@ -547,10 +547,12 @@ const guardarOrdenParaJSON = () => {
 
         }
 
-        if (banderaSeleccionCategoria == true) {
+        //COMENTO PARA CREAR EL JSON EN EL EVENTO LUEGO DE VERIFICAR TODOS LOS CHECKED Y NO 
+        //CREAR EL JSON SOLO CON LA VERIFICACIÓN DE banderaSeleccionCategoria
+        /*if (banderaSeleccionCategoria == true) {
             alert("cambió el valor de banderaSeleccionCategoria a TRUE")
             sessionStorage.setItem(`NuevaOrden_${contadorOrdenes}`, JSON.stringify(nuevaOrdenJSON));
-        }
+        }*/
     }
 
 }
@@ -599,12 +601,35 @@ $(document).ready(function () {
             && $('#newRangeStartDate').val().length != ''
             && $('#newRangeEndDate').val().length != '') {
 
-
             if (banderaSeleccionCategoria == false) {
 
-                alert("Debe seleccionar al menos una categoría y asignar el costo");
+                alert('Debe completar los datos de "Categorías de servicio"');
                 e.preventDefault();
                 $('#categoriesContainer').css("background-color", 'beige')
+
+            } else {
+
+                //VUELVO A RECORRER ANTES DE CREAR EL JSON PARA VERIFICAR SI HAY NUEVOS CHECKED SIN SU COSTO AGREGADO
+                const categoriasSeleccionadas = document.getElementById('categoriesContainer').getElementsByClassName('row-fluid');
+                let contCategory = 0;
+                let costoRequerido = false;
+                for (const cat of categoriasSeleccionadas) {
+                    contCategory++;
+
+                    //Si está requerido el costo es porque su input checkbox está checked
+                    if($(`#appendedPrependedInput_${contCategory}`).attr("required")
+                        && $(`#appendedPrependedInput_${contCategory}`).val() <= 0){
+
+                        alert("Verifique el costo en: " + $(`#labelCategoryCheckbox_${contCategory}`).text())
+                        costoRequerido = true;
+                    }
+
+                }
+
+                if(costoRequerido == false){
+                    alert("cambió el valor de banderaSeleccionCategoria a TRUE y costoRequerido a FALSE")
+                    sessionStorage.setItem(`NuevaOrden_${contadorOrdenes}`, JSON.stringify(nuevaOrdenJSON));
+                }
 
             }
 
@@ -712,10 +737,13 @@ $(document).ready(function () {
         if ($(this).is(':checked')) {
 
             $(`input[name=${propForInputLabel}]`).attr("required", "required");
+            $(`input[name=${propForInputLabel}]`).removeAttr("disabled");
 
         } else {
 
             $(`input[name=${propForInputLabel}]`).removeAttr("required");
+            $(`input[name=${propForInputLabel}]`).val('');
+            $(`input[name=${propForInputLabel}]`).attr("disabled", "disabled");
         }
 
     })
