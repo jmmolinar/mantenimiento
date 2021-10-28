@@ -421,9 +421,6 @@ const guardarPlanParaJSON = () => {
 
     banderaSeleccion = false; // reinicio bandera a false
     inputAndSelectRequeridos = false; // reinicio bandera de requeridos
-    let banderaPorPeriodo = false;
-    let banderaPorKm = false;
-    let banderaPorHoras = false;
 
     nuevoPlanJSON.planCategorias = []; // reinicio las categorías
     nuevoPlanJSON.nombre = document.getElementById('planName_new').value;
@@ -433,28 +430,19 @@ const guardarPlanParaJSON = () => {
     let plansRadios3 = document.getElementById(`plansRadios3`);
 
     if (plansRadios1.checked) {
-        banderaPorPeriodo = true;
-        banderaPorKm = false;
-        banderaPorHoras = false;
-        nuevoPlanJSON.porPeriodo = banderaPorPeriodo;
-        nuevoPlanJSON.porKm = banderaPorKm;
-        nuevoPlanJSON.porHora = banderaPorHoras;
+        nuevoPlanJSON.porPeriodo = true;
+        nuevoPlanJSON.porKm = false;
+        nuevoPlanJSON.porHora = false;
     } else {
         if (plansRadios2.checked) {
-            banderaPorPeriodo = false;
-            banderaPorKm = true;
-            banderaPorHoras = false;
-            nuevoPlanJSON.porPeriodo = banderaPorPeriodo;
-            nuevoPlanJSON.porKm = banderaPorKm;
-            nuevoPlanJSON.porHora = banderaPorHoras;
+            nuevoPlanJSON.porPeriodo = false;
+            nuevoPlanJSON.porKm = true;
+            nuevoPlanJSON.porHora = false;
         } else {
             if (plansRadios3.checked) {
-                banderaPorPeriodo = false;
-                banderaPorKm = false;
-                banderaPorHoras = true;
-                nuevoPlanJSON.porPeriodo = banderaPorPeriodo;
-                nuevoPlanJSON.porKm = banderaPorKm;
-                nuevoPlanJSON.porHora = banderaPorHoras;
+                nuevoPlanJSON.porPeriodo = false;
+                nuevoPlanJSON.porKm = false;
+                nuevoPlanJSON.porHora = true;
             }
         }
     }
@@ -625,15 +613,19 @@ const guardarPlanParaJSON = () => {
 
 const removerVariablePlanStorageJSON = () => {
 
-    sessionStorage.removeItem(`NuevoPlan`);
+    if (sessionStorage.getItem(`NuevoPlan`)) {
+        sessionStorage.removeItem(`NuevoPlan`);
+    }
 
 }
 
 const mostrarPlanStorageJSON = () => {
 
-    console.log(`\n\nNuevoPlan\n\n` + sessionStorage.getItem(`NuevoPlan`));
-    alert(`\n\nNuevoPlan\n\n` + JSON.stringify(nuevoPlanJSON, undefined, 4));
-    //sessionStorage.removeItem(`NuevoActivo`);
+    if (sessionStorage.getItem(`NuevoPlan`)) {
+        console.log(`\n\nNuevoPlan\n\n` + sessionStorage.getItem(`NuevoPlan`));
+        alert(`\n\nNuevoPlan\n\n` + JSON.stringify(nuevoPlanJSON, undefined, 4));
+        //sessionStorage.removeItem(`NuevoActivo`);
+    }
 }
 
 

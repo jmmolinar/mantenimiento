@@ -1,5 +1,8 @@
 import AbstractView from "./AbstractView.js";
 
+//Variable para controlar la creación de JSON de categoría
+let banderaCategoria = false;
+
 //VARIABLE PARA JSON
 let nuevaCategoriaJSON = {
     "nombre": "",
@@ -94,28 +97,44 @@ export default class extends AbstractView {
 }
 
 const guardarCategoriaJSON = () => {
-    
-    nuevaCategoriaJSON.nombre = document.getElementById('categoryName_new').value;
-    nuevaCategoriaJSON.codigo = document.getElementById('categoryCode_new').value;
 
-    sessionStorage.setItem(`NuevaCategoria`, JSON.stringify(nuevaCategoriaJSON));
+    let nombreCategoria = document.getElementById('categoryName_new');
+    nuevaCategoriaJSON.nombre = nombreCategoria.value;
+
+    let codigoCategoria = document.getElementById('categoryCode_new');
+    nuevaCategoriaJSON.codigo = codigoCategoria.value;
+
+    if (nombreCategoria.value != ''
+        && codigoCategoria.value != '') {
+
+        banderaCategoria = true;
+
+    }
+
+    //Creación del JSON
+    if (banderaCategoria == true) {
+        sessionStorage.setItem(`NuevaCategoria`, JSON.stringify(nuevaCategoriaJSON));
+    }
 }
 
 const removerVariableCategoriaStorageJSON = () => {
 
-    sessionStorage.removeItem(`NuevaCategoria`);
+    if (sessionStorage.getItem(`NuevaCategoria`)) {
+        sessionStorage.removeItem(`NuevaCategoria`);
+    }
 
 }
 
 const mostrarCategoriaStorageJSON = () => {
 
-    console.log(`\n\nNuevaCategoria\n\n` + sessionStorage.getItem(`NuevaCategoria`));
-    //alert(`\n\nNuevaCategoria\n\n` + JSON.stringify(nuevaCategoriaJSON, undefined, 4));
-    //sessionStorage.removeItem(`NuevoActivo`);
+    if (sessionStorage.getItem(`NuevaCategoria`)) {
+        console.log(`\n\nNuevaCategoria\n\n` + sessionStorage.getItem(`NuevaCategoria`));
+        alert(`\n\nNuevaCategoria\n\n` + JSON.stringify(nuevaCategoriaJSON, undefined, 4));
+        //sessionStorage.removeItem(`NuevoActivo`);
+    }
 }
 
 $(document).ready(function () {
-
 
     $('div #pages').on('click', 'button#saveCategory_new', function () {
         guardarCategoriaJSON();

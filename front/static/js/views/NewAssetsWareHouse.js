@@ -16,6 +16,9 @@ let getLatitud = ``;
 let getLongitud = ``;
 
 
+//Variable para controlar la creación de JSON de bodega
+let banderaBodega = false;
+
 //VARIABLE PARA JSON
 let nuevaBodegaJSON = {
     "nombre": "",
@@ -236,7 +239,10 @@ const fillOptions = () => {
 
 const guardarBodegaJSON = () => {
 
-    nuevaBodegaJSON.nombre = document.getElementById('wareHouseName_new').value;
+    banderaBodega = false;
+
+    let nombreBodega = document.getElementById('wareHouseName_new')
+    nuevaBodegaJSON.nombre = nombreBodega.value;
 
     let selectRegion = document.getElementById('wareHouseRegionOptions');
     nuevaBodegaJSON.region = selectRegion.options[selectRegion.selectedIndex].text;
@@ -244,30 +250,57 @@ const guardarBodegaJSON = () => {
     let selectComuna = document.getElementById('wareHouseCommuneOptions');
     nuevaBodegaJSON.comuna = selectComuna.options[selectComuna.selectedIndex].text;
 
-    nuevaBodegaJSON.calle = document.getElementById('streetWareHouse').value;
-    nuevaBodegaJSON.numero = document.getElementById('numStreetWareHouse').value;
-    nuevaBodegaJSON.latitud = document.getElementById('latitudeWareHouse').value;
-    nuevaBodegaJSON.longitud = document.getElementById('longitudeWareHouse').value;
+    let calleBodega = document.getElementById('streetWareHouse');
+    nuevaBodegaJSON.calle = calleBodega.value;
+
+    let numeroBodega = document.getElementById('numStreetWareHouse');
+    nuevaBodegaJSON.numero = numeroBodega.value;
+
+    let latitudBodega = document.getElementById('latitudeWareHouse');
+    nuevaBodegaJSON.latitud = latitudBodega.value;
+
+    let longitudBodega = document.getElementById('longitudeWareHouse');
+    nuevaBodegaJSON.longitud = longitudBodega.value;
 
     //Por ahora valor de referencia
     //Debe tener valor de relación idGeocercaCabecera en BD de Plataforma
     nuevaBodegaJSON.idGeocercaCabecera = 0;
 
-    sessionStorage.setItem(`NuevaBodega`, JSON.stringify(nuevaBodegaJSON));
+
+    if (nombreBodega.value != ''
+        && selectRegion.options[selectRegion.selectedIndex].text != ''
+        && selectComuna.options[selectComuna.selectedIndex].text != ''
+        && calleBodega.value != ''
+        && numeroBodega.value != ''
+        && latitudBodega.value != ''
+        && longitudBodega.value != '') {
+
+        banderaBodega = true;
+
+    }
+
+    //Creación del JSON
+    if (banderaBodega == true) {
+        sessionStorage.setItem(`NuevaBodega`, JSON.stringify(nuevaBodegaJSON));
+    }
 
 }
 
 const removerVariableBodegaStorageJSON = () => {
 
-    sessionStorage.removeItem(`NuevaBodega`);
+    if (sessionStorage.getItem(`NuevaBodega`)) {
+        sessionStorage.removeItem(`NuevaBodega`);
+    }
 
 }
 
 const mostrarBodegaStorageJSON = () => {
 
-    console.log(`\n\nNuevaBodega\n\n` + sessionStorage.getItem(`NuevaBodega`));
-    alert(`\n\nNuevaBodega\n\n` + JSON.stringify(nuevaBodegaJSON, undefined, 4));
-    //sessionStorage.removeItem(`NuevoActivo`);
+    if (sessionStorage.getItem(`NuevaBodega`)) {
+        console.log(`\n\nNuevaBodega\n\n` + sessionStorage.getItem(`NuevaBodega`));
+        alert(`\n\nNuevaBodega\n\n` + JSON.stringify(nuevaBodegaJSON, undefined, 4));
+        //sessionStorage.removeItem(`NuevoActivo`);
+    }
 }
 
 $(document).ready(function () {

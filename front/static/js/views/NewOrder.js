@@ -582,7 +582,9 @@ const removerVariablesStorageJSON = () => {
     const activosSeleccionados = document.getElementsByClassName('ms-elem-selection ms-selected');
     for (const element of activosSeleccionados) {
         contadorOrdenes++;
-        sessionStorage.removeItem(`NuevaOrden_${contadorOrdenes}`);
+        if (sessionStorage.getItem(`NuevaOrden_${contadorOrdenes}`)) {
+            sessionStorage.removeItem(`NuevaOrden_${contadorOrdenes}`);
+        }
     }
 
 }

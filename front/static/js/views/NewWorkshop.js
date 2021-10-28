@@ -15,6 +15,9 @@ let comunasRegionCambiada = [];
 let getLatitud = ``;
 let getLongitud = ``;
 
+//Variable para controlar la creación de JSON de taller
+let banderaTaller = false;
+
 //VARIABLE PARA JSON
 let nuevoTallerJSON = {
     "nombre": "",
@@ -231,6 +234,9 @@ const fillOptions = () => {
 
 const guardarTallerJSON = () => {
 
+    banderaTaller = false;
+
+    let nombreTaller = document.getElementById('workshopName_new')
     nuevoTallerJSON.nombre = document.getElementById('workshopName_new').value;
 
     let selectRegion = document.getElementById('workshopRegionOptions');
@@ -239,30 +245,56 @@ const guardarTallerJSON = () => {
     let selectComuna = document.getElementById('workshopCommuneOptions');
     nuevoTallerJSON.comuna = selectComuna.options[selectComuna.selectedIndex].text;
 
-    nuevoTallerJSON.calle = document.getElementById('streetWorkshop').value;
-    nuevoTallerJSON.numero = document.getElementById('numStreetWorkshop').value;
-    nuevoTallerJSON.latitud = document.getElementById('latitudeWorkshop').value;
-    nuevoTallerJSON.longitud = document.getElementById('longitudeWorkshop').value;
+    let calleTaller = document.getElementById('streetWorkshop');
+    nuevoTallerJSON.calle = calleTaller.value;
+
+    let numeroTaller = document.getElementById('numStreetWorkshop')
+    nuevoTallerJSON.numero = numeroTaller.value;
+
+    let latitudTaller = document.getElementById('latitudeWorkshop');
+    nuevoTallerJSON.latitud = latitudTaller.value;
+
+    let longitudTaller = document.getElementById('longitudeWorkshop')
+    nuevoTallerJSON.longitud = longitudTaller.value;
 
     //Por ahora valor de referencia
     //Debe tener valor de relación idGeocercaCabecera en BD de Plataforma
     nuevoTallerJSON.idGeocercaCabecera = 0;
 
-    sessionStorage.setItem(`NuevoTaller`, JSON.stringify(nuevoTallerJSON));
+    if (nombreTaller.value != ''
+        && selectRegion.options[selectRegion.selectedIndex].text != ''
+        && selectComuna.options[selectComuna.selectedIndex].text != ''
+        && calleTaller.value != ''
+        && numeroTaller.value != ''
+        && latitudTaller.value != ''
+        && longitudTaller.value != '') {
+
+        banderaTaller = true;
+
+    }
+
+    //Creación del JSON
+    if (banderaTaller == true) {
+        sessionStorage.setItem(`NuevoTaller`, JSON.stringify(nuevoTallerJSON));
+    }
 
 }
 
 const removerVariableTallerStorageJSON = () => {
 
-    sessionStorage.removeItem(`NuevoTaller`);
+    if (sessionStorage.getItem(`NuevaBodega`)) {
+        sessionStorage.removeItem(`NuevaBodega`);
+    }
 
 }
 
 const mostrarTallerStorageJSON = () => {
 
-    console.log(`\n\nNuevoTaller\n\n` + sessionStorage.getItem(`NuevoTaller`));
-    alert(`\n\nNuevoTaller\n\n` + JSON.stringify(nuevoTallerJSON, undefined, 4));
-    //sessionStorage.removeItem(`NuevoActivo`);
+    if (sessionStorage.getItem(`NuevoTaller`)) {
+        console.log(`\n\nNuevoTaller\n\n` + sessionStorage.getItem(`NuevoTaller`));
+        alert(`\n\nNuevoTaller\n\n` + JSON.stringify(nuevoTallerJSON, undefined, 4));
+        //sessionStorage.removeItem(`NuevoActivo`);
+    }
 }
 
 $(document).ready(function () {
