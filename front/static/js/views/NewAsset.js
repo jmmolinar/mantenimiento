@@ -1,7 +1,7 @@
 import AbstractView from "./AbstractView.js";
 import TableLanguage from "./TableLanguage.js";
 import {
-    areas, bodegas, tiposActivos, marcas, planes, 
+    areas, bodegas, tiposActivos, marcas, planes,
     getAreas, getBodegas, getTiposActivos, getActivos, getPlanes,
     listAllElement,
     loadSelectContent,
@@ -22,6 +22,10 @@ let getPlan = ``;
 let getPlanesActivo = [];
 let compActivoPatente = ``;
 
+//Variable para controlar la creación de JSON de activo
+let banderaActivo = false;
+let banderaPlanes = false;
+
 //VARIABLE PARA JSON
 let nuevoActivoJSON = {
     "anio": null,
@@ -30,8 +34,8 @@ let nuevoActivoJSON = {
     "areaIdArea": null,
     "bodegaActivosIdBodegaActivos": null,
     "tipoActivoIdTipoActivo": null,
-    "activoPlanes":[],
-    "documentos":[]
+    "activoPlanes": [],
+    "documentos": []
 };
 
 export default class extends AbstractView {
@@ -88,8 +92,8 @@ export default class extends AbstractView {
                 <!-- SECCIONES -->
                 <div id="assetSections" class="tabbable">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab1" data-toggle="tab">Datos</a></li>
-                        <li><a href="#tab2" data-toggle="tab">Documentos</a></li>
+                        <li id="tabDatos" class="active"><a href="#tab1" data-toggle="tab">Datos</a></li>
+                        <li id="tabDocumentos"><a href="#tab2" data-toggle="tab">Documentos</a></li>
                     </ul>
                     <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
@@ -241,7 +245,7 @@ export default class extends AbstractView {
                                         <span class="add-on">Vence</span>
                                         <input id="expireSeguro" type="date" name="expireSeguro" 
                                             value="" required style="border-radius:3px;"
-                                            min="${currentDate().slice(0,10)}">
+                                            min="${currentDate().slice(0, 10)}">
                                     </div>
                                 </div>
                             </div>
@@ -266,7 +270,7 @@ export default class extends AbstractView {
                                         <span class="add-on">Vence</span>
                                         <input id="expirePadron" type="date" name="expirePadron" 
                                             value="" required style="border-radius:3px;"
-                                            min="${currentDate().slice(0,10)}">
+                                            min="${currentDate().slice(0, 10)}">
                                     </div>
                                 </div>
                             </div>
@@ -291,7 +295,7 @@ export default class extends AbstractView {
                                         <span class="add-on">Vence</span>
                                         <input id="expireCirculacion" type="date" name="expireCirculacion" 
                                             value="" required style="border-radius:3px;"
-                                            min="${currentDate().slice(0,10)}">
+                                            min="${currentDate().slice(0, 10)}">
                                     </div>
                                 </div>
                             </div>
@@ -316,7 +320,7 @@ export default class extends AbstractView {
                                         <span class="add-on">Vence</span>
                                         <input id="expireRevision" type="date" name="expireRevision" 
                                             value="" required style="border-radius:3px;"
-                                            min="${currentDate().slice(0,10)}">
+                                            min="${currentDate().slice(0, 10)}">
                                     </div>
                                 </div>
                             </div>
@@ -452,7 +456,10 @@ const fillOptions = () => {
 
 const guardarActivoJSON = () => {
 
+    banderaActivo = false;
+    banderaPlanes = false;
     nuevoActivoJSON.activoPlanes = []; // reinicio planes
+    nuevoActivoJSON.documentos = []; // reinicio documentos
 
     let selectAnio = document.getElementById('assetYear');
     nuevoActivoJSON.anio = selectAnio.options[selectAnio.selectedIndex].text;
@@ -460,55 +467,71 @@ const guardarActivoJSON = () => {
 
     //Por ahora leo el id de activos, pero en realidad debo traer las patentes
     //de aquellos idVehiculo que aún no han sido creados como activo
-    const activo = getActivos.find((activo) => activo.activo == document.getElementById('assetPatent').value);
-    if(activo){
+    let selectPatente = document.getElementById('assetPatent');
+    const activo = getActivos.find((activo) => activo.activo == selectPatente.value);
+    if (activo) {
         nuevoActivoJSON.idVehiculo = activo.id; // En realidad debo traer el idVehiculo
     }
 
-    const area = getAreas.find((area) => area.nombre == document.getElementById('assetAreasOptions').value);
-    if(area){
+    let selectArea = document.getElementById('assetAreasOptions');
+    const area = getAreas.find((area) => area.nombre == selectArea.value);
+    if (area) {
         nuevoActivoJSON.areaIdArea = area.id_area;
     }
 
-    const bodega = getBodegas.find((bodega) => bodega.nombre == document.getElementById('assetWareHousesOptions').value);
-    if(bodega){
+    let selectBodega = document.getElementById('assetWareHousesOptions');
+    const bodega = getBodegas.find((bodega) => bodega.nombre == selectBodega.value);
+    if (bodega) {
         nuevoActivoJSON.bodegaActivosIdBodegaActivos = bodega.id;
     }
 
-    const tipoActivo = getTiposActivos.find((tipoActivo) => tipoActivo.nombre == document.getElementById('assetType').value);
-    if(tipoActivo){
+    let selectTipoActivo = document.getElementById('assetType');
+    const tipoActivo = getTiposActivos.find((tipoActivo) => tipoActivo.nombre == selectTipoActivo.value);
+    if (tipoActivo) {
         nuevoActivoJSON.tipoActivoIdTipoActivo = tipoActivo.id;
     }
 
+    let selectMarca = document.getElementById('assetBrand');
+    let modeloActivo = document.getElementById('assetModel');
+    let usoActivo = document.getElementById('assetUse');
+
+    let fileInfoSeguro = document.getElementById('fileInfoSeguro');
+    let expireSeguro = document.getElementById('expireSeguro');
     let docSeguroObligatorio = {
         //"activoIdActivo: "
-        "rutaAdjunto": "/path/seguroOblitatorio.pdf",
+        "rutaAdjunto": `/path/${fileInfoSeguro.textContent.trim()}`,
         "fechaAdjunto": currentDate(),
-        "fechaVencimiento": document.getElementById('expireSeguro').value,
+        "fechaVencimiento": expireSeguro.value,
         "tipoDocumentoIdTipoDocumento": 1
     }
 
+    let fileInfoPadron = document.getElementById('fileInfoPadron');
+    let expirePadron = document.getElementById('expirePadron');
     let docPadronVehicular = {
         //"activoIdActivo: "
-        "rutaAdjunto": "/path/padronVehicular.pdf",
+        "rutaAdjunto": `/path/${fileInfoPadron.textContent.trim()}`,
         "fechaAdjunto": currentDate(),
-        "fechaVencimiento": document.getElementById('expirePadron').value,
+        "fechaVencimiento": expirePadron.value,
         "tipoDocumentoIdTipoDocumento": 2
     }
 
+    let fileInfoCirculacion = document.getElementById('fileInfoCirculacion');
+    let expireCirculacion = document.getElementById('expireCirculacion');
     let docPermisoCirculacion = {
         //"activoIdActivo: "
-        "rutaAdjunto": "/path/permisoCirculacion.pdf",
+        "rutaAdjunto": `/path/${fileInfoCirculacion.textContent.trim()}`,
         "fechaAdjunto": currentDate(),
-        "fechaVencimiento": document.getElementById('expireCirculacion').value,
+        "fechaVencimiento": expireCirculacion.value,
         "tipoDocumentoIdTipoDocumento": 3
     }
 
+    let fileInfoRevision = document.getElementById('fileInfoRevision');
+    let expireRevision = document.getElementById('expireRevision');
     let docRevisionTecnica = {
         //"activoIdActivo: "
-        "rutaAdjunto": "/path/revisionTecnica.pdf",
+        "rutaAdjunto": `/path/${fileInfoRevision.textContent.trim()}`,
         "fechaAdjunto": currentDate(),
-        "fechaVencimiento": document.getElementById('expireRevision').value,
+        "fechaVencimiento": expireRevision.value,
         "tipoDocumentoIdTipoDocumento": 4
     }
 
@@ -519,12 +542,14 @@ const guardarActivoJSON = () => {
 
     const planesSeleccionados = document.getElementById('buttonsSelectedPlan').getElementsByClassName('name-plan');
     let contPlans = 0; //sin uso
-    for (const element of planesSeleccionados){
-        
+    for (const element of planesSeleccionados) {
+
+        banderaPlanes = true;
+
         contPlans++; //sin uso
 
         const plan = getPlanes.find((plan) => plan.nombre == element.textContent);
-        if(plan){
+        if (plan) {
 
 
             let planesNuevoActivoJSON = {
@@ -537,29 +562,109 @@ const guardarActivoJSON = () => {
 
     }
 
-    sessionStorage.setItem(`NuevoActivo`, JSON.stringify(nuevoActivoJSON));
+    if (selectAnio.options[selectAnio.selectedIndex].text != ''
+        && selectPatente.options[selectPatente.selectedIndex].text != ''
+        && selectArea.options[selectArea.selectedIndex].text != ''
+        && selectBodega.options[selectBodega.selectedIndex].text != ''
+        && selectTipoActivo.options[selectTipoActivo.selectedIndex].text != ''
+        && selectMarca.options[selectMarca.selectedIndex].text != ''
+        && modeloActivo.value != ''
+        && usoActivo.value != ''
+        && fileInfoSeguro.textContent.trim() != ''
+        && fileInfoPadron.textContent.trim() != ''
+        && fileInfoCirculacion.textContent.trim() != ''
+        && fileInfoRevision.textContent.trim() != ''
+        && expireSeguro.value != ''
+        && expirePadron.value != ''
+        && expireCirculacion.value != ''
+        && expireRevision.value != '') {
+
+        banderaActivo = true;
+
+    }
+
+    //Creación del JSON
+    if (banderaActivo == true && banderaPlanes == true) {
+        sessionStorage.setItem(`NuevoActivo`, JSON.stringify(nuevoActivoJSON));
+    }
+
+
 }
 
 const removerVariableActivoStorageJSON = () => {
 
-    sessionStorage.removeItem(`NuevoActivo`);
+    if (sessionStorage.getItem(`NuevoActivo`)) {
+        sessionStorage.removeItem(`NuevoActivo`);
+    }
 
 }
 
 const mostrarActivoStorageJSON = () => {
 
-    console.log(`\n\nNuevoActivo\n\n` + sessionStorage.getItem(`NuevoActivo`));
-    //alert(`\n\nNuevoActivo\n\n` + JSON.stringify(nuevoActivoJSON, undefined, 4));
-    //sessionStorage.removeItem(`NuevoActivo`);
+    if (sessionStorage.getItem(`NuevoActivo`)) {
+        console.log(`\n\nNuevoActivo\n\n` + sessionStorage.getItem(`NuevoActivo`));
+        //alert(`\n\nNuevoActivo\n\n` + JSON.stringify(nuevoActivoJSON, undefined, 4));
+        //sessionStorage.removeItem(`NuevoActivo`);
+    }
+
 }
 
 
 $(document).ready(function () {
 
 
-    $('div #pages').on('click', 'button#saveAsset_new', function () {
+    $('div #pages').on('click', 'button#saveAsset_new', function (e) {
+
         guardarActivoJSON();
+
+        if ($('#assetYear').val().length != ''
+            && $('#assetPatent').val().length != ''
+            && $('#assetAreasOptions').val().length != ''
+            && $('#assetWareHousesOptions').val().length != ''
+            && $('#assetType').val().length != ''
+            && $('#assetBrand').val().length != ''
+            && $('#assetModel').val().length != ''
+            && $('#assetUse').val().length != '') {
+
+            if (banderaPlanes == false) {
+                alert('Debe Seleccionar al menos un plan');
+                $('html, body').animate({
+                    scrollTop: $(`#assetPlan`).offset().top - 50
+                }, 1000)
+
+                e.preventDefault();
+
+            } else {
+
+                $('#tabDatos').removeClass("active");
+                $('#tabDocumentos').addClass("active");
+                $('#tab1').removeClass("active");
+                $('#tab2').addClass("active");
+
+                if ($.trim($('#fileInfoSeguro').text()) == '') {
+                    alert('Debe adjuntar el "Seguro obligatorio"');
+                    e.preventDefault();
+                } else {
+                    if ($.trim($('#fileInfoPadron').text()) == '') {
+                        alert('Debe adjuntar el "Padrón vehicular"');
+                        e.preventDefault();
+                    } else {
+                        if ($.trim($('#fileInfoCirculacion').text()) == '') {
+                            alert('Debe adjuntar el "Permiso de circulación"')
+                            e.preventDefault();
+                        } else {
+                            if ($.trim($('#fileInfoRevision').text()) == '') {
+                                alert('Debe adjuntar la "Revisión técnica"')
+                                e.preventDefault();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         mostrarActivoStorageJSON();
+
     });
 
     //Agregar Alert Button al seleccionar Plan de Mantenimiento en el activo

@@ -606,15 +606,6 @@ $(document).ready(function () {
 
         guardarOrdenParaJSON();
 
-        //REPARAR ESTO
-        /*if (!$('#ms-orderAsset')) {
-            alert("Debe seleccionar activos")
-        } else {
-            if (!$('.ms-selected')) {
-                alert("Debe seleccionar al menos 1 activo")
-            }
-        }*/
-
         if ($('#orderType').val().length != ''
             && $('#orderAreasOptions').val().length != ''
             && $('#orderProvider').val().length != ''
