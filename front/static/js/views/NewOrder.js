@@ -31,6 +31,9 @@ let identificadorGlobal = '';
 //Variable para validar que al menos se tenga una categoría seleccionada
 let banderaSeleccionCategoria = false;
 
+//Variable para validar que al menos se tenga un activo seleccionado
+let banderaSeleccionActivo = false;
+
 //VARIABLE PARA JSON
 let nuevaOrdenJSON = {
     "fechaCreacion": "",
@@ -462,13 +465,18 @@ const fillOrderCategories = () => {
 const guardarOrdenParaJSON = () => {
 
     banderaSeleccionCategoria = false; // Reinicio a false para verificar de nuevo la selección de categorías
+    banderaSeleccionActivo = false; // Reinicio a false para verificar de nuevo la selección de activos
 
     console.log("Entré a la función")
 
     let contadorOrdenes = 0;
     const activosSeleccionados = document.getElementsByClassName('ms-elem-selection ms-selected');
+
     //Se crean tantas órdenes como activos hayan sido seleccionados
     for (const element of activosSeleccionados) {
+
+        //Verificación de que se tengan activos seleccionados
+        banderaSeleccionActivo = true;
 
         console.log("Entré al for de activosSeleccionados")
 
@@ -558,9 +566,11 @@ const guardarOrdenParaJSON = () => {
         }
 
         //Creación del JSON
-        if (banderaSeleccionCategoria == true && costoRequerido == false) {
-            //alert("cambió el valor de banderaSeleccionCategoria a TRUE y costoRequerido a FALSE")
-            sessionStorage.setItem(`NuevaOrden_${contadorOrdenes}`, JSON.stringify(nuevaOrdenJSON));
+        if (banderaSeleccionActivo == true) {
+            if (banderaSeleccionCategoria == true && costoRequerido == false) {
+                //alert("cambió el valor de banderaSeleccionCategoria a TRUE y costoRequerido a FALSE")
+                sessionStorage.setItem(`NuevaOrden_${contadorOrdenes}`, JSON.stringify(nuevaOrdenJSON));
+            }
         }
     }
 
@@ -583,7 +593,7 @@ const mostrarStorageJSON = () => {
     const activosSeleccionados = document.getElementsByClassName('ms-elem-selection ms-selected');
     for (const element of activosSeleccionados) {
         contadorOrdenes++;
-        if(sessionStorage.getItem(`NuevaOrden_${contadorOrdenes}`)){
+        if (sessionStorage.getItem(`NuevaOrden_${contadorOrdenes}`)) {
             console.log(`\n\nNuevaOrden_${contadorOrdenes}\n\n` + sessionStorage.getItem(`NuevaOrden_${contadorOrdenes}`));
             //sessionStorage.removeItem(`NuevaOrden_${contadorOrdenes}`);
         }
@@ -597,10 +607,10 @@ $(document).ready(function () {
         guardarOrdenParaJSON();
 
         //REPARAR ESTO
-        /*if(!$('#ms-orderAsset')){
+        /*if (!$('#ms-orderAsset')) {
             alert("Debe seleccionar activos")
         } else {
-            if(!$('.ms-selected')){
+            if (!$('.ms-selected')) {
                 alert("Debe seleccionar al menos 1 activo")
             }
         }*/
@@ -612,13 +622,29 @@ $(document).ready(function () {
             && $('#newRangeStartDate').val().length != ''
             && $('#newRangeEndDate').val().length != '') {
 
-            if (banderaSeleccionCategoria == false) {
+            if (banderaSeleccionActivo == false) {
 
-                alert('Debe completar los datos de "Categorías de servicio"');
+                alert('Debe Seleccionar al menos un activo');
+
+                $('#orderAsset').multiSelect();
+
+                $('html, body').animate({
+                    scrollTop: $(`#ms-orderAsset`).offset().top - 50
+                }, 1000)
+
+
                 e.preventDefault();
-                $('#categoriesContainer').css("background-color", 'beige')
 
-            } 
+            } else {
+
+                if (banderaSeleccionCategoria == false) {
+
+                    alert('Debe completar los datos de "Categorías de servicio"');
+                    e.preventDefault();
+                    $('#categoriesContainer').css("background-color", 'beige')
+
+                }
+            }
 
         }
 
