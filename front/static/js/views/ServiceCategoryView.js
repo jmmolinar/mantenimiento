@@ -1,5 +1,18 @@
 import AbstractView from "./AbstractView.js";
 
+//Variable para controlar la creación de JSON de categoría
+let banderaCategoria = false;
+
+//VARIABLE PARA JSON
+let categoriaJSON = {
+    "idCategoriaServicio": 0,
+    "nombre": "",
+    "codigo": ""
+};
+
+//Variable para asignar el identificador
+let idUrl = 0;
+
 export default class extends AbstractView {
     constructor(params) {
         super(params);
@@ -11,6 +24,7 @@ export default class extends AbstractView {
 
         let identificador = this.postId;
         let categoryHTML = ``;
+        idUrl = parseInt(identificador);
 
         $.ajax({
             type: 'GET',
@@ -28,7 +42,7 @@ export default class extends AbstractView {
                     console.log("Vericando const categoria: " + categoria)
 
                     fillCategory = `<h1></h1>
-                    <form id="categoryFormQuery_${categoria.id}">
+                    <form id="categoryFormQuery_${categoria.id}" action="/categorias">
                         <!--IDENTIFICADOR DE LA CATEGORÍA-->
                         <div id="categoryId_${categoria.id}" class="control-group order-identity border-transparent-1px">
                             <h1>Categoría ${categoria.id}</h1>
@@ -61,8 +75,10 @@ export default class extends AbstractView {
                         <!--GUARDAR / CANCELAR-->
                         <div id="categoryActionButtons_${categoria.id}" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <a id="saveCategory_${categoria.id}" class="btn btn-primary" href="/categorias">Guardar</a>
-                                <a id="dontSaveCategory_${categoria.id}" class="btn btn-primary" href="/categorias">Cancelar</a>
+                                <!--<a id="saveCategory_${categoria.id}" class="btn btn-primary" href="/categorias">Guardar</a>
+                                <a id="dontSaveCategory_${categoria.id}" class="btn btn-primary" href="/categorias">Cancelar</a>-->
+                                <button id="saveCategory_${categoria.id}" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSaveCategory_${categoria.id}" class="btn btn-primary" type="submit">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
@@ -85,3 +101,52 @@ export default class extends AbstractView {
         return categoryHTML;
     }
 }
+
+const guardarCategoriaJSON = () => {
+
+    categoriaJSON.idCategoriaServicio = idUrl;
+
+    let nombreCategoria = document.getElementById(`categoryName_${idUrl}`);
+    categoriaJSON.nombre = nombreCategoria.value;
+
+    let codigoCategoria = document.getElementById(`categoryCode_${idUrl}`);
+    categoriaJSON.codigo = codigoCategoria.value;
+
+    if (nombreCategoria.value != ''
+        && codigoCategoria.value != '') {
+
+        banderaCategoria = true;
+
+    }
+
+    //Creación del JSON
+    if (banderaCategoria == true) {
+        sessionStorage.setItem(`ActualizacionCategoria_${idUrl}`, JSON.stringify(categoriaJSON));
+    }
+}
+
+const removerVariableCategoriaStorageJSON = () => {
+
+    if (sessionStorage.getItem(`ActualizacionCategoria_${idUrl}`)) {
+        sessionStorage.removeItem(`ActualizacionCategoria_${idUrl}`);
+    }
+
+}
+
+const mostrarCategoriaStorageJSON = () => {
+
+    if (sessionStorage.getItem(`ActualizacionCategoria_${idUrl}`)) {
+        console.log(`\n\nActualizacionCategoria\n\n` + sessionStorage.getItem(`ActualizacionCategoria_${idUrl}`));
+        alert(`\n\nActualizacionCategoria\n\n` + JSON.stringify(categoriaJSON, undefined, 4));
+        //sessionStorage.removeItem(`NuevoActivo`);
+    }
+}
+
+$(document).ready(function () {
+
+    $('div #pages').on('click', `button#saveCategory_${idUrl}`, function () {
+        guardarCategoriaJSON();
+        mostrarCategoriaStorageJSON();
+    });
+
+});
