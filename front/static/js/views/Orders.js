@@ -6,6 +6,7 @@ import { listAllElement } from "./Options.js";
 // va de la mano con la función de filtrado personalizado
 let minDate = "";
 let maxDate = "";
+let getEstado = ``;
 
 let totalOrdenes = [];
 //let table;
@@ -86,12 +87,70 @@ export default class extends AbstractView {
                 let formatGetCategoriasActivoNombre = ``;
                 let formatGetCategoriasActivoCosto = ``;
                 let getCategoriasActivo = [];
+                let getEstadosOrden = [];
                 let cont = 0;
 
                 for (const orden of data) {
                     totalOrdenes.push(orden);
+
+                    getEstadosOrden = listAllElement(orden.historial_estados);
+                    let fechaUltimoEstado = "1900-01-01T00:00";
+                    
+                    getEstadosOrden.forEach(elem => {
+
+                        if (new Date(elem["fecha_estado"]) > new Date(fechaUltimoEstado)) {
+
+                            getEstado = elem["nombre_estado"];
+                            fechaUltimoEstado = elem["fecha_estado"];
+                        }
+
+                        switch (elem["id_estado"]) {
+                            case 1:
+                                classTr = "warning"
+                                stringContainer = 'Se requiere completar datos'
+                                break;
+                            case 10:
+                                classTr = "muted"
+                                stringContainer = 'La órden de mantenimiento no fue ejecutada'
+                                break;
+                            case 3:
+                                classTr = "error"
+                                stringContainer = 'La orden no ha sigo planificada'
+                                break;
+                            case 6:
+                                classTr = "error"
+                                stringContainer = 'El servicio en taller excede el tiempo planificado'
+                                break;
+                            case 2:
+                                classTr = ""
+                                stringContainer = 'El próximo paso es la realización del servicio en Taller'
+                                break;
+                            case 4:
+                                classTr = ""
+                                stringContainer = 'La órden fue planificada con retraso'
+                                break;
+                            case 5:
+                                classTr = "info"
+                                stringContainer = 'Se están realizando los servicios de mantenimiento'
+                                break;
+                            case 8:
+                                classTr = "success"
+                                stringContainer = 'La orden ha sido completada'
+                                break;
+                            case 9:
+                                classTr = "success"
+                                stringContainer = 'La orden ha sido completada con retraso'
+                                break;
+                            default:
+                                classTr = ""
+                                stringContainer = ''
+                                console.log('Estado de la orden desconocido');
+                        }
+
+                    })
+
                     cont++
-                    switch (orden.estado_orden) {
+                    /*switch (orden.estado_orden) {
                         case 'Por planificar':
                             classTr = "warning"
                             stringContainer = 'Se requiere completar datos'
@@ -132,7 +191,7 @@ export default class extends AbstractView {
                             classTr = ""
                             stringContainer = ''
                             console.log('Estado de la orden desconocido');
-                    }
+                    }*/
                     //console.log("Estado de la orden: " + orden.estado_orden + " - Estilo asignado: " + classTr)
 
                     getCategoriasActivo = listAllElement(orden.servicios_orden);
@@ -159,7 +218,8 @@ export default class extends AbstractView {
                             <td>${orden.id_orden}</td>
                             <td>${orden.patente_activo}</td>
                             <td>${orden.tipo_orden}</td>
-                            <td>${orden.estado_orden} <a data-toggle="tooltip" title="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
+                            <td>${getEstado} <a data-toggle="tooltip" title="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
+                            <!--<td>${orden.estado_orden} <a data-toggle="tooltip" title="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>-->
                             <!--<td>${orden.estado_orden} <a href="" data-toggle="popover" title="${orden.estado_orden}" data-content="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>-->  
                             <td>${orden.area_vehiculo}</td>
                             <td>${orden.fecha_creacion.slice(0,10)}</td>

@@ -1,6 +1,8 @@
 import AbstractView from "./AbstractView.js";
 import {
     tiposMantenimiento, estados, tiposActivos, areas, talleres,
+    getTiposMantenimientos, getEstados, getAreas, getTiposActivos,
+    getActivos, getTalleres, getCategorias, olderDate,
     frecuenciaPeriodo,
     loadSelectContent,
     loadSelectContentAndSelected,
@@ -15,9 +17,35 @@ let getDocumentoCompletado = ``;
 let getArea = ``;
 let getTipoActivo = ``;
 let getTaller = ``;
+let getRutaAdjuntoCompletado = ``;
+let getFechaRutaAdjuntoCompletado = ``;
 let getFrecuenciaPeriodo = ``;
 let getCategoriasOrden = [];
 let identificadorGlobal = '';
+
+//Variable para validar que al menos se tenga una categoría seleccionada
+let banderaSeleccionCategoria = false;
+
+//VARIABLE PARA JSON
+let ordenJSON = {
+    "idOrden": 0,
+    "fechaCreacion": "",
+    "fechaInicial": "",
+    "fechaFinal": "",
+    "tipoOrdenidTipoOrden": null,
+    "activoIdActivo": null,
+    "tallerServicioIdTallerServicio": null,
+    "observaciones": "",
+    "ordenEstados": [],
+    "ordenCategorias": [],
+    "title": "",
+    "start": "",
+    "end": "",
+    "allDay": false
+};
+
+//Variable para asignar el identificador
+let idUrl = 0;
 
 export default class extends AbstractView {
     constructor(params) {
@@ -31,6 +59,8 @@ export default class extends AbstractView {
         let identificador = this.postId;
         let orderHTML = ``;
         identificadorGlobal = this.postId; // lo utilizo fuera de la clase
+        idUrl = parseInt(identificador);
+
 
         $.ajax({
             type: 'GET',
@@ -66,7 +96,9 @@ export default class extends AbstractView {
                     getArea = order.area_vehiculo;
                     getTipoActivo = order.tipo_activo;
                     getTaller = order.taller_orden;
-                    getFrecuenciaPeriodo = order.periodo_frecuencia_cada;
+                    getRutaAdjuntoCompletado = order.rutaAdjuntoCompletado;
+                    getFechaRutaAdjuntoCompletado = order.fechaRutaCompletado;
+                    //getFrecuenciaPeriodo = order.periodo_frecuencia_cada;
                     console.log("Verificando postId: " + identificador)
                     console.log("Vericando id de order: " + order.id_orden)
 
@@ -93,28 +125,37 @@ export default class extends AbstractView {
                         ocultoPeriodo = "hidden border-transparent-1px"
                     }*/
 
-
-                    if (order.rango_fecha_orden == true) {
-                        radioSeleccionadoRango = "checked"
-                        requeridoPorRango = "required"
-                        ocultoRango = "border-transparent-1px"
-                        ocultoPeriodo = "hidden border-transparent-1px"
-                    }
-
-
+                    //if (order.rango_fecha_orden == true) {
+                    radioSeleccionadoRango = "checked"
+                    requeridoPorRango = "required"
+                    ocultoRango = "border-transparent-1px"
+                    ocultoPeriodo = "hidden border-transparent-1px"
+                    //}
 
                     getEstadosOrden = listAllElement(order.historial_estados);
                     let getEstadosOrdenItem = [];
 
+                    let fechaUltimoEstado = "1900-01-01T00:00";
+
                     getEstadosOrden.forEach(elem => {
-                        if (elem["estado_actual"] == true) {
+
+                        if (new Date(elem["fecha_estado"]) > new Date(fechaUltimoEstado)) {
+                            
+                            //alert("Comparando fechas")
+                            getEstado = elem["nombre_estado"];
+                            fechaUltimoEstado = elem["fecha_estado"];
+                        }
+
+                        /*if (elem["estado_actual"] == true) {
                             getEstado = elem["nombre_estado"];
                             classFocusState = "text-success";
-                        }
+                        }*/
+
                         if (elem["nombre_estado"] == "Completado" || elem["nombre_estado"] == "Completado con retraso") {
                             getDocumentoCompletado = elem["documento_completado"];
                             ocultoAdjuntoCompletado = "controls new-div-file-upload";
                             requeridoAdjuntoCompletado = "required";
+                            classFocusState = "text-success";
                         } else {
                             getDocumentoCompletado = "";
                             ocultoAdjuntoCompletado = "hidden controls new-div-file-upload";
@@ -137,12 +178,14 @@ export default class extends AbstractView {
 
 
                     fillOrder = `<h1></h1>
-                    <form id="orderFormQuery_${order.id_orden}">
+                    <form id="orderFormQuery_${order.id_orden}" action="/ordenes">
 
                         <!--IDENTIFICADOR DE LA ORDEN-->
                         <div id="orderId_${order.id_orden}" class="control-group order-identity border-transparent-1px">
                             <h1>Orden ${order.id_orden}</h1>
-                            <h3>Patente: ${order.patente_activo}</h3>
+                            <!--<h3>Patente: ${order.patente_activo}</h3>-->
+                            <h3 style="display:inline;">Patente: </h3>
+                            <h3 id="valorPatente" style="display:inline;">${order.patente_activo}</h3>
                             <h3>${uso}</h3>
                             <a id="downloadOrder_${order.id_orden}" class="btn btn-success" href=""> Orden ${order.id_orden}  <i class="fa fa-cloud-download" ></i></a>
                         </div>
@@ -246,7 +289,8 @@ export default class extends AbstractView {
                                             </div>
                                             <div class="row-fluid">
                                                 <input class="span4" id="rangeStartDate" type="datetime-local" value="${order.fecha_inicio}" ${requeridoPorRango}
-                                                    min="${currentDate().slice(0,16)}">
+                                                    min="${order.fecha_inicio}">
+                                                    <!--min="${currentDate().slice(0, 16)}">-->
                                             </div>
                                         </div>
                                         <div class="control-group">
@@ -256,7 +300,8 @@ export default class extends AbstractView {
                                                 </label>
                                             </div>
                                             <div class="row-fluid">
-                                                <input class="span4" id="rangeEndDate" type="datetime-local" value="${order.fecha_limite}" ${requeridoPorRango}>
+                                                <input class="span4" id="rangeEndDate" type="datetime-local" value="${order.fecha_limite}" ${requeridoPorRango}
+                                                    min="${order.fecha_inicio}">
                                             </div>
                                         </div>
                                     </div>
@@ -304,8 +349,10 @@ export default class extends AbstractView {
                         <!--GUARDAR / CANCELAR-->
                         <div id="orderActionButtons_${order.id_orden}" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <a id="saveOrder_${order.id_orden}" class="btn btn-primary" href="/ordenes">Guardar</a>
-                                <a id="dontSaveOrder_${order.id_orden}" class="btn btn-primary" href="/ordenes">Cancelar</a>
+                                <!--<a id="saveOrder_${order.id_orden}" class="btn btn-primary" href="/ordenes">Guardar</a>
+                                <a id="dontSaveOrder_${order.id_orden}" class="btn btn-primary" href="/ordenes">Cancelar</a>-->
+                                <button id="saveOrder_${order.id_orden}" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSaveOrder_${order.id_orden}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
@@ -340,31 +387,36 @@ const fillOrderOptions = () => {
 
         // Select tipo de mantenimiento
         const selectTipoMantenimiento = document.getElementById('orderType');
-        const optionTipoMantenimiento = listSelect(tiposMantenimiento, "nombre"); // Paso la clave "nombre"
+        //const optionTipoMantenimiento = listSelect(tiposMantenimiento, "nombre"); // Paso la clave "nombre"
+        const optionTipoMantenimiento = listSelect(getTiposMantenimientos, "nombre"); // Paso la clave "nombre"
         loadSelectContentAndSelected(optionTipoMantenimiento, selectTipoMantenimiento, getTipoMantenimiento);
         console.log("Tipo mantenimiento seleccionado: " + getTipoMantenimiento);
 
         // Select estado
         const selectEstado = document.getElementById('orderStatus');
-        const optionEstado = listSelect(estados, "nombre"); // Paso la clave "nombre"
+        //const optionEstado = listSelect(estados, "nombre"); // Paso la clave "nombre"
+        const optionEstado = listSelect(getEstados, "nombre"); // Paso la clave "nombre"
         loadSelectContentAndSelected(optionEstado, selectEstado, getEstado);
         console.log("Estado seleccionado: " + getEstado);
 
         // Select area
         const selectArea = document.getElementById('orderAreasOptions');
-        const optionArea = listSelect(areas, "nombre"); // Paso la clave "nombre"
+        //const optionArea = listSelect(areas, "nombre"); // Paso la clave "nombre"
+        const optionArea = listSelect(getAreas, "nombre"); // Paso la clave "nombre"
         loadSelectContentAndSelected(optionArea, selectArea, getArea);
         console.log("Área seleccionada: " + getArea);
 
         // Select tipo de activo
         const selectTipoActivo = document.getElementById('orderAssetType');
-        const optionTipoActivo = listSelect(tiposActivos, "nombre"); // Paso la clave "nombre"
+        //const optionTipoActivo = listSelect(tiposActivos, "nombre"); // Paso la clave "nombre"
+        const optionTipoActivo = listSelect(getTiposActivos, "nombre"); // Paso la clave "nombre"
         loadSelectContentAndSelected(optionTipoActivo, selectTipoActivo, getTipoActivo);
         console.log("Tipo de activo seleccionado: " + getTipoActivo);
 
         // Select taller
         const selectTaller = document.getElementById('orderProvider');
-        const optionTaller = listSelect(talleres, "nombre"); // Paso la clave "nombre"
+        //const optionTaller = listSelect(talleres, "nombre"); // Paso la clave "nombre"
+        const optionTaller = listSelect(getTalleres, "nombre"); // Paso la clave "nombre"
         loadSelectContentAndSelected(optionTaller, selectTaller, getTaller);
         console.log("Taller seleccionado: " + getTaller);
 
@@ -428,6 +480,7 @@ const fillOrderCategories = () => {
                 cont++;
                 let checkboxSeleccionado = ''
                 let requerido = '';
+                let deshabilitado = 'disabled';
                 let costo = '';
                 //costoTotal += costo; 
 
@@ -436,6 +489,7 @@ const fillOrderCategories = () => {
                         console.log(`Categoría: ${element.nombre} - Costo: ${element.costo} - Orden: ${identificadorGlobal}`)
                         checkboxSeleccionado = 'checked';
                         requerido = 'required';
+                        deshabilitado = '';
                         costo = element.costo;
                     }
                 })
@@ -454,7 +508,8 @@ const fillOrderCategories = () => {
                             <div class="input-prepend input-append">
                                 <span class="add-on">$</span>
                                 <input id="appendedPrependedInput_${cont}" type="number" step="0.01" min="0"
-                                    maxlength="10" value="${costo}" placeholder="e.g. 1.78" ${requerido} name="categoryCost_${cont}">
+                                    maxlength="10" value="${costo}" placeholder="e.g. 1.78" 
+                                    ${requerido} ${deshabilitado} name="categoryCost_${cont}">
                             </div>
                         </div>
                     </div>
@@ -474,6 +529,107 @@ const fillOrderCategories = () => {
             console.log(jqXHR)
         }
     })
+}
+
+
+const guardarOrdenParaJSON = () => {
+
+    banderaSeleccionCategoria = false; // Reinicio a false para verificar de nuevo la selección de categorías
+
+    console.log("Entré a la función")
+
+    console.log("Entré al for de activosSeleccionados")
+
+    ordenJSON.ordenEstados = []; // reinicio el estado por cada activo
+    ordenJSON.ordenCategorias = []; // reinicio las categorías por cada activo
+
+    ordenJSON.fechaCreacion = currentDate();
+    ordenJSON.fechaInicial = document.getElementById('newRangeStartDate').value;
+    ordenJSON.start = ordenJSON.fechaInicial;
+    ordenJSON.fechaFinal = document.getElementById('newRangeEndDate').value;
+    ordenJSON.end = ordenJSON.fechaFinal;
+    ordenJSON.observaciones = document.getElementById('orderNotes').value;
+    //ordenJSON.title = 
+    ordenJSON.allDay = false
+
+    let valorPatente = document.getElementById('valorPatente').value;
+    const activo = getActivos.find((activo) => activo.activo == valorPatente.trim());
+    if (activo) {
+        ordenJSON.activoIdActivo = activo.id;
+    }
+
+    const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType').value);
+    if (tipoOrden) {
+        ordenJSON.tipoOrdenidTipoOrden = tipoOrden.id_tipo_mantenimiento;
+    }
+
+    const taller = getTalleres.find((taller) => taller.nombre == document.getElementById('orderProvider').value);
+    if (taller) {
+        ordenJSON.tallerServicioIdTallerServicio = taller.id;
+    }
+
+    let estadoordenJSON = {
+        //"ordenIdOrden: "
+        "estadoIdEstado": 2,
+        "idUsuario": 1, //1 temporalmente hasta implementar sincronización con usuario conectado
+        "fechaAsignado": ordenJSON.fechaCreacion
+    }
+    ordenJSON.ordenEstados.push(estadoordenJSON);
+
+
+    let costoRequerido = false;
+    const categoriasSeleccionadas = document.getElementById('categoriesContainer').getElementsByClassName('row-fluid');
+    let contCategory = 0;
+    for (const cat of categoriasSeleccionadas) {
+        contCategory++;
+        //Label de categoría
+        let labelCategoryCheckbox = document.getElementById(`labelCategoryCheckbox_${contCategory}`);
+        //Input type checkbox de categoría
+        let categoryCheckbox = document.getElementById(`categoryCheckbox_${contCategory}`);
+        //Input type number del costo de la categoría
+        let appendedPrependedInput = document.getElementById(`appendedPrependedInput_${contCategory}`);
+
+        if (categoryCheckbox.checked) {
+
+            console.log("Entré al checked")
+
+            banderaSeleccionCategoria = true;
+
+            //Si está requerido el costo es porque su input checkbox está checked
+            if (appendedPrependedInput.required
+                && appendedPrependedInput.value <= 0) {
+
+                //alert(`Verifique el costo en: ${labelCategoryCheckbox.textContent.trim()}`);
+                costoRequerido = true;
+            }
+
+            if (appendedPrependedInput.value > 0) {
+
+                //alert("Texto: " + labelCategoryCheckbox.textContent.trim() + " - Costo: " + appendedPrependedInput.value)
+                const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelCategoryCheckbox.textContent.trim());
+                if (category) {
+
+                    let categoriasordenJSON = {
+                        //"ordenIdOrden": 
+                        "categoriaServicioIdCategoriaServicio": category.id,
+                        "costo": appendedPrependedInput.value,
+                        "fechaCategoriaAsignada": ordenJSON.fechaCreacion,
+                        "observacionCategoria": ""
+                    }
+
+                    ordenJSON.ordenCategorias.push(categoriasordenJSON);
+                }
+            }
+        }
+
+    }
+
+    //Creación del JSON
+    if (banderaSeleccionCategoria == true && costoRequerido == false) {
+        //alert("cambió el valor de banderaSeleccionCategoria a TRUE y costoRequerido a FALSE")
+        sessionStorage.setItem(`ActualizacionOrden_${idUrl}`, JSON.stringify(ordenJSON));
+    }
+
 }
 
 
@@ -594,8 +750,8 @@ $(document).ready(function () {
             $("#rangeEndDate").val("");
         }
     })
-    $('div #pages').on('change', 'input#rangeEndDate', l =>{
-        if(l.target.value){
+    $('div #pages').on('change', 'input#rangeEndDate', l => {
+        if (l.target.value) {
             console.log("Fecha límite: " + l.target.value)
         }
     })

@@ -134,6 +134,19 @@ const currentDate = () => {
 
 }
 
+const olderDate = (dateA, dateB) => {
+
+    const a = new Date(dateA);
+    const b = new Date(dateB);
+    
+    if (a > b) {
+        return dateA;
+    } else {
+        return dateB;
+    }
+
+}
+
 const getJson = (urlJson, title) => {
     const result = [];
     //console.log("Entré al getJson");
@@ -1123,6 +1136,7 @@ export {
     listAllElement,
     listAnioAndSelected,
     getJson,
-    currentDate
+    currentDate,
+    olderDate
 };
 

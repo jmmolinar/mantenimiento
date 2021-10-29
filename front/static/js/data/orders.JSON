@@ -7,22 +7,21 @@
         "area_vehiculo": "Área 101",
         "tipo_orden": "Preventivo",
         "tipo_activo": "Máquina",
-        "estado_orden": "Planificado",
         "estados_posibles": {},
+        "rutaAdjuntoCompletado": "",
+        "fechaRutaCompletado": "",
         "historial_estados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-08-06T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-08-08T12:30",
-                "estado_asignado_por": "Usuario",
-                "estado_actual": true
+                "estado_asignado_por": "Usuario"
             }
         ],
         "periodo_orden": false,
@@ -61,22 +60,21 @@
         "area_vehiculo": "Área 101",
         "tipo_orden": "Preventivo",
         "tipo_activo": "Máquina",
-        "estado_orden": "Planificado",
         "estados_posibles": {},
+        "rutaAdjuntoCompletado": "",
+        "fechaRutaCompletado": "",
         "historial_estados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-07-30T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-07-31T12:30",
-                "estado_asignado_por": "Usuario",
-                "estado_actual": true
+                "estado_asignado_por": "Usuario"
             }
         ],
         "periodo_orden": false,
@@ -115,43 +113,39 @@
         "area_vehiculo": "Área 101",
         "tipo_orden": "Preventivo",
         "tipo_activo": "Máquina",
-        "estado_orden": "Completado",
         "estados_posibles": {},
+        "rutaAdjuntoCompletado": "/path/documentoCompletado_12.pdf",
+        "fechaRutaCompletado": "2021-07-06T12:31",
         "historial_estados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-06-15T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-06-20T12:30",
-                "estado_asignado_por": "Usuario",
-                "estado_actual": false
+                "estado_asignado_por": "Usuario"
             },
             {
                 "id_estado": 5,
                 "nombre_estado": "En taller",
                 "fecha_estado": "2021-07-05T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 7,
                 "nombre_estado": "Salida de taller",
                 "fecha_estado": "2021-07-06T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 8,
                 "nombre_estado": "Completado",
                 "fecha_estado": "2021-07-06T12:31",
                 "estado_asignado_por": "Usuario",
-                "estado_actual": true,
                 "documento_completado": "documentoCompletado_12.pdf"
             }
         ],
@@ -186,57 +180,51 @@
         "area_vehiculo": "Área 51",
         "tipo_orden": "Preventivo",
         "tipo_activo": "Vehículo",
-        "estado_orden": "Completado con retraso",
         "estados_posibles": {},
+        "rutaAdjuntoCompletado": "/path/documentoCompletado_11.pdf",
+        "fechaRutaCompletado": "2021-07-19T12:31",
         "historial_estados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-06-15T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 3,
                 "nombre_estado": "Retrasado",
                 "fecha_estado": "2021-07-01T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 4,
                 "nombre_estado": "Planificado con retraso",
                 "fecha_estado": "2021-07-10T12:30",
-                "estado_asignado_por": "Usuario",
-                "estado_actual": false
+                "estado_asignado_por": "Usuario"
             },
             {
                 "id_estado": 5,
                 "nombre_estado": "En taller",
                 "fecha_estado": "2021-07-14T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 6,
                 "nombre_estado": "Retraso en taller",
                 "fecha_estado": "2021-07-17T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 7,
                 "nombre_estado": "Salida de taller",
                 "fecha_estado": "2021-07-19T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 9,
                 "nombre_estado": "Completado con retraso",
                 "fecha_estado": "2021-07-19T12:31",
                 "estado_asignado_por": "Usuario",
-                "estado_actual": true,
                 "documento_completado": "documentoCompletado_11.pdf"
             }
         ],
@@ -276,22 +264,21 @@
         "area_vehiculo": "Área 101",
         "tipo_orden": "Preventivo",
         "tipo_activo": "Máquina",
-        "estado_orden": "Retrasado",
         "estados_posibles": {},
+        "rutaAdjuntoCompletado": "",
+        "fechaRutaCompletado": "",
         "historial_estados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-06-30T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 3,
                 "nombre_estado": "Retrasado",
                 "fecha_estado": "2021-07-10T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": true
+                "estado_asignado_por": "Sistema"
             }
         ],
         "periodo_orden": false,
@@ -330,15 +317,15 @@
         "area_vehiculo": "Área 11",
         "tipo_orden": "Preventivo",
         "tipo_activo": "Vehículo",
-        "estado_orden": "Por planificar",
         "estados_posibles": {},
+        "rutaAdjuntoCompletado": "",
+        "fechaRutaCompletado": "",
         "historial_estados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-06-25T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": true
+                "estado_asignado_por": "Sistema"
             }
         ],
         "periodo_orden": false,
@@ -382,29 +369,27 @@
         "area_vehiculo": "Área 21",
         "tipo_orden": "Preventivo",
         "tipo_activo": "Vehículo",
-        "estado_orden": "No realizado",
         "estados_posibles": {},
+        "rutaAdjuntoCompletado": "",
+        "fechaRutaCompletado": "",
         "historial_estados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-05-01T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-05-10T12:30",
-                "estado_asignado_por": "Usuario",
-                "estado_actual": false
+                "estado_asignado_por": "Usuario"
             },
             {
                 "id_estado": 10,
                 "nombre_estado": "No realizado",
                 "fecha_estado": "2021-05-30T12:30",
-                "estado_asignado_por": "Usuario",
-                "estado_actual": true
+                "estado_asignado_por": "Usuario"
             }
         ],
         "periodo_orden": false,
@@ -443,29 +428,27 @@
         "area_vehiculo": "Área 21",
         "tipo_orden": "Preventivo",
         "tipo_activo": "Vehículo",
-        "estado_orden": "En taller",
         "estados_posibles": {},
+        "rutaAdjuntoCompletado": "",
+        "fechaRutaCompletado": "",
         "historial_estados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-07-01T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-07-15T12:30",
-                "estado_asignado_por": "Usuario",
-                "estado_actual": false
+                "estado_asignado_por": "Usuario"
             },
             {
                 "id_estado": 5,
                 "nombre_estado": "En taller",
                 "fecha_estado": "2021-07-21T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": true
+                "estado_asignado_por": "Sistema"
             }
         ],
         "periodo_orden": false,
@@ -504,22 +487,21 @@
         "area_vehiculo": "Área 21",
         "tipo_orden": "Preventivo",
         "tipo_activo": "Vehículo",
-        "estado_orden": "Planificado",
         "estados_posibles": {},
+        "rutaAdjuntoCompletado": "",
+        "fechaRutaCompletado": "",
         "historial_estados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-07-05T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-07-15T12:30",
-                "estado_asignado_por": "Usuario",
-                "estado_actual": true
+                "estado_asignado_por": "Usuario"
             }
         ],
         "periodo_orden": false,
@@ -558,22 +540,21 @@
         "area_vehiculo": "Área 21",
         "tipo_orden": "Preventivo",
         "tipo_activo": "Vehículo",
-        "estado_orden": "Planificado",
         "estados_posibles": {},
+        "rutaAdjuntoCompletado": "",
+        "fechaRutaCompletado": "",
         "historial_estados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-07-08T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-07-18T12:30",
-                "estado_asignado_por": "Usuario",
-                "estado_actual": true
+                "estado_asignado_por": "Usuario"
             }
         ],
         "periodo_orden": false,
@@ -612,36 +593,33 @@
         "area_vehiculo": "Área 21",
         "tipo_orden": "Correctivo",
         "tipo_activo": "Vehículo",
-        "estado_orden": "Completado",
         "estados_posibles": {},
+        "rutaAdjuntoCompletado": "/path/documentoCompletado_4.pdf",
+        "fechaRutaCompletado": "2021-05-26T12:31",
         "historial_estados": [
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-05-15T12:30",
-                "estado_asignado_por": "Usuario",
-                "estado_actual": false
+                "estado_asignado_por": "Usuario"
             },
             {
                 "id_estado": 5,
                 "nombre_estado": "En taller",
                 "fecha_estado": "2021-05-24T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 7,
                 "nombre_estado": "Salida de taller",
                 "fecha_estado": "2021-05-26T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 8,
                 "nombre_estado": "Completado",
                 "fecha_estado": "2021-05-26T12:31",
                 "estado_asignado_por": "Usuario",
-                "estado_actual": true,
                 "documento_completado": "documentoCompletado_4.pdf"
             }
         ],
@@ -681,36 +659,33 @@
         "area_vehiculo": "Área 21",
         "tipo_orden": "Correctivo",
         "tipo_activo": "Vehículo",
-        "estado_orden": "Completado",
         "estados_posibles": {},
+        "rutaAdjuntoCompletado": "/path/documentoCompletado_3.pdf",
+        "fechaRutaCompletado": "2021-05-26T12:31",
         "historial_estados": [
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-05-10T12:30",
-                "estado_asignado_por": "Usuario",
-                "estado_actual": false
+                "estado_asignado_por": "Usuario"
             },
             {
                 "id_estado": 5,
                 "nombre_estado": "En taller",
                 "fecha_estado": "2021-05-24T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 7,
                 "nombre_estado": "Salida de taller",
                 "fecha_estado": "2021-05-26T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 8,
                 "nombre_estado": "Completado",
                 "fecha_estado": "2021-05-26T12:31",
                 "estado_asignado_por": "Usuario",
-                "estado_actual": true,
                 "documento_completado": "documentoCompletado_3.pdf"
             }
         ],
@@ -750,22 +725,21 @@
         "area_vehiculo": "Área 21",
         "tipo_orden": "Preventivo",
         "tipo_activo": "Vehículo",
-        "estado_orden": "Retrasado",
         "estados_posibles": {},
+        "rutaAdjuntoCompletado": "",
+        "fechaRutaCompletado": "",
         "historial_estados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-06-30T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 3,
                 "nombre_estado": "Retrasado",
                 "fecha_estado": "2021-07-10T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": true
+                "estado_asignado_por": "Sistema"
             }
         ],
         "periodo_orden": false,
@@ -804,22 +778,21 @@
         "area_vehiculo": "Área 21",
         "tipo_orden": "Preventivo",
         "tipo_activo": "Vehículo",
-        "estado_orden": "Retrasado",
         "estados_posibles": {},
+        "rutaAdjuntoCompletado": "",
+        "fechaRutaCompletado": "",
         "historial_estados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-06-28T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": false
+                "estado_asignado_por": "Sistema"
             },
             {
                 "id_estado": 3,
                 "nombre_estado": "Retrasado",
                 "fecha_estado": "2021-07-06T12:30",
-                "estado_asignado_por": "Sistema",
-                "estado_actual": true
+                "estado_asignado_por": "Sistema"
             }
         ],
         "periodo_orden": false,
