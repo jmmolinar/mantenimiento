@@ -14,6 +14,30 @@ let getNombrePlan = '';
 let identificadorGlobal = '';
 let modalidad = '';
 
+
+//Variable para validar que al menos se tenga una categoría seleccionada
+let banderaSeleccion = false;
+
+//Variable para validar requeridos - en el proceso cambia a true
+let inputAndSelectRequeridos = false;
+
+// Se creará el JSON si las dos variables anteriores están en:
+// banderaSeleccion = true y inputAndSelectRequeridos = false
+
+//VARIABLE PARA JSON
+let planJSON = {
+    "idPlanMantenimiento": 0,
+    "nombre": "",
+    "porKm": false,
+    "porHora": false,
+    "porPeriodo": false,
+    "planCategorias": []
+};
+
+//Variable para asignar el identificador
+let idUrl = 0;
+
+
 export default class extends AbstractView {
     constructor(params) {
         super(params);
@@ -69,7 +93,7 @@ export default class extends AbstractView {
                     }
 
                     fillPlan = `<h1></h1>
-                    <form id="planFormQuery_${plan.id}">
+                    <form id="planFormQuery_${plan.id}" action="/planes">
 
                         <!--IDENTIFICADOR DEL PLAN-->
                         <div id="planId_${plan.id}" class="control-group order-identity border-transparent-1px">
@@ -142,8 +166,10 @@ export default class extends AbstractView {
                         <!--GUARDAR / CANCELAR-->
                         <div id="planActionButtons_${plan.id}" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <a id="savePlan_${plan.id}" class="btn btn-primary" href="/planes">Guardar</a>
-                                <a id="dontSavePlan_${plan.id}" class="btn btn-primary" href="/planes">Cancelar</a>
+                                <!--<a id="savePlan_${plan.id}" class="btn btn-primary" href="/planes">Guardar</a>
+                                <a id="dontSavePlan_${plan.id}" class="btn btn-primary" href="/planes">Cancelar</a>-->
+                                <button id="savePlan_${plan.id}" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSavePlan_${plan.id}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
@@ -255,7 +281,10 @@ const fillPlanServiceCategories = () => {
 
                 cont++;
                 let checkboxSeleccionado = '';
+                let checkboxSeleccionadoPeriodo = '';
                 let requerido = '';
+                let deshabilitado = 'disabled';
+                let deshabilitadoPeriodo = 'disabled';
                 let requeridoPorPeriodo = '';
                 let limite = '';
                 let inicio = '';
@@ -268,6 +297,7 @@ const fillPlanServiceCategories = () => {
                         console.log(`Categoría: ${element.nombre} - Limite Hora: ${element.limite_hora} Plan: ${identificadorGlobal}`)
                         checkboxSeleccionado = 'checked';
                         requerido = 'required';
+                        deshabilitado = '';
                         limite = element.limite_hora;
                     } else {
                         // POR KILÓMETROS
@@ -275,17 +305,20 @@ const fillPlanServiceCategories = () => {
                             console.log(`Categoría: ${element.nombre} - Limite Km: ${element.limite_km} Plan: ${identificadorGlobal}`)
                             checkboxSeleccionado = 'checked';
                             requerido = 'required';
+                            deshabilitado = '';
                             limite = element.limite_km;
 
                         } else {
                             // POR PERÍODO
                             if ((category.nombre == element.nombre) && (element.periodo_inicio != '')) {
                                 console.log(`Categoría: ${element.nombre} - Inicio: ${element.periodo_inicio} Plan: ${identificadorGlobal}`)
-                                checkboxSeleccionado = 'checked';
+                                checkboxSeleccionadoPeriodo = 'checked';
                                 requeridoPorPeriodo = 'required';
                                 inicio = element.periodo_inicio;
                                 cada = element.periodo_cada;
-                                //getFrecuenciaPeriodo = element.periodo_frecuencia_cada;
+                                deshabilitadoPeriodo = '';
+                                // La frecuencia (Días, Semanas, ...) se llena con fillFrecuencyOptions()
+                                //getFrecuenciaPeriodo = element.periodo_frecuencia_cada; --> No
                             }
                         }
                         //////////////
@@ -308,7 +341,7 @@ const fillPlanServiceCategories = () => {
                                 <span name="medida" class="add-on">${modalidad}</span>
                                 <input id="appendedPrependedInput_${cont}" type="number" step="1" min="0"
                                     maxlength="10" value="${limite}" placeholder="e.g. 100" 
-                                    ${requerido} name="categoryLimit_${cont}">
+                                    ${requerido} ${deshabilitado} name="categoryLimit_${cont}">
                             </div>
                         </div>
                     </div>
@@ -322,14 +355,14 @@ const fillPlanServiceCategories = () => {
                         <label id="labelPeriodoCategoryCheckbox_${cont}" class="checkbox" name="${category.nombre}">
                             <b>${category.id}</b> - <b>${category.cod}</b> - ${category.nombre}
                             <input type="checkbox" id="categoryPeriodoCheckbox_${cont}" value="option_${cont}"
-                                ${checkboxSeleccionado} for="categoryPeriodo_${cont}">
+                                ${checkboxSeleccionadoPeriodo} for="categoryPeriodo_${cont}">
                         </label>
                     </div>
                     <div id="labelStartPeriodo_${cont}" class="row-fluid" name="startPeriodo">
                         <div class="span5">
                             <span name="fechaInicio" class="add-on">Inicio</span>
                             <input class="span5" id="frequencyStartDate_${cont}" type="date" value="${inicio}" 
-                                name="categoryPeriodo_${cont}" ${requeridoPorPeriodo}>
+                                name="categoryPeriodo_${cont}" ${requeridoPorPeriodo} ${deshabilitadoPeriodo}>
                         </div>
                     </div>
                     <div id="labelFrecuencyPeriodo_${cont}" class="row-fluid" name="frecuencyPeriodo">
@@ -337,10 +370,10 @@ const fillPlanServiceCategories = () => {
                             <span name="fechaCada" class="add-on">Cada</span>
                             <input class="span2" id="frequencyCount_${cont}" type="number" 
                                 value="${cada}" placeholder="" 
-                                name="categoryPeriodo_${cont}" ${requeridoPorPeriodo} 
+                                name="categoryPeriodo_${cont}" ${requeridoPorPeriodo} ${deshabilitadoPeriodo}
                                 min="1">
                             <select class="span3" id="frequencyType_${cont}" 
-                                ${requeridoPorPeriodo}
+                                ${requeridoPorPeriodo} ${deshabilitadoPeriodo}
                                 name="categoryPeriodo_${cont}">
                                 <!--<option placeholder="-"></option>--><!--Esta linea se debe mantener-->
                             </select>
@@ -391,7 +424,7 @@ const fillFrecuencyOptions = () => {
 
             cont++;
             selectFrecuenciaPeriodo = document.getElementById(`frequencyType_${cont}`);
-            console.log("Select Id: " + selectFrecuenciaPeriodo.id)
+            //console.log("Select Id: " + selectFrecuenciaPeriodo.id)
             // Creando los options de frecuencia en cada categoría
             loadSelectContent(optionFrecuenciaPeriodo, selectFrecuenciaPeriodo);
 
@@ -401,7 +434,7 @@ const fillFrecuencyOptions = () => {
                 if ((category.nombre == element.nombre) && (element.periodo_inicio != '')) {
                     console.log(`Categoría con Frecuencia: ${element.nombre} - Inicio: ${element.periodo_inicio} - Cada: ${element.periodo_cada} - Frecuencia: ${element.periodo_frecuencia_cada}`)
                     getFrecuenciaPeriodo = element.periodo_frecuencia_cada;
-                    console.log(`Este es un select del Plan: ${selectFrecuenciaPeriodo.id}`)
+                    //console.log(`Este es un select del Plan: ${selectFrecuenciaPeriodo.id}`)
                     //selectFrecuenciaPeriodo.innerHTML = '';
                     selectFrecuenciaPeriodo.querySelectorAll('*').forEach(n => n.remove());
                     loadSelectContentAndSelected(optionFrecuenciaPeriodo, selectFrecuenciaPeriodo, getFrecuenciaPeriodo);
@@ -413,8 +446,246 @@ const fillFrecuencyOptions = () => {
 
 }
 
+const guardarPlanParaJSON = () => {
+
+    banderaSeleccion = false; // reinicio bandera a false
+    inputAndSelectRequeridos = false; // reinicio bandera de requeridos
+
+    planJSON.planCategorias = []; // reinicio las categorías
+
+    planJSON.idPlanMantenimiento = idUrl;
+
+    planJSON.nombre = document.getElementById(`planName_${idUrl}`).value;
+
+    let plansRadios1 = document.getElementById(`plansRadios1`);
+    let plansRadios2 = document.getElementById(`plansRadios2`);
+    let plansRadios3 = document.getElementById(`plansRadios3`);
+
+    if (plansRadios1.checked) {
+        planJSON.porPeriodo = true;
+        planJSON.porKm = false;
+        planJSON.porHora = false;
+    } else {
+        if (plansRadios2.checked) {
+            planJSON.porPeriodo = false;
+            planJSON.porKm = true;
+            planJSON.porHora = false;
+        } else {
+            if (plansRadios3.checked) {
+                planJSON.porPeriodo = false;
+                planJSON.porKm = false;
+                planJSON.porHora = true;
+            }
+        }
+    }
+
+
+    if (plansRadios1.checked) {
+
+        const categoriasPeriodoSeleccionadas = document.getElementById('planPeriodoCategories').getElementsByClassName('control-group');
+        let contCategory = 0;
+        for (const cat of categoriasPeriodoSeleccionadas) {
+            contCategory++;
+            //Label de categoría
+            let labelPeriodoCategoryCheckbox = document.getElementById(`labelPeriodoCategoryCheckbox_${contCategory}`);
+            //Input type checkbox de categoría
+            let categoryPeriodoCheckbox = document.getElementById(`categoryPeriodoCheckbox_${contCategory}`);
+            //Input type date de fecha de inicio de la categoría
+            let frequencyStartDate = document.getElementById(`frequencyStartDate_${contCategory}`);
+            //Input type number del Cada de la categoría
+            let frequencyCount = document.getElementById(`frequencyCount_${contCategory}`);
+            //Select de la frecuencia de la categoría
+            let frequencyType = document.getElementById(`frequencyType_${contCategory}`);
+
+            if (categoryPeriodoCheckbox.checked) {
+
+                banderaSeleccion = true;
+
+                //Si FECHA DE INICIO es requerido es porque su input checkbox está checked
+                if (frequencyStartDate.required
+                    && frequencyStartDate.value == '') {
+
+                    inputAndSelectRequeridos = true;
+
+                }
+
+                //Si el Cada requerido es porque su input checkbox está checked
+                if (frequencyCount.required
+                    && frequencyCount.value < 1) {
+
+                    inputAndSelectRequeridos = true;
+
+                }
+
+                //Si la frecuencia es requerida es porque su input checkbox está checked
+                if (frequencyType.required
+                    && frequencyType.options[frequencyType.selectedIndex].text == '') {
+
+                    inputAndSelectRequeridos = true;
+
+                }
+
+                if (frequencyStartDate.value != ''
+                    && frequencyCount.value >= 1
+                    && frequencyType.options[frequencyType.selectedIndex].text != '') {
+
+                    const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelPeriodoCategoryCheckbox.textContent.trim());
+                    if (category) {
+
+                        let categoriasplanJSON = {
+                            "planMantenimientoIdPlanMantenimiento": idUrl,
+                            "categoriaServicioIdCategoriaServicio": category.id,
+                            "rangoKm": null,
+                            "rangoHoras": null,
+                            "periodoFecha": frequencyStartDate.value,
+                            "periodoCada": frequencyCount.value,
+                            //"periodoFrecuencia": frequencyType.value
+                            "periodoFrecuencia": frequencyType.options[frequencyType.selectedIndex].text
+                        }
+
+                        planJSON.planCategorias.push(categoriasplanJSON);
+
+                    }
+                }
+            }
+
+            //REMUEVO TODOS LOS CHECKED QUE SE HAYAN SELECCIONADO ESTANDO POR KM U HORA
+            //Input type checkbox de categoría
+            document.getElementById(`categoryCheckbox_${contCategory}`).checked = false;
+            //Input type number del costo de la categoría
+            document.getElementById(`appendedPrependedInput_${contCategory}`).value = '';
+            document.getElementById(`appendedPrependedInput_${contCategory}`).required = false;
+
+        }
+    }
+
+    if (plansRadios2.checked || plansRadios3.checked) {
+
+        const categoriasSeleccionadas = document.getElementById('planCategories').getElementsByClassName('control-group');
+        let contCategory = 0;
+        for (const cat of categoriasSeleccionadas) {
+            contCategory++;
+            //Label de categoría
+            let labelCategoryCheckbox = document.getElementById(`labelCategoryCheckbox_${contCategory}`);
+            //Input type checkbox de categoría
+            let categoryCheckbox = document.getElementById(`categoryCheckbox_${contCategory}`);
+            //Input type number del costo de la categoría
+            let appendedPrependedInput = document.getElementById(`appendedPrependedInput_${contCategory}`);
+
+            if (categoryCheckbox.checked) {
+
+                banderaSeleccion = true;
+
+                //Si está requerido el límite es porque su input checkbox está checked
+                if (appendedPrependedInput.required
+                    && appendedPrependedInput.value <= 0) {
+
+                    inputAndSelectRequeridos = true;
+                }
+
+                if (appendedPrependedInput.value >= 1) {
+
+                    let limiteKm = null;
+                    let limiteHoras = null;
+                    if (plansRadios2.checked) {
+                        limiteKm = appendedPrependedInput.value
+                    } else {
+                        if (plansRadios3.checked) {
+                            limiteHoras = appendedPrependedInput.value
+                        }
+                    }
+
+                    const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelCategoryCheckbox.textContent.trim());
+                    if (category) {
+
+                        let categoriasplanJSON = {
+                            "planMantenimientoIdPlanMantenimiento": idUrl,
+                            "categoriaServicioIdCategoriaServicio": category.id,
+                            "rangoKm": limiteKm,
+                            "rangoHoras": limiteHoras,
+                            "periodoFecha": null,
+                            "periodoCada": null,
+                            "periodoFrecuencia": null
+                        }
+
+                        planJSON.planCategorias.push(categoriasplanJSON);
+
+                    }
+
+                }
+            }
+
+            //REMUEVO TODOS LOS CHECKED QUE SE HAYAN SELECCIONADO ESTANDO POR PERIODO
+            //Input type checkbox de categoría
+            document.getElementById(`categoryPeriodoCheckbox_${contCategory}`).checked = false;
+            //Input type date de fecha de inicio de la categoría
+            document.getElementById(`frequencyStartDate_${contCategory}`).value = '';
+            document.getElementById(`frequencyStartDate_${contCategory}`).required = false;
+            //Input type number del Cada de la categoría
+            document.getElementById(`frequencyCount_${contCategory}`).value = '';
+            document.getElementById(`frequencyCount_${contCategory}`).required = false;
+            //Select de la frecuencia de la categoría
+            document.getElementById(`frequencyType_${contCategory}`).selectedIndex = 0;
+            document.getElementById(`frequencyType_${contCategory}`).required = false;
+
+        }
+
+    }
+
+    //Creación del JSON
+    if (banderaSeleccion == true && inputAndSelectRequeridos == false) {
+        alert("cambió el valor de banderaSeleccion a TRUE y inputAndSelectRequeridos a FALSE")
+        sessionStorage.setItem(`ActualizacionPlan_${idUrl}`, JSON.stringify(planJSON));
+    } else {
+        alert("No entré a la creación")
+    }
+
+}
+
+const removerVariablePlanStorageJSON = () => {
+
+    if (sessionStorage.getItem(`ActualizacionPlan_${idUrl}`)) { // Si existe otra variable en el session con el mismo nombre, así no se haya ejecutado el guardar, entrará al IF
+        sessionStorage.removeItem(`ActualizacionPlan_${idUrl}`);
+    }
+
+}
+
+const mostrarPlanStorageJSON = () => {
+
+    if (sessionStorage.getItem(`ActualizacionPlan_${idUrl}`)) { // Si existe otra variable en el session con el mismo nombre, así no se haya ejecutado el guardar, entrará al IF
+        console.log(`\n\nActualizacionPlan_${idUrl}\n\n` + sessionStorage.getItem(`ActualizacionPlan_${idUrl}`));
+        alert(`\n\nActualizacionPlan_${idUrl}\n\n` + JSON.stringify(planJSON, undefined, 4));
+        //sessionStorage.removeItem(`NuevoActivo`);
+    }
+}
+
 
 $(document).ready(function () {
+
+    // Guardado de JSON teniendo categorías seleccionadas y sus datos completos
+    $('div #pages').on('click', `button#savePlan_${idUrl}`, function (e) {
+
+        guardarPlanParaJSON();
+
+
+        if ($(`#planName_${idUrl}`).val().length != '') {
+
+            if (banderaSeleccion == false) {
+
+                alert("Debe seleccionar al menos una categoría");
+                e.preventDefault();
+
+                if ($('#plansRadios1').is(':checked')) {
+                    $('#planPeriodoCategories').css("background-color", 'beige')
+                }
+                if ($('#plansRadios2').is(':checked') || $('#plansRadios3').is(':checked')) {
+                    $('#planCategories').css("background-color", 'beige')
+                }
+
+            }
+        }
+
+    });
 
     //FILTRO DE CATEGORÍAS POR KILÓMETROS Y POR HORAS
     $('div #pages').on('click', 'input[id=busqueda]', function () {
@@ -641,17 +912,23 @@ $(document).ready(function () {
         if ($(this).is(':checked')) {
 
             $(`input[name=${propForInputLabel}]`).attr("required", "required");
+            $(`input[name=${propForInputLabel}]`).removeAttr("disabled");
             // Si las categorías por período no están ocultas
             if (!$(`#planPeriodoServiceCategories_${identificadorGlobal}`).is(":hidden")) {
                 $(`select[name=${propForInputLabel}]`).attr("required", "required"); //Para Frecuencia en Periodo
+                $(`select[name=${propForInputLabel}]`).removeAttr("disabled"); //Para Frecuencia en Periodo
             }
 
         } else {
 
             $(`input[name=${propForInputLabel}]`).removeAttr("required");
+            $(`input[name=${propForInputLabel}]`).val('');
+            $(`input[name=${propForInputLabel}]`).attr("disabled", "disabled");
             // Si las categorías por período no están ocultas
             if (!$(`#planPeriodoServiceCategories_${identificadorGlobal}`).is(":hidden")) {
                 $(`select[name = ${propForInputLabel}]`).removeAttr("required"); //Para Frecuencia en Periodo
+                $(`select[name = ${propForInputLabel}]`).prop("selectedIndex", 0);
+                $(`select[name = ${propForInputLabel}]`).attr("disabled", "disabled"); //Para Frecuencia en Periodo
             }
         }
 
@@ -661,7 +938,7 @@ $(document).ready(function () {
     $('div #pages').on('click', 'input#plansRadios1', function () {
 
         $(`#planPeriodoServiceCategories_${identificadorGlobal}`).show(1000, function () {
-            console.log('Mostrando datos por Kilómetro');
+            console.log('Mostrando datos por Período');
             $(`#planPeriodoServiceCategories_${identificadorGlobal}`).removeClass("hidden");
             $('html, body').animate({
                 scrollTop: $(`#planPeriodoServiceCategories_${identificadorGlobal}`).offset().top

@@ -71,85 +71,85 @@ export default class extends AbstractView {
         //console.log("Vericando id del plan: " + plan.id)
 
         fillPlan = `<h1></h1>
-                    <form id="planFormQuery_new" action="/planes">
+            <form id="planFormQuery_new" action="/planes">
 
-                        <!--IDENTIFICADOR DEL PLAN-->
-                        <div id="planId_new" class="control-group order-identity border-transparent-1px">
-                            <h1>Nuevo plan de mantenimiento</h1>
-                        </div>
+                <!--IDENTIFICADOR DEL PLAN-->
+                <div id="planId_new" class="control-group order-identity border-transparent-1px">
+                    <h1>Nuevo plan de mantenimiento</h1>
+                </div>
 
-                        <!--PRIMEROS DATOS DEL PLAN-->
-                        <div id="planData_new" class="control-group border-transparent-1px">
-                            <!--NOMBRE DE CATEGORÍA-->
-                            <div class="control-group">
-                                <label class="span1" for="planName_new">
-                                    <h5>Nombre</h5>
-                                </label>
-                                <div class="controls">
-                                    <input class="span12" id="planName_new" type="text" min="3" maxlength="100"
-                                        value="" required>
-                                </div>
-                            </div>
+                <!--PRIMEROS DATOS DEL PLAN-->
+                <div id="planData_new" class="control-group border-transparent-1px">
+                    <!--NOMBRE DE CATEGORÍA-->
+                    <div class="control-group">
+                        <label class="span1" for="planName_new">
+                            <h5>Nombre</h5>
+                        </label>
+                        <div class="controls">
+                            <input class="span12" id="planName_new" type="text" min="3" maxlength="100"
+                                value="" required>
                         </div>
+                    </div>
+                </div>
                        
-                        <!--PLAN POR PERÍODO-->
-                        <div id="planPeriodo" class="control-group border-transparent-1px">
-                            <div class="row-fluid">
-                                <div class="span4">
-                                    <label class="radio" for="groupPeriodoCategories">
-                                        <b>Por período</b>
-                                        <input type="radio" name="plansRadios" id="plansRadios1" value="option1"
-                                            ${radioSeleccionadoPorPeriodo}>
-                                    </label>
-                                </div>
-                            </div>
+                <!--PLAN POR PERÍODO-->
+                <div id="planPeriodo" class="control-group border-transparent-1px">
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <label class="radio" for="groupPeriodoCategories">
+                                <b>Por período</b>
+                                <input type="radio" name="plansRadios" id="plansRadios1" value="option1"
+                                    ${radioSeleccionadoPorPeriodo}>
+                            </label>
                         </div>
+                    </div>
+                </div>
                                 
-                        <!--PLAN POR KM-->
-                        <div id="planKm" class="control-group border-transparent-1px">
-                            <div class="row-fluid">
-                                <div class="span4">
-                                    <label class="radio" for="groupKmCategories">
-                                        <b>Por kilómetros</b>
-                                        <input type="radio" name="plansRadios" id="plansRadios2" value="option2"
-                                            ${radioSeleccionadoPorKm}>
-                                    </label>
-                                </div>
-                            </div>
+                <!--PLAN POR KM-->
+                <div id="planKm" class="control-group border-transparent-1px">
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <label class="radio" for="groupKmCategories">
+                                <b>Por kilómetros</b>
+                                <input type="radio" name="plansRadios" id="plansRadios2" value="option2"
+                                    ${radioSeleccionadoPorKm}>
+                            </label>
                         </div>
+                    </div>
+                </div>
 
-                        <!--PLAN POR HORAS-->
-                        <div id="planHours" class="control-group border-transparent-1px">
-                            <div class="row-fluid">
-                                <div class="span4">
-                                    <label class="radio" for="groupHoursCategories">
-                                        <b>Por horas</b>
-                                        <input type="radio" name="plansRadios" id="plansRadios3" value="option3"
-                                            ${radioSeleccionadoPorHora}>
-                                    </label>
-                                </div>
-                            </div>
+                <!--PLAN POR HORAS-->
+                <div id="planHours" class="control-group border-transparent-1px">
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <label class="radio" for="groupHoursCategories">
+                                <b>Por horas</b>
+                                <input type="radio" name="plansRadios" id="plansRadios3" value="option3"
+                                    ${radioSeleccionadoPorHora}>
+                            </label>
                         </div>
+                    </div>
+                </div>
 
 
-                        <!--CATEGORÍA DE SERVICIO-->
-                        <div id="planServiceCategories_new" class="${ocultoKmHoras} control-group">
-                        </div
+                <!--CATEGORÍA DE SERVICIO-->
+                <div id="planServiceCategories_new" class="${ocultoKmHoras} control-group">
+                </div
 
-                        <!--CATEGORÍA DE SERVICIO POR PERIODO-->
-                        <div id="planPeriodoServiceCategories_new" class="${ocultoPeriodo} control-group">
-                        </div>
+                <!--CATEGORÍA DE SERVICIO POR PERIODO-->
+                <div id="planPeriodoServiceCategories_new" class="${ocultoPeriodo} control-group">
+                </div>
 
-                        <!--GUARDAR / CANCELAR-->
-                        <div id="planActionButtons_new" class="control-group">
-                            <div class="span12 text-right border-transparent-1px">
-                                <!--<a id="savePlan_new" class="btn btn-primary" href="/planes">Guardar</a>
-                                <a id="dontSavePlan_new" class="btn btn-primary" href="/planes">Cancelar</a>-->
-                                <button id="savePlan_new" class="btn btn-primary" type="submit">Guardar</button>
-                                <button id="dontSavePlan_new" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
-                            </div>
-                        </div>
-                    </form>`;
+                <!--GUARDAR / CANCELAR-->
+                <div id="planActionButtons_new" class="control-group">
+                    <div class="span12 text-right border-transparent-1px">
+                        <!--<a id="savePlan_new" class="btn btn-primary" href="/planes">Guardar</a>
+                        <a id="dontSavePlan_new" class="btn btn-primary" href="/planes">Cancelar</a>-->
+                        <button id="savePlan_new" class="btn btn-primary" type="submit">Guardar</button>
+                        <button id="dontSavePlan_new" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
+                    </div>
+                </div>
+            </form>`;
         //} else {
         //    fillPlan = `<h1>=(</h1>
         //    <p>-- No se logró obtener el Plan ${identificador}</p>`
@@ -600,9 +600,6 @@ const guardarPlanParaJSON = () => {
 
     }
 
-    //Comento para crear la variable JSON para evitar el submit si no se han seleccionado categorías
-    //sessionStorage.setItem(`NuevoPlan`, JSON.stringify(nuevoPlanJSON));
-
     //Creación del JSON
     if (banderaSeleccion == true && inputAndSelectRequeridos == false) {
         //alert("cambió el valor de banderaSeleccion a TRUE y inputAndSelectRequeridos a FALSE")
@@ -613,7 +610,7 @@ const guardarPlanParaJSON = () => {
 
 const removerVariablePlanStorageJSON = () => {
 
-    if (sessionStorage.getItem(`NuevoPlan`)) {
+    if (sessionStorage.getItem(`NuevoPlan`)) { // Si existe otra variable en el session con el mismo nombre, así no se haya ejecutado el guardar, entrará al IF
         sessionStorage.removeItem(`NuevoPlan`);
     }
 
@@ -621,7 +618,7 @@ const removerVariablePlanStorageJSON = () => {
 
 const mostrarPlanStorageJSON = () => {
 
-    if (sessionStorage.getItem(`NuevoPlan`)) {
+    if (sessionStorage.getItem(`NuevoPlan`)) { // Si existe otra variable en el session con el mismo nombre, así no se haya ejecutado el guardar, entrará al IF
         console.log(`\n\nNuevoPlan\n\n` + sessionStorage.getItem(`NuevoPlan`));
         alert(`\n\nNuevoPlan\n\n` + JSON.stringify(nuevoPlanJSON, undefined, 4));
         //sessionStorage.removeItem(`NuevoActivo`);
@@ -652,12 +649,6 @@ $(document).ready(function () {
                 }
 
             }
-            /*else {
-
-                sessionStorage.setItem(`NuevoPlan`, JSON.stringify(nuevoPlanJSON));
-                //mostrarPlanStorageJSON();
-
-            }*/
         }
 
     });

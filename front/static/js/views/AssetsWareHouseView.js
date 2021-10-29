@@ -14,6 +14,25 @@ let comunasRegionCambiada = [];
 let getLatitud = ``;
 let getLongitud = ``;
 
+//Variable para controlar la creación de JSON de bodega
+let banderaBodega = false;
+
+//VARIABLE PARA JSON
+let bodegaJSON = {
+    "idBodegaActivos": 0,
+    "nombre": "",
+    "region": "",
+    "comuna": "",
+    "calle": "",
+    "numero": "",
+    "latitud": null,
+    "longitud": null,
+    "idGeocercaCabecera": null
+};
+
+//Variable para asignar el identificador
+let idUrl = 0;
+
 export default class extends AbstractView {
     constructor(params) {
         super(params);
@@ -25,6 +44,7 @@ export default class extends AbstractView {
 
         let identificador = this.postId;
         let wareHouseHTML = ``;
+        idUrl = parseInt(identificador);
 
         $.ajax({
             type: 'GET',
@@ -48,7 +68,7 @@ export default class extends AbstractView {
                     console.log("Vericando const bodega: " + bodega)
 
                     fillWareHouse = `<h1></h1>
-                    <form id="wareHouseFormQuery_${bodega.id}">
+                    <form id="wareHouseFormQuery_${bodega.id}" action="/bodegas">
                         <!--IDENTIFICADOR DE LA BODEGA-->
                         <div id="wareHouseId_${bodega.id}" class="control-group order-identity border-transparent-1px">
                             <h1>Bodega ${bodega.id}</h1>
@@ -166,8 +186,10 @@ export default class extends AbstractView {
                         <!--GUARDAR / CANCELAR-->
                         <div id="wareHouseActionButtons_${bodega.id}" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <a id="saveWareHouse_${bodega.id}" class="btn btn-primary" href="/bodegas">Guardar</a>
-                                <a id="dontSaveWareHouse_${bodega.id}" class="btn btn-primary" href="/bodegas">Cancelar</a>
+                                <!--<a id="saveWareHouse_${bodega.id}" class="btn btn-primary" href="/bodegas">Guardar</a>
+                                <a id="dontSaveWareHouse_${bodega.id}" class="btn btn-primary" href="/bodegas">Cancelar</a>-->
+                                <button id="saveWareHouse_${bodega.id}" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSaveWareHouse_${bodega.id}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
@@ -225,3 +247,83 @@ const fillOptions = () => {
     });
 
 }
+
+const guardarBodegaJSON = () => {
+
+    banderaBodega = false;
+
+    bodegaJSON.idBodegaActivos = idUrl;
+
+    let nombreBodega = document.getElementById(`wareHouseName_${idUrl}`)
+    bodegaJSON.nombre = nombreBodega.value;
+
+    // La variable de ASIGNADOS no se toma en cuenta para el JSON
+    // Se tomará ese dato para mostrarlo mediante consultas
+
+    let selectRegion = document.getElementById('wareHouseRegionOptions');
+    bodegaJSON.region = selectRegion.options[selectRegion.selectedIndex].text;
+
+    let selectComuna = document.getElementById('wareHouseCommuneOptions');
+    bodegaJSON.comuna = selectComuna.options[selectComuna.selectedIndex].text;
+
+    let calleBodega = document.getElementById('streetWareHouse');
+    bodegaJSON.calle = calleBodega.value;
+
+    let numeroBodega = document.getElementById('numStreetWareHouse');
+    bodegaJSON.numero = numeroBodega.value;
+
+    let latitudBodega = document.getElementById('latitudeWareHouse');
+    bodegaJSON.latitud = latitudBodega.value;
+
+    let longitudBodega = document.getElementById('longitudeWareHouse');
+    bodegaJSON.longitud = longitudBodega.value;
+
+    //Por ahora valor de referencia
+    //Debe tener valor de relación idGeocercaCabecera en BD de Plataforma
+    bodegaJSON.idGeocercaCabecera = 0;
+
+
+    if (nombreBodega.value != ''
+        && selectRegion.options[selectRegion.selectedIndex].text != ''
+        && selectComuna.options[selectComuna.selectedIndex].text != ''
+        && calleBodega.value != ''
+        && numeroBodega.value != ''
+        && latitudBodega.value != ''
+        && longitudBodega.value != '') {
+
+        banderaBodega = true;
+
+    }
+
+    //Creación del JSON
+    if (banderaBodega == true) {
+        sessionStorage.setItem(`ActualizacionBodega_${idUrl}`, JSON.stringify(bodegaJSON));
+    }
+
+}
+
+const removerVariableBodegaStorageJSON = () => {
+
+    if (sessionStorage.getItem(`ActualizacionBodega_${idUrl}`)) {
+        sessionStorage.removeItem(`ActualizacionBodega_${idUrl}`);
+    }
+
+}
+
+const mostrarBodegaStorageJSON = () => {
+
+    if (sessionStorage.getItem(`ActualizacionBodega_${idUrl}`)) {
+        console.log(`\n\nActualizacionBodega_${idUrl}\n\n` + sessionStorage.getItem(`ActualizacionBodega_${idUrl}`));
+        alert(`\n\nActualizacionBodega_${idUrl}\n\n` + JSON.stringify(bodegaJSON, undefined, 4));
+        //sessionStorage.removeItem(`NuevoActivo`);
+    }
+}
+
+$(document).ready(function () {
+
+    $('div #pages').on('click', `button#saveWareHouse_${idUrl}`, function () {
+        guardarBodegaJSON();
+        mostrarBodegaStorageJSON();
+    });
+
+})

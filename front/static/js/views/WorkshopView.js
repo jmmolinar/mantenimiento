@@ -14,6 +14,25 @@ let comunasRegionCambiada = [];
 let getLatitud = ``;
 let getLongitud = ``;
 
+//Variable para controlar la creación de JSON de taller
+let banderaTaller = false;
+
+//VARIABLE PARA JSON
+let tallerJSON = {
+    "idTallerServicio": 0,
+    "nombre": "",
+    "region": "",
+    "comuna": "",
+    "calle": "",
+    "numero": "",
+    "latitud": null,
+    "longitud": null,
+    "idGeocercaCabecera": null
+};
+
+//Variable para asignar el identificador
+let idUrl = 0;
+
 export default class extends AbstractView {
     constructor(params) {
         super(params);
@@ -48,7 +67,7 @@ export default class extends AbstractView {
                     console.log("Vericando const taller: " + taller)
 
                     fillWorkshop = `<h1></h1>
-                    <form id="workshopFormQuery_${taller.id}">
+                    <form id="workshopFormQuery_${taller.id}" action="/talleres">
                         <!--IDENTIFICADOR DEL TALLER-->
                         <div id="workshopId_${taller.id}" class="control-group order-identity border-transparent-1px">
                             <h1>Taller ${taller.id}</h1>
@@ -155,8 +174,10 @@ export default class extends AbstractView {
                         <!--GUARDAR / CANCELAR-->
                         <div id="workshopActionButtons_${taller.id}" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <a id="saveWorkshop_${taller.id}" class="btn btn-primary" href="/talleres">Guardar</a>
-                                <a id="dontSaveWorkshop_${taller.id}" class="btn btn-primary" href="/talleres">Cancelar</a>
+                                <!--<a id="saveWorkshop_${taller.id}" class="btn btn-primary" href="/talleres">Guardar</a>
+                                <a id="dontSaveWorkshop_${taller.id}" class="btn btn-primary" href="/talleres">Cancelar</a>-->
+                                <button id="saveWorkshop_${taller.id}" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSaveWorkshop_${taller.id}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
@@ -214,3 +235,79 @@ const fillOptions = () => {
     });
 
 }
+
+const guardarTallerJSON = () => {
+
+    banderaTaller = false;
+
+    tallerJSON.idTallerServicio = idUrl;
+
+    let nombreTaller = document.getElementById(`workshopName_${idUrl}`);
+    tallerJSON.nombre = nombreTaller.value;
+
+    let selectRegion = document.getElementById('workshopRegionOptions');
+    tallerJSON.region = selectRegion.options[selectRegion.selectedIndex].text;
+
+    let selectComuna = document.getElementById('workshopCommuneOptions');
+    tallerJSON.comuna = selectComuna.options[selectComuna.selectedIndex].text;
+
+    let calleTaller = document.getElementById('streetWorkshop');
+    tallerJSON.calle = calleTaller.value;
+
+    let numeroTaller = document.getElementById('numStreetWorkshop')
+    tallerJSON.numero = numeroTaller.value;
+
+    let latitudTaller = document.getElementById('latitudeWorkshop');
+    tallerJSON.latitud = latitudTaller.value;
+
+    let longitudTaller = document.getElementById('longitudeWorkshop')
+    tallerJSON.longitud = longitudTaller.value;
+
+    //Por ahora valor de referencia
+    //Debe tener valor de relación idGeocercaCabecera en BD de Plataforma
+    tallerJSON.idGeocercaCabecera = 0;
+
+    if (nombreTaller.value != ''
+        && selectRegion.options[selectRegion.selectedIndex].text != ''
+        && selectComuna.options[selectComuna.selectedIndex].text != ''
+        && calleTaller.value != ''
+        && numeroTaller.value != ''
+        && latitudTaller.value != ''
+        && longitudTaller.value != '') {
+
+        banderaTaller = true;
+
+    }
+
+    //Creación del JSON
+    if (banderaTaller == true) {
+        sessionStorage.setItem(`ActualizacionTaller_${idUrl}`, JSON.stringify(tallerJSON));
+    }
+
+}
+
+const removerVariableTallerStorageJSON = () => {
+
+    if (sessionStorage.getItem(`ActualizacionTaller_${idUrl}`)) {
+        sessionStorage.removeItem(`ActualizacionTaller_${idUrl}`);
+    }
+
+}
+
+const mostrarTallerStorageJSON = () => {
+
+    if (sessionStorage.getItem(`ActualizacionTaller_${idUrl}`)) {
+        console.log(`\n\nActualizacionTaller_${idUrl}\n\n` + sessionStorage.getItem(`ActualizacionTaller_${idUrl}`));
+        alert(`\n\nActualizacionTaller_${idUrl}\n\n` + JSON.stringify(tallerJSON, undefined, 4));
+        //sessionStorage.removeItem(`ActualizacionTaller_${idUrl}`);
+    }
+}
+
+$(document).ready(function () {
+
+    $('div #pages').on('click', `button#saveWorkshop_${idUrl}`, function () {
+        guardarTallerJSON();
+        mostrarTallerStorageJSON();
+    });
+
+})

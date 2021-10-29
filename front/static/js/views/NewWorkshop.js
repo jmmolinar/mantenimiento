@@ -64,7 +64,7 @@ export default class extends AbstractView {
         //console.log("Vericando const taller: " + taller)
 
         fillWorkshop = `<h1></h1>
-            <form id="workshopFormQuery_new" action"/talleres">
+            <form id="workshopFormQuery_new" action="/talleres">
                 <!--IDENTIFICADOR DEL TALLER-->
                 <div id="workshopId_new" class="control-group order-identity border-transparent-1px">
                     <h1>Taller nuevo</h1>
@@ -282,18 +282,18 @@ const guardarTallerJSON = () => {
 
 const removerVariableTallerStorageJSON = () => {
 
-    if (sessionStorage.getItem(`NuevaBodega`)) {
-        sessionStorage.removeItem(`NuevaBodega`);
+    if (sessionStorage.getItem(`NuevoTaller`)) {
+        sessionStorage.removeItem(`NuevoTaller`);
     }
 
 }
 
 const mostrarTallerStorageJSON = () => {
 
-    if (sessionStorage.getItem(`NuevoTaller`)) {
+    if (sessionStorage.getItem(`NuevoTaller`)) { // Si hay una variable antigua con el mismo nombre, entrará a éste IF
         console.log(`\n\nNuevoTaller\n\n` + sessionStorage.getItem(`NuevoTaller`));
         alert(`\n\nNuevoTaller\n\n` + JSON.stringify(nuevoTallerJSON, undefined, 4));
-        //sessionStorage.removeItem(`NuevoActivo`);
+        //sessionStorage.removeItem(`NuevoTaller`);
     }
 }
 
