@@ -50,6 +50,7 @@ export default class extends AbstractView {
         let identificador = this.postId;
         let planHTML = ``;
         identificadorGlobal = this.postId;
+        idUrl = parseInt(identificador); 
 
         $.ajax({
             type: 'GET',
@@ -331,7 +332,7 @@ const fillPlanServiceCategories = () => {
                     <div id="labelTextAndlabelLimit_${cont}" name="textAndLimit" class="row-fluid">
                         <div id="labelText_${cont}" class="span5">
                             <label id="labelCategoryCheckbox_${cont}" class="checkbox" name="${category.nombre}">
-                                <b>${category.id}</b> - <b>${category.cod}</b> - ${category.nombre}
+                                <b>${category.cod}</b> - ${category.nombre}
                                 <input type="checkbox" id="categoryCheckbox_${cont}" value="option_${cont}"
                                 ${checkboxSeleccionado} for="categoryLimit_${cont}">
                             </label>
@@ -665,6 +666,8 @@ $(document).ready(function () {
     // Guardado de JSON teniendo categorías seleccionadas y sus datos completos
     $('div #pages').on('click', `button#savePlan_${idUrl}`, function (e) {
 
+        alert("Probando")
+
         guardarPlanParaJSON();
 
 
@@ -684,6 +687,8 @@ $(document).ready(function () {
 
             }
         }
+
+        mostrarPlanStorageJSON();
 
     });
 
