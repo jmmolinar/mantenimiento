@@ -556,6 +556,7 @@ const guardarPlanParaJSON = () => {
             //Input type number del costo de la categoría
             document.getElementById(`appendedPrependedInput_${contCategory}`).value = '';
             document.getElementById(`appendedPrependedInput_${contCategory}`).required = false;
+            document.getElementById(`appendedPrependedInput_${contCategory}`).disabled = true;
 
         }
     }
@@ -622,12 +623,15 @@ const guardarPlanParaJSON = () => {
             //Input type date de fecha de inicio de la categoría
             document.getElementById(`frequencyStartDate_${contCategory}`).value = '';
             document.getElementById(`frequencyStartDate_${contCategory}`).required = false;
+            document.getElementById(`frequencyStartDate_${contCategory}`).disabled = true;
             //Input type number del Cada de la categoría
             document.getElementById(`frequencyCount_${contCategory}`).value = '';
             document.getElementById(`frequencyCount_${contCategory}`).required = false;
+            document.getElementById(`frequencyCount_${contCategory}`).disabled = true;
             //Select de la frecuencia de la categoría
             document.getElementById(`frequencyType_${contCategory}`).selectedIndex = 0;
             document.getElementById(`frequencyType_${contCategory}`).required = false;
+            document.getElementById(`frequencyType_${contCategory}`).disabled = true;
 
         }
 
