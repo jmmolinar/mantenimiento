@@ -65,121 +65,121 @@ export default class extends AbstractView {
         //console.log("Vericando const bodega: " + bodega)
 
         fillWareHouse = `<h1></h1>
-                    <form id="wareHouseFormQuery_new" action="/bodegas">
-                        <!--IDENTIFICADOR DE LA BODEGA-->
-                        <div id="wareHouseId_new" class="control-group order-identity border-transparent-1px">
-                            <h1>Nueva bodega</h1>
-                        </div>
-                        <!--DATOS DE LA BODEGA-->
-                        <div id="wareHouseData_new" class="control-group border-transparent-1px">
+            <form id="wareHouseFormQuery_new" action="/bodegas">
+                <!--IDENTIFICADOR DE LA BODEGA-->
+                <div id="wareHouseId_new" class="control-group order-identity border-transparent-1px">
+                    <h1>Nueva bodega</h1>
+                </div>
+                <!--DATOS DE LA BODEGA-->
+                <div id="wareHouseData_new" class="control-group border-transparent-1px">
                             
-                            <!--NOMBRE DE BODEGA-->
-                            <div class="control-group">
-                                <label class="span2" for="wareHouseName_new">
-                                    <h5>Nombre</h5>
-                                </label>
-                                <div class="controls">
-                                    <input id="wareHouseName_new" type="text" min="3" maxlength="30"
-                                        value="" required>
-                                </div>
-                            </div>
-
-                            <!--CANTIDAD ACTIVOS EN BODEGA-->
-
-                            <!--REGIÓN DE BODEGA-->
-                            <div class="control-group">
-                                <label class="span2" for="wareHouseRegionOptions">
-                                    <h5>Región</h5>
-                                </label>
-                                <div class="controls">
-                                    <select id="wareHouseRegionOptions" required>
-                                        <option>-</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!--COMUNA DE BODEGA-->
-                            <div class="control-group">
-                                <label class="span2" for="wareHouseCommuneOptions">
-                                     <h5>Comuna</h5>
-                                </label>
-                                <div class="controls">
-                                    <select id="wareHouseCommuneOptions" required>
-                                        <option>-</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!--CALLE DE BODEGA-->
-                            <div class="control-group">
-                                <label class="span2" for="streetWareHouse">
-                                    <h5>Calle</h5>
-                                </label>
-                                <div class="controls">
-                                    <input id="streetWareHouse" type="text" min="3" maxlength="30"
-                                        value="" required>
-                                </div>
-                            </div>
-
-                            <!--NÚMERO DE CALLE DE BODEGA-->
-                            <div class="control-group">
-                                <label class="span2" for="numStreetWareHouse">
-                                    <h5>Número</h5>
-                                </label>
-                                <div class="controls">
-                                    <input id="numStreetWareHouse" type="text" type="number" step="1" min="0"
-                                        maxlength="10" value="" placeholder="e.g. 41" required>
-                                </div>
-                            </div>
-
-                            <!--LATITUDE DE BODEGA-->
-                            <div class="control-group">
-                                <label class="span2" for="latitudeWareHouse">
-                                    <h5>Latitud</h5>
-                                </label>
-                                <div class="controls">
-                                    <input id="latitudeWareHouse" type="number" maxlength="30" step="0.01"
-                                        value="" required>
-                                </div>
-                            </div>
-
-                            <!--LONGITUDE DE BODEGA-->
-                            <div class="control-group">
-                                <label class="span2" for="longitudeWareHouse">
-                                    <h5>Longitud</h5>
-                                </label>
-                                <div class="controls">
-                                    <input id="longitudeWareHouse" type="number" maxlength="30" step="0.01"
-                                        value="" required>
-                                </div>
-                            </div>
+                    <!--NOMBRE DE BODEGA-->
+                    <div class="control-group">
+                        <label class="span2" for="wareHouseName_new">
+                            <h5>Nombre</h5>
+                        </label>
+                        <div class="controls">
+                            <input id="wareHouseName_new" type="text" min="3" maxlength="30"
+                                value="" required>
                         </div>
+                    </div>
 
-                        <!-- UBICACIÓN EN MAPA -->
-                        <div id="locationWareHouse" class="control-group border-transparent-1px">
-                            <div class="row-fluid">
-                                <label class="span2" for="mapWareHouseContainer">
-                                    <h5>Mapa de ubicación</h5>
-                                </label>
-                            </div>
-                            <div id="mapWareHouseContainer" class="border-dashed-1px">
-                                <iframe id="iframeMapWareHouse"
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.9716318467913!2d${getLongitud}!3d${getLatitud}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDI3JzAwLjIiUyA3MMKwMzYnMzUuMiJX!5e0!3m2!1ses-419!2scl!4v1623787161454!5m2!1ses-419!2scl"
-                                    width="100%" height="450" style="border:0;" allowfullscreen=""
-                                    loading="lazy"></iframe>
-                            </div>
-                        </div>
+                    <!--CANTIDAD ACTIVOS EN BODEGA-->
 
-                        <!--GUARDAR / CANCELAR-->
-                        <div id="wareHouseActionButtons_new" class="control-group">
-                            <div class="span12 text-right border-transparent-1px">
-                                <!--<a id="saveWareHouse_new" class="btn btn-primary" href="/bodegas">Guardar</a>
-                                <a id="dontSaveWareHouse_new" class="btn btn-primary" href="/bodegas">Cancelar</a>-->
-                                <button id="saveWareHouse_new" class="btn btn-primary" type="submit">Guardar</button>
-                                <button id="dontSaveWareHouse_new" class="btn btn-primary" type="submit">Cancelar</button>
-                            </div>
+                    <!--REGIÓN DE BODEGA-->
+                    <div class="control-group">
+                        <label class="span2" for="wareHouseRegionOptions">
+                            <h5>Región</h5>
+                        </label>
+                        <div class="controls">
+                            <select id="wareHouseRegionOptions" required>
+                                <option>-</option>
+                            </select>
                         </div>
-                    </form>`;
+                    </div>
+
+                    <!--COMUNA DE BODEGA-->
+                    <div class="control-group">
+                        <label class="span2" for="wareHouseCommuneOptions">
+                            <h5>Comuna</h5>
+                        </label>
+                        <div class="controls">
+                            <select id="wareHouseCommuneOptions" required>
+                                <option>-</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!--CALLE DE BODEGA-->
+                    <div class="control-group">
+                        <label class="span2" for="streetWareHouse">
+                            <h5>Calle</h5>
+                        </label>
+                        <div class="controls">
+                            <input id="streetWareHouse" type="text" min="3" maxlength="30"
+                                value="" required>
+                        </div>
+                    </div>
+
+                    <!--NÚMERO DE CALLE DE BODEGA-->
+                    <div class="control-group">
+                        <label class="span2" for="numStreetWareHouse">
+                            <h5>Número</h5>
+                        </label>
+                        <div class="controls">
+                            <input id="numStreetWareHouse" type="text" type="number" step="1" min="0"
+                                maxlength="10" value="" placeholder="e.g. 41" required>
+                        </div>
+                    </div>
+
+                    <!--LATITUDE DE BODEGA-->
+                    <div class="control-group">
+                        <label class="span2" for="latitudeWareHouse">
+                            <h5>Latitud</h5>
+                        </label>
+                        <div class="controls">
+                            <input id="latitudeWareHouse" type="number" maxlength="30" step="0.01"
+                                value="" required>
+                        </div>
+                    </div>
+
+                    <!--LONGITUDE DE BODEGA-->
+                    <div class="control-group">
+                        <label class="span2" for="longitudeWareHouse">
+                            <h5>Longitud</h5>
+                        </label>
+                        <div class="controls">
+                            <input id="longitudeWareHouse" type="number" maxlength="30" step="0.01"
+                                value="" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UBICACIÓN EN MAPA -->
+                <div id="locationWareHouse" class="control-group border-transparent-1px">
+                    <div class="row-fluid">
+                        <label class="span2" for="mapWareHouseContainer">
+                            <h5>Mapa de ubicación</h5>
+                        </label>
+                    </div>
+                    <div id="mapWareHouseContainer" class="border-dashed-1px">
+                        <iframe id="iframeMapWareHouse"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.9716318467913!2d${getLongitud}!3d${getLatitud}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDI3JzAwLjIiUyA3MMKwMzYnMzUuMiJX!5e0!3m2!1ses-419!2scl!4v1623787161454!5m2!1ses-419!2scl"
+                            width="100%" height="450" style="border:0;" allowfullscreen=""
+                            loading="lazy"></iframe>
+                    </div>
+                </div>
+
+                <!--GUARDAR / CANCELAR-->
+                <div id="wareHouseActionButtons_new" class="control-group">
+                    <div class="span12 text-right border-transparent-1px">
+                        <!--<a id="saveWareHouse_new" class="btn btn-primary" href="/bodegas">Guardar</a>
+                        <a id="dontSaveWareHouse_new" class="btn btn-primary" href="/bodegas">Cancelar</a>-->
+                        <button id="saveWareHouse_new" class="btn btn-primary" type="submit">Guardar</button>
+                        <button id="dontSaveWareHouse_new" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
+                    </div>
+                </div>
+            </form>`;
         //} else {
         //    fillWareHouse = `<h1>=(</h1>
         //    <p>-- No se logró obtener la bodega ${identificador}</p>`

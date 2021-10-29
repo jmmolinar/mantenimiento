@@ -1,5 +1,17 @@
 import AbstractView from "./AbstractView.js";
 
+//Variable para controlar la creación de JSON de tipo de activo
+let banderaTipoActivo = false;
+
+//VARIABLE PARA JSON
+let tipoActivoJSON = {
+    "idTipoActivo": 0,
+    "nombre": ""
+};
+
+//Variable para asignar el identificador
+let idUrl = 0;
+
 export default class extends AbstractView {
     constructor(params) {
         super(params);
@@ -11,6 +23,7 @@ export default class extends AbstractView {
 
         let identificador = this.postId;
         let assetTypeHTML = ``;
+        idUrl = parseInt(identificador);
 
         $.ajax({
             type: 'GET',
@@ -28,7 +41,7 @@ export default class extends AbstractView {
                     console.log("Vericando const assetType: " + assetType)
 
                     fillAssetType = `<h1></h1>
-                    <form id="assetTypeFormQuery_${assetType.id}">
+                    <form id="assetTypeFormQuery_${assetType.id}" action="/tipos">
                         <!--IDENTIFICADOR DEL TIPO DE ACTIVO-->
                         <div id="assetTypeId_${assetType.id}" class="control-group order-identity border-transparent-1px">
                             <h1>Tipo de activo ${assetType.id}</h1>
@@ -51,8 +64,10 @@ export default class extends AbstractView {
                         <!--GUARDAR / CANCELAR-->
                         <div id="assetTypeActionButtons_${assetType.id}" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <a id="saveAssetType_${assetType.id}" class="btn btn-primary" href="/tipos">Guardar</a>
-                                <a id="dontSaveAssetType_${assetType.id}" class="btn btn-primary" href="/tipos">Cancelar</a>
+                                <!--<a id="saveAssetType_${assetType.id}" class="btn btn-primary" href="/tipos">Guardar</a>
+                                <a id="dontSaveAssetType_${assetType.id}" class="btn btn-primary" href="/tipos">Cancelar</a>-->
+                                <button id="saveAssetType_${assetType.id}" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSaveAssetType_${assetType.id}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
@@ -75,3 +90,46 @@ export default class extends AbstractView {
         return assetTypeHTML;
     }
 }
+
+const guardarTipoActivoJSON = () => {
+
+    tipoActivoJSON.idTipoActivo = idUrl;
+
+    let nombreTipoActivo = document.getElementById(`assetTypeName_${idUrl}`);
+    tipoActivoJSON.nombre = nombreTipoActivo.value;
+
+    if (nombreTipoActivo.value != '') {
+        banderaTipoActivo = true;
+    }
+
+    //Creación del JSON
+    if (banderaTipoActivo == true) {
+        sessionStorage.setItem(`ActualizacionTipoActivo_${idUrl}`, JSON.stringify(tipoActivoJSON));
+    }
+}
+
+const removerVariableTipoActivoStorageJSON = () => {
+
+    if (sessionStorage.getItem(`ActualizacionTipoActivo_${idUrl}`)) {
+        sessionStorage.removeItem(`ActualizacionTipoActivo_${idUrl}`);
+    }
+
+}
+
+const mostrarTipoActivoStorageJSON = () => {
+
+    if (sessionStorage.getItem(`ActualizacionTipoActivo_${idUrl}`)) {
+        console.log(`\n\nActualizacionTipoActivo_${idUrl}\n\n` + sessionStorage.getItem(`ActualizacionTipoActivo_${idUrl}`));
+        alert(`\n\nActualizacionTipoActivo_${idUrl}\n\n` + JSON.stringify(tipoActivoJSON, undefined, 4));
+        //sessionStorage.removeItem(`NuevoActivo`);
+    }
+}
+
+$(document).ready(function () {
+
+    $('div #pages').on('click', `button#saveAssetType_${idUrl}`, function () {
+        guardarTipoActivoJSON();
+        mostrarTipoActivoStorageJSON();
+    });
+
+});

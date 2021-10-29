@@ -61,7 +61,7 @@ export default class extends AbstractView {
                                 <!--<a id="saveAssetType_new" class="btn btn-primary" href="/tipos">Guardar</a>
                                 <a id="dontSaveAssetType_new" class="btn btn-primary" href="/tipos">Cancelar</a>-->
                                 <button id="saveAssetType_new" class="btn btn-primary" type="submit">Guardar</button>
-                                <button id="dontSaveAssetType_new" class="btn btn-primary" type="submit">Cancelar</button>
+                                <button id="dontSaveAssetType_new" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
                             </div>
                         </div>
                     </form>`;

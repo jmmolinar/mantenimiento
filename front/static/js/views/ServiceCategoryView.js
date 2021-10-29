@@ -78,7 +78,7 @@ export default class extends AbstractView {
                                 <!--<a id="saveCategory_${categoria.id}" class="btn btn-primary" href="/categorias">Guardar</a>
                                 <a id="dontSaveCategory_${categoria.id}" class="btn btn-primary" href="/categorias">Cancelar</a>-->
                                 <button id="saveCategory_${categoria.id}" class="btn btn-primary" type="submit">Guardar</button>
-                                <button id="dontSaveCategory_${categoria.id}" class="btn btn-primary" type="submit">Cancelar</button>
+                                <button id="dontSaveCategory_${categoria.id}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
@@ -136,8 +136,8 @@ const removerVariableCategoriaStorageJSON = () => {
 const mostrarCategoriaStorageJSON = () => {
 
     if (sessionStorage.getItem(`ActualizacionCategoria_${idUrl}`)) {
-        console.log(`\n\nActualizacionCategoria\n\n` + sessionStorage.getItem(`ActualizacionCategoria_${idUrl}`));
-        alert(`\n\nActualizacionCategoria\n\n` + JSON.stringify(categoriaJSON, undefined, 4));
+        console.log(`\n\nActualizacionCategoria_${idUrl}\n\n` + sessionStorage.getItem(`ActualizacionCategoria_${idUrl}`));
+        alert(`\n\nActualizacionCategoria_${idUrl}\n\n` + JSON.stringify(categoriaJSON, undefined, 4));
         //sessionStorage.removeItem(`NuevoActivo`);
     }
 }
