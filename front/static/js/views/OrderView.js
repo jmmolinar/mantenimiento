@@ -543,6 +543,7 @@ const guardarOrdenParaJSON = () => {
     ordenJSON.ordenEstados = []; // reinicio el estado por cada activo
     ordenJSON.ordenCategorias = []; // reinicio las categorías por cada activo
 
+    ordenJSON.idOrden = idUrl;
     ordenJSON.fechaCreacion = currentDate();
     ordenJSON.fechaInicial = document.getElementById('newRangeStartDate').value;
     ordenJSON.start = ordenJSON.fechaInicial;
