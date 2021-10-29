@@ -354,7 +354,7 @@ const fillPlanServiceCategories = () => {
                 <div id="labelTextStartFrecuency_${cont}" name="textStartFrecuency" class="control-group">
                     <div id="labelTextPeriodo_${cont}" class="span10">
                         <label id="labelPeriodoCategoryCheckbox_${cont}" class="checkbox" name="${category.nombre}">
-                            <b>${category.id}</b> - <b>${category.cod}</b> - ${category.nombre}
+                            <b>${category.cod}</b> - ${category.nombre}
                             <input type="checkbox" id="categoryPeriodoCheckbox_${cont}" value="option_${cont}"
                                 ${checkboxSeleccionadoPeriodo} for="categoryPeriodo_${cont}">
                         </label>
