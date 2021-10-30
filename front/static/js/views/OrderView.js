@@ -135,12 +135,14 @@ export default class extends AbstractView {
                     getEstadosOrden = listAllElement(order.historial_estados);
                     let getEstadosOrdenItem = [];
 
+                    //Comparador para obtener la fecha máxima de un estado
+                    //y poder asignarlo como el actual
                     let fechaUltimoEstado = "1900-01-01T00:00";
 
                     getEstadosOrden.forEach(elem => {
 
                         if (new Date(elem["fecha_estado"]) > new Date(fechaUltimoEstado)) {
-                            
+
                             //alert("Comparando fechas")
                             getEstado = elem["nombre_estado"];
                             fechaUltimoEstado = elem["fecha_estado"];
@@ -538,23 +540,21 @@ const guardarOrdenParaJSON = () => {
 
     console.log("Entré a la función")
 
-    console.log("Entré al for de activosSeleccionados")
-
     ordenJSON.ordenEstados = []; // reinicio el estado por cada activo
     ordenJSON.ordenCategorias = []; // reinicio las categorías por cada activo
 
     ordenJSON.idOrden = idUrl;
     ordenJSON.fechaCreacion = currentDate();
-    ordenJSON.fechaInicial = document.getElementById('newRangeStartDate').value;
+    ordenJSON.fechaInicial = document.getElementById('rangeStartDate').value;
     ordenJSON.start = ordenJSON.fechaInicial;
-    ordenJSON.fechaFinal = document.getElementById('newRangeEndDate').value;
+    ordenJSON.fechaFinal = document.getElementById('rangeEndDate').value;
     ordenJSON.end = ordenJSON.fechaFinal;
     ordenJSON.observaciones = document.getElementById('orderNotes').value;
     //ordenJSON.title = 
     ordenJSON.allDay = false
 
     let valorPatente = document.getElementById('valorPatente').value;
-    const activo = getActivos.find((activo) => activo.activo == valorPatente.trim());
+    const activo = getActivos.find((activo) => activo.activo == valorPatente);
     if (activo) {
         ordenJSON.activoIdActivo = activo.id;
     }
@@ -569,13 +569,59 @@ const guardarOrdenParaJSON = () => {
         ordenJSON.tallerServicioIdTallerServicio = taller.id;
     }
 
-    let estadoordenJSON = {
-        //"ordenIdOrden: "
-        "estadoIdEstado": 2,
-        "idUsuario": 1, //1 temporalmente hasta implementar sincronización con usuario conectado
-        "fechaAsignado": ordenJSON.fechaCreacion
+    //Recorrer getEstadosOrden, asignar cada elemento a estadoOrdenJSON y push a ordenEstados
+    //Despues de eso Agregar el éstado actualmente seleccionado (Hacer las restricciones para
+    // que no se seleccione cualquier estado)
+    // Bloquear el cambio de estado y el botón GUARDAR si el estado actual al entrar es
+    // completado o completado con retraso
+
+    for (const elem of getEstadosOrden) {
+        let usuario = 0;
+        if (elem["estado_asignado_por"] == "Sistema") {
+            usuario = 2;
+        } else {
+            if (elem["estado_asignado_por"] == "Usuario") {
+                usuario = 1;
+            }
+        }
+
+        let estadoOrdenJSON = {
+            "ordenIdOrden": idUrl,
+            "estadoIdEstado": elem["id_estado"],
+            "idUsuario": usuario, //temporalmente hasta implementar sincronización con usuario conectado
+            "fechaAsignado": elem["fecha_estado"]
+        }
+
+        ordenJSON.ordenEstados.push(estadoOrdenJSON);
     }
-    ordenJSON.ordenEstados.push(estadoordenJSON);
+
+    for (const elem of getEstados) {
+        //const estadoSeleccionado = getEstadosOrden.find((e) => (e.id_estado) == elem.id_estado);
+
+        //getEstado es el estado seleccionado
+        if (getEstado == elem.nombre) {
+
+            let usuarioActual = 0;
+            if (elem["asignado_por"] == "Sistema") {
+                usuarioActual = 2;
+            } else {
+                if (elem["asignado_por"] == "Usuario") {
+                    usuarioActual = 1;
+                }
+            }
+
+            let estadoOrdenActualJSON = {
+                "ordenIdOrden": idUrl,
+                "estadoIdEstado": elem.id_estado,
+                //Cambiar este ID USUARIO con un IF verificando el status colocado
+                "idUsuario": usuarioActualo, //temporalmente hasta implementar sincronización con usuario conectado
+                "fechaAsignado": currentDate()
+            }
+            ordenJSON.ordenEstados.push(estadoOrdenActualJSON);
+        }
+    }
+
+
 
 
     let costoRequerido = false;
@@ -633,8 +679,54 @@ const guardarOrdenParaJSON = () => {
 
 }
 
+const mostrarStorageJSON = () => {
+
+
+    if (sessionStorage.getItem(`ActualizacionOrden_${idUrl}`)) {
+        console.log(`\n\nActualizacionOrden_${idUrl}\n\n` + sessionStorage.getItem(`ActualizacionOrden_${idUrl}`));
+        //sessionStorage.removeItem(`NuevaOrden_${contadorOrdenes}`);
+    }
+
+}
+
+const removerVariablesStorageJSON = () => {
+
+
+    if (sessionStorage.getItem(`ActualizacionOrden_${idUrl}`)) {
+        sessionStorage.removeItem(`ActualizacionOrden_${idUrl}`);
+    }
+
+
+}
 
 $(document).ready(function () {
+
+    $('div #pages').on('click', `button#saveOrder_${idUrl}`, function (e) {
+
+        guardarOrdenParaJSON();
+
+        if ($('#orderType').val().length != ''
+            && $('#orderAreasOptions').val().length != ''
+            && $('#orderProvider').val().length != ''
+            && $('#orderAssetType').val().length != ''
+            && $('#rangeStartDate').val().length != ''
+            && $('#rangeEndDate').val().length != '') {
+
+            if (banderaSeleccionCategoria == false) {
+
+                alert('Debe completar los datos de "Categorías de servicio"');
+                e.preventDefault();
+                $('#categoriesContainer').css("background-color", 'beige')
+
+            }
+
+
+        }
+
+        mostrarStorageJSON();
+
+    });
+
 
     //FILTRO DE CATEGORÍAS CON SUS COSTOS
     $('div #pages').on('click', 'input[id=busquedaCategoriasOrden]', function () {
