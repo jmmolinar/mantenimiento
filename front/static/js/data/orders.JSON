@@ -145,8 +145,7 @@
                 "id_estado": 8,
                 "nombre_estado": "Completado",
                 "fecha_estado": "2021-07-06T12:31",
-                "estado_asignado_por": "Usuario",
-                "documento_completado": "documentoCompletado_12.pdf"
+                "estado_asignado_por": "Usuario"
             }
         ],
         "periodo_orden": false,
@@ -224,8 +223,7 @@
                 "id_estado": 9,
                 "nombre_estado": "Completado con retraso",
                 "fecha_estado": "2021-07-19T12:31",
-                "estado_asignado_por": "Usuario",
-                "documento_completado": "documentoCompletado_11.pdf"
+                "estado_asignado_por": "Usuario"
             }
         ],
         "periodo_orden": false,
@@ -619,8 +617,7 @@
                 "id_estado": 8,
                 "nombre_estado": "Completado",
                 "fecha_estado": "2021-05-26T12:31",
-                "estado_asignado_por": "Usuario",
-                "documento_completado": "documentoCompletado_4.pdf"
+                "estado_asignado_por": "Usuario"
             }
         ],
         "periodo_orden": false,
@@ -685,8 +682,7 @@
                 "id_estado": 8,
                 "nombre_estado": "Completado",
                 "fecha_estado": "2021-05-26T12:31",
-                "estado_asignado_por": "Usuario",
-                "documento_completado": "documentoCompletado_3.pdf"
+                "estado_asignado_por": "Usuario"
             }
         ],
         "periodo_orden": false,

@@ -19,8 +19,10 @@ let getTipoActivo = ``;
 let getTaller = ``;
 let getRutaAdjuntoCompletado = ``;
 let getFechaRutaAdjuntoCompletado = ``;
+let getFechaCreacion = ``;
 let getFrecuenciaPeriodo = ``;
 let getCategoriasOrden = [];
+let getEstadosOrden = [];
 let identificadorGlobal = '';
 
 //Variable para validar que al menos se tenga una categoría seleccionada
@@ -83,7 +85,7 @@ export default class extends AbstractView {
                 let classFocusState = "";
 
                 let formatGetEstadosOrdenItem = ``;
-                let getEstadosOrden = [];
+                //let getEstadosOrden = [];
 
                 const order = data.find((order) => order.id_orden == identificador)
 
@@ -98,6 +100,7 @@ export default class extends AbstractView {
                     getTaller = order.taller_orden;
                     getRutaAdjuntoCompletado = order.rutaAdjuntoCompletado;
                     getFechaRutaAdjuntoCompletado = order.fechaRutaCompletado;
+                    getFechaCreacion = order.fecha_creacion;
                     //getFrecuenciaPeriodo = order.periodo_frecuencia_cada;
                     console.log("Verificando postId: " + identificador)
                     console.log("Vericando id de order: " + order.id_orden)
@@ -154,12 +157,12 @@ export default class extends AbstractView {
                         }*/
 
                         if (elem["nombre_estado"] == "Completado" || elem["nombre_estado"] == "Completado con retraso") {
-                            getDocumentoCompletado = elem["documento_completado"];
+                            //getDocumentoCompletado = elem["documento_completado"];
                             ocultoAdjuntoCompletado = "controls new-div-file-upload";
                             requeridoAdjuntoCompletado = "required";
                             classFocusState = "text-success";
                         } else {
-                            getDocumentoCompletado = "";
+                            //getDocumentoCompletado = "";
                             ocultoAdjuntoCompletado = "hidden controls new-div-file-upload";
                             requeridoAdjuntoCompletado = "";
                         }
@@ -226,7 +229,7 @@ export default class extends AbstractView {
                                                 name="fileCompletado" size="40" ${requeridoAdjuntoCompletado}>
 		                                </label>
                                         <a href="/static/img/Prueba.pdf" download>
-                                            <p class='label label-info' id="fileInfoCompletado" required style="margin-bottom: 5px;">${getDocumentoCompletado}</p>
+                                            <p class='label label-info' id="fileInfoCompletado" required style="margin-bottom: 5px;">${getRutaAdjuntoCompletado}</p>
                                         </a>
                                     </div>
                                 </div>
@@ -544,7 +547,8 @@ const guardarOrdenParaJSON = () => {
     ordenJSON.ordenCategorias = []; // reinicio las categorías por cada activo
 
     ordenJSON.idOrden = idUrl;
-    ordenJSON.fechaCreacion = currentDate();
+    //ordenJSON.fechaCreacion = currentDate();
+    ordenJSON.fechaCreacion = getFechaCreacion;
     ordenJSON.fechaInicial = document.getElementById('rangeStartDate').value;
     ordenJSON.start = ordenJSON.fechaInicial;
     ordenJSON.fechaFinal = document.getElementById('rangeEndDate').value;
@@ -553,7 +557,7 @@ const guardarOrdenParaJSON = () => {
     //ordenJSON.title = 
     ordenJSON.allDay = false
 
-    let valorPatente = document.getElementById('valorPatente').value;
+    let valorPatente = document.getElementById('valorPatente').textContent.trim();
     const activo = getActivos.find((activo) => activo.activo == valorPatente);
     if (activo) {
         ordenJSON.activoIdActivo = activo.id;
@@ -575,6 +579,7 @@ const guardarOrdenParaJSON = () => {
     // Bloquear el cambio de estado y el botón GUARDAR si el estado actual al entrar es
     // completado o completado con retraso
 
+    //Asignado el historial de estados de la orden a ordenJSON.ordenEstados
     for (const elem of getEstadosOrden) {
         let usuario = 0;
         if (elem["estado_asignado_por"] == "Sistema") {
@@ -595,33 +600,29 @@ const guardarOrdenParaJSON = () => {
         ordenJSON.ordenEstados.push(estadoOrdenJSON);
     }
 
-    for (const elem of getEstados) {
-        //const estadoSeleccionado = getEstadosOrden.find((e) => (e.id_estado) == elem.id_estado);
 
-        //getEstado es el estado seleccionado
-        if (getEstado == elem.nombre) {
+    //Agregando el estado actual seleccionado a ordenJSON.ordenEstados
+    const estadoSeleccionado = getEstados.find((e) => (e.nombre) == document.getElementById('orderStatus').value);
+    if (estadoSeleccionado) {
 
-            let usuarioActual = 0;
-            if (elem["asignado_por"] == "Sistema") {
-                usuarioActual = 2;
-            } else {
-                if (elem["asignado_por"] == "Usuario") {
-                    usuarioActual = 1;
-                }
+        /*let usuarioActual = 0;
+        if (e["asignado_por"] == "Sistema") {
+            usuarioActual = 2;
+        } else {
+            if (e["asignado_por"] == "Usuario") {
+                usuarioActual = 1;
             }
+        }*/
 
-            let estadoOrdenActualJSON = {
-                "ordenIdOrden": idUrl,
-                "estadoIdEstado": elem.id_estado,
-                //Cambiar este ID USUARIO con un IF verificando el status colocado
-                "idUsuario": usuarioActualo, //temporalmente hasta implementar sincronización con usuario conectado
-                "fechaAsignado": currentDate()
-            }
-            ordenJSON.ordenEstados.push(estadoOrdenActualJSON);
+        let estadoOrdenActualJSON = {
+            "ordenIdOrden": idUrl,
+            "estadoIdEstado": estadoSeleccionado.id_estado,
+            "idUsuario": 1, //temporalmente hasta implementar sincronización con usuario conectado
+            "fechaAsignado": currentDate()
         }
+        ordenJSON.ordenEstados.push(estadoOrdenActualJSON);
+
     }
-
-
 
 
     let costoRequerido = false;
