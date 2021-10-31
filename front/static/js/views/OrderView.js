@@ -28,6 +28,10 @@ let identificadorGlobal = '';
 //Variable para validar que al menos se tenga una categoría seleccionada
 let banderaSeleccionCategoria = false;
 
+//Variable para validar que se tenga el adjunto para crear el JSON si estado
+// es completado o compleatado con retraso
+let banderaAdjuntoRequerido = false;
+
 //VARIABLE PARA JSON
 let ordenJSON = {
     "idOrden": 0,
@@ -38,6 +42,8 @@ let ordenJSON = {
     "activoIdActivo": null,
     "tallerServicioIdTallerServicio": null,
     "observaciones": "",
+    "rutaAdjuntoCompletado": "",
+    "fechaRutaCompletado": "",
     "ordenEstados": [],
     "ordenCategorias": [],
     "title": "",
@@ -83,6 +89,7 @@ export default class extends AbstractView {
                 let ocultoRango = "hidden border-transparent-1px"
                 let ocultoAdjuntoCompletado = "hidden controls new-div-file-upload";
                 let classFocusState = "";
+                let guardarDeshabilitado = "";
 
                 let formatGetEstadosOrdenItem = ``;
                 //let getEstadosOrden = [];
@@ -147,8 +154,14 @@ export default class extends AbstractView {
                         if (new Date(elem["fecha_estado"]) > new Date(fechaUltimoEstado)) {
 
                             //alert("Comparando fechas")
+                            //Cambiar elem["nombre_estado"] por elem["estado_id_estado"]
                             getEstado = elem["nombre_estado"];
                             fechaUltimoEstado = elem["fecha_estado"];
+
+                            if(getEstado == "Completado"
+                            || getEstado == "Completado con retraso"){
+                                guardarDeshabilitado = "disabled";
+                            }
                         }
 
                         /*if (elem["estado_actual"] == true) {
@@ -217,7 +230,7 @@ export default class extends AbstractView {
                                         <h5>Estado</h5>
                                     </label>
                                     <div class="controls">
-                                        <select id="orderStatus" required>
+                                        <select id="orderStatus" required ${guardarDeshabilitado}>
                                         </select>
                                     </div>
 
@@ -226,7 +239,8 @@ export default class extends AbstractView {
 		                                <label id="clickFileCompletado" class='btn btn-primary' href='javascript:;' for="fileCompletado">
                                             <i class="fa fa-cloud-upload" aria-hidden="true"></i>
                                             <input id="fileCompletado" type="file" class="new-input-file"
-                                                name="fileCompletado" size="40" ${requeridoAdjuntoCompletado}>
+                                                name="fileCompletado" size="40" 
+                                                ${requeridoAdjuntoCompletado} ${guardarDeshabilitado}>
 		                                </label>
                                         <a href="/static/img/Prueba.pdf" download>
                                             <p class='label label-info' id="fileInfoCompletado" required style="margin-bottom: 5px;">${getRutaAdjuntoCompletado}</p>
@@ -356,7 +370,7 @@ export default class extends AbstractView {
                             <div class="span12 text-right border-transparent-1px">
                                 <!--<a id="saveOrder_${order.id_orden}" class="btn btn-primary" href="/ordenes">Guardar</a>
                                 <a id="dontSaveOrder_${order.id_orden}" class="btn btn-primary" href="/ordenes">Cancelar</a>-->
-                                <button id="saveOrder_${order.id_orden}" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="saveOrder_${order.id_orden}" ${guardarDeshabilitado} class="btn btn-primary" type="submit">Guardar</button>
                                 <button id="dontSaveOrder_${order.id_orden}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
                             </div>
                         </div>
@@ -540,6 +554,7 @@ const fillOrderCategories = () => {
 const guardarOrdenParaJSON = () => {
 
     banderaSeleccionCategoria = false; // Reinicio a false para verificar de nuevo la selección de categorías
+    banderaAdjuntoRequerido = false; // Reinicio
 
     console.log("Entré a la función")
 
@@ -571,6 +586,30 @@ const guardarOrdenParaJSON = () => {
     const taller = getTalleres.find((taller) => taller.nombre == document.getElementById('orderProvider').value);
     if (taller) {
         ordenJSON.tallerServicioIdTallerServicio = taller.id;
+    }
+
+    const estado = document.getElementById('orderStatus');
+    let fileInfoCompletado = document.getElementById('fileInfoCompletado');
+    let fileCompletado = document.getElementById('fileCompletado');
+    if(estado.options[estado.selectedIndex].text == "Completado" 
+        || estado.options[estado.selectedIndex].text == "Completado con retraso"){
+
+            if(fileInfoCompletado.value == ""){
+
+                fileCompletado.required = true
+                banderaAdjuntoRequerido = true;
+
+            } else {
+
+                fileCompletado.required = false
+                ordenJSON.rutaAdjuntoCompletado = "/path/" + fileInfoCompletado.value;
+                ordenJSON.fechaRutaCompletado = currentDate();
+
+                banderaAdjuntoRequerido = false;
+
+            }
+
+
     }
 
     //Recorrer getEstadosOrden, asignar cada elemento a estadoOrdenJSON y push a ordenEstados
@@ -673,7 +712,9 @@ const guardarOrdenParaJSON = () => {
     }
 
     //Creación del JSON
-    if (banderaSeleccionCategoria == true && costoRequerido == false) {
+    if (banderaSeleccionCategoria == true 
+        && costoRequerido == false
+        && banderaAdjuntoRequerido == false) {
         //alert("cambió el valor de banderaSeleccionCategoria a TRUE y costoRequerido a FALSE")
         sessionStorage.setItem(`ActualizacionOrden_${idUrl}`, JSON.stringify(ordenJSON));
     }
@@ -859,7 +900,15 @@ $(document).ready(function () {
 
             $('#divSelectedFile').removeClass("hidden controls new-div-file-upload")
             $("#divSelectedFile").addClass("controls new-div-file-upload");
-            $("#fileCompletado").attr("required", "required");
+            
+            if($('#fileInfoCompletado').val() !=''){
+                $("#fileCompletado").attr("required", "required");
+            } else {
+                $("#fileCompletado").removeAttr("required");
+            }
+
+            //$("#fileCompletado").attr("required", "required");
+
             $("#fileCompletado").on('change', function () {
                 var filename = $(this).val().replace(/C:\\fakepath\\/i, '')
                 console.log("Mi filename: " + filename);
