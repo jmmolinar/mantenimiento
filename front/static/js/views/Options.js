@@ -28,7 +28,7 @@ const loadSelectContentAndSelected = (array, select, flag) => {
 }
 
 /* Cargar contenido en el DIV y crear Alert por cada Uno*/
-const loadDivSelected = (div, multiple, key) => {
+const loadDivSelectedPlan = (div, multiple, key) => {
     
     //div.innerHTML = `<div></div>`;
     multiple.forEach(elem => {
@@ -43,6 +43,7 @@ const loadDivSelected = (div, multiple, key) => {
         buttonChild.textContent = `x`;
 
         let strongChild = document.createElement("strong");
+        strongChild.setAttribute("class", "name-plan");
         strongChild.innerHTML = elem[key];
 
         divChild.appendChild(buttonChild);
@@ -1129,7 +1130,7 @@ export {
     getPlanes,
     //getRegiones,
     loadSelectContent,
-    loadDivSelected,
+    loadDivSelectedPlan,
     loadSelectContentAndSelected,
     loadSelectContentAndSelectedMultiple,
     listSelect,

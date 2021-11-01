@@ -7,6 +7,7 @@
         "modelo": "Retroexcavadora 150G LC",
         "anio": "2018",
         "plan": "Plan CATERPILLAR",
+        "dadoDeBaja": false,
         "planes_activo": [
             {
                 "id": "11",
@@ -80,6 +81,7 @@
         "modelo": "Retroexcavadora 130G LC",
         "anio": "2020",
         "plan": "Plan CATERPILLAR",
+        "dadoDeBaja": false,
         "planes_activo": [],
         "documentos": [
             {
@@ -140,6 +142,7 @@
         "modelo": "Retroexcavadora 130G LC",
         "anio": "2019",
         "plan": "Plan CATERPILLAR",
+        "dadoDeBaja": false,
         "planes_activo": [
             {
                 "id": "11",
@@ -213,6 +216,7 @@
         "modelo": "Tundra",
         "anio": "2020",
         "plan": "Plan TOYOTA",
+        "dadoDeBaja": false,
         "planes_activo": [
             {
                 "id": "11",
@@ -286,6 +290,7 @@
         "modelo": "F150",
         "anio": "2019",
         "plan": "Plan FORD",
+        "dadoDeBaja": false,
         "planes_activo": [
             {
                 "id": "11",
@@ -359,6 +364,7 @@
         "modelo": "Suburban",
         "anio": "2019",
         "plan": "Plan CHEVROLET",
+        "dadoDeBaja": false,
         "planes_activo": [
             {
                 "id": "11",
@@ -432,6 +438,7 @@
         "modelo": "Retroexcavadora 100T",
         "anio": "2020",
         "plan": "Plan KOMATSU",
+        "dadoDeBaja": false,
         "planes_activo": [
             {
                 "id": "11",
@@ -505,6 +512,7 @@
         "modelo": "Sports Turf",
         "anio": "2021",
         "plan": "Plan JOHN DEERE",
+        "dadoDeBaja": false,
         "planes_activo": [
             {
                 "id": "11",

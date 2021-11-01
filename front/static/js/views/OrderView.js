@@ -601,8 +601,8 @@ const guardarOrdenParaJSON = () => {
     //ordenJSON.title = 
     ordenJSON.allDay = false
 
-    let valorPatente = document.getElementById('valorPatente').textContent.trim();
-    const activo = getActivos.find((activo) => activo.activo == valorPatente);
+    let valorPatente = document.getElementById('valorPatente');
+    const activo = getActivos.find((activo) => activo.activo == valorPatente.textContent.trim());
     if (activo) {
         ordenJSON.activoIdActivo = activo.id;
     }

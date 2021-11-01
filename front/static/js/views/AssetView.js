@@ -6,7 +6,7 @@ import {
     listAllElement,
     loadSelectContent,
     loadSelectContentAndSelected,
-    loadDivSelected,
+    loadDivSelectedPlan,
     loadSelectContentAndSelectedMultiple,
     listSelect,
     listAnioAndSelected,
@@ -28,7 +28,7 @@ let banderaActivo = false;
 let banderaPlanes = false;
 
 //VARIABLE PARA JSON
-let nuevoActivoJSON = {
+let activoJSON = {
     "idActivo": 0,
     "anio": null,
     "dadoDeBaja": false,
@@ -92,7 +92,9 @@ export default class extends AbstractView {
                         <!--IDENTIFICADOR DEL ACTIVO-->
                         <div id="assetsId_${asset.id}" class="control-group order-identity border-transparent-1px">
                             <h1>Activo ${asset.id}</h1>
-                            <h3>Patente: ${asset.activo}</h3>
+                            <!--<h3>Patente: ${asset.activo}</h3>-->
+                            <h3 style="display:inline;">Patente: </h3>
+                            <h3 id="valorPatente" style="display:inline;">${asset.activo}</h3>
                             <h3>${km_hora}</h3>
                             <a id="downloadAsset_${asset.id}" class="btn btn-success" href=""> ${asset.activo}  <i class="fa fa-cloud-download"></i></a>
                         </div>
@@ -408,70 +410,70 @@ const fillOptions = () => {
 
     console.log("Entré al fillOptions en AssetView")
 
-    $(window).on("load", function () {
+    //$(window).on("load", function () {
 
-        $(document).ready(function () {
+    $(document).ready(function () {
 
-            // Select area -- emplea los datos obtenidos en getJson();
-            const selectArea = document.getElementById('assetAreasOptions');
-            //console.log("Id del select: " + selectArea.id);
-            //const optionArea = listSelect(areas, "nombre"); // Paso la clave "nombre"
-            const optionArea = listSelect(getAreas, "nombre"); // Paso la clave "nombre"
-            loadSelectContentAndSelected(optionArea, selectArea, getArea);
-            console.log("Área seleccionada: " + getArea);
+        // Select area -- emplea los datos obtenidos en getJson();
+        const selectArea = document.getElementById('assetAreasOptions');
+        //console.log("Id del select: " + selectArea.id);
+        //const optionArea = listSelect(areas, "nombre"); // Paso la clave "nombre"
+        const optionArea = listSelect(getAreas, "nombre"); // Paso la clave "nombre"
+        loadSelectContentAndSelected(optionArea, selectArea, getArea);
+        console.log("Área seleccionada: " + getArea);
 
-            // Select bodega -- emplea los datos obtenidos en getJson();
-            const selectBodega = document.getElementById('assetWareHousesOptions');
-            //const optionBodega = listSelect(bodegas, "nombre"); // Paso la clave "nombre"
-            const optionBodega = listSelect(getBodegas, "nombre"); // Paso la clave "nombre"
-            loadSelectContentAndSelected(optionBodega, selectBodega, getBodega);
-            console.log("Bodega seleccionada: " + getBodega);
+        // Select bodega -- emplea los datos obtenidos en getJson();
+        const selectBodega = document.getElementById('assetWareHousesOptions');
+        //const optionBodega = listSelect(bodegas, "nombre"); // Paso la clave "nombre"
+        const optionBodega = listSelect(getBodegas, "nombre"); // Paso la clave "nombre"
+        loadSelectContentAndSelected(optionBodega, selectBodega, getBodega);
+        console.log("Bodega seleccionada: " + getBodega);
 
-            // Select tipo de activo -- emplea los datos obtenidos en getJson();
-            const selectTipoActivo = document.getElementById('assetType');
-            //const optionTipoActivo = listSelect(tiposActivos, "nombre"); // Paso la clave "nombre"
-            const optionTipoActivo = listSelect(getTiposActivos, "nombre"); // Paso la clave "nombre"
-            loadSelectContentAndSelected(optionTipoActivo, selectTipoActivo, getTipoActivo);
-            console.log("Tipo de activo seleccionado: " + getTipoActivo);
+        // Select tipo de activo -- emplea los datos obtenidos en getJson();
+        const selectTipoActivo = document.getElementById('assetType');
+        //const optionTipoActivo = listSelect(tiposActivos, "nombre"); // Paso la clave "nombre"
+        const optionTipoActivo = listSelect(getTiposActivos, "nombre"); // Paso la clave "nombre"
+        loadSelectContentAndSelected(optionTipoActivo, selectTipoActivo, getTipoActivo);
+        console.log("Tipo de activo seleccionado: " + getTipoActivo);
 
-            // Select Marca desde Options.js
-            const selectMarca = document.getElementById('assetBrand');
-            const optionMarca = listSelect(marcas, "nombre"); // Paso la clave "nombre"
-            loadSelectContentAndSelected(optionMarca, selectMarca, getMarca);
-            console.log("Marca seleccionada: " + getMarca);
+        // Select Marca desde Options.js
+        const selectMarca = document.getElementById('assetBrand');
+        const optionMarca = listSelect(marcas, "nombre"); // Paso la clave "nombre"
+        loadSelectContentAndSelected(optionMarca, selectMarca, getMarca);
+        console.log("Marca seleccionada: " + getMarca);
 
-            // Select Anio desde Options.js
-            const selectAnio = document.getElementById('assetYear');
-            listAnioAndSelected(selectAnio, getAnio);
-            /*const optionAnio = listSelect(anios, "anio");
-            loadSelectContentAndSelected(optionAnio, selectAnio, getAnio);
-            console.log("Anio seleccionado: " + getAnio);*/
+        // Select Anio desde Options.js
+        const selectAnio = document.getElementById('assetYear');
+        listAnioAndSelected(selectAnio, getAnio);
+        /*const optionAnio = listSelect(anios, "anio");
+        loadSelectContentAndSelected(optionAnio, selectAnio, getAnio);
+        console.log("Anio seleccionado: " + getAnio);*/
 
-            // Solo listado de Planes para agregar
-            // Select planes -- emplea los datos obtenidos en getJson();
-            const selectPlan = document.getElementById('assetPlan');
-            //const optionPlan = listSelect(planes, "nombre"); // Paso la clave "nombre"
-            const optionPlan = listSelect(getPlanes, "nombre"); // Paso la clave "nombre"
-            loadSelectContent(optionPlan, selectPlan);
+        // Solo listado de Planes para agregar
+        // Select planes -- emplea los datos obtenidos en getJson();
+        const selectPlan = document.getElementById('assetPlan');
+        //const optionPlan = listSelect(planes, "nombre"); // Paso la clave "nombre"
+        const optionPlan = listSelect(getPlanes, "nombre"); // Paso la clave "nombre"
+        loadSelectContent(optionPlan, selectPlan);
 
-            // Div con Planes del Activo
-            const divPlanes = document.getElementById('buttonsSelectedPlan');
-            loadDivSelected(divPlanes, getPlanesActivo, "nombre"); // Paso la clave "nombre"
+        // Div con Planes del Activo
+        const divPlanes = document.getElementById('buttonsSelectedPlan');
+        loadDivSelectedPlan(divPlanes, getPlanesActivo, "nombre"); // Paso la clave "nombre"
 
-            // Select Plan - Antes Individual
-            /*const selectPlan = document.getElementById('assetPlan');
-            const optionPlan = listSelect(planes, "nombre"); // Paso la clave "nombre"
-            loadSelectContentAndSelected(optionPlan, selectPlan, getPlan);
-            console.log("Plan seleccionado: " + getPlan);*/
+        // Select Plan - Antes Individual
+        /*const selectPlan = document.getElementById('assetPlan');
+        const optionPlan = listSelect(planes, "nombre"); // Paso la clave "nombre"
+        loadSelectContentAndSelected(optionPlan, selectPlan, getPlan);
+        console.log("Plan seleccionado: " + getPlan);*/
 
-            // Select Planes con Select Multiple
-            /*const selectPlanes = document.getElementById('assetPlan');
-            const optionPlanes = listSelect(planes, "nombre"); // Paso la clave "nombre"
-            loadSelectContentAndSelectedMultiple(optionPlanes, selectPlanes, getPlanesActivo, "nombre");*/
-
-        });
+        // Select Planes con Select Multiple
+        /*const selectPlanes = document.getElementById('assetPlan');
+        const optionPlanes = listSelect(planes, "nombre"); // Paso la clave "nombre"
+        loadSelectContentAndSelectedMultiple(optionPlanes, selectPlanes, getPlanesActivo, "nombre");*/
 
     });
+
+    //});
 
 }
 
@@ -527,20 +529,6 @@ const fillAssetLogOrders = () => {
             for (const orden of onlyCurrentAssetOrders) {
 
                 if (orden.patente_activo == compActivoPatente) {
-
-                    /*
-                    if (orden.periodo_orden == true) {
-                        fecha_log = orden.periodo_inicio
-                    } else {
-                        fecha_log = orden.fecha_inicio
-                    }
-                    */
-
-                    /*if (orden.rango_fecha_orden == true) {
-                        fecha_log = orden.fecha_inicio
-                    } else {
-                        fecha_log = orden.periodo_inicio
-                    }*/
 
                     let total = 'CLP '
 
@@ -696,25 +684,257 @@ const customAssetLogOrders = () => {
 
 }
 
+const guardarActivoJSON = () => {
 
-/*const uploadSeguro = () => {
+    banderaActivo = false;
+    banderaPlanes = false;
+    activoJSON.activoPlanes = []; // reinicio planes
+    activoJSON.documentos = []; // reinicio documentos
 
-    $(document).ready(function () {
+    activoJSON.idActivo = idUrl;
 
-        $("div #pages").on('click', `a[href]#clickFileSeguro:not([href$="\\#"])`, function () {
-            $("#fileSeguro").on('change', function () {
-                var filename = $(this).val().replace(/C:\\fakepath\\/i, '')
-                console.log(filename);
-                //$('#fileInfoSeguro').val(filename); //para input
-                $('#fileInfoSeguro').html(filename); //para input
-            });
-        });
+    let selectAnio = document.getElementById('assetYear');
+    activoJSON.anio = selectAnio.options[selectAnio.selectedIndex].text;
 
-    })
+    let checkDadoDeBaja = document.getElementById('downAssetOption');
+    if (checkDadoDeBaja.checked) {
+        activoJSON.dadoDeBaja = true;
+    } else {
+        activoJSON.dadoDeBaja = false;
+    }
 
-}*/
+    //Por ahora asigno el id de activos, pero en realidad debo traer el idVehiculo
+    //que contiene a la patente - Esto se resuelve al hacer el Fk a la 
+    //base de datos de BlackGPS
+    let valorPatente = document.getElementById('valorPatente');
+    const activo = getActivos.find((activo) => activo.activo == valorPatente.textContent.trim());
+    if (activo) {
+        activoJSON.idVehiculo = activo.id; // Finalmente debe ser el idVehiculo
+    }
+
+    let selectArea = document.getElementById('assetAreasOptions');
+    const area = getAreas.find((area) => area.nombre == selectArea.value);
+    if (area) {
+        activoJSON.areaIdArea = area.id_area;
+    }
+
+    let selectBodega = document.getElementById('assetWareHousesOptions');
+    const bodega = getBodegas.find((bodega) => bodega.nombre == selectBodega.value);
+    if (bodega) {
+        activoJSON.bodegaActivosIdBodegaActivos = bodega.id;
+    }
+
+    let selectTipoActivo = document.getElementById('assetType');
+    const tipoActivo = getTiposActivos.find((tipoActivo) => tipoActivo.nombre == selectTipoActivo.value);
+    if (tipoActivo) {
+        activoJSON.tipoActivoIdTipoActivo = tipoActivo.id;
+    }
+
+    let selectMarca = document.getElementById('assetBrand');
+    let modeloActivo = document.getElementById('assetModel');
+    let usoActivo = document.getElementById('assetUse');
+
+    //OJO
+    //Agregar Bloque para recorrer los documentos anteriores y agregarlos
+    //Luego si agregar los nuevos seleccionados
+    //Validar que solo se muestren los documentos más nuevos
+    //Comparando el tipo del documento y su fecha de adjuntado
+    //No es necesario asignar el idDocumento al json
+
+
+    let fileInfoSeguro = document.getElementById('fileInfoSeguro');
+    let expireSeguro = document.getElementById('expireSeguro');
+    let docSeguroObligatorio = {
+        "activoIdActivo": idUrl,
+        "rutaAdjunto": `/path/${fileInfoSeguro.textContent.trim()}`,
+        "fechaAdjunto": currentDate(),
+        "fechaVencimiento": expireSeguro.value,
+        "tipoDocumentoIdTipoDocumento": 1
+    }
+
+    let fileInfoPadron = document.getElementById('fileInfoPadron');
+    let expirePadron = document.getElementById('expirePadron');
+    let docPadronVehicular = {
+        "activoIdActivo": idUrl,
+        "rutaAdjunto": `/path/${fileInfoPadron.textContent.trim()}`,
+        "fechaAdjunto": currentDate(),
+        "fechaVencimiento": expirePadron.value,
+        "tipoDocumentoIdTipoDocumento": 2
+    }
+
+    let fileInfoCirculacion = document.getElementById('fileInfoCirculacion');
+    let expireCirculacion = document.getElementById('expireCirculacion');
+    let docPermisoCirculacion = {
+        "activoIdActivo": idUrl,
+        "rutaAdjunto": `/path/${fileInfoCirculacion.textContent.trim()}`,
+        "fechaAdjunto": currentDate(),
+        "fechaVencimiento": expireCirculacion.value,
+        "tipoDocumentoIdTipoDocumento": 3
+    }
+
+    let fileInfoRevision = document.getElementById('fileInfoRevision');
+    let expireRevision = document.getElementById('expireRevision');
+    let docRevisionTecnica = {
+        "activoIdActivo": idUrl,
+        "rutaAdjunto": `/path/${fileInfoRevision.textContent.trim()}`,
+        "fechaAdjunto": currentDate(),
+        "fechaVencimiento": expireRevision.value,
+        "tipoDocumentoIdTipoDocumento": 4
+    }
+
+    activoJSON.documentos.push(docSeguroObligatorio);
+    activoJSON.documentos.push(docPadronVehicular);
+    activoJSON.documentos.push(docPermisoCirculacion);
+    activoJSON.documentos.push(docRevisionTecnica);
+
+    const planesSeleccionados = document.getElementById('buttonsSelectedPlan').getElementsByClassName('name-plan');
+    let contPlans = 0; //sin uso
+    for (const element of planesSeleccionados) {
+
+        banderaPlanes = true;
+
+        contPlans++; //sin uso
+
+        const plan = getPlanes.find((plan) => plan.nombre == element.textContent);
+        if (plan) {
+
+
+            let planesactivoJSON = {
+                "activoIdActivo": idUrl,
+                "planMantenimientoIdPlanMantenimiento": plan.id
+            }
+
+            activoJSON.activoPlanes.push(planesactivoJSON);
+        }
+
+    }
+
+    if (selectAnio.options[selectAnio.selectedIndex].text != ''
+        && valorPatente.textContent.trim() != ''
+        && selectArea.options[selectArea.selectedIndex].text != ''
+        && selectBodega.options[selectBodega.selectedIndex].text != ''
+        && selectTipoActivo.options[selectTipoActivo.selectedIndex].text != ''
+        && selectMarca.options[selectMarca.selectedIndex].text != ''
+        && modeloActivo.value != ''
+        && usoActivo.value != ''
+        && fileInfoSeguro.textContent.trim() != ''
+        && fileInfoPadron.textContent.trim() != ''
+        && fileInfoCirculacion.textContent.trim() != ''
+        && fileInfoRevision.textContent.trim() != ''
+        && expireSeguro.value != ''
+        && expirePadron.value != ''
+        && expireCirculacion.value != ''
+        && expireRevision.value != '') {
+
+        banderaActivo = true;
+
+    }
+
+    //Creación del JSON
+    if (banderaActivo == true && banderaPlanes == true) {
+        sessionStorage.setItem(`ActualizacionActivo_${idUrl}`, JSON.stringify(activoJSON));
+    }
+
+}
+
+const removerVariableActivoStorageJSON = () => {
+
+    if (sessionStorage.getItem(`ActualizacionActivo_${idUrl}`)) {
+        sessionStorage.removeItem(`ActualizacionActivo_${idUrl}`);
+    }
+
+}
+
+const mostrarActivoStorageJSON = () => {
+
+    if (sessionStorage.getItem(`ActualizacionActivo_${idUrl}`)) {
+        console.log(`\n\nActualizacionActivo_${idUrl}\n\n` + sessionStorage.getItem(`ActualizacionActivo_${idUrl}`));
+        //alert(`\n\nActualizacionActivo_${idUrl}\n\n` + JSON.stringify(activoJSON, undefined, 4));
+        //sessionStorage.removeItem(`ActualizacionActivo_${idUrl}`);
+    }
+
+}
 
 $(document).ready(function () {
+
+
+    $('div #pages').on('click', `button#saveAsset_${idUrl}`, function (e) {
+
+        alert("Entré al guardar")
+
+        guardarActivoJSON();
+
+        if ($('#assetYear').val().length != ''
+            && $.trim($('#valorPatente').text()) != ''
+            && $('#assetAreasOptions').val().length != ''
+            && $('#assetWareHousesOptions').val().length != ''
+            && $('#assetType').val().length != ''
+            && $('#assetBrand').val().length != ''
+            && $('#assetModel').val().length != ''
+            && $('#assetUse').val().length != '') {
+
+                alert("Entré al IF del botón Guardar")
+
+            if (banderaPlanes == false) {
+                alert('Debe Seleccionar al menos un plan');
+
+                $('#tabMantenimientos').removeClass("active");
+                $('#tabDocumentos').removeClass("active");
+                $('#tabDatos').addClass("active");
+                $('#tab3').removeClass("active");
+                $('#tab2').removeClass("active");
+                $('#tab1').addClass("active");
+
+                $('html, body').animate({
+                    scrollTop: $(`#assetPlan`).offset().top - 50
+                }, 1000)
+
+                e.preventDefault();
+
+            } else {
+
+                $('#tabDatos').removeClass("active");
+                $('#tabMantenimientos').removeClass("active");
+                $('#tabDocumentos').addClass("active");
+                $('#tab1').removeClass("active");
+                $('#tab3').removeClass("active");
+                $('#tab2').addClass("active");
+
+                if ($.trim($('#fileInfoSeguro').text()) == '') {
+                    alert('Debe adjuntar el "Seguro obligatorio"');
+                    e.preventDefault();
+                } else {
+                    if ($.trim($('#fileInfoPadron').text()) == '') {
+                        alert('Debe adjuntar el "Padrón vehicular"');
+                        e.preventDefault();
+                    } else {
+                        if ($.trim($('#fileInfoCirculacion').text()) == '') {
+                            alert('Debe adjuntar el "Permiso de circulación"')
+                            e.preventDefault();
+                        } else {
+                            if ($.trim($('#fileInfoRevision').text()) == '') {
+                                alert('Debe adjuntar la "Revisión técnica"')
+                                e.preventDefault();
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            $('#tabDatos').addClass("active");
+            $('#tabDocumentos').removeClass("active");
+            $('#tabMantenimientos').removeClass("active");
+            $('#tab1').addClass("active");
+            $('#tab2').removeClass("active");
+            $('#tab3').removeClass("active");
+        }
+
+        mostrarActivoStorageJSON();
+
+    });
+
+
+
 
     //Agregar Alert Button al seleccionar Plan de Mantenimiento en el activo
     $('div #pages').on('change', 'select#assetPlan', e => {

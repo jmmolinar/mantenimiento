@@ -6,7 +6,7 @@ import {
     listAllElement,
     loadSelectContent,
     loadSelectContentAndSelected,
-    loadDivSelected,
+    loadDivSelectedPlan,
     loadSelectContentAndSelectedMultiple,
     listSelect,
     listAnioAndSelected,
@@ -354,7 +354,7 @@ export default class extends AbstractView {
                         <div class="span4">
                             <label class="checkbox">
                                 <b>Dar de baja</b>
-                                <input type="checkbox" id="downAssetOption" value="optionDown">
+                                <input type="checkbox" id="downAssetOption" disabled value="optionDown">
                             </label>
                         </div>
                     </div>
@@ -445,8 +445,8 @@ const fillOptions = () => {
             loadSelectContent(optionPlan, selectPlan);
 
             // Div con Planes del Activo
-            const divPlanes = document.getElementById('buttonsSelectedPlan');
-            loadDivSelected(divPlanes, getPlanesActivo, "nombre"); // Paso la clave "nombre"
+            //const divPlanes = document.getElementById('buttonsSelectedPlan');
+            //loadDivSelectedPlan(divPlanes, getPlanesActivo, "nombre"); // Paso la clave "nombre"
 
         });
 
@@ -465,8 +465,10 @@ const guardarActivoJSON = () => {
     nuevoActivoJSON.anio = selectAnio.options[selectAnio.selectedIndex].text;
     nuevoActivoJSON.dadoDeBaja = false;
 
-    //Por ahora leo el id de activos, pero en realidad debo traer las patentes
+    //Por asigno el id de activos, pero en realidad debo traer las patentes
     //de aquellos idVehiculo que aún no han sido creados como activo
+    //y asignar dichos idVehiculos - Esto se completa al hacer FK a la 
+    //Base de datos de BlackGPS
     let selectPatente = document.getElementById('assetPatent');
     const activo = getActivos.find((activo) => activo.activo == selectPatente.value);
     if (activo) {
@@ -628,6 +630,12 @@ $(document).ready(function () {
 
             if (banderaPlanes == false) {
                 alert('Debe Seleccionar al menos un plan');
+                
+                $('#tabDocumentos').removeClass("active");
+                $('#tabDatos').addClass("active");
+                $('#tab2').removeClass("active");
+                $('#tab1').addClass("active");
+                
                 $('html, body').animate({
                     scrollTop: $(`#assetPlan`).offset().top - 50
                 }, 1000)
@@ -661,6 +669,11 @@ $(document).ready(function () {
                     }
                 }
             }
+        } else {
+            $('#tabDatos').addClass("active");
+            $('#tabDocumentos').removeClass("active");
+            $('#tab1').addClass("active");
+            $('#tab2').removeClass("active");
         }
 
         mostrarActivoStorageJSON();
