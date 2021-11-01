@@ -730,7 +730,7 @@ const guardarOrdenParaJSON = () => {
                 if (category) {
 
                     let categoriasordenJSON = {
-                        //"ordenIdOrden": 
+                        "ordenIdOrden": idUrl,
                         "categoriaServicioIdCategoriaServicio": category.id,
                         "costo": appendedPrependedInput.value,
                         "fechaCategoriaAsignada": ordenJSON.fechaCreacion,

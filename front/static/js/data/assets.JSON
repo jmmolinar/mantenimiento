@@ -10,11 +10,49 @@
         "planes_activo": [
             {
                 "id": "11",
-                "nombre": "Plan GENERAL"
+                "nombre": "Plan GENERAL",
+                "activoIdActivo": 8,
+                "planMantenimientoIdPlanMantenimiento": 11
             },
             {
                 "id": "2",
-                "nombre": "Plan CATERPILLAR"
+                "nombre": "Plan CATERPILLAR",
+                "activoIdActivo": 8,
+                "planMantenimientoIdPlanMantenimiento": 2
+            }
+        ],
+        "documentos": [
+            {
+                "idDocumento": 29,
+                "rutaAdjunto": "/path/seguroObligatorio_8.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 8,
+                "tipoDocumentoIdTipoDocumento": 1
+            },
+            {
+                "idDocumento": 30,
+                "rutaAdjunto": "/path/padronVehicular_8.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 8,
+                "tipoDocumentoIdTipoDocumento": 2
+            },
+            {
+                "idDocumento": 31,
+                "rutaAdjunto": "/path/permisoCirculacion_8.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 8,
+                "tipoDocumentoIdTipoDocumento": 3
+            },
+            {
+                "idDocumento": 32,
+                "rutaAdjunto": "/path/revisionTecnica_8.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 8,
+                "tipoDocumentoIdTipoDocumento": 4
             }
         ],
         "gps_imei": "850085008500852",
@@ -43,6 +81,40 @@
         "anio": "2020",
         "plan": "Plan CATERPILLAR",
         "planes_activo": [],
+        "documentos": [
+            {
+                "idDocumento": 25,
+                "rutaAdjunto": "/path/seguroObligatorio_7.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 7,
+                "tipoDocumentoIdTipoDocumento": 1
+            },
+            {
+                "idDocumento": 26,
+                "rutaAdjunto": "/path/padronVehicular_7.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 7,
+                "tipoDocumentoIdTipoDocumento": 2
+            },
+            {
+                "idDocumento": 27,
+                "rutaAdjunto": "/path/permisoCirculacion_7.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 7,
+                "tipoDocumentoIdTipoDocumento": 3
+            },
+            {
+                "idDocumento": 28,
+                "rutaAdjunto": "/path/revisionTecnica_7.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 7,
+                "tipoDocumentoIdTipoDocumento": 4
+            }
+        ],
         "gps_imei": "850085008500851",
         "area": "Área 101",
         "bodega": "Sede Central",
@@ -71,11 +143,49 @@
         "planes_activo": [
             {
                 "id": "11",
-                "nombre": "Plan GENERAL"
+                "nombre": "Plan GENERAL",
+                "activoIdActivo": 6,
+                "planMantenimientoIdPlanMantenimiento": 11
             },
             {
                 "id": "2",
-                "nombre": "Plan CATERPILLAR"
+                "nombre": "Plan CATERPILLAR",
+                "activoIdActivo": 6,
+                "planMantenimientoIdPlanMantenimiento": 2
+            }
+        ],
+        "documentos": [
+            {
+                "idDocumento": 21,
+                "rutaAdjunto": "/path/seguroObligatorio_6.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 6,
+                "tipoDocumentoIdTipoDocumento": 1
+            },
+            {
+                "idDocumento": 22,
+                "rutaAdjunto": "/path/padronVehicular_6.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 6,
+                "tipoDocumentoIdTipoDocumento": 2
+            },
+            {
+                "idDocumento": 23,
+                "rutaAdjunto": "/path/permisoCirculacion_6.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 6,
+                "tipoDocumentoIdTipoDocumento": 3
+            },
+            {
+                "idDocumento": 24,
+                "rutaAdjunto": "/path/revisionTecnica_6.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 6,
+                "tipoDocumentoIdTipoDocumento": 4
             }
         ],
         "gps_imei": "850085008500850",
@@ -106,11 +216,49 @@
         "planes_activo": [
             {
                 "id": "11",
-                "nombre": "Plan GENERAL"
+                "nombre": "Plan GENERAL",
+                "activoIdActivo": 5,
+                "planMantenimientoIdPlanMantenimiento": 11
             },
             {
                 "id": "5",
-                "nombre": "Plan TOYOTA"
+                "nombre": "Plan TOYOTA",
+                "activoIdActivo": 5,
+                "planMantenimientoIdPlanMantenimiento": 5
+            }
+        ],
+        "documentos": [
+            {
+                "idDocumento": 17,
+                "rutaAdjunto": "/path/seguroObligatorio_5.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 5,
+                "tipoDocumentoIdTipoDocumento": 1
+            },
+            {
+                "idDocumento": 18,
+                "rutaAdjunto": "/path/padronVehicular_5.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 5,
+                "tipoDocumentoIdTipoDocumento": 2
+            },
+            {
+                "idDocumento": 19,
+                "rutaAdjunto": "/path/permisoCirculacion_5.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 5,
+                "tipoDocumentoIdTipoDocumento": 3
+            },
+            {
+                "idDocumento": 20,
+                "rutaAdjunto": "/path/revisionTecnica_5.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 5,
+                "tipoDocumentoIdTipoDocumento": 4
             }
         ],
         "gps_imei": "850085008500851",
@@ -141,11 +289,49 @@
         "planes_activo": [
             {
                 "id": "11",
-                "nombre": "Plan GENERAL"
+                "nombre": "Plan GENERAL",
+                "activoIdActivo": 4,
+                "planMantenimientoIdPlanMantenimiento": 11
             },
             {
                 "id": "6",
-                "nombre": "Plan FORD"
+                "nombre": "Plan FORD",
+                "activoIdActivo": 4,
+                "planMantenimientoIdPlanMantenimiento": 6
+            }
+        ],
+        "documentos": [
+            {
+                "idDocumento": 13,
+                "rutaAdjunto": "/path/seguroObligatorio_4.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 4,
+                "tipoDocumentoIdTipoDocumento": 1
+            },
+            {
+                "idDocumento": 14,
+                "rutaAdjunto": "/path/padronVehicular_4.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 4,
+                "tipoDocumentoIdTipoDocumento": 2
+            },
+            {
+                "idDocumento": 15,
+                "rutaAdjunto": "/path/permisoCirculacion_4.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 4,
+                "tipoDocumentoIdTipoDocumento": 3
+            },
+            {
+                "idDocumento": 16,
+                "rutaAdjunto": "/path/revisionTecnica_4.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 4,
+                "tipoDocumentoIdTipoDocumento": 4
             }
         ],
         "gps_imei": "850085008500852",
@@ -176,11 +362,49 @@
         "planes_activo": [
             {
                 "id": "11",
-                "nombre": "Plan GENERAL"
+                "nombre": "Plan GENERAL",
+                "activoIdActivo": 3,
+                "planMantenimientoIdPlanMantenimiento": 11
             },
             {
                 "id": "8",
-                "nombre": "Plan CHEVROLET"
+                "nombre": "Plan CHEVROLET",
+                "activoIdActivo": 3,
+                "planMantenimientoIdPlanMantenimiento": 8
+            }
+        ],
+        "documentos": [
+            {
+                "idDocumento": 9,
+                "rutaAdjunto": "/path/seguroObligatorio_3.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 3,
+                "tipoDocumentoIdTipoDocumento": 1
+            },
+            {
+                "idDocumento": 10,
+                "rutaAdjunto": "/path/padronVehicular_3.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 3,
+                "tipoDocumentoIdTipoDocumento": 2
+            },
+            {
+                "idDocumento": 11,
+                "rutaAdjunto": "/path/permisoCirculacion_3.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 3,
+                "tipoDocumentoIdTipoDocumento": 3
+            },
+            {
+                "idDocumento": 12,
+                "rutaAdjunto": "/path/revisionTecnica_3.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 3,
+                "tipoDocumentoIdTipoDocumento": 4
             }
         ],
         "gps_imei": "850085008500853",
@@ -211,11 +435,49 @@
         "planes_activo": [
             {
                 "id": "11",
-                "nombre": "Plan GENERAL"
+                "nombre": "Plan GENERAL",
+                "activoIdActivo": 2,
+                "planMantenimientoIdPlanMantenimiento": 11
             },
             {
                 "id": "9",
-                "nombre": "Plan KOMATSU"
+                "nombre": "Plan KOMATSU",
+                "activoIdActivo": 2,
+                "planMantenimientoIdPlanMantenimiento": 9
+            }
+        ],
+        "documentos": [
+            {
+                "idDocumento": 5,
+                "rutaAdjunto": "/path/seguroObligatorio_2.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 2,
+                "tipoDocumentoIdTipoDocumento": 1
+            },
+            {
+                "idDocumento": 6,
+                "rutaAdjunto": "/path/padronVehicular_2.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 2,
+                "tipoDocumentoIdTipoDocumento": 2
+            },
+            {
+                "idDocumento": 7,
+                "rutaAdjunto": "/path/permisoCirculacion_2.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 2,
+                "tipoDocumentoIdTipoDocumento": 3
+            },
+            {
+                "idDocumento": 8,
+                "rutaAdjunto": "/path/revisionTecnica_2.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 2,
+                "tipoDocumentoIdTipoDocumento": 4
             }
         ],
         "gps_imei": "850085008500854",
@@ -246,11 +508,49 @@
         "planes_activo": [
             {
                 "id": "11",
-                "nombre": "Plan GENERAL"
+                "nombre": "Plan GENERAL",
+                "activoIdActivo": 1,
+                "planMantenimientoIdPlanMantenimiento": 11
             },
             {
                 "id": "10",
-                "nombre": "Plan JOHN DEERE"
+                "nombre": "Plan JOHN DEERE",
+                "activoIdActivo": 1,
+                "planMantenimientoIdPlanMantenimiento": 10
+            }
+        ],
+        "documentos": [
+            {
+                "idDocumento": 1,
+                "rutaAdjunto": "/path/seguroObligatorio_1.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 1,
+                "tipoDocumentoIdTipoDocumento": 1
+            },
+            {
+                "idDocumento": 2,
+                "rutaAdjunto": "/path/padronVehicular_1.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 1,
+                "tipoDocumentoIdTipoDocumento": 2
+            },
+            {
+                "idDocumento": 3,
+                "rutaAdjunto": "/path/permisoCirculacion_1.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 1,
+                "tipoDocumentoIdTipoDocumento": 3
+            },
+            {
+                "idDocumento": 4,
+                "rutaAdjunto": "/path/revisionTecnica_1.pdf",
+                "fechaAdjunto": "2021-08-10T00:00:00",
+                "fechaVencimiento": "2022-08-10T00:00:00",
+                "activoIdActivo": 1,
+                "tipoDocumentoIdTipoDocumento": 4
             }
         ],
         "gps_imei": "850085008500855",
