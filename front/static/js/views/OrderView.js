@@ -427,52 +427,56 @@ export default class extends AbstractView {
 const fillOrderOptions = () => {
 
     console.log("Entré al fillOptions en OrderView")
-    $(document).ready(function () {
 
-        // Select tipo de mantenimiento
-        const selectTipoMantenimiento = document.getElementById('orderType');
-        //const optionTipoMantenimiento = listSelect(tiposMantenimiento, "nombre"); // Paso la clave "nombre"
-        const optionTipoMantenimiento = listSelect(getTiposMantenimientos, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionTipoMantenimiento, selectTipoMantenimiento, getTipoMantenimiento);
-        console.log("Tipo mantenimiento seleccionado: " + getTipoMantenimiento);
+    $(window).on("load", function () {
+        
+        $(document).ready(function () {
 
-        // Select estado
-        const selectEstado = document.getElementById('orderStatus');
-        //const optionEstado = listSelect(estados, "nombre"); // Paso la clave "nombre"
-        const optionEstado = listSelect(getEstados, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionEstado, selectEstado, getEstado);
-        console.log("Estado seleccionado: " + getEstado);
+            // Select tipo de mantenimiento
+            const selectTipoMantenimiento = document.getElementById('orderType');
+            //const optionTipoMantenimiento = listSelect(tiposMantenimiento, "nombre"); // Paso la clave "nombre"
+            const optionTipoMantenimiento = listSelect(getTiposMantenimientos, "nombre"); // Paso la clave "nombre"
+            loadSelectContentAndSelected(optionTipoMantenimiento, selectTipoMantenimiento, getTipoMantenimiento);
+            console.log("Tipo mantenimiento seleccionado: " + getTipoMantenimiento);
 
-        // Select area
-        const selectArea = document.getElementById('orderAreasOptions');
-        //const optionArea = listSelect(areas, "nombre"); // Paso la clave "nombre"
-        const optionArea = listSelect(getAreas, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionArea, selectArea, getArea);
-        console.log("Área seleccionada: " + getArea);
+            // Select estado
+            const selectEstado = document.getElementById('orderStatus');
+            //const optionEstado = listSelect(estados, "nombre"); // Paso la clave "nombre"
+            const optionEstado = listSelect(getEstados, "nombre"); // Paso la clave "nombre"
+            loadSelectContentAndSelected(optionEstado, selectEstado, getEstado);
+            console.log("Estado seleccionado: " + getEstado);
 
-        // Select tipo de activo
-        const selectTipoActivo = document.getElementById('orderAssetType');
-        //const optionTipoActivo = listSelect(tiposActivos, "nombre"); // Paso la clave "nombre"
-        const optionTipoActivo = listSelect(getTiposActivos, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionTipoActivo, selectTipoActivo, getTipoActivo);
-        console.log("Tipo de activo seleccionado: " + getTipoActivo);
+            // Select area
+            const selectArea = document.getElementById('orderAreasOptions');
+            //const optionArea = listSelect(areas, "nombre"); // Paso la clave "nombre"
+            const optionArea = listSelect(getAreas, "nombre"); // Paso la clave "nombre"
+            loadSelectContentAndSelected(optionArea, selectArea, getArea);
+            console.log("Área seleccionada: " + getArea);
 
-        // Select taller
-        const selectTaller = document.getElementById('orderProvider');
-        //const optionTaller = listSelect(talleres, "nombre"); // Paso la clave "nombre"
-        const optionTaller = listSelect(getTalleres, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionTaller, selectTaller, getTaller);
-        console.log("Taller seleccionado: " + getTaller);
+            // Select tipo de activo
+            const selectTipoActivo = document.getElementById('orderAssetType');
+            //const optionTipoActivo = listSelect(tiposActivos, "nombre"); // Paso la clave "nombre"
+            const optionTipoActivo = listSelect(getTiposActivos, "nombre"); // Paso la clave "nombre"
+            loadSelectContentAndSelected(optionTipoActivo, selectTipoActivo, getTipoActivo);
+            console.log("Tipo de activo seleccionado: " + getTipoActivo);
 
-        // Select Frecuencia del Período
-        // Ya no se utilizará en esta instancia
-        /*
-        const selectFrecuenciaPeriodo = document.getElementById('frequencyType');
-        const optionFrecuenciaPeriodo = listSelect(frecuenciaPeriodo, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionFrecuenciaPeriodo, selectFrecuenciaPeriodo, getFrecuenciaPeriodo);
-        console.log("Frecuencia Periodo seleccionada: " + getFrecuenciaPeriodo);
-        */
+            // Select taller
+            const selectTaller = document.getElementById('orderProvider');
+            //const optionTaller = listSelect(talleres, "nombre"); // Paso la clave "nombre"
+            const optionTaller = listSelect(getTalleres, "nombre"); // Paso la clave "nombre"
+            loadSelectContentAndSelected(optionTaller, selectTaller, getTaller);
+            console.log("Taller seleccionado: " + getTaller);
 
+            // Select Frecuencia del Período
+            // Ya no se utilizará en esta instancia
+            /*
+            const selectFrecuenciaPeriodo = document.getElementById('frequencyType');
+            const optionFrecuenciaPeriodo = listSelect(frecuenciaPeriodo, "nombre"); // Paso la clave "nombre"
+            loadSelectContentAndSelected(optionFrecuenciaPeriodo, selectFrecuenciaPeriodo, getFrecuenciaPeriodo);
+            console.log("Frecuencia Periodo seleccionada: " + getFrecuenciaPeriodo);
+            */
+
+        });
     });
 
 }

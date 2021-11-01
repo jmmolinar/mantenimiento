@@ -2,13 +2,15 @@ import AbstractView from "./AbstractView.js";
 import TableLanguage from "./TableLanguage.js";
 import {
     areas, bodegas, tiposActivos, marcas, planes,
+    getAreas, getBodegas, getTiposActivos, getActivos, getPlanes,
     listAllElement,
     loadSelectContent,
     loadSelectContentAndSelected,
     loadDivSelected,
     loadSelectContentAndSelectedMultiple,
     listSelect,
-    listAnioAndSelected
+    listAnioAndSelected,
+    currentDate
 } from "./Options.js"
 
 let getArea = ``;
@@ -16,9 +18,30 @@ let getBodega = ``;
 let getTipoActivo = ``;
 let getMarca = ``;
 let getAnio = ``;
+let getEstado = ``;
 let getPlan = ``;
 let getPlanesActivo = [];
 let compActivoPatente = ``;
+
+//Variable para controlar la creación de JSON de activo
+let banderaActivo = false;
+let banderaPlanes = false;
+
+//VARIABLE PARA JSON
+let nuevoActivoJSON = {
+    "idActivo": 0,
+    "anio": null,
+    "dadoDeBaja": false,
+    "idVehiculo": null,
+    "areaIdArea": null,
+    "bodegaActivosIdBodegaActivos": null,
+    "tipoActivoIdTipoActivo": null,
+    "activoPlanes": [],
+    "documentos": []
+};
+
+//Variable para asignar el identificador
+let idUrl = 0;
 
 export default class extends AbstractView {
     constructor(params) {
@@ -31,6 +54,7 @@ export default class extends AbstractView {
 
         let identificador = this.postId;
         let assetHTML = ``;
+        idUrl = parseInt(identificador);
 
         $.ajax({
             type: 'GET',
@@ -63,7 +87,7 @@ export default class extends AbstractView {
                     }
 
                     fillAsset = `<h1></h1>
-                    <form id="assetFormQuery_${asset.id}">
+                    <form id="assetFormQuery_${asset.id}" action="/activos">
 
                         <!--IDENTIFICADOR DEL ACTIVO-->
                         <div id="assetsId_${asset.id}" class="control-group order-identity border-transparent-1px">
@@ -77,9 +101,9 @@ export default class extends AbstractView {
                         <!-- SECCIONES -->
                         <div id="assetSections" class="tabbable">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab1" data-toggle="tab">Datos</a></li>
-                                <li><a href="#tab2" data-toggle="tab">Documentos</a></li>
-                                <li><a href="#tab3" data-toggle="tab">Mantenimientos</a></li>
+                                <li id="tabDatos" class="active"><a href="#tab1" data-toggle="tab">Datos</a></li>
+                                <li id="tabDocumentos"><a href="#tab2" data-toggle="tab">Documentos</a></li>
+                                <li id="tabMantenimientos"><a href="#tab3" data-toggle="tab">Mantenimientos</a></li>
                             </ul>
                             <div class="tab-content">
                             <div class="tab-pane active" id="tab1">
@@ -95,17 +119,6 @@ export default class extends AbstractView {
                                         </label>
                                         <div class="controls">
                                             <select id="assetAreasOptions" required>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <!--BODEGA DEL ACTIVO-->
-                                    <div class="control-group">
-                                        <label class="span2" for="assetWareHousesOptions">
-                                            <h5>Bodega</h5>
-                                        </label>
-                                        <div class="controls">
-                                            <select id="assetWareHousesOptions" required>
                                             </select>
                                         </div>
                                     </div>
@@ -176,6 +189,17 @@ export default class extends AbstractView {
                                         </div>
                                     </div>
 
+                                    <!--BODEGA DEL ACTIVO-->
+                                    <div class="control-group">
+                                        <label class="span2" for="assetWareHousesOptions">
+                                            <h5>Bodega</h5>
+                                        </label>
+                                        <div class="controls">
+                                            <select id="assetWareHousesOptions" required>
+                                            </select>
+                                        </div>
+                                    </div>
+
                                     <!--PLANES DE MANTENIMIENTO DEL ACTIVO-->
                                     <div class="control-group">
                                         <label class="span2" for="assetPlan">
@@ -220,7 +244,9 @@ export default class extends AbstractView {
                                             <div class="input-prepend input-append">
                                                 <span class="add-on">Vence</span>
                                                 <input id="expireSeguro" type="date" name="expireSeguro" 
-                                                    value="${asset.vencimiento_seguro_obligatorio}" required style="border-radius:3px;">
+                                                    value="${asset.vencimiento_seguro_obligatorio}" 
+                                                    required style="border-radius:3px;"
+                                                    min="${currentDate().slice(0, 10)}">
                                             </div>
                                         </div>
                                     </div>
@@ -244,7 +270,9 @@ export default class extends AbstractView {
                                             <div class="input-prepend input-append">
                                                 <span class="add-on">Vence</span>
                                                 <input id="expirePadron" type="date" name="expirePadron" 
-                                                    value="${asset.vencimiento_padron_vehicular}" required style="border-radius:3px;">
+                                                    value="${asset.vencimiento_padron_vehicular}" 
+                                                    required style="border-radius:3px;"
+                                                    min="${currentDate().slice(0, 10)}">
                                             </div>
                                         </div>
                                     </div>
@@ -268,7 +296,9 @@ export default class extends AbstractView {
                                             <div class="input-prepend input-append">
                                                 <span class="add-on">Vence</span>
                                                 <input id="expireCirculacion" type="date" name="expireCirculacion" 
-                                                    value="${asset.vencimiento_permiso_circulacion}" required style="border-radius:3px;">
+                                                    value="${asset.vencimiento_permiso_circulacion}" 
+                                                    required style="border-radius:3px;"
+                                                    min="${currentDate().slice(0, 10)}">
                                             </div>
                                         </div>
                                     </div>
@@ -292,7 +322,9 @@ export default class extends AbstractView {
                                             <div class="input-prepend input-append">
                                                 <span class="add-on">Vence</span>
                                                 <input id="expireRevision" type="date" name="expireRevision" 
-                                                    value="${asset.vencimiento_revision_tecnica}" required style="border-radius:3px;">
+                                                    value="${asset.vencimiento_revision_tecnica}" 
+                                                    required style="border-radius:3px;"
+                                                    min="${currentDate().slice(0, 10)}">
                                             </div>
                                         </div>
                                     </div>
@@ -341,10 +373,10 @@ export default class extends AbstractView {
                         <!--GUARDAR / CANCELAR-->
                         <div id="assetActionButtons_${asset.id}" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <!--<button id="saveAsset_${asset.id}" class="btn btn-primary" type="submit">Guardar</button>
-                                <button id="dontSaveAsset_${asset.id}" class="btn btn-primary" type="submit" disabled>Cancelar</button>-->
-                                <a id="saveAsset_${asset.id}" class="btn btn-primary" href="/activos">Guardar</a>
-                                <a id="dontSaveAsset_${asset.id}" class="btn btn-primary" href="/activos">Cancelar</a>
+                                <!--<a id="saveAsset_${asset.id}" class="btn btn-primary" href="/activos">Guardar</a>
+                                <a id="dontSaveAsset_${asset.id}" class="btn btn-primary" href="/activos">Cancelar</a>-->
+                                <button id="saveAsset_${asset.id}" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSaveAsset_${asset.id}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
@@ -375,59 +407,69 @@ export default class extends AbstractView {
 const fillOptions = () => {
 
     console.log("Entré al fillOptions en AssetView")
-    $(document).ready(function () {
 
-        // Select area
-        const selectArea = document.getElementById('assetAreasOptions');
-        //console.log("Id del select: " + selectArea.id);
-        const optionArea = listSelect(areas, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionArea, selectArea, getArea);
-        console.log("Área seleccionada: " + getArea);
+    $(window).on("load", function () {
 
-        // Select bodega
-        const selectBodega = document.getElementById('assetWareHousesOptions');
-        const optionBodega = listSelect(bodegas, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionBodega, selectBodega, getBodega);
-        console.log("Bodega seleccionada: " + getBodega);
+        $(document).ready(function () {
 
-        // Select tipo de activo
-        const selectTipoActivo = document.getElementById('assetType');
-        const optionTipoActivo = listSelect(tiposActivos, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionTipoActivo, selectTipoActivo, getTipoActivo);
-        console.log("Tipo de activo seleccionado: " + getTipoActivo);
+            // Select area -- emplea los datos obtenidos en getJson();
+            const selectArea = document.getElementById('assetAreasOptions');
+            //console.log("Id del select: " + selectArea.id);
+            //const optionArea = listSelect(areas, "nombre"); // Paso la clave "nombre"
+            const optionArea = listSelect(getAreas, "nombre"); // Paso la clave "nombre"
+            loadSelectContentAndSelected(optionArea, selectArea, getArea);
+            console.log("Área seleccionada: " + getArea);
 
-        // Select Marca
-        const selectMarca = document.getElementById('assetBrand');
-        const optionMarca = listSelect(marcas, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionMarca, selectMarca, getMarca);
-        console.log("Marca seleccionada: " + getMarca);
+            // Select bodega -- emplea los datos obtenidos en getJson();
+            const selectBodega = document.getElementById('assetWareHousesOptions');
+            //const optionBodega = listSelect(bodegas, "nombre"); // Paso la clave "nombre"
+            const optionBodega = listSelect(getBodegas, "nombre"); // Paso la clave "nombre"
+            loadSelectContentAndSelected(optionBodega, selectBodega, getBodega);
+            console.log("Bodega seleccionada: " + getBodega);
 
-        // Select Anio
-        const selectAnio = document.getElementById('assetYear');
-        listAnioAndSelected(selectAnio, getAnio);
-        /*const optionAnio = listSelect(anios, "anio");
-        loadSelectContentAndSelected(optionAnio, selectAnio, getAnio);
-        console.log("Anio seleccionado: " + getAnio);*/
+            // Select tipo de activo -- emplea los datos obtenidos en getJson();
+            const selectTipoActivo = document.getElementById('assetType');
+            //const optionTipoActivo = listSelect(tiposActivos, "nombre"); // Paso la clave "nombre"
+            const optionTipoActivo = listSelect(getTiposActivos, "nombre"); // Paso la clave "nombre"
+            loadSelectContentAndSelected(optionTipoActivo, selectTipoActivo, getTipoActivo);
+            console.log("Tipo de activo seleccionado: " + getTipoActivo);
 
-        // Solo listado de Planes para agregar
-        const selectPlan = document.getElementById('assetPlan');
-        const optionPlan = listSelect(planes, "nombre"); // Paso la clave "nombre"
-        loadSelectContent(optionPlan, selectPlan);
+            // Select Marca desde Options.js
+            const selectMarca = document.getElementById('assetBrand');
+            const optionMarca = listSelect(marcas, "nombre"); // Paso la clave "nombre"
+            loadSelectContentAndSelected(optionMarca, selectMarca, getMarca);
+            console.log("Marca seleccionada: " + getMarca);
 
-        // Div con Planes del Activo
-        const divPlanes = document.getElementById('buttonsSelectedPlan');
-        loadDivSelected(divPlanes, getPlanesActivo, "nombre"); // Paso la clave "nombre"
+            // Select Anio desde Options.js
+            const selectAnio = document.getElementById('assetYear');
+            listAnioAndSelected(selectAnio, getAnio);
+            /*const optionAnio = listSelect(anios, "anio");
+            loadSelectContentAndSelected(optionAnio, selectAnio, getAnio);
+            console.log("Anio seleccionado: " + getAnio);*/
 
-        // Select Plan - Antes Individual
-        /*const selectPlan = document.getElementById('assetPlan');
-        const optionPlan = listSelect(planes, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionPlan, selectPlan, getPlan);
-        console.log("Plan seleccionado: " + getPlan);*/
+            // Solo listado de Planes para agregar
+            // Select planes -- emplea los datos obtenidos en getJson();
+            const selectPlan = document.getElementById('assetPlan');
+            //const optionPlan = listSelect(planes, "nombre"); // Paso la clave "nombre"
+            const optionPlan = listSelect(getPlanes, "nombre"); // Paso la clave "nombre"
+            loadSelectContent(optionPlan, selectPlan);
 
-        // Select Planes con Select Multiple
-        /*const selectPlanes = document.getElementById('assetPlan');
-        const optionPlanes = listSelect(planes, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelectedMultiple(optionPlanes, selectPlanes, getPlanesActivo, "nombre");*/
+            // Div con Planes del Activo
+            const divPlanes = document.getElementById('buttonsSelectedPlan');
+            loadDivSelected(divPlanes, getPlanesActivo, "nombre"); // Paso la clave "nombre"
+
+            // Select Plan - Antes Individual
+            /*const selectPlan = document.getElementById('assetPlan');
+            const optionPlan = listSelect(planes, "nombre"); // Paso la clave "nombre"
+            loadSelectContentAndSelected(optionPlan, selectPlan, getPlan);
+            console.log("Plan seleccionado: " + getPlan);*/
+
+            // Select Planes con Select Multiple
+            /*const selectPlanes = document.getElementById('assetPlan');
+            const optionPlanes = listSelect(planes, "nombre"); // Paso la clave "nombre"
+            loadSelectContentAndSelectedMultiple(optionPlanes, selectPlanes, getPlanesActivo, "nombre");*/
+
+        });
 
     });
 
@@ -478,6 +520,7 @@ const fillAssetLogOrders = () => {
             let fillAssetOrders = ''
             let classTr = ''
             let stringContainer = ""
+            let getEstadosOrdenActivo = [];
             //let fecha_log = ''
             const onlyCurrentAssetOrders = data.filter((orden) => orden.patente_activo == compActivoPatente)
 
@@ -507,8 +550,64 @@ const fillAssetLogOrders = () => {
                         total = '';
                     }
 
+                    getEstadosOrdenActivo = listAllElement(orden.historial_estados);
+                    let fechaUltimoEstado = "1900-01-01T00:00";
 
-                    switch (orden.estado_orden) {
+                    getEstadosOrdenActivo.forEach(elem => {
+
+                        if (new Date(elem["fecha_estado"]) > new Date(fechaUltimoEstado)) {
+
+                            getEstado = elem["nombre_estado"];
+                            fechaUltimoEstado = elem["fecha_estado"];
+                        }
+
+                        switch (elem["id_estado"]) {
+                            case 1:
+                                classTr = "warning"
+                                stringContainer = 'Se requiere completar datos'
+                                break;
+                            case 10:
+                                classTr = "muted"
+                                stringContainer = 'La órden de mantenimiento no fue ejecutada'
+                                break;
+                            case 3:
+                                classTr = "error"
+                                stringContainer = 'La orden no ha sigo planificada'
+                                break;
+                            case 6:
+                                classTr = "error"
+                                stringContainer = 'El servicio en taller excede el tiempo planificado'
+                                break;
+                            case 2:
+                                classTr = ""
+                                stringContainer = 'El próximo paso es la realización del servicio en Taller'
+                                break;
+                            case 4:
+                                classTr = ""
+                                stringContainer = 'La órden fue planificada con retraso'
+                                break;
+                            case 5:
+                                classTr = "info"
+                                stringContainer = 'Se están realizando los servicios de mantenimiento'
+                                break;
+                            case 8:
+                                classTr = "success"
+                                stringContainer = 'La orden ha sido completada'
+                                break;
+                            case 9:
+                                classTr = "success"
+                                stringContainer = 'La orden ha sido completada con retraso'
+                                break;
+                            default:
+                                classTr = ""
+                                stringContainer = ''
+                                console.log('Estado de la orden desconocido');
+                        }
+
+                    })
+
+
+                    /*switch (orden.estado_orden) {
                         case 'Por planificar':
                             classTr = "warning"
                             stringContainer = 'Se requiere completar datos'
@@ -549,14 +648,14 @@ const fillAssetLogOrders = () => {
                             classTr = ""
                             stringContainer = ''
                             console.log('Estado de la orden desconocido');
-                    }
+                    }*/
 
                     fillAssetOrders += `
                         <tr class=${classTr}>
                             <td>${orden.id_orden}</td>
                             <td>${orden.tipo_orden}</td>
-                            <!--<td>${orden.estado_orden}</td>-->
-                            <td>${orden.estado_orden} <a data-toggle="tooltip" title="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
+                            <!--<td>${orden.estado_orden} <a data-toggle="tooltip" title="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>-->
+                            <td>${getEstado} <a data-toggle="tooltip" title="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
                             <td>${orden.fecha_creacion}</td>
                             <td>${orden.fecha_inicio}</td>
                             <td>${orden.taller_orden}</td>
