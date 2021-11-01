@@ -30,7 +30,7 @@ let banderaSeleccionCategoria = false;
 
 //Variable para validar que se tenga el adjunto para crear el JSON si estado
 // es completado o compleatado con retraso
-let banderaAdjuntoRequerido = false;
+let banderaFaltaAdjunto = false;
 
 //VARIABLE PARA JSON
 let ordenJSON = {
@@ -90,8 +90,12 @@ export default class extends AbstractView {
                 let ocultoAdjuntoCompletado = "hidden controls new-div-file-upload";
                 let classFocusState = "";
                 let guardarDeshabilitado = "";
+                let estadoDeshabilitado = "";
 
                 let formatGetEstadosOrdenItem = ``;
+
+                let fechaDeshabilitado = "";
+                let minFechaInicio = "";
                 //let getEstadosOrden = [];
 
                 const order = data.find((order) => order.id_orden == identificador)
@@ -108,6 +112,15 @@ export default class extends AbstractView {
                     getRutaAdjuntoCompletado = order.rutaAdjuntoCompletado;
                     getFechaRutaAdjuntoCompletado = order.fechaRutaCompletado;
                     getFechaCreacion = order.fecha_creacion;
+
+                    if (order.fecha_inicio == "") {
+                        minFechaInicio = `${currentDate().slice(0, 16)}`;
+                        fechaDeshabilitado = "disabled";
+                    } else {
+                        minFechaInicio = order.fecha_inicio
+                        fechaDeshabilitado = "";
+                    }
+
                     //getFrecuenciaPeriodo = order.periodo_frecuencia_cada;
                     console.log("Verificando postId: " + identificador)
                     console.log("Vericando id de order: " + order.id_orden)
@@ -158,10 +171,22 @@ export default class extends AbstractView {
                             getEstado = elem["nombre_estado"];
                             fechaUltimoEstado = elem["fecha_estado"];
 
-                            if(getEstado == "Completado"
-                            || getEstado == "Completado con retraso"){
+                            if (getEstado == "Completado"
+                                || getEstado == "Completado con retraso"
+                                || getEstado == "No realizado") {
                                 guardarDeshabilitado = "disabled";
+                                estadoDeshabilitado = "disabled"
+                            } else {
+                                //Para poder guardar hay que pasar de Por planificar
+                                if (getEstado == "Por planificar" || getEstado == "Retrasado") {
+                                    guardarDeshabilitado = "disabled";
+                                    //estadoDeshabilitado = "";
+                                } else {
+                                    guardarDeshabilitado = "";
+                                }
                             }
+
+
                         }
 
                         /*if (elem["estado_actual"] == true) {
@@ -230,7 +255,7 @@ export default class extends AbstractView {
                                         <h5>Estado</h5>
                                     </label>
                                     <div class="controls">
-                                        <select id="orderStatus" required ${guardarDeshabilitado}>
+                                        <select id="orderStatus" required ${estadoDeshabilitado}>
                                         </select>
                                     </div>
 
@@ -243,7 +268,7 @@ export default class extends AbstractView {
                                                 ${requeridoAdjuntoCompletado} ${guardarDeshabilitado}>
 		                                </label>
                                         <a href="/static/img/Prueba.pdf" download>
-                                            <p class='label label-info' id="fileInfoCompletado" required style="margin-bottom: 5px;">${getRutaAdjuntoCompletado}</p>
+                                            <p class='label label-info' id="fileInfoCompletado" style="margin-bottom: 5px;">${getRutaAdjuntoCompletado}</p>
                                         </a>
                                     </div>
                                 </div>
@@ -308,7 +333,7 @@ export default class extends AbstractView {
                                             </div>
                                             <div class="row-fluid">
                                                 <input class="span4" id="rangeStartDate" type="datetime-local" value="${order.fecha_inicio}" ${requeridoPorRango}
-                                                    min="${order.fecha_inicio}">
+                                                    min="${minFechaInicio}" ${fechaDeshabilitado}>
                                                     <!--min="${currentDate().slice(0, 16)}">-->
                                             </div>
                                         </div>
@@ -320,7 +345,7 @@ export default class extends AbstractView {
                                             </div>
                                             <div class="row-fluid">
                                                 <input class="span4" id="rangeEndDate" type="datetime-local" value="${order.fecha_limite}" ${requeridoPorRango}
-                                                    min="${order.fecha_inicio}">
+                                                    min="${order.fecha_inicio}" ${fechaDeshabilitado}>
                                             </div>
                                         </div>
                                     </div>
@@ -554,7 +579,7 @@ const fillOrderCategories = () => {
 const guardarOrdenParaJSON = () => {
 
     banderaSeleccionCategoria = false; // Reinicio a false para verificar de nuevo la selección de categorías
-    banderaAdjuntoRequerido = false; // Reinicio
+    banderaFaltaAdjunto = false; // Reinicio
 
     console.log("Entré a la función")
 
@@ -591,23 +616,27 @@ const guardarOrdenParaJSON = () => {
     const estado = document.getElementById('orderStatus');
     let fileInfoCompletado = document.getElementById('fileInfoCompletado');
     let fileCompletado = document.getElementById('fileCompletado');
-    if(estado.options[estado.selectedIndex].text == "Completado" 
-        || estado.options[estado.selectedIndex].text == "Completado con retraso"){
+    if (estado.options[estado.selectedIndex].text == "Completado"
+        || estado.options[estado.selectedIndex].text == "Completado con retraso") {
 
-            if(fileInfoCompletado.value == ""){
+        //fileInfoCompletado.required = true;
+        fileCompletado.required = true
 
-                fileCompletado.required = true
-                banderaAdjuntoRequerido = true;
+        if (fileInfoCompletado.textContent.trim() == "") {
 
-            } else {
+            //fileInfoCompletado.required = true;
+            //fileCompletado.required = true
+            banderaFaltaAdjunto = true;
 
-                fileCompletado.required = false
-                ordenJSON.rutaAdjuntoCompletado = "/path/" + fileInfoCompletado.value;
-                ordenJSON.fechaRutaCompletado = currentDate();
+        } else {
 
-                banderaAdjuntoRequerido = false;
+            //fileCompletado.required = false
+            ordenJSON.rutaAdjuntoCompletado = "/path/" + fileInfoCompletado.textContent.trim();
+            ordenJSON.fechaRutaCompletado = currentDate();
 
-            }
+            banderaFaltaAdjunto = false;
+
+        }
 
 
     }
@@ -711,10 +740,21 @@ const guardarOrdenParaJSON = () => {
 
     }
 
+    /*if (estado.options[estado.selectedIndex].text == "No realizado") {
+        let contCategory = 0;
+        for (const cat of categoriasSeleccionadas) {
+            contCategory++;
+            document.getElementById(`appendedPrependedInput_${contCategory}`).required = false;
+        }
+        banderaSeleccionCategoria = true;
+        costoRequerido = false;
+        banderaFaltaAdjunto = false;
+    }*/
+
     //Creación del JSON
-    if (banderaSeleccionCategoria == true 
+    if (banderaSeleccionCategoria == true
         && costoRequerido == false
-        && banderaAdjuntoRequerido == false) {
+        && banderaFaltaAdjunto == false) {
         //alert("cambió el valor de banderaSeleccionCategoria a TRUE y costoRequerido a FALSE")
         sessionStorage.setItem(`ActualizacionOrden_${idUrl}`, JSON.stringify(ordenJSON));
     }
@@ -900,12 +940,15 @@ $(document).ready(function () {
 
             $('#divSelectedFile').removeClass("hidden controls new-div-file-upload")
             $("#divSelectedFile").addClass("controls new-div-file-upload");
-            
-            if($('#fileInfoCompletado').val() !=''){
+
+            $("#fileCompletado").attr("required", "required");
+            $("#fileCompletado").removeAttr("disabled");
+
+            /*if($('#fileInfoCompletado').val() !=''){
                 $("#fileCompletado").attr("required", "required");
             } else {
                 $("#fileCompletado").removeAttr("required");
-            }
+            }*/
 
             //$("#fileCompletado").attr("required", "required");
 
@@ -920,11 +963,33 @@ $(document).ready(function () {
             $("#divSelectedFile").removeClass("controls new-div-file-upload");
             $("#divSelectedFile").addClass("hidden controls new-div-file-upload");
             $("#fileCompletado").removeAttr("required");
+            //$('#fileInfoCompletado').removeAttr("required");
             //$("div #pages").on('change', "input#fileCompletado", function () {
             $("#fileCompletado").on('change', function () {
                 $('#fileInfoCompletado').html("");
             });
         }
+
+
+        //En caso de que select de estado esté habilitado
+        // y las fechas estén deshabilitadas
+        // se habilita la colocación de fechas al seleccionar estado, asi como el botón de guardar
+        if (e.target.value != getEstado && e.target.value != "No realizado") {
+
+            $("#rangeStartDate").removeAttr("disabled");
+            $(`#saveOrder_${idUrl}`).removeAttr("disabled");
+
+        } else {
+
+            if (e.target.value == "No realizado") {
+
+                $("#orderNotes").attr("required", "required");
+                $(`#saveOrder_${idUrl}`).removeAttr("disabled");
+
+            }
+        }
+
+
     });
 
 
