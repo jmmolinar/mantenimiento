@@ -59,21 +59,21 @@ export default class extends AbstractView {
                 for (const bodega of data) {
                     fillAssetsWareHouses += `
                     <tr>
-                        <td>${bodega.id}</td>
+                        <td>${bodega.idBodegaActivos}</td>
                         <td>${bodega.nombre}</td>
                         <td>${bodega.region}</td>
                         <td>${bodega.comuna}</td>
 
                         <!--<td>${bodega.calle}</td>
-                        <td>${bodega.num_calle}</td>
+                        <td>${bodega.numero}</td>
                         <td>${bodega.latitud}</td>
                         <td>${bodega.longitud}</td>-->
 
                         <td>${bodega.cantidad_activos}</td>
                         <td>${bodega.cantidad_activos}</td>
                         <td class="align-center">
-                            <a id="editAssetsWareHouse_${bodega.id}" class="btn only-to-id-url" href="/bodegas/${bodega.id}"><i class="icon-pencil"></i></a>
-                            <a id="deleteAssetWareHouse_${bodega.id}" class="btn" disabled><i class="icon-trash"></i></a>
+                            <a id="editAssetsWareHouse_${bodega.idBodegaActivos}" class="btn only-to-id-url" href="/bodegas/${bodega.idBodegaActivos}"><i class="icon-pencil"></i></a>
+                            <a id="deleteAssetWareHouse_${bodega.idBodegaActivos}" class="btn" disabled><i class="icon-trash"></i></a>
 
                         </td>
                     </tr>`

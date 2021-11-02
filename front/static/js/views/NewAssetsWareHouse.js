@@ -40,29 +40,8 @@ export default class extends AbstractView {
 
     async getHtml() {
 
-        //let identificador = this.postId;
         let wareHouseHTML = ``;
-
-        //$.ajax({
-        //    type: 'GET',
-        //    url: 'http://192.168.1.114:8080/static/js/data/assetsWareHouses.JSON',
-        //    dataType: 'json',
-        //    success: function (data, status, jqXHR) {
-
-        //        console.log(jqXHR)
         let fillWareHouse = ''
-        //const bodega = data.find((bodega) => bodega.id == identificador)
-
-        //if (bodega) {
-
-        //getRegion = bodega.region;
-        //getComuna = bodega.comuna;
-        //getLatitud = bodega.latitud;
-        //console.log(`Latitud: ${getLatitud}`);
-        //getLongitud = bodega.longitud;
-        //console.log(`Longitud: ${getLongitud}`);
-        //console.log("Verificando postId: " + identificador)
-        //console.log("Vericando const bodega: " + bodega)
 
         fillWareHouse = `<h1></h1>
             <form id="wareHouseFormQuery_new" action="/bodegas">
@@ -180,25 +159,12 @@ export default class extends AbstractView {
                     </div>
                 </div>
             </form>`;
-        //} else {
-        //    fillWareHouse = `<h1>=(</h1>
-        //    <p>-- No se logró obtener la bodega ${identificador}</p>`
-        //}
 
         wareHouseHTML = wareHouseHTML.concat(fillWareHouse)
 
         $('#pages').html(wareHouseHTML)
-        //console.log(`AJAX wareHouseFormQuery -> Status: ${status}`)
-
-        //bodega ? fillOptions(): {};
 
         fillOptions()
-
-        //},
-        //error: function (jqXHR) {
-        //    console.log(jqXHR)
-        //}
-        //})
 
         return wareHouseHTML;
     }
@@ -298,7 +264,7 @@ const mostrarBodegaStorageJSON = () => {
 
     if (sessionStorage.getItem(`NuevaBodega`)) {
         console.log(`\n\nNuevaBodega\n\n` + sessionStorage.getItem(`NuevaBodega`));
-        alert(`\n\nNuevaBodega\n\n` + JSON.stringify(nuevaBodegaJSON, undefined, 4));
+        //alert(`\n\nNuevaBodega\n\n` + JSON.stringify(nuevaBodegaJSON, undefined, 4));
         //sessionStorage.removeItem(`NuevoActivo`);
     }
 }

@@ -80,6 +80,10 @@ export default class extends AbstractView {
                     console.log("Verificando postId: " + identificador)
                     console.log("Vericando id de asset: " + asset.id)
 
+
+                    //REPARAR TAMBIÉN LA OBTENCIÓN DE LO DOCUMENTOS AL MODIFICAR
+                    //JSO assets.json
+
                     if (asset.km == null) {
                         km_hora = asset.horas // Temporal porque se debe traer a través de idVehiculo
                     } else {

@@ -54,7 +54,7 @@ export default class extends AbstractView {
 
                 console.log(jqXHR)
                 let fillWareHouse = ''
-                const bodega = data.find((bodega) => bodega.id == identificador)
+                const bodega = data.find((bodega) => bodega.idBodegaActivos == identificador)
 
                 if (bodega) {
 
@@ -68,33 +68,33 @@ export default class extends AbstractView {
                     console.log("Vericando const bodega: " + bodega)
 
                     fillWareHouse = `<h1></h1>
-                    <form id="wareHouseFormQuery_${bodega.id}" action="/bodegas">
+                    <form id="wareHouseFormQuery_${bodega.idBodegaActivos}" action="/bodegas">
                         <!--IDENTIFICADOR DE LA BODEGA-->
-                        <div id="wareHouseId_${bodega.id}" class="control-group order-identity border-transparent-1px">
-                            <h1>Bodega ${bodega.id}</h1>
+                        <div id="wareHouseId_${bodega.idBodegaActivos}" class="control-group order-identity border-transparent-1px">
+                            <h1>Bodega ${bodega.idBodegaActivos}</h1>
                             <h3>${bodega.nombre}</h3>
                         </div>
                         <!--DATOS DE LA BODEGA-->
-                        <div id="wareHouseData_${bodega.id}" class="control-group border-transparent-1px">
+                        <div id="wareHouseData_${bodega.idBodegaActivos}" class="control-group border-transparent-1px">
                             
                             <!--NOMBRE DE BODEGA-->
                             <div class="control-group">
-                                <label class="span2" for="wareHouseName_${bodega.id}">
+                                <label class="span2" for="wareHouseName_${bodega.idBodegaActivos}">
                                     <h5>Nombre</h5>
                                 </label>
                                 <div class="controls">
-                                    <input id="wareHouseName_${bodega.id}" type="text" min="3" maxlength="30"
+                                    <input id="wareHouseName_${bodega.idBodegaActivos}" type="text" min="3" maxlength="30"
                                         value="${bodega.nombre}" required>
                                 </div>
                             </div>
 
                             <!--CANTIDAD ACTIVOS EN BODEGA-->
                             <div class="control-group">
-                                <label class="span2" for="wareHouseAssetsCount_${bodega.id}">
+                                <label class="span2" for="wareHouseAssetsCount_${bodega.idBodegaActivos}">
                                     <h5>Asignados</h5>
                                 </label>
                                 <div class="controls">
-                                    <input id="wareHouseAssetsCount_${bodega.id}" type="number" maxlength="30"
+                                    <input id="wareHouseAssetsCount_${bodega.idBodegaActivos}" type="number" maxlength="30"
                                         value="${bodega.cantidad_activos}" disabled required>
                                 </div>
                             </div>
@@ -141,7 +141,7 @@ export default class extends AbstractView {
                                 </label>
                                 <div class="controls">
                                     <input id="numStreetWareHouse" type="text" type="number" step="1" min="0"
-                                        maxlength="10" value="${bodega.num_calle}" placeholder="e.g. 41" required>
+                                        maxlength="10" value="${bodega.numero}" placeholder="e.g. 41" required>
                                 </div>
                             </div>
 
@@ -184,12 +184,12 @@ export default class extends AbstractView {
                         </div>
 
                         <!--GUARDAR / CANCELAR-->
-                        <div id="wareHouseActionButtons_${bodega.id}" class="control-group">
+                        <div id="wareHouseActionButtons_${bodega.idBodegaActivos}" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <!--<a id="saveWareHouse_${bodega.id}" class="btn btn-primary" href="/bodegas">Guardar</a>
-                                <a id="dontSaveWareHouse_${bodega.id}" class="btn btn-primary" href="/bodegas">Cancelar</a>-->
-                                <button id="saveWareHouse_${bodega.id}" class="btn btn-primary" type="submit">Guardar</button>
-                                <button id="dontSaveWareHouse_${bodega.id}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
+                                <!--<a id="saveWareHouse_${bodega.idBodegaActivos}" class="btn btn-primary" href="/bodegas">Guardar</a>
+                                <a id="dontSaveWareHouse_${bodega.idBodegaActivos}" class="btn btn-primary" href="/bodegas">Cancelar</a>-->
+                                <button id="saveWareHouse_${bodega.idBodegaActivos}" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSaveWareHouse_${bodega.idBodegaActivos}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
