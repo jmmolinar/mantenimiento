@@ -659,7 +659,7 @@ const mostrarPlanStorageJSON = () => {
 
     if (sessionStorage.getItem(`ActualizacionPlan_${idUrl}`)) { // Si existe otra variable en el session con el mismo nombre, así no se haya ejecutado el guardar, entrará al IF
         console.log(`\n\nActualizacionPlan_${idUrl}\n\n` + sessionStorage.getItem(`ActualizacionPlan_${idUrl}`));
-        alert(`\n\nActualizacionPlan_${idUrl}\n\n` + JSON.stringify(planJSON, undefined, 4));
+        //alert(`\n\nActualizacionPlan_${idUrl}\n\n` + JSON.stringify(planJSON, undefined, 4));
         //sessionStorage.removeItem(`NuevoActivo`);
     }
 }

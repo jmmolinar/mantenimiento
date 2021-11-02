@@ -860,8 +860,6 @@ $(document).ready(function () {
 
     $('div #pages').on('click', `button#saveAsset_${idUrl}`, function (e) {
 
-        alert("Entré al guardar")
-
         guardarActivoJSON();
 
         if ($('#assetYear').val().length != ''
@@ -873,9 +871,8 @@ $(document).ready(function () {
             && $('#assetModel').val().length != ''
             && $('#assetUse').val().length != '') {
 
-                alert("Entré al IF del botón Guardar")
-
             if (banderaPlanes == false) {
+
                 alert('Debe Seleccionar al menos un plan');
 
                 $('#tabMantenimientos').removeClass("active");

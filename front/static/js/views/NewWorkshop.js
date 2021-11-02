@@ -292,7 +292,7 @@ const mostrarTallerStorageJSON = () => {
 
     if (sessionStorage.getItem(`NuevoTaller`)) { // Si hay una variable antigua con el mismo nombre, entrará a éste IF
         console.log(`\n\nNuevoTaller\n\n` + sessionStorage.getItem(`NuevoTaller`));
-        alert(`\n\nNuevoTaller\n\n` + JSON.stringify(nuevoTallerJSON, undefined, 4));
+        //alert(`\n\nNuevoTaller\n\n` + JSON.stringify(nuevoTallerJSON, undefined, 4));
         //sessionStorage.removeItem(`NuevoTaller`);
     }
 }

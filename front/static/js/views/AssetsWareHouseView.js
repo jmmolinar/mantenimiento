@@ -314,7 +314,7 @@ const mostrarBodegaStorageJSON = () => {
 
     if (sessionStorage.getItem(`ActualizacionBodega_${idUrl}`)) {
         console.log(`\n\nActualizacionBodega_${idUrl}\n\n` + sessionStorage.getItem(`ActualizacionBodega_${idUrl}`));
-        alert(`\n\nActualizacionBodega_${idUrl}\n\n` + JSON.stringify(bodegaJSON, undefined, 4));
+        //alert(`\n\nActualizacionBodega_${idUrl}\n\n` + JSON.stringify(bodegaJSON, undefined, 4));
         //sessionStorage.removeItem(`NuevoActivo`);
     }
 }

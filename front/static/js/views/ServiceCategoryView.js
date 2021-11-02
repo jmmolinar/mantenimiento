@@ -137,7 +137,7 @@ const mostrarCategoriaStorageJSON = () => {
 
     if (sessionStorage.getItem(`ActualizacionCategoria_${idUrl}`)) {
         console.log(`\n\nActualizacionCategoria_${idUrl}\n\n` + sessionStorage.getItem(`ActualizacionCategoria_${idUrl}`));
-        alert(`\n\nActualizacionCategoria_${idUrl}\n\n` + JSON.stringify(categoriaJSON, undefined, 4));
+        //alert(`\n\nActualizacionCategoria_${idUrl}\n\n` + JSON.stringify(categoriaJSON, undefined, 4));
         //sessionStorage.removeItem(`NuevoActivo`);
     }
 }

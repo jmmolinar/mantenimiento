@@ -129,7 +129,7 @@ const mostrarCategoriaStorageJSON = () => {
 
     if (sessionStorage.getItem(`NuevaCategoria`)) {
         console.log(`\n\nNuevaCategoria\n\n` + sessionStorage.getItem(`NuevaCategoria`));
-        alert(`\n\nNuevaCategoria\n\n` + JSON.stringify(nuevaCategoriaJSON, undefined, 4));
+        //alert(`\n\nNuevaCategoria\n\n` + JSON.stringify(nuevaCategoriaJSON, undefined, 4));
         //sessionStorage.removeItem(`NuevoActivo`);
     }
 }

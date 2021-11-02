@@ -298,7 +298,7 @@ const mostrarTallerStorageJSON = () => {
 
     if (sessionStorage.getItem(`ActualizacionTaller_${idUrl}`)) {
         console.log(`\n\nActualizacionTaller_${idUrl}\n\n` + sessionStorage.getItem(`ActualizacionTaller_${idUrl}`));
-        alert(`\n\nActualizacionTaller_${idUrl}\n\n` + JSON.stringify(tallerJSON, undefined, 4));
+        //alert(`\n\nActualizacionTaller_${idUrl}\n\n` + JSON.stringify(tallerJSON, undefined, 4));
         //sessionStorage.removeItem(`ActualizacionTaller_${idUrl}`);
     }
 }
