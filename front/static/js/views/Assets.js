@@ -64,7 +64,7 @@ export default class extends AbstractView {
                     fillAssets += `
                     <tr>
                         <td>${activo.id}</td>
-                        <td>${activo.activo}</td>
+                        <td>${activo.activo}</td> <!--Modificar para leer el idVehículo y de allí traer el nombre del área -->
                         <td>${activo.tipo}</td> <!--Modificar para leer el idTipo y de allí traer el nombre del tipo -->
                         <td>${activo.gps_imei}</td> <!-- Temporal porque se debe traer mediante idVehiculo -->
                         <td>${activo.area}</td>

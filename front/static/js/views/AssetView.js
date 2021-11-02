@@ -69,10 +69,10 @@ export default class extends AbstractView {
 
                 if (asset) {
 
-                    getArea = asset.area;
-                    getBodega = asset.bodega;
-                    getTipoActivo = asset.tipo;
-                    getMarca = asset.marca;
+                    getArea = asset.area; // temporal - traer de areaIdArea y de allí su nombre
+                    getBodega = asset.bodega; // temporal - traer de bodegaActivosIdBodegaActivos y de allí su nombre
+                    getTipoActivo = asset.tipo; // Temporal - traer de tipoActivoIdTipoActivo y de allí su nombre
+                    getMarca = asset.marca; // Temporal - traer de idVehiculo y de allí obtener la marca
                     getAnio = asset.anio;
                     getPlan = asset.plan;
                     getPlanesActivo = listAllElement(asset.activoPlanes)
@@ -726,7 +726,7 @@ const guardarActivoJSON = () => {
     let selectBodega = document.getElementById('assetWareHousesOptions');
     const bodega = getBodegas.find((bodega) => bodega.nombre == selectBodega.value);
     if (bodega) {
-        activoJSON.bodegaActivosIdBodegaActivos = bodega.id;
+        activoJSON.bodegaActivosIdBodegaActivos = bodega.idBodegaActivos;
     }
 
     let selectTipoActivo = document.getElementById('assetType');

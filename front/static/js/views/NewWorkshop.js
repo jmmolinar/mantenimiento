@@ -39,29 +39,8 @@ export default class extends AbstractView {
 
     async getHtml() {
 
-        //let identificador = this.postId;
         let workshopHTML = ``;
-
-        //$.ajax({
-        //    type: 'GET',
-        //    url: 'http://192.168.1.114:8080/static/js/data/workshops.JSON',
-        //    dataType: 'json',
-        //    success: function (data, status, jqXHR) {
-
-        //        console.log(jqXHR)
         let fillWorkshop = ''
-        //const taller = data.find((taller) => taller.id == identificador)
-
-        //if (taller) {
-
-        //getRegion = taller.region;
-        //getComuna = taller.comuna;
-        //getLatitud = taller.latitud;
-        //console.log(`Latitud taller: ${getLatitud}`);
-        //getLongitud = taller.longitud;
-        //console.log(`Longitud taller: ${getLongitud}`);
-        //console.log("Verificando postId: " + identificador)
-        //console.log("Vericando const taller: " + taller)
 
         fillWorkshop = `<h1></h1>
             <form id="workshopFormQuery_new" action="/talleres">
@@ -177,23 +156,12 @@ export default class extends AbstractView {
                     </div>
                 </div>
             </form>`;
-        //} else {
-        //    fillWorkshop = `<h1>=(</h1>
-        //    <p>-- No se logró obtener el taller ${identificador}</p>`
-        //}
 
         workshopHTML = workshopHTML.concat(fillWorkshop)
 
         $('#pages').html(workshopHTML)
-        //console.log(`AJAX workshopFormQuery_ -> Status: ${status}`)
 
         fillOptions();
-
-        //},
-        //error: function (jqXHR) {
-        //    console.log(jqXHR)
-        //}
-        //})
 
         return workshopHTML;
     }

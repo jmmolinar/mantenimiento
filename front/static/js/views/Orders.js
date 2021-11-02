@@ -224,7 +224,7 @@ export default class extends AbstractView {
                             <td>${orden.area_vehiculo}</td>
                             <td>${orden.fecha_creacion.slice(0,10)}</td>
                             <td>${orden.fecha_inicio.slice(0,10)}</td>
-                            <td>${orden.taller_orden}</td>
+                            <td>${orden.taller_orden}</td> <!-- MOdificar para obtener el nombre desde el tallerServicioIdTallerServicio
                             <!--<td>${formatGetCategoriasActivoNombre}</td>
                             <td>${formatGetCategoriasActivoCosto}</td>-->
                             <td>${orden.total}</td>

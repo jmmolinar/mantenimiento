@@ -57,20 +57,20 @@ export default class extends AbstractView {
                 for (const taller of data) {
                     fillWorkshops += `
                     <tr>
-                        <td>${taller.id}</td>
+                        <td>${taller.idTallerServicio}</td>
                         <td>${taller.nombre}</td>
                         <td>${taller.region}</td>
                         <td>${taller.comuna}</td>
 
                         <!--<td>${taller.calle}</td>
-                        <td>${taller.num_calle}</td>
+                        <td>${taller.numero}</td>
                         <td>${taller.latitud}</td>
                         <td>${taller.longitud}</td>-->
 
                         <td>-</td>
                         <td class="align-center">
-                            <a id="editWorkShop_${taller.id}" class="btn only-to-id-url" href="/talleres/${taller.id}"><i class="icon-pencil"></i></a>
-                            <a id="deleteWorkShop_${taller.id}" class="btn" disabled><i class="icon-trash"></i></a>
+                            <a id="editWorkShop_${taller.idTallerServicio}" class="btn only-to-id-url" href="/talleres/${taller.idTallerServicio}"><i class="icon-pencil"></i></a>
+                            <a id="deleteWorkShop_${taller.idTallerServicio}" class="btn" disabled><i class="icon-trash"></i></a>
                         </td>
                     </tr>`
                 }

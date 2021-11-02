@@ -415,7 +415,7 @@ const guardarOrdenParaJSON = () => {
 
         const taller = getTalleres.find((taller) => taller.nombre == document.getElementById('orderProvider').value);
         if (taller) {
-            nuevaOrdenJSON.tallerServicioIdTallerServicio = taller.id;
+            nuevaOrdenJSON.tallerServicioIdTallerServicio = taller.idTallerServicio;
         }
 
         let estadoNuevaOrdenJSON = {

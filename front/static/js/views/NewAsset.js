@@ -439,7 +439,7 @@ const guardarActivoJSON = () => {
     let selectBodega = document.getElementById('assetWareHousesOptions');
     const bodega = getBodegas.find((bodega) => bodega.nombre == selectBodega.value);
     if (bodega) {
-        nuevoActivoJSON.bodegaActivosIdBodegaActivos = bodega.id;
+        nuevoActivoJSON.bodegaActivosIdBodegaActivos = bodega.idBodegaActivos;
     }
 
     let selectTipoActivo = document.getElementById('assetType');

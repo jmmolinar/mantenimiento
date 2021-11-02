@@ -53,7 +53,7 @@ export default class extends AbstractView {
 
                 console.log(jqXHR)
                 let fillWorkshop = ''
-                const taller = data.find((taller) => taller.id == identificador)
+                const taller = data.find((taller) => taller.idTallerServicio == identificador)
 
                 if (taller) {
 
@@ -67,22 +67,22 @@ export default class extends AbstractView {
                     console.log("Vericando const taller: " + taller)
 
                     fillWorkshop = `<h1></h1>
-                    <form id="workshopFormQuery_${taller.id}" action="/talleres">
+                    <form id="workshopFormQuery_${taller.idTallerServicio}" action="/talleres">
                         <!--IDENTIFICADOR DEL TALLER-->
-                        <div id="workshopId_${taller.id}" class="control-group order-identity border-transparent-1px">
-                            <h1>Taller ${taller.id}</h1>
+                        <div id="workshopId_${taller.idTallerServicio}" class="control-group order-identity border-transparent-1px">
+                            <h1>Taller ${taller.idTallerServicio}</h1>
                             <h3>${taller.nombre}</h3>
                         </div>
                         <!--DATOS DEL TALLER-->
-                        <div id="workshopData_${taller.id}" class="control-group border-transparent-1px">
+                        <div id="workshopData_${taller.idTallerServicio}" class="control-group border-transparent-1px">
                             
                             <!--NOMBRE DEL TALLER-->
                             <div class="control-group">
-                                <label class="span2" for="workshopName_${taller.id}">
+                                <label class="span2" for="workshopName_${taller.idTallerServicio}">
                                     <h5>Nombre</h5>
                                 </label>
                                 <div class="controls">
-                                    <input id="workshopName_${taller.id}" type="text" min="3" maxlength="30"
+                                    <input id="workshopName_${taller.idTallerServicio}" type="text" min="3" maxlength="30"
                                         value="${taller.nombre}" required>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@ export default class extends AbstractView {
                                 </label>
                                 <div class="controls">
                                     <input id="numStreetWorkshop" type="text" type="number" step="1" min="0"
-                                        maxlength="10" value="${taller.num_calle}" placeholder="e.g. 41" required>
+                                        maxlength="10" value="${taller.numero}" placeholder="e.g. 41" required>
                                 </div>
                             </div>
 
@@ -172,12 +172,12 @@ export default class extends AbstractView {
                         </div>
 
                         <!--GUARDAR / CANCELAR-->
-                        <div id="workshopActionButtons_${taller.id}" class="control-group">
+                        <div id="workshopActionButtons_${taller.idTallerServicio}" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <!--<a id="saveWorkshop_${taller.id}" class="btn btn-primary" href="/talleres">Guardar</a>
-                                <a id="dontSaveWorkshop_${taller.id}" class="btn btn-primary" href="/talleres">Cancelar</a>-->
-                                <button id="saveWorkshop_${taller.id}" class="btn btn-primary" type="submit">Guardar</button>
-                                <button id="dontSaveWorkshop_${taller.id}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
+                                <!--<a id="saveWorkshop_${taller.idTallerServicio}" class="btn btn-primary" href="/talleres">Guardar</a>
+                                <a id="dontSaveWorkshop_${taller.idTallerServicio}" class="btn btn-primary" href="/talleres">Cancelar</a>-->
+                                <button id="saveWorkshop_${taller.idTallerServicio}" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSaveWorkshop_${taller.idTallerServicio}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
