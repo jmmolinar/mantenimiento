@@ -47,38 +47,9 @@ export default class extends AbstractView {
 
     async getHtml() {
 
-        //let identificador = this.postId;
         let assetHTML = ``;
-
-        //$.ajax({
-        //    type: 'GET',
-        //    url: 'http://192.168.1.114:8080/static/js/data/assets.JSON',
-        //    dataType: 'json',
-        //    success: function (data, status, jqXHR) {
-
-        //        console.log(jqXHR)
         let fillAsset = ''
         let km_hora = ''
-        //const asset = data.find((asset) => asset.id == identificador)
-
-        //if (asset) {
-
-        //getArea = asset.area;
-        //getBodega = asset.bodega;
-        //getTipoActivo = asset.tipo;
-        //getMarca = asset.marca;
-        //getAnio = asset.anio;
-        //getPlan = asset.plan;
-        //getPlanesActivo = listAllElement(asset.planes_activo)
-        //compActivoPatente = asset.activo;
-        //console.log("Verificando postId: " + identificador)
-        //console.log("Vericando id de asset: " + asset.id)
-
-        /*if (asset.km == null) {
-            km_hora = asset.horas
-        } else {
-            km_hora = asset.km
-        }*/
 
         fillAsset = `<h1></h1>
             <form id="assetFormQuery_new" action="/activos">
@@ -371,28 +342,12 @@ export default class extends AbstractView {
                     </div>
                 </div>
             </form>`;
-        //} 
-
-        /*else {
-            fillAsset = `<h1>=(</h1>
-            <p>-- No se logró obtener el Activo ${identificador}</p>`
-        }*/
 
         assetHTML = assetHTML.concat(fillAsset)
 
         $('#pages').html(assetHTML)
-        //console.log(`AJAX assetFormQuery Nuevo -> Status: ${status}`)
 
         fillOptions()
-
-        /*asset ? fillOptions() : {};
-        asset ? fillAssetLogOrders() : {};*/
-
-        //},
-        //error: function (jqXHR) {
-        //    console.log(jqXHR)
-        //}
-        //})
 
         return assetHTML;
     }
@@ -490,7 +445,7 @@ const guardarActivoJSON = () => {
     let selectTipoActivo = document.getElementById('assetType');
     const tipoActivo = getTiposActivos.find((tipoActivo) => tipoActivo.nombre == selectTipoActivo.value);
     if (tipoActivo) {
-        nuevoActivoJSON.tipoActivoIdTipoActivo = tipoActivo.id;
+        nuevoActivoJSON.tipoActivoIdTipoActivo = tipoActivo.idTipoActivo;
     }
 
     let selectMarca = document.getElementById('assetBrand');
@@ -556,7 +511,7 @@ const guardarActivoJSON = () => {
 
             let planesNuevoActivoJSON = {
                 //"ActivoIdActivo: "
-                "planMantenimientoIdPlanMantenimiento": plan.id
+                "planMantenimientoIdPlanMantenimiento": plan.idPlanMantenimiento
             }
 
             nuevoActivoJSON.activoPlanes.push(planesNuevoActivoJSON);

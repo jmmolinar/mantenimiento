@@ -43,7 +43,6 @@ let nuevaOrdenJSON = {
     "activoIdActivo": null,
     "tallerServicioIdTallerServicio": null,
     "observaciones": "",
-    //"estadoIdEstado": 2,
     "ordenEstados": [],
     "ordenCategorias": [],
     "title": "",
@@ -77,84 +76,6 @@ export default class extends AbstractView {
 
         let formatGetEstadosOrdenItem = ``;
         let getEstadosOrden = [];
-
-
-        //getCategoriasOrden = listAllElement(order.servicios_orden)
-        //console.log("Lista Objetos de Categorías de la Orden: " + getCategoriasOrden)
-        //getTipoMantenimiento = order.tipo_orden;
-        //getEstado = order.estado_orden;
-        //getArea = order.area_vehiculo;
-        //getTipoActivo = order.tipo_activo;
-        //getTaller = order.taller_orden;
-        //getFrecuenciaPeriodo = order.periodo_frecuencia_cada;
-        //console.log("Verificando postId: " + identificador)
-        //console.log("Vericando id de order: " + order.id_orden)
-
-        //if (order.km_recorridos == null) {
-        //    uso = order.horas_uso
-        //} else {
-        //    uso = order.km_recorridos
-        //}
-
-        // OJO: Validar posteriormente obteniendo de la base de datos el tiempo en la geocerca del taller
-        //if (getEstado == "En taller") {
-        //    tiempoTaller = Math.abs(new Date(order.fecha_limite) - new Date(order.fecha_inicio)) / (1000 * 3600 * 24)
-        //}
-
-        /*if (order.periodo_orden == true) {
-            radioSeleccionadoPeriodo = "checked"
-            requeridoPorPeriodo = "required"
-            ocultoPeriodo = "border-transparent-1px"
-            ocultoRango = "hidden border-transparent-1px"
-        } else {
-            radioSeleccionadoRango = "checked"
-            requeridoPorRango = "required"
-            ocultoRango = "border-transparent-1px"
-            ocultoPeriodo = "hidden border-transparent-1px"
-        }*/
-
-
-        //if (order.rango_fecha_orden == true) {
-        //    radioSeleccionadoRango = "checked"
-        //    requeridoPorRango = "required"
-        //    ocultoRango = "border-transparent-1px"
-        //    ocultoPeriodo = "hidden border-transparent-1px"
-        //}
-
-
-
-        //getEstadosOrden = listAllElement(order.historial_estados);
-        //let getEstadosOrdenItem = [];
-
-        //getEstadosOrden.forEach(elem => {
-        //    if (elem["estado_actual"] == true) {
-        //        getEstado = elem["nombre_estado"];
-        //        classFocusState = "text-success";
-        //    }
-        //    if (elem["nombre_estado"] == "Completado" || elem["nombre_estado"] == "Completado con retraso") {
-        //        getDocumentoCompletado = elem["documento_completado"];
-        //        ocultoAdjuntoCompletado = "controls new-div-file-upload";
-        //        requeridoAdjuntoCompletado = "required";
-        //    } else {
-        //        getDocumentoCompletado = "";
-        //        ocultoAdjuntoCompletado = "hidden controls new-div-file-upload";
-        //        requeridoAdjuntoCompletado = "";
-        //    }
-
-        //    getEstadosOrdenItem.push(`<li><strong class="${classFocusState}">${elem["nombre_estado"]}</strong>
-        //                                            <ul>
-        //                                                <li>${elem["fecha_estado"]}</li>
-        //                                                <li><u>Por</u>: ${elem["estado_asignado_por"]}</li>
-        //                                            </ul>
-        //                                        </li>`)
-        //});
-
-        //if (getEstadosOrdenItem.length) {
-        //    formatGetEstadosOrdenItem = getEstadosOrdenItem.join('');
-        //} else {
-        //    formatGetEstadosOrdenItem = ``;
-        //}
-
 
         fillOrder = `<h1></h1>
             <form id="orderFormQuery_new" action="/ordenes" >
@@ -415,23 +336,13 @@ const fillOrderCategories = () => {
                 let requerido = '';
                 let deshabilitado = "disabled"
                 let costo = '';
-                //costoTotal += costo; 
-
-                //getCategoriasOrden.forEach(element => {
-                //    if (category.nombre == element.nombre) {
-                //        console.log(`Categoría: ${element.nombre} - Costo: ${element.costo} - Orden: ${identificadorGlobal}`)
-                //        checkboxSeleccionado = 'checked';
-                //        requerido = 'required';
-                //        costo = element.costo;
-                //    }
-                //})
 
                 fillOrderCategories += `
                 <div class="control-group">
                     <div id="labelTextAndLabelCost_${cont}" name="textAndCost" class="row-fluid">
                         <div id="labelText_${cont}" class="span5">
                             <label id="labelCategoryCheckbox_${cont}" class="checkbox" name="${category.nombre}">
-                                <!--<b>${category.id}</b> - --><b>${category.cod}</b> - ${category.nombre}
+                                <!--<b>${category.idCategoriaServicio}</b> - --><b>${category.codigo}</b> - ${category.nombre}
                                 <input type="checkbox" id="categoryCheckbox_${cont}" value="option_${cont}"
                                 ${checkboxSeleccionado} for="categoryCost_${cont}">
                             </label>
@@ -466,8 +377,6 @@ const guardarOrdenParaJSON = () => {
 
     banderaSeleccionCategoria = false; // Reinicio a false para verificar de nuevo la selección de categorías
     banderaSeleccionActivo = false; // Reinicio a false para verificar de nuevo la selección de activos
-
-    console.log("Entré a la función")
 
     let contadorOrdenes = 0;
     const activosSeleccionados = document.getElementsByClassName('ms-elem-selection ms-selected');
@@ -511,7 +420,7 @@ const guardarOrdenParaJSON = () => {
 
         let estadoNuevaOrdenJSON = {
             //"ordenIdOrden: "
-            "estadoIdEstado": 2,
+            "estadoIdEstado": 2, // 2 es el Estado Planificado
             "idUsuario": 1, //1 temporalmente hasta implementar sincronización con usuario conectado
             "fechaAsignado": nuevaOrdenJSON.fechaCreacion
         }
@@ -547,12 +456,12 @@ const guardarOrdenParaJSON = () => {
                 if (appendedPrependedInput.value > 0) {
 
                     //alert("Texto: " + labelCategoryCheckbox.textContent.trim() + " - Costo: " + appendedPrependedInput.value)
-                    const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelCategoryCheckbox.textContent.trim());
+                    const category = getCategorias.find((c) => (c.codigo + ' - ' + c.nombre) == labelCategoryCheckbox.textContent.trim());
                     if (category) {
 
                         let categoriasNuevaOrdenJSON = {
                             //"ordenIdOrden": 
-                            "categoriaServicioIdCategoriaServicio": category.id,
+                            "categoriaServicioIdCategoriaServicio": category.idCategoriaServicio,
                             "costo": appendedPrependedInput.value,
                             "fechaCategoriaAsignada": nuevaOrdenJSON.fechaCreacion,
                             "observacionCategoria": ""

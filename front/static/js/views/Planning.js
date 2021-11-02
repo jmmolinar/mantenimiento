@@ -48,24 +48,24 @@ export default class extends AbstractView {
                 let fillPlanning = ''
                 let km_hora_periodo = ''
                 for (const plan of data) {
-                    if (plan.por_periodo == true) {
+                    if (plan.porPeriodo == true) {
                         km_hora_periodo = 'Por período'
                     }
-                    if (plan.por_km == true) {
+                    if (plan.porKm == true) {
                         km_hora_periodo = 'Por kilómetros'
                     }
-                    if (plan.por_hora == true) {
+                    if (plan.porHora == true) {
                         km_hora_periodo = 'Por horas'
                     }
 
                     fillPlanning += `
                     <tr>
-                        <td>${plan.id}</td>
+                        <td>${plan.idPlanMantenimiento}</td>
                         <td>${plan.nombre}</td>
                         <td>${km_hora_periodo}</td>
                         <td class="align-center">
-                            <a id="editPlan_${plan.id}" class="btn only-to-id-url" href="/planes/${plan.id}"><i class="icon-pencil"></i></a>
-                            <a id="deletePlan_${plan.id}" class="btn" disabled><i class="icon-trash"></i></a>
+                            <a id="editPlan_${plan.idPlanMantenimiento}" class="btn only-to-id-url" href="/planes/${plan.idPlanMantenimiento}"><i class="icon-pencil"></i></a>
+                            <a id="deletePlan_${plan.idPlanMantenimiento}" class="btn" disabled><i class="icon-trash"></i></a>
                         </td>
                     </tr>`
                 }

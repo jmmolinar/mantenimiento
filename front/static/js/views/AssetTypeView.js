@@ -33,7 +33,7 @@ export default class extends AbstractView {
 
                 console.log(jqXHR)
                 let fillAssetType = ''
-                const assetType = data.find((assetType) => assetType.id == identificador)
+                const assetType = data.find((assetType) => assetType.idTipoActivo == identificador)
 
                 if (assetType) {
 
@@ -43,31 +43,31 @@ export default class extends AbstractView {
                     fillAssetType = `<h1></h1>
                     <form id="assetTypeFormQuery_${assetType.id}" action="/tipos">
                         <!--IDENTIFICADOR DEL TIPO DE ACTIVO-->
-                        <div id="assetTypeId_${assetType.id}" class="control-group order-identity border-transparent-1px">
-                            <h1>Tipo de activo ${assetType.id}</h1>
+                        <div id="assetTypeId_${assetType.idTipoActivo}" class="control-group order-identity border-transparent-1px">
+                            <h1>Tipo de activo ${assetType.idTipoActivo}</h1>
                             <h3>${assetType.nombre}</h3>
                         </div>
                         <!--Datos del tipo de activo-->
-                        <div id="assetTypeData_${assetType.id}" class="control-group border-transparent-1px">
+                        <div id="assetTypeData_${assetType.idTipoActivo}" class="control-group border-transparent-1px">
                             <!--NOMBRE DE CATEGORÍA-->
                             <div class="control-group">
-                                <label class="span1" for="assetTypeName_${assetType.id}">
+                                <label class="span1" for="assetTypeName_${assetType.idTipoActivo}">
                                     <h5>Nombre</h5>
                                 </label>
                                 <div class="controls">
-                                    <input class="span12" id="assetTypeName_${assetType.id}" type="text" min="3" maxlength="100"
+                                    <input class="span12" id="assetTypeName_${assetType.idTipoActivo}" type="text" min="3" maxlength="100"
                                         value="${assetType.nombre}" required>
                                 </div>
                             </div>
                         </div>
 
                         <!--GUARDAR / CANCELAR-->
-                        <div id="assetTypeActionButtons_${assetType.id}" class="control-group">
+                        <div id="assetTypeActionButtons_${assetType.idTipoActivo}" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <!--<a id="saveAssetType_${assetType.id}" class="btn btn-primary" href="/tipos">Guardar</a>
-                                <a id="dontSaveAssetType_${assetType.id}" class="btn btn-primary" href="/tipos">Cancelar</a>-->
-                                <button id="saveAssetType_${assetType.id}" class="btn btn-primary" type="submit">Guardar</button>
-                                <button id="dontSaveAssetType_${assetType.id}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
+                                <!--<a id="saveAssetType_${assetType.idTipoActivo}" class="btn btn-primary" href="/tipos">Guardar</a>
+                                <a id="dontSaveAssetType_${assetType.idTipoActivo}" class="btn btn-primary" href="/tipos">Cancelar</a>-->
+                                <button id="saveAssetType_${assetType.idTipoActivo}" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSaveAssetType_${assetType.idTipoActivo}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
@@ -120,8 +120,8 @@ const mostrarTipoActivoStorageJSON = () => {
 
     if (sessionStorage.getItem(`ActualizacionTipoActivo_${idUrl}`)) {
         console.log(`\n\nActualizacionTipoActivo_${idUrl}\n\n` + sessionStorage.getItem(`ActualizacionTipoActivo_${idUrl}`));
-        alert(`\n\nActualizacionTipoActivo_${idUrl}\n\n` + JSON.stringify(tipoActivoJSON, undefined, 4));
-        //sessionStorage.removeItem(`NuevoActivo`);
+        //alert(`\n\nActualizacionTipoActivo_${idUrl}\n\n` + JSON.stringify(tipoActivoJSON, undefined, 4));
+        //sessionStorage.removeItem(`ActualizacionTipoActivo_${idUrl}`);
     }
 }
 

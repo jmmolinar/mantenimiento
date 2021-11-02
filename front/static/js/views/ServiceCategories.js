@@ -49,12 +49,12 @@ export default class extends AbstractView {
                 for (const categoria of data) {
                     fillServiceCategories += `
                     <tr>
-                        <td>${categoria.id}</td>
+                        <td>${categoria.idCategoriaServicio}</td>
                         <td>${categoria.nombre}</td>
-                        <td>${categoria.cod}</td>
+                        <td>${categoria.codigo}</td>
                         <td class="align-center">
-                            <a id="editServiceCategory_${categoria.id}" class="btn only-to-id-url" href="/categorias/${categoria.id}"><i class="icon-pencil"></i></a>
-                            <a id="deleteServiceCategory_${categoria.id}" class="btn" disabled><i class="icon-trash"></i></a>
+                            <a id="editServiceCategory_${categoria.idCategoriaServicio}" class="btn only-to-id-url" href="/categorias/${categoria.idCategoriaServicio}"><i class="icon-pencil"></i></a>
+                            <a id="deleteServiceCategory_${categoria.idCategoriaServicio}" class="btn" disabled><i class="icon-trash"></i></a>
                         </td>
                     </tr>`
                 }

@@ -104,11 +104,11 @@ export default class extends AbstractView {
 
                     getCategoriasOrden = listAllElement(order.servicios_orden)
                     console.log("Lista Objetos de Categorías de la Orden: " + getCategoriasOrden)
-                    getTipoMantenimiento = order.tipo_orden;
+                    getTipoMantenimiento = order.tipo_orden; // Temporal, debe traer tipoOrdenIdTipoOrden y de allí tomar el nombre
                     //getEstado = order.estado_orden;
-                    getArea = order.area_vehiculo;
-                    getTipoActivo = order.tipo_activo;
-                    getTaller = order.taller_orden;
+                    getArea = order.area_vehiculo; // Temporal, se debe obtener del activoIdActivo y de allí el areaIdArea para luego obtener su nombre
+                    getTipoActivo = order.tipo_activo; // Temporal, se debe obtener del activoIdActivo y de allí su tipoActivoIdTipoActivo para luego obtener su nombre
+                    getTaller = order.taller_orden; // Temporal, debe traer tallerServicioIdTallerServicio y de allí tomar el nombre
                     getRutaAdjuntoCompletado = order.rutaAdjuntoCompletado;
                     getFechaRutaAdjuntoCompletado = order.fechaRutaCompletado;
                     getFechaCreacion = order.fecha_creacion;
@@ -547,7 +547,7 @@ const fillOrderCategories = () => {
                     <div id="labelTextAndLabelCost_${cont}" name="textAndCost" class="row-fluid">
                         <div id="labelText_${cont}" class="span5">
                             <label id="labelCategoryCheckbox_${cont}" class="checkbox" name="${category.nombre}">
-                                <!--<b>${category.id}</b> - --><b>${category.cod}</b> - ${category.nombre}
+                                <!--<b>${category.idCategoriaServicio}</b> - --><b>${category.codigo}</b> - ${category.nombre}
                                 <input type="checkbox" id="categoryCheckbox_${cont}" value="option_${cont}"
                                 ${checkboxSeleccionado} for="categoryCost_${cont}">
                             </label>
@@ -726,12 +726,12 @@ const guardarOrdenParaJSON = () => {
             if (appendedPrependedInput.value > 0) {
 
                 //alert("Texto: " + labelCategoryCheckbox.textContent.trim() + " - Costo: " + appendedPrependedInput.value)
-                const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelCategoryCheckbox.textContent.trim());
+                const category = getCategorias.find((c) => (c.codigo + ' - ' + c.nombre) == labelCategoryCheckbox.textContent.trim());
                 if (category) {
 
                     let categoriasordenJSON = {
                         "ordenIdOrden": idUrl,
-                        "categoriaServicioIdCategoriaServicio": category.id,
+                        "categoriaServicioIdCategoriaServicio": category.idCategoriaServicio,
                         "costo": appendedPrependedInput.value,
                         "fechaCategoriaAsignada": ordenJSON.fechaCreacion,
                         "observacionCategoria": ""

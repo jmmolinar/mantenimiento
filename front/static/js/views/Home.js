@@ -68,7 +68,7 @@ export default class extends AbstractView {
 
                 for (const activo of data) {
 
-                    getPlanesActivo = listAllElement(activo.planes_activo);
+                    getPlanesActivo = listAllElement(activo.activoPlanes);
                     let getPlanesActivoNombre = [];
                     getPlanesActivo.forEach(elem => {
                         getPlanesActivoNombre.push(`<div class="alert alert-info no-margin new-padding-top-bottom"><strong>${elem["nombre"]}</strong></div>`)

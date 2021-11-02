@@ -65,28 +65,28 @@ export default class extends AbstractView {
                 let radioSeleccionadoPorHora = ''
                 let ocultoPeriodo = "hidden border-transparent-1px"
                 let ocultoKmHoras = "hidden border-transparent-1px"
-                const plan = data.find((plan) => plan.id == identificador)
+                const plan = data.find((plan) => plan.idPlanMantenimiento == identificador)
 
                 if (plan) {
 
                     getNombrePlan = plan.nombre;
-                    getCategoriasPlan = listAllElement(plan.servicios_plan)
+                    getCategoriasPlan = listAllElement(plan.planCategorias)
                     console.log("Verificando postId: " + identificador)
-                    console.log("Vericando id del plan: " + plan.id)
+                    console.log("Vericando id del plan: " + plan.idPlanMantenimiento)
 
-                    if (plan.por_km == true) {
+                    if (plan.porKm == true) {
                         radioSeleccionadoPorKm = "checked";
                         modalidad = "Km";
                         ocultoKmHoras = "border-transparent-1px"
                         ocultoPeriodo = "hidden border-transparent-1px"
                     }
-                    if (plan.por_hora == true) {
+                    if (plan.porHora == true) {
                         radioSeleccionadoPorHora = "checked";
                         modalidad = "Horas";
                         ocultoKmHoras = "border-transparent-1px"
                         ocultoPeriodo = "hidden border-transparent-1px"
                     }
-                    if (plan.por_periodo == true) {
+                    if (plan.porPeriodo == true) {
                         radioSeleccionadoPorPeriodo = "checked";
                         //modalidad = "Período";
                         ocultoPeriodo = "border-transparent-1px"
@@ -94,23 +94,23 @@ export default class extends AbstractView {
                     }
 
                     fillPlan = `<h1></h1>
-                    <form id="planFormQuery_${plan.id}" action="/planes">
+                    <form id="planFormQuery_${plan.idPlanMantenimiento}" action="/planes">
 
                         <!--IDENTIFICADOR DEL PLAN-->
-                        <div id="planId_${plan.id}" class="control-group order-identity border-transparent-1px">
-                            <h1>Plan de mantenimiento ${plan.id}</h1>
+                        <div id="planId_${plan.idPlanMantenimiento}" class="control-group order-identity border-transparent-1px">
+                            <h1>Plan de mantenimiento ${plan.idPlanMantenimiento}</h1>
                             <h3>${plan.nombre}</h3>
                         </div>
 
                         <!--PRIMEROS DATOS DEL PLAN-->
-                        <div id="planData_${plan.id}" class="control-group border-transparent-1px">
+                        <div id="planData_${plan.idPlanMantenimiento}" class="control-group border-transparent-1px">
                             <!--NOMBRE DE CATEGORÍA-->
                             <div class="control-group">
-                                <label class="span1" for="planName_${plan.id}">
+                                <label class="span1" for="planName_${plan.idPlanMantenimiento}">
                                     <h5>Nombre</h5>
                                 </label>
                                 <div class="controls">
-                                    <input class="span12" id="planName_${plan.id}" type="text" min="3" maxlength="100"
+                                    <input class="span12" id="planName_${plan.idPlanMantenimiento}" type="text" min="3" maxlength="100"
                                         value="${plan.nombre}" required>
                                 </div>
                             </div>
@@ -165,12 +165,12 @@ export default class extends AbstractView {
                         </div>
 
                         <!--GUARDAR / CANCELAR-->
-                        <div id="planActionButtons_${plan.id}" class="control-group">
+                        <div id="planActionButtons_${plan.idPlanMantenimiento}" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <!--<a id="savePlan_${plan.id}" class="btn btn-primary" href="/planes">Guardar</a>
-                                <a id="dontSavePlan_${plan.id}" class="btn btn-primary" href="/planes">Cancelar</a>-->
-                                <button id="savePlan_${plan.id}" class="btn btn-primary" type="submit">Guardar</button>
-                                <button id="dontSavePlan_${plan.id}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
+                                <!--<a id="savePlan_${plan.idPlanMantenimiento}" class="btn btn-primary" href="/planes">Guardar</a>
+                                <a id="dontSavePlan_${plan.idPlanMantenimiento}" class="btn btn-primary" href="/planes">Cancelar</a>-->
+                                <button id="savePlan_${plan.idPlanMantenimiento}" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSavePlan_${plan.idPlanMantenimiento}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
@@ -294,32 +294,32 @@ const fillPlanServiceCategories = () => {
 
                 getCategoriasPlan.forEach(element => {
                     // POR HORAS
-                    if ((category.nombre == element.nombre) && (element.limite_hora != '')) {
-                        console.log(`Categoría: ${element.nombre} - Limite Hora: ${element.limite_hora} Plan: ${identificadorGlobal}`)
+                    if ((category.nombre == element.nombre) && (element.rangoHora != '')) {
+                        console.log(`Categoría: ${element.nombre} - Limite Hora: ${element.rangoHora} - Plan: ${identificadorGlobal}`)
                         checkboxSeleccionado = 'checked';
                         requerido = 'required';
                         deshabilitado = '';
-                        limite = element.limite_hora;
+                        limite = element.rangoHora;
                     } else {
                         // POR KILÓMETROS
-                        if ((category.nombre == element.nombre) && (element.limite_km != '')) {
-                            console.log(`Categoría: ${element.nombre} - Limite Km: ${element.limite_km} Plan: ${identificadorGlobal}`)
+                        if ((category.nombre == element.nombre) && (element.rangoKm != '')) {
+                            console.log(`Categoría: ${element.nombre} - Limite Km: ${element.rangoKm} - Plan: ${identificadorGlobal}`)
                             checkboxSeleccionado = 'checked';
                             requerido = 'required';
                             deshabilitado = '';
-                            limite = element.limite_km;
+                            limite = element.rangoKm;
 
                         } else {
                             // POR PERÍODO
-                            if ((category.nombre == element.nombre) && (element.periodo_inicio != '')) {
-                                console.log(`Categoría: ${element.nombre} - Inicio: ${element.periodo_inicio} Plan: ${identificadorGlobal}`)
+                            if ((category.nombre == element.nombre) && (element.periodoFecha != '')) {
+                                console.log(`Categoría: ${element.nombre} - Inicio: ${element.periodoFecha} - Plan: ${identificadorGlobal}`)
                                 checkboxSeleccionadoPeriodo = 'checked';
                                 requeridoPorPeriodo = 'required';
-                                inicio = element.periodo_inicio;
-                                cada = element.periodo_cada;
+                                inicio = element.periodoFecha;
+                                cada = element.periodoCada;
                                 deshabilitadoPeriodo = '';
                                 // La frecuencia (Días, Semanas, ...) se llena con fillFrecuencyOptions()
-                                //getFrecuenciaPeriodo = element.periodo_frecuencia_cada; --> No
+                                //getFrecuenciaPeriodo = element.periodoFrecuencia; --> No
                             }
                         }
                         //////////////
@@ -332,7 +332,7 @@ const fillPlanServiceCategories = () => {
                     <div id="labelTextAndlabelLimit_${cont}" name="textAndLimit" class="row-fluid">
                         <div id="labelText_${cont}" class="span5">
                             <label id="labelCategoryCheckbox_${cont}" class="checkbox" name="${category.nombre}">
-                                <b>${category.cod}</b> - ${category.nombre}
+                                <b>${category.codigo}</b> - ${category.nombre}
                                 <input type="checkbox" id="categoryCheckbox_${cont}" value="option_${cont}"
                                 ${checkboxSeleccionado} for="categoryLimit_${cont}">
                             </label>
@@ -354,7 +354,7 @@ const fillPlanServiceCategories = () => {
                 <div id="labelTextStartFrecuency_${cont}" name="textStartFrecuency" class="control-group">
                     <div id="labelTextPeriodo_${cont}" class="span10">
                         <label id="labelPeriodoCategoryCheckbox_${cont}" class="checkbox" name="${category.nombre}">
-                            <b>${category.cod}</b> - ${category.nombre}
+                            <b>${category.codigo}</b> - ${category.nombre}
                             <input type="checkbox" id="categoryPeriodoCheckbox_${cont}" value="option_${cont}"
                                 ${checkboxSeleccionadoPeriodo} for="categoryPeriodo_${cont}">
                         </label>
@@ -432,9 +432,9 @@ const fillFrecuencyOptions = () => {
             // Para eliminar los options generales y crearlos de nuevo
             // en las categorías PERTENECIENTES AL PLAN SELECCIONANDO LA FRECUENCIA
             getCategoriasPlan.forEach(element => {
-                if ((category.nombre == element.nombre) && (element.periodo_inicio != '')) {
-                    console.log(`Categoría con Frecuencia: ${element.nombre} - Inicio: ${element.periodo_inicio} - Cada: ${element.periodo_cada} - Frecuencia: ${element.periodo_frecuencia_cada}`)
-                    getFrecuenciaPeriodo = element.periodo_frecuencia_cada;
+                if ((category.nombre == element.nombre) && (element.periodoFecha != '')) {
+                    console.log(`Categoría con Frecuencia: ${element.nombre} - Inicio: ${element.periodoFecha} - Cada: ${element.periodoCada} - Frecuencia: ${element.periodoFrecuencia}`)
+                    getFrecuenciaPeriodo = element.periodoFrecuencia;
                     //console.log(`Este es un select del Plan: ${selectFrecuenciaPeriodo.id}`)
                     //selectFrecuenciaPeriodo.innerHTML = '';
                     selectFrecuenciaPeriodo.querySelectorAll('*').forEach(n => n.remove());
@@ -530,12 +530,12 @@ const guardarPlanParaJSON = () => {
                     && frequencyCount.value >= 1
                     && frequencyType.options[frequencyType.selectedIndex].text != '') {
 
-                    const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelPeriodoCategoryCheckbox.textContent.trim());
+                    const category = getCategorias.find((c) => (c.codigo + ' - ' + c.nombre) == labelPeriodoCategoryCheckbox.textContent.trim());
                     if (category) {
 
                         let categoriasplanJSON = {
                             "planMantenimientoIdPlanMantenimiento": idUrl,
-                            "categoriaServicioIdCategoriaServicio": category.id,
+                            "categoriaServicioIdCategoriaServicio": category.idCategoriaServicio,
                             "rangoKm": null,
                             "rangoHoras": null,
                             "periodoFecha": frequencyStartDate.value,
@@ -597,12 +597,12 @@ const guardarPlanParaJSON = () => {
                         }
                     }
 
-                    const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelCategoryCheckbox.textContent.trim());
+                    const category = getCategorias.find((c) => (c.codigo + ' - ' + c.nombre) == labelCategoryCheckbox.textContent.trim());
                     if (category) {
 
                         let categoriasplanJSON = {
                             "planMantenimientoIdPlanMantenimiento": idUrl,
-                            "categoriaServicioIdCategoriaServicio": category.id,
+                            "categoriaServicioIdCategoriaServicio": category.idCategoriaServicio,
                             "rangoKm": limiteKm,
                             "rangoHoras": limiteHoras,
                             "periodoFecha": null,
@@ -639,7 +639,7 @@ const guardarPlanParaJSON = () => {
 
     //Creación del JSON
     if (banderaSeleccion == true && inputAndSelectRequeridos == false) {
-        alert("cambió el valor de banderaSeleccion a TRUE y inputAndSelectRequeridos a FALSE")
+        //alert("cambió el valor de banderaSeleccion a TRUE y inputAndSelectRequeridos a FALSE")
         sessionStorage.setItem(`ActualizacionPlan_${idUrl}`, JSON.stringify(planJSON));
     } else {
         alert("No entré a la creación")
@@ -669,8 +669,6 @@ $(document).ready(function () {
 
     // Guardado de JSON teniendo categorías seleccionadas y sus datos completos
     $('div #pages').on('click', `button#savePlan_${idUrl}`, function (e) {
-
-        alert("Probando")
 
         guardarPlanParaJSON();
 

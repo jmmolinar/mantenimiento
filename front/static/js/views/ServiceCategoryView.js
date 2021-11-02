@@ -34,7 +34,7 @@ export default class extends AbstractView {
 
                 console.log(jqXHR)
                 let fillCategory = ''
-                const categoria = data.find((categoria) => categoria.id == identificador)
+                const categoria = data.find((categoria) => categoria.idCategoriaServicio == identificador)
 
                 if (categoria) {
 
@@ -42,43 +42,43 @@ export default class extends AbstractView {
                     console.log("Vericando const categoria: " + categoria)
 
                     fillCategory = `<h1></h1>
-                    <form id="categoryFormQuery_${categoria.id}" action="/categorias">
+                    <form id="categoryFormQuery_${categoria.idCategoriaServicio}" action="/categorias">
                         <!--IDENTIFICADOR DE LA CATEGORÍA-->
-                        <div id="categoryId_${categoria.id}" class="control-group order-identity border-transparent-1px">
-                            <h1>Categoría ${categoria.id}</h1>
+                        <div id="categoryId_${categoria.idCategoriaServicio}" class="control-group order-identity border-transparent-1px">
+                            <h1>Categoría ${categoria.idCategoriaServicio}</h1>
                             <h3>${categoria.nombre}</h3>
                         </div>
                         <!--Datos de la categoría-->
-                        <div id="categoryData_${categoria.id}" class="control-group border-transparent-1px">
+                        <div id="categoryData_${categoria.idCategoriaServicio}" class="control-group border-transparent-1px">
                             <!--NOMBRE DE CATEGORÍA-->
                             <div class="control-group">
-                                <label class="span2" for="categoryName_${categoria.id}">
+                                <label class="span2" for="categoryName_${categoria.idCategoriaServicio}">
                                     <h5>Nombre</h5>
                                 </label>
                                 <div class="controls">
-                                    <input class="span12" id="categoryName_${categoria.id}" type="text" min="3" maxlength="100"
+                                    <input class="span12" id="categoryName_${categoria.idCategoriaServicio}" type="text" min="3" maxlength="100"
                                         value="${categoria.nombre}" required>
                                 </div>
                             </div>
                             <!--CÓDIGO DE CATEGORÍA-->
                             <div class="control-group">
-                                <label class="span2" for="categoryCode_${categoria.id}">
+                                <label class="span2" for="categoryCode_${categoria.idCategoriaServicio}">
                                     <h5>Código</h5>
                                 </label>
                                 <div class="controls">
-                                    <input class="span12" id="categoryCode_${categoria.id}" type="text" min="3" maxlength="10"
-                                        value="${categoria.cod}" required>
+                                    <input class="span12" id="categoryCode_${categoria.idCategoriaServicio}" type="text" min="3" maxlength="10"
+                                        value="${categoria.codigo}" required>
                                 </div>
                             </div>
                         </div>
 
                         <!--GUARDAR / CANCELAR-->
-                        <div id="categoryActionButtons_${categoria.id}" class="control-group">
+                        <div id="categoryActionButtons_${categoria.idCategoriaServicio}" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <!--<a id="saveCategory_${categoria.id}" class="btn btn-primary" href="/categorias">Guardar</a>
-                                <a id="dontSaveCategory_${categoria.id}" class="btn btn-primary" href="/categorias">Cancelar</a>-->
-                                <button id="saveCategory_${categoria.id}" class="btn btn-primary" type="submit">Guardar</button>
-                                <button id="dontSaveCategory_${categoria.id}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
+                                <!--<a id="saveCategory_${categoria.idCategoriaServicio}" class="btn btn-primary" href="/categorias">Guardar</a>
+                                <a id="dontSaveCategory_${categoria.idCategoriaServicio}" class="btn btn-primary" href="/categorias">Cancelar</a>-->
+                                <button id="saveCategory_${categoria.idCategoriaServicio}" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSaveCategory_${categoria.idCategoriaServicio}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
                             </div>
                         </div>
                     </form>`;

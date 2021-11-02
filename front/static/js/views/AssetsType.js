@@ -51,12 +51,12 @@ export default class extends AbstractView {
                 for (const tipo of data) {
                     fillAssetsType += `
                     <tr>
-                        <td>${tipo.id}</td>
+                        <td>${tipo.idTipoActivo}</td>
                         <td>${tipo.nombre}</td>
                         <!--<td>${tipo.cantidad_activos}</td>-->
                         <td class="align-center">
-                            <a id="editAssetType_${tipo.id}" class="btn only-to-id-url" href="/tipos/${tipo.id}"><i class="icon-pencil"></i></a>
-                            <a id="deleteAssetType_${tipo.id}" class="btn" disabled><i class="icon-trash"></i></a>
+                            <a id="editAssetType_${tipo.idTipoActivo}" class="btn only-to-id-url" href="/tipos/${tipo.idTipoActivo}"><i class="icon-pencil"></i></a>
+                            <a id="deleteAssetType_${tipo.idTipoActivo}" class="btn" disabled><i class="icon-trash"></i></a>
                         </td>
                     </tr>`
                 }

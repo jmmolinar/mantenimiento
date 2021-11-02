@@ -75,15 +75,15 @@ export default class extends AbstractView {
                     getMarca = asset.marca;
                     getAnio = asset.anio;
                     getPlan = asset.plan;
-                    getPlanesActivo = listAllElement(asset.planes_activo)
+                    getPlanesActivo = listAllElement(asset.activoPlanes)
                     compActivoPatente = asset.activo;
                     console.log("Verificando postId: " + identificador)
                     console.log("Vericando id de asset: " + asset.id)
 
                     if (asset.km == null) {
-                        km_hora = asset.horas
+                        km_hora = asset.horas // Temporal porque se debe traer a través de idVehiculo
                     } else {
-                        km_hora = asset.km
+                        km_hora = asset.km // Temporal porque se debe traer a través de idVehiculo
                     }
 
                     fillAsset = `<h1></h1>
@@ -187,7 +187,7 @@ export default class extends AbstractView {
                                         </label>
                                         <div class="controls">
                                             <input id="assetGPS" type="text" min="3" maxlength="15" 
-                                                value="${asset.gps_imei}" disabled>
+                                                value="${asset.gps_imei}" disabled> <!-- Temporal porque se debe traer mediante idVehiculo -->
                                         </div>
                                     </div>
 
@@ -458,6 +458,7 @@ const fillOptions = () => {
 
         // Div con Planes del Activo
         const divPlanes = document.getElementById('buttonsSelectedPlan');
+        // Cambiarlo para obtener por planMantenimientoIdPlanMantenimiento y no por Nombre
         loadDivSelectedPlan(divPlanes, getPlanesActivo, "nombre"); // Paso la clave "nombre"
 
         // Select Plan - Antes Individual
@@ -727,7 +728,7 @@ const guardarActivoJSON = () => {
     let selectTipoActivo = document.getElementById('assetType');
     const tipoActivo = getTiposActivos.find((tipoActivo) => tipoActivo.nombre == selectTipoActivo.value);
     if (tipoActivo) {
-        activoJSON.tipoActivoIdTipoActivo = tipoActivo.id;
+        activoJSON.tipoActivoIdTipoActivo = tipoActivo.idTipoActivo;
     }
 
     let selectMarca = document.getElementById('assetBrand');
@@ -801,7 +802,7 @@ const guardarActivoJSON = () => {
 
             let planesactivoJSON = {
                 "activoIdActivo": idUrl,
-                "planMantenimientoIdPlanMantenimiento": plan.id
+                "planMantenimientoIdPlanMantenimiento": plan.idPlanMantenimiento
             }
 
             activoJSON.activoPlanes.push(planesactivoJSON);

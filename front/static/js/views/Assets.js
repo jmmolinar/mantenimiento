@@ -56,17 +56,17 @@ export default class extends AbstractView {
                 for (const activo of data) {
 
                     if (activo.km == null) {
-                        km_hora = activo.horas
+                        km_hora = activo.horas // Temporal porque se debe traer a través de idVehiculo
                     } else {
-                        km_hora = activo.km
+                        km_hora = activo.km // Temporal porque se debe traer a través de idVehiculo
                     }
 
                     fillAssets += `
                     <tr>
                         <td>${activo.id}</td>
                         <td>${activo.activo}</td>
-                        <td>${activo.tipo}</td>
-                        <td>${activo.gps_imei}</td>
+                        <td>${activo.tipo}</td> <!--Modificar para leer el idTipo y de allí traer el nombre del tipo -->
+                        <td>${activo.gps_imei}</td> <!-- Temporal porque se debe traer mediante idVehiculo -->
                         <td>${activo.area}</td>
                         <td>${km_hora}</td>
                         <td class="align-center">

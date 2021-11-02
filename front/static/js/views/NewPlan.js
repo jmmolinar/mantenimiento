@@ -36,39 +36,18 @@ let nuevoPlanJSON = {
 export default class extends AbstractView {
     constructor(params) {
         super(params);
-        //this.postId = params.id;
         this.setTitle(`Nuevo plan`);
     }
 
     async getHtml() {
 
-        //let identificador = this.postId;
         let planHTML = ``;
-        //identificadorGlobal = this.postId;
-
-        //$.ajax({
-        //    type: 'GET',
-        //    url: 'http://192.168.1.114:8080/static/js/data/planning.JSON',
-        //    dataType: 'json',
-        //    success: function (data, status, jqXHR) {
-
-        //        console.log(jqXHR)
         let fillPlan = ''
         let radioSeleccionadoPorPeriodo = 'checked'
         let radioSeleccionadoPorKm = ''
         let radioSeleccionadoPorHora = ''
         let ocultoPeriodo = "border-transparent-1px"
         let ocultoKmHoras = "hidden border-transparent-1px"
-
-
-        //const plan = data.find((plan) => plan.id == identificador)
-
-        //if (plan) {
-
-        //getNombrePlan = plan.nombre;
-        //getCategoriasPlan = listAllElement(plan.servicios_plan)
-        //console.log("Verificando postId: " + identificador)
-        //console.log("Vericando id del plan: " + plan.id)
 
         fillPlan = `<h1></h1>
             <form id="planFormQuery_new" action="/planes">
@@ -150,23 +129,12 @@ export default class extends AbstractView {
                     </div>
                 </div>
             </form>`;
-        //} else {
-        //    fillPlan = `<h1>=(</h1>
-        //    <p>-- No se logró obtener el Plan ${identificador}</p>`
-        //}
 
         planHTML = planHTML.concat(fillPlan)
 
         $('#pages').html(planHTML)
-        //console.log(`AJAX planFormQuery -> Status: ${status}`)
 
         fillPlanServiceCategories();
-
-        //},
-        //error: function (jqXHR) {
-        //    console.log(jqXHR)
-        //}
-        //})
 
         return planHTML;
 
@@ -265,43 +233,13 @@ const fillPlanServiceCategories = () => {
                 let cada = '';
                 getCategorias.push(category)
 
-                /*getCategoriasPlan.forEach(element => {
-                    // POR HORAS
-                    if ((category.nombre == element.nombre) && (element.limite_hora != '')) {
-                        console.log(`Categoría: ${element.nombre} - Limite Hora: ${element.limite_hora} Plan: ${identificadorGlobal}`)
-                        checkboxSeleccionado = 'checked';
-                        requerido = 'required';
-                        limite = element.limite_hora;
-                    } else {
-                        // POR KILÓMETROS
-                        if ((category.nombre == element.nombre) && (element.limite_km != '')) {
-                            console.log(`Categoría: ${element.nombre} - Limite Km: ${element.limite_km} Plan: ${identificadorGlobal}`)
-                            checkboxSeleccionado = 'checked';
-                            requerido = 'required';
-                            limite = element.limite_km;
-
-                        } else {
-                            // POR PERÍODO
-                            if ((category.nombre == element.nombre) && (element.periodo_inicio != '')) {
-                                console.log(`Categoría: ${element.nombre} - Inicio: ${element.periodo_inicio} Plan: ${identificadorGlobal}`)
-                                checkboxSeleccionado = 'checked';
-                                requeridoPorPeriodo = 'required';
-                                inicio = element.periodo_inicio;
-                                cada = element.periodo_cada;
-                                //getFrecuenciaPeriodo = element.periodo_frecuencia_cada;
-                            }
-                        }
-                        //////////////
-                    }
-                })*/
-
                 // COMPONENTES DE "POR KILÓMETROS" ó "POR HORAS"
                 fillPlanCategories += `
                 <div class="control-group">
                     <div id="labelTextAndlabelLimit_${cont}" name="textAndLimit" class="row-fluid">
                         <div id="labelText_${cont}" class="span5">
                             <label id="labelCategoryCheckbox_${cont}" class="checkbox" name="${category.nombre}">
-                                <b>${category.cod}</b> - ${category.nombre}
+                                <b>${category.codigo}</b> - ${category.nombre}
                                 <input type="checkbox" id="categoryCheckbox_${cont}" value="option_${cont}"
                                 ${checkboxSeleccionado} for="categoryLimit_${cont}">
                             </label>
@@ -323,7 +261,7 @@ const fillPlanServiceCategories = () => {
                 <div id="labelTextStartFrecuency_${cont}" name="textStartFrecuency" class="control-group">
                     <div id="labelTextPeriodo_${cont}" class="span10">
                         <label id="labelPeriodoCategoryCheckbox_${cont}" class="checkbox" name="${category.nombre}">
-                            <b>${category.cod}</b> - ${category.nombre}
+                            <b>${category.codigo}</b> - ${category.nombre}
                             <input type="checkbox" id="categoryPeriodoCheckbox_${cont}" value="option_${cont}"
                                 ${checkboxSeleccionado} for="categoryPeriodo_${cont}">
                         </label>
@@ -402,9 +340,9 @@ const fillFrecuencyOptions = () => {
             // Para eliminar los options generales y crearlos de nuevo
             // en las categorías PERTENECIENTES AL PLAN SELECCIONANDO LA FRECUENCIA
             getCategoriasPlan.forEach(element => {
-                if ((category.nombre == element.nombre) && (element.periodo_inicio != '')) {
-                    console.log(`Categoría con Frecuencia: ${element.nombre} - Inicio: ${element.periodo_inicio} - Cada: ${element.periodo_cada} - Frecuencia: ${element.periodo_frecuencia_cada}`)
-                    getFrecuenciaPeriodo = element.periodo_frecuencia_cada;
+                if ((category.nombre == element.nombre) && (element.periodoFecha != '')) {
+                    console.log(`Categoría con Frecuencia: ${element.nombre} - Inicio: ${element.periodoFecha} - Cada: ${element.periodoCada} - Frecuencia: ${element.periodoFrecuencia}`)
+                    getFrecuenciaPeriodo = element.periodoFrecuencia;
                     console.log(`Este es un select del Plan: ${selectFrecuenciaPeriodo.id}`)
                     //selectFrecuenciaPeriodo.innerHTML = '';
                     selectFrecuenciaPeriodo.querySelectorAll('*').forEach(n => n.remove());
@@ -497,12 +435,12 @@ const guardarPlanParaJSON = () => {
                     && frequencyCount.value >= 1
                     && frequencyType.options[frequencyType.selectedIndex].text != '') {
 
-                    const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelPeriodoCategoryCheckbox.textContent.trim());
+                    const category = getCategorias.find((c) => (c.codigo + ' - ' + c.nombre) == labelPeriodoCategoryCheckbox.textContent.trim());
                     if (category) {
 
                         let categoriasNuevoPlanJSON = {
                             //"planMantenimientoIdPlanMantenimiento":
-                            "categoriaServicioIdCategoriaServicio": category.id,
+                            "categoriaServicioIdCategoriaServicio": category.idCategoriaServicio,
                             "rangoKm": null,
                             "rangoHoras": null,
                             "periodoFecha": frequencyStartDate.value,
@@ -564,12 +502,12 @@ const guardarPlanParaJSON = () => {
                         }
                     }
 
-                    const category = getCategorias.find((c) => (c.cod + ' - ' + c.nombre) == labelCategoryCheckbox.textContent.trim());
+                    const category = getCategorias.find((c) => (c.codigo + ' - ' + c.nombre) == labelCategoryCheckbox.textContent.trim());
                     if (category) {
 
                         let categoriasNuevoPlanJSON = {
                             //"planMantenimientoIdPlanMantenimiento":
-                            "categoriaServicioIdCategoriaServicio": category.id,
+                            "categoriaServicioIdCategoriaServicio": category.idCategoriaServicio,
                             "rangoKm": limiteKm,
                             "rangoHoras": limiteHoras,
                             "periodoFecha": null,
@@ -658,8 +596,6 @@ $(document).ready(function () {
         mostrarPlanStorageJSON();
 
     });
-
-
 
     //FILTRO DE CATEGORÍAS POR KILÓMETROS Y POR HORAS
     $('div #pages').on('click', 'input[id=busqueda]', function () {
@@ -769,10 +705,6 @@ $(document).ready(function () {
         $(busqueda).val(''); //Asignamos vacío al buscador
         $(clase).attr('class', 'fa fa-search'); //Colocamos la lupa al buscador
 
-        /*$("div #planCategories input:checkbox:checked").each(function () {
-            alert($(this).val());
-            $(this).parent().show();
-        });*/
     });
 
     //SELECCIONADOS POR PERÍODO
@@ -1016,151 +948,5 @@ $(document).ready(function () {
         $(`#planPeriodoServiceCategories_new`).hide();
 
     });
-
-
-
-    //Verificación de checkbox de categorías para poder guardar el JSON
-    /*$('div #pages').on('click', 'button#savePlan_new', function (e) {
-
-        let postBanderaSeleccionPeriodo = false;
-        let postBanderaSeleccion = false;
-
-        guardarPlanJSON(); // Llenado de datos del objeto para el JSON
-
-        if ($('#planName_new').val().length != '') {
-
-            if (banderaSeleccion == false) {
-
-                alert("Debe seleccionar al menos una categoría");
-                e.preventDefault();
-
-                if ($('#plansRadios1').is(':checked')) {
-                    $('#planPeriodoCategories').css("background-color", 'beige')
-                }
-                if ($('#plansRadios2').is(':checked') || $('#plansRadios3').is(':checked')) {
-                    $('#planCategories').css("background-color", 'beige')
-                }
-
-            } else {
-                if ($('#plansRadios1').is(':checked')) {
-
-                    $('#planPeriodoCategories').css("background-color", 'beige');
-
-                    const postCategoriasPeriodo = document.getElementById('planPeriodoCategories').getElementsByClassName('control-group');
-                    let cont = 0;
-                    for (const cat of postCategoriasPeriodo) {
-                        cont++;
-                        if ($(`#categoryPeriodoCheckbox_${cont}`).is(':checked')) {
-
-                            if ($(`#frequencyStartDate_${cont}`).val().length >= 1
-                                && $(`#frequencyCount_${cont}`).val() >= 1  && $(`#frequencyType_${cont}`).val().trim() != ''){
-
-                                postBanderaSeleccionPeriodo = true;
-                                console.log("Poniendo postBanderaSeleccionPeriodo en TRUE");
-
-                            } else {
-                                $(`#labelTextStartFrecuency_${cont}`).attr('class', 'new-border-missing-category');
-                                //$(`#frequencyStartDate_${cont}`).focus();
-                                //$(`#frequencyCount_${cont}`).focus();
-                                //$(`#frequencyType_${cont}`).focus();
-                            }
-
-                        } else {
-                            $(`#frequencyStartDate_${cont}`).removeAttr("required");
-                            $(`#frequencyCount_${cont}`).removeAttr("required");
-                            $(`#frequencyType_${cont}`).removeAttr("required");
-                        }
-                    }
-                    if (postBanderaSeleccionPeriodo == false) {
-                        alert("Recuerde seleccionar y asignar datos de categoría");
-                        e.preventDefault();
-                    }
-                } else {
-                    if ($('#plansRadios2').is(':checked') || $('#plansRadios3').is(':checked')) {
-
-                        $('#planCategories').css("background-color", 'beige');
-
-                        const postCategorias = document.getElementById('planCategories').getElementsByClassName('control-group');
-                        let cont = 0;
-                        for (const cat of postCategorias) {
-                            cont++;
-                            if ($(`#categoryCheckbox_${cont}`).is(':checked')) {
-
-                                if ($(`#appendedPrependedInput_${cont}`).val().length >= 1) {
-                                    
-                                    postBanderaSeleccion = true;
-                                    console.log("Poniendo postBanderaSeleccion en TRUE");
-                                } else {
-                                    $(`#labelTextAndlabelLimit_${cont}`).attr('class', 'new-border-missing-category');
-                                    $(`#appendedPrependedInput_${cont}`).focus();
-                                }
-
-                            } else {
-                                $(`#appendedPrependedInput_${cont}`).removeAttr("required");
-                            }
-                        }
-                        if (postBanderaSeleccion == false) {
-                            alert("Recuerde seleccionar y asignar datos de categoría")
-                            e.preventDefault();
-                        }
-                    }
-
-                }
-
-            }
-
-            //Creación del JSON
-            //Para PERIODO
-            if ($('#plansRadios1').is(':checked') && banderaSeleccion == true && postBanderaSeleccionPeriodo == true) {
-                
-                alert("Entré a la creación del JSON periodo");
-
-                // Remuevo lo checked que se hayan seleccionado teniendo km u horas seleccionado
-                postBanderaSeleccion == false // Retorno a false la bandera de selecciones en km u horas
-                const postCategoriasPrevJSON = document.getElementById('planCategories').getElementsByClassName('control-group');
-                let cont = 0;
-                for (const cat of postCategoriasPrevJSON) {
-                    cont++;
-                    $(`#categoryCheckbox_${cont}`).prop('checked', false); // Remuevo checked
-                    $(`#appendedPrependedInput_${cont}`).val(''); // Vacío el costo
-                    $(`#appendedPrependedInput_${cont}`).removeAttr("required");
-                }
-                ////////
-
-                sessionStorage.setItem(`NuevoPlan`, JSON.stringify(nuevoPlanJSON));
-                mostrarPlanStorageJSON();
-
-            } else {
-                //Para KM u HORAS
-                if (($('#plansRadios2').is(':checked') || $('#plansRadios3').is(':checked')) && banderaSeleccion == true && postBanderaSeleccion == true) {
-                    
-                    alert("Entré a la creación del JSON km u horas");
-                    
-                    // Remuevo lo checked que se hayan seleccionado teniendo Por período seleccionado
-                    postBanderaSeleccionPeriodo == false // En false la bandera de selecciones en período
-                    const postCategoriasPeriodoPrevJSON = document.getElementById('planPeriodoCategories').getElementsByClassName('control-group');
-                    let cont = 0;
-                    for (const cat of postCategoriasPeriodoPrevJSON) {
-                        cont++;
-                        $(`#categoryPeriodoCheckbox_${cont}`).prop('checked', false); // Remuevo checked
-                        $(`#frequencyStartDate_${cont}`).val('') // Vacío fecha inicial
-                        $(`#frequencyCount_${cont}`).val('') // Vacío el Cada
-                        $(`#frequencyType_${cont}`).val('') // Vacío el tipo de frecuencia
-                        $(`#frequencyStartDate_${cont}`).removeAttr("required");
-                        $(`#frequencyCount_${cont}`).removeAttr("required");
-                        $(`#frequencyType_${cont}`).removeAttr("required");
-                    }
-                    ////////
-
-                    sessionStorage.setItem(`NuevoPlan`, JSON.stringify(nuevoPlanJSON));
-                    mostrarPlanStorageJSON();
-
-                }
-
-            }
-        }
-
-    });*/
-
 
 });

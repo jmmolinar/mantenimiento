@@ -1,52 +1,52 @@
 [
     {
-        "id": 10,
+        "idCategoriaServicio": 10,
         "nombre": "Alineación y balanceo",
-        "cod": "AB"
+        "codigo": "AB"
     },
     {
-        "id": 9,
+        "idCategoriaServicio": 9,
         "nombre": "Lavado y aspirado",
-        "cod": "LA"
+        "codigo": "LA"
     },
     {
-        "id": 8,
+        "idCategoriaServicio": 8,
         "nombre": "Lavado de chasis",
-        "cod": "LC"
+        "codigo": "LC"
     },
     {
-        "id": 7,
+        "idCategoriaServicio": 7,
         "nombre": "Engrase general",
-        "cod": "EG"
+        "codigo": "EG"
     },
     {
-        "id": 6,
+        "idCategoriaServicio": 6,
         "nombre": "Cambio de bujías",
-        "cod": "CB"
+        "codigo": "CB"
     },
     {
-        "id": 5,
+        "idCategoriaServicio": 5,
         "nombre": "Cambio de neumáticos traseros",
-        "cod": "CNT"
+        "codigo": "CNT"
     },
     {
-        "id": 4,
+        "idCategoriaServicio": 4,
         "nombre": "Cambio de neumáticos delanteros",
-        "cod": "CND"
+        "codigo": "CND"
     },
     {
-        "id": 3,
+        "idCategoriaServicio": 3,
         "nombre": "Cambio de filtro de aire",
-        "cod": "CFAI"
+        "codigo": "CFAI"
     },
     {
-        "id": 2,
+        "idCategoriaServicio": 2,
         "nombre": "Cambio de filtro de aceite",
-        "cod": "CFA"
+        "codigo": "CFA"
     },
     {
-        "id": 1,
+        "idCategoriaServicio": 1,
         "nombre": "Cambio de aceite",
-        "cod": "CA"
+        "codigo": "CA"
     }
 ]

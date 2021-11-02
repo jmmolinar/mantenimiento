@@ -12,29 +12,13 @@ let nuevaCategoriaJSON = {
 export default class extends AbstractView {
     constructor(params) {
         super(params);
-        //this.postId = params.id;
         this.setTitle(`Nueva categoría`);
     }
 
     async getHtml() {
 
-        //let identificador = this.postId;
         let categoryHTML = ``;
-
-        //$.ajax({
-        //type: 'GET',
-        //url: 'http://192.168.1.114:8080/static/js/data/serviceCategories.JSON',
-        //dataType: 'json',
-        //success: function (data, status, jqXHR) {
-
-        //console.log(jqXHR)
         let fillCategory = ''
-        //const categoria = data.find((categoria) => categoria.id == identificador)
-
-        //if (categoria) {
-
-        //    console.log("Verificando postId: " + identificador)
-        //    console.log("Vericando const categoria: " + categoria)
 
         fillCategory = `<h1></h1>
             <form id="categoryFormQuery_new" action="/categorias">
@@ -76,21 +60,10 @@ export default class extends AbstractView {
                     </div>
                 </div>
             </form>`;
-        //} else {
-        //    fillCategory = `<h1>=(</h1>
-        //    <p>-- No se logró obtener la categoría ${identificador}</p>`
-        //}
 
         categoryHTML = categoryHTML.concat(fillCategory)
 
         $('#pages').html(categoryHTML)
-        //console.log(`AJAX categoryQuery -> Status: ${status}`)
-
-        //},
-        //error: function (jqXHR) {
-        //    console.log(jqXHR)
-        //}
-        //})
 
         return categoryHTML;
     }
