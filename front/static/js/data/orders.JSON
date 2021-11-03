@@ -1,49 +1,47 @@
 [
     {
-        "id_orden": 14,
-        "patente_activo": "MAQ-A3",
-        "km_recorridos": null,
-        "horas_uso": "920 Horas",
-        "area_vehiculo": "Área 101",
+        "idOrden": 14,
+        "fechaCreacion": "2021-08-06T12:30",
+        "fechaInicial": "2021-08-21T12:30",
+        "fechaFinal": "2021-08-23T16:30",
+
+        "tipoOrdenIdTipoOrden": 1,
         "tipo_orden": "Preventivo",
-        "tipo_activo": "Máquina",
-        "estados_posibles": {},
+        "tallerServicioIdTallerServicio": 4,
+        "taller_orden": "Taller DDD",
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
-        "ordenEstados": [
-            {
-                "id_estado": 1,
-                "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-08-06T12:30",
-                "estado_asignado_por": "Sistema",
+        "observaciones": "",
 
-                "ordenIdOrden": 14,
-                "estadoIdEstado": 1,
-                "idUsuario": 2,
-                "fechaAsignado": "2021-08-06T12:30"
+        "activoIdActivo": 6,
+        "area_vehiculo": "Área 101",
+        "tipo_activo": "Máquina",
+        
+        "patente_activo": "MAQ-A3",
 
-            },
-            {
-                "id_estado": 2,
-                "nombre_estado": "Planificado",
-                "fecha_estado": "2021-08-08T12:30",
-                "estado_asignado_por": "Usuario",
-
-                "ordenIdOrden": 14,
-                "estadoIdEstado": 2,
-                "idUsuario": 1,
-                "fechaAsignado": "2021-08-08T12:30"
-
-            }
-        ],
+        "km_recorridos": null,
+        "horas_uso": "920 Horas",
+        "estados_posibles": {},
+        "total": "520000",
         "periodo_orden": false,
         "periodo_inicio": null,
         "periodo_cada": null,
         "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-08-06T12:30",
         "rango_fecha_orden": true,
-        "fecha_inicio": "2021-08-21T12:30",
-        "fecha_limite": "2021-08-23T16:30",
+        "ordenEstados": [
+            {
+                "ordenIdOrden": 14,
+                "estadoIdEstado": 1,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-08-06T12:30"
+            },
+            {
+                "ordenIdOrden": 14,
+                "estadoIdEstado": 2,
+                "idUsuario": 1,
+                "fechaAsignado": "2021-08-08T12:30"
+            }
+        ],
         "ordenCategorias": [
             {
                 "id": 6,
@@ -56,57 +54,53 @@
                 "costo": "320000"
             }
         ],
-        "taller_orden": "Taller DDD",
-        "observaciones": "",
-        "total": "520000",
         "title": "Órden 14",
         "start": "2021-08-21T12:30",
         "end": "2021-08-23T16:30",
         "allDay": false
     },
     {
-        "id_orden": 13,
-        "patente_activo": "MAQ-A8",
-        "km_recorridos": null,
-        "horas_uso": "820 Horas",
-        "area_vehiculo": "Área 101",
+        "idOrden": 13,
+        "fechaCreacion": "2021-07-30T12:30",
+        "fechaInicial": "2021-08-15T12:30",
+        "fechaFinal": "2021-08-17T12:30",
+
+        "tipoOrdenIdTipoOrden": 1,
         "tipo_orden": "Preventivo",
-        "tipo_activo": "Máquina",
-        "estados_posibles": {},
+        "tallerServicioIdTallerServicio": 3,
+        "taller_orden": "Taller CCC",
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
+        "observaciones": "",
+
+        "activoIdActivo": 8,
+        "area_vehiculo": "Área 101",
+        "tipo_activo": "Máquina",
+        "patente_activo": "MAQ-A8",
+
+        "km_recorridos": null,
+        "horas_uso": "820 Horas",
+        "estados_posibles": {},
+        "total": "300000",
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "rango_fecha_orden": true,
         "ordenEstados": [
             {
-                "id_estado": 1,
-                "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-07-30T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 13,
                 "estadoIdEstado": 1,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-07-30T12:30"
             },
             {
-                "id_estado": 2,
-                "nombre_estado": "Planificado",
-                "fecha_estado": "2021-07-31T12:30",
-                "estado_asignado_por": "Usuario",
-
                 "ordenIdOrden": 13,
                 "estadoIdEstado": 2,
                 "idUsuario": 1,
                 "fechaAsignado": "2021-07-31T12:30"
             }
         ],
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-07-30T12:30",
-        "rango_fecha_orden": true,
-        "fecha_inicio": "2021-08-15T12:30",
-        "fecha_limite": "2021-08-17T12:30",
         "ordenCategorias": [
             {
                 "id": 7,
@@ -119,90 +113,71 @@
                 "costo": "200000"
             }
         ],
-        "taller_orden": "Taller CCC",
-        "observaciones": "",
-        "total": "300000",
         "title": "Órden 13",
         "start": "2021-08-15T12:30",
         "end": "2021-08-17T12:30",
         "allDay": false
     },
     {
-        "id_orden": 12,
+        "idOrden": 12,
+        "fechaCreacion": "2021-06-15T12:30",
+        "fechaInicial": "2021-07-05T12:30",
+        "fechaFinal": "2021-07-07T12:30",
+
+        "tipoOrdenIdTipoOrden": 1,
+        "tipo_orden": "Preventivo",
+        "tallerServicioIdTallerServicio": 2,
+        "taller_orden": "Taller BBB",
+        "rutaAdjuntoCompletado": "/path/documentoCompletado_12.pdf",
+        "fechaRutaCompletado": "2021-07-06T12:31",
+        "observaciones": "",
+
+        "activoIdActivo": 6,
+        "area_vehiculo": "Área 101",
+        "tipo_activo": "Máquina",
+
         "patente_activo": "MAQ-A3",
         "km_recorridos": null,
         "horas_uso": "720 Horas",
-        "area_vehiculo": "Área 101",
-        "tipo_orden": "Preventivo",
-        "tipo_activo": "Máquina",
         "estados_posibles": {},
-        "rutaAdjuntoCompletado": "/path/documentoCompletado_12.pdf",
-        "fechaRutaCompletado": "2021-07-06T12:31",
+        "total": "100000",
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "rango_fecha_orden": true,
         "ordenEstados": [
             {
-                "id_estado": 1,
-                "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-06-15T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 12,
                 "estadoIdEstado": 1,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-06-15T12:30"
             },
             {
-                "id_estado": 2,
-                "nombre_estado": "Planificado",
-                "fecha_estado": "2021-06-20T12:30",
-                "estado_asignado_por": "Usuario",
-
                 "ordenIdOrden": 12,
                 "estadoIdEstado": 2,
                 "idUsuario": 1,
                 "fechaAsignado": "2021-06-20T12:30"
             },
             {
-                "id_estado": 5,
-                "nombre_estado": "En taller",
-                "fecha_estado": "2021-07-05T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 12,
                 "estadoIdEstado": 5,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-07-05T12:30"
             },
             {
-                "id_estado": 7,
-                "nombre_estado": "Salida de taller",
-                "fecha_estado": "2021-07-06T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 12,
                 "estadoIdEstado": 7,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-07-06T12:30"
             },
             {
-                "id_estado": 8,
-                "nombre_estado": "Completado",
-                "fecha_estado": "2021-07-06T12:31",
-                "estado_asignado_por": "Usuario",
-
                 "ordenIdOrden": 12,
                 "estadoIdEstado": 8,
                 "idUsuario": 1,
                 "fechaAsignado": "2021-07-06T12:31"
             }
         ],
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-06-15T12:30",
-        "rango_fecha_orden": true,
-        "fecha_inicio": "2021-07-05T12:30",
-        "fecha_limite": "2021-07-07T12:30",
         "ordenCategorias": [
             {
                 "id": 7,
@@ -210,112 +185,83 @@
                 "costo": "100000"
             }
         ],
-        "taller_orden": "Taller BBB",
-        "observaciones": "",
-        "total": "100000",
         "title": "Órden 12",
         "start": "2021-07-05T12:30",
         "end": "2021-07-07T12:30",
         "allDay": false
     },
     {
-        "id_orden": 11,
+        "idOrden": 11,
+        "fechaCreacion": "2021-06-15T12:30",
+        "fechaInicial": "2021-07-14T12:30",
+        "fechaFinal": "2021-07-16T12:30",
+
+        "tipoOrdenIdTipoOrden": 1,
+        "tipo_orden": "Preventivo",
+        "tallerServicioIdTallerServicio": 1,
+        "taller_orden": "Taller AAA",
+        "rutaAdjuntoCompletado": "/path/documentoCompletado_11.pdf",
+        "fechaRutaCompletado": "2021-07-19T12:31",
+        "observaciones": "prueba",
+
+        "activoIdActivo": 5,
+        "area_vehiculo": "Área 51",
+        "tipo_activo": "Vehículo",
+
         "patente_activo": "PATENTE-A1",
         "km_recorridos": "10200 Km",
         "horas_uso": null,
-        "area_vehiculo": "Área 51",
-        "tipo_orden": "Preventivo",
-        "tipo_activo": "Vehículo",
         "estados_posibles": {},
-        "rutaAdjuntoCompletado": "/path/documentoCompletado_11.pdf",
-        "fechaRutaCompletado": "2021-07-19T12:31",
+        "total": "500000",
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "rango_fecha_orden": true,
         "ordenEstados": [
             {
-                "id_estado": 1,
-                "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-06-15T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 11,
                 "estadoIdEstado": 1,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-06-15T12:30"
             },
             {
-                "id_estado": 3,
-                "nombre_estado": "Retrasado",
-                "fecha_estado": "2021-07-01T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 11,
                 "estadoIdEstado": 3,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-07-01T12:30"
             },
             {
-                "id_estado": 4,
-                "nombre_estado": "Planificado con retraso",
-                "fecha_estado": "2021-07-10T12:30",
-                "estado_asignado_por": "Usuario",
-
                 "ordenIdOrden": 11,
                 "estadoIdEstado": 4,
                 "idUsuario": 1,
                 "fechaAsignado": "2021-07-10T12:30"
             },
             {
-                "id_estado": 5,
-                "nombre_estado": "En taller",
-                "fecha_estado": "2021-07-14T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 11,
                 "estadoIdEstado": 5,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-07-14T12:30"
             },
             {
-                "id_estado": 6,
-                "nombre_estado": "Retraso en taller",
-                "fecha_estado": "2021-07-17T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 11,
                 "estadoIdEstado": 6,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-07-17T12:30"
             },
             {
-                "id_estado": 7,
-                "nombre_estado": "Salida de taller",
-                "fecha_estado": "2021-07-19T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 11,
                 "estadoIdEstado": 7,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-07-19T12:30"
             },
             {
-                "id_estado": 9,
-                "nombre_estado": "Completado con retraso",
-                "fecha_estado": "2021-07-19T12:31",
-                "estado_asignado_por": "Usuario",
-
                 "ordenIdOrden": 11,
                 "estadoIdEstado": 9,
                 "idUsuario": 1,
                 "fechaAsignado": "2021-07-19T12:31"
             }
         ],
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-06-15T12:30",
-        "rango_fecha_orden": true,
-        "fecha_inicio": "2021-07-14T12:30",
-        "fecha_limite": "2021-07-16T12:30",
         "ordenCategorias": [
             {
                 "id": 5,
@@ -328,57 +274,53 @@
                 "costo": "300000"
             }
         ],
-        "taller_orden": "Taller AAA",
-        "observaciones": "prueba",
-        "total": "500000",
         "title": "Órden 11",
         "start": "2021-07-14T12:30",
         "end": "2021-07-16T12:30",
         "allDay": false
     },
     {
-        "id_orden": 10,
+        "idOrden": 10,
+        "fechaCreacion": "2021-06-30T12:30",
+        "fechaInicial": "",
+        "fechaFinal": "",
+
+        "tipoOrdenIdTipoOrden": 1,
+        "tipo_orden": "Preventivo",
+        "tallerServicioIdTallerServicio": 1,
+        "taller_orden": "Taller AAA",
+        "rutaAdjuntoCompletado": "",
+        "fechaRutaCompletado": "",
+        "observaciones": "",
+
+        "activoIdActivo": 6,
+        "area_vehiculo": "Área 101",
+        "tipo_activo": "Máquina",
+
         "patente_activo": "MAQ-A3",
         "km_recorridos": null,
         "horas_uso": "720 Horas",
-        "area_vehiculo": "Área 101",
-        "tipo_orden": "Preventivo",
-        "tipo_activo": "Máquina",
         "estados_posibles": {},
-        "rutaAdjuntoCompletado": "",
-        "fechaRutaCompletado": "",
+        "total": "",
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "rango_fecha_orden": true,
         "ordenEstados": [
             {
-                "id_estado": 1,
-                "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-06-30T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 10,
                 "estadoIdEstado": 1,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-06-30T12:30"
             },
             {
-                "id_estado": 3,
-                "nombre_estado": "Retrasado",
-                "fecha_estado": "2021-07-10T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 10,
                 "estadoIdEstado": 3,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-07-10T12:30"
             }
         ],
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-06-30T12:30",
-        "rango_fecha_orden": true,
-        "fecha_inicio": "",
-        "fecha_limite": "",
         "ordenCategorias": [
             {
                 "id": 5,
@@ -391,46 +333,47 @@
                 "costo": ""
             }
         ],
-        "taller_orden": "Taller AAA",
-        "observaciones": "",
-        "total": "",
         "title": "Órden 10",
         "start": "",
         "end": "",
         "allDay": false
     },
     {
-        "id_orden": 9,
-        "patente_activo": "AAAA9",
-        "km_recorridos": "22146 Km",
-        "horas_uso": null,
-        "area_vehiculo": "Área 11",
+        "idOrden": 9,
+        "fechaCreacion": "2021-06-25T12:30",
+        "fechaInicial": "",
+        "fechaFinal": "",
+
+        "tipoOrdenIdTipoOrden": 1,
         "tipo_orden": "Preventivo",
-        "tipo_activo": "Vehículo",
-        "estados_posibles": {},
+        "tallerServicioIdTallerServicio": 3,
+        "taller_orden": "Taller CCC",
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
+        "observaciones": "prueba",
+
+        "activoIdActivo": 4,
+        "area_vehiculo": "Área 51",
+        "tipo_activo": "Vehículo",
+
+        "patente_activo": "PATENTE-B1",
+        "km_recorridos": "14120 Km",
+        "horas_uso": null,
+        "estados_posibles": {},
+        "total": "",
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "rango_fecha_orden": true,
         "ordenEstados": [
             {
-                "id_estado": 1,
-                "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-06-25T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 9,
                 "estadoIdEstado": 1,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-06-25T12:30"
             }
         ],
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-06-25T12:30",
-        "rango_fecha_orden": true,
-        "fecha_inicio": "",
-        "fecha_limite": "",
         "ordenCategorias": [
             {
                 "id": 5,
@@ -448,68 +391,59 @@
                 "costo": ""
             }
         ],
-        "taller_orden": "Taller CCC",
-        "observaciones": "prueba",
-        "total": "",
         "title": "Órden 9",
         "start": "",
         "end": "",
         "allDay": false
     },
     {
-        "id_orden": 8,
-        "patente_activo": "AAAA3",
-        "km_recorridos": "12146 Km",
-        "horas_uso": null,
-        "area_vehiculo": "Área 21",
+        "idOrden": 8,
+        "fechaCreacion": "2021-05-01T12:30",
+        "fechaInicial": "2021-05-24T12:30",
+        "fechaFinal": "2021-05-26T12:30",
+
+        "tipoOrdenIdTipoOrden": 1,
         "tipo_orden": "Preventivo",
-        "tipo_activo": "Vehículo",
-        "estados_posibles": {},
+        "tallerServicioIdTallerServicio": 1,
+        "taller_orden": "Taller AAA",
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
+        "observaciones": "probando",
+
+        "activoIdActivo": 3,
+        "area_vehiculo": "Área 71",
+        "tipo_activo": "Vehículo",
+
+        "patente_activo": "PATENTE-C1",
+        "km_recorridos": "1200 Km",
+        "horas_uso": null,
+        "estados_posibles": {},
+        "total": "500000",
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "rango_fecha_orden": true,
         "ordenEstados": [
             {
-                "id_estado": 1,
-                "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-05-01T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 8,
                 "estadoIdEstado": 1,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-05-01T12:30"
             },
             {
-                "id_estado": 2,
-                "nombre_estado": "Planificado",
-                "fecha_estado": "2021-05-10T12:30",
-                "estado_asignado_por": "Usuario",
-
                 "ordenIdOrden": 8,
                 "estadoIdEstado": 2,
                 "idUsuario": 1,
                 "fechaAsignado": "2021-05-10T12:30"
             },
             {
-                "id_estado": 10,
-                "nombre_estado": "No realizado",
-                "fecha_estado": "2021-05-30T12:30",
-                "estado_asignado_por": "Usuario",
-
                 "ordenIdOrden": 8,
                 "estadoIdEstado": 10,
                 "idUsuario": 1,
                 "fechaAsignado": "2021-05-30T12:30"
             }
         ],
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-05-01T12:30",
-        "rango_fecha_orden": true,
-        "fecha_inicio": "2021-05-24T12:30",
-        "fecha_limite": "2021-05-26T12:30",
         "ordenCategorias": [
             {
                 "id": 5,
@@ -522,68 +456,59 @@
                 "costo": "300000"
             }
         ],
-        "taller_orden": "Taller AAA",
-        "observaciones": "probando",
-        "total": "500000",
         "title": "Órden 8",
         "start": "2021-05-24T12:30",
         "end": "2021-05-26T12:30",
         "allDay": false
     },
     {
-        "id_orden": 7,
-        "patente_activo": "AAA66-P",
-        "km_recorridos": "12146 Km",
-        "horas_uso": null,
-        "area_vehiculo": "Área 21",
+        "idOrden": 7,
+        "fechaCreacion": "2021-07-01T12:30",
+        "fechaInicial": "2021-07-21T12:30",
+        "fechaFinal": "2021-07-23T12:30",
+
+        "tipoOrdenIdTipoOrden": 1,
         "tipo_orden": "Preventivo",
-        "tipo_activo": "Vehículo",
-        "estados_posibles": {},
+        "tallerServicioIdTallerServicio": 1,
+        "taller_orden": "Taller AAA",
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
+        "observaciones": "probando",
+
+        "activoIdActivo": 5,
+        "area_vehiculo": "Área 51",
+        "tipo_activo": "Vehículo",
+
+        "patente_activo": "PATENTE-A1",
+        "km_recorridos": "10200 Km",
+        "horas_uso": null,
+        "estados_posibles": {},
+        "total": "500000",
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "rango_fecha_orden": true,
         "ordenEstados": [
             {
-                "id_estado": 1,
-                "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-07-01T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 7,
                 "estadoIdEstado": 1,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-07-01T12:30"
             },
             {
-                "id_estado": 2,
-                "nombre_estado": "Planificado",
-                "fecha_estado": "2021-07-15T12:30",
-                "estado_asignado_por": "Usuario",
-
                 "ordenIdOrden": 7,
                 "estadoIdEstado": 2,
                 "idUsuario": 1,
                 "fechaAsignado": "2021-07-15T12:30"
             },
             {
-                "id_estado": 5,
-                "nombre_estado": "En taller",
-                "fecha_estado": "2021-07-21T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 7,
                 "estadoIdEstado": 5,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-07-21T12:30"
             }
         ],
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-07-01T12:30",
-        "rango_fecha_orden": true,
-        "fecha_inicio": "2021-07-21T12:30",
-        "fecha_limite": "2021-07-23T12:30",
         "ordenCategorias": [
             {
                 "id": 5,
@@ -596,57 +521,53 @@
                 "costo": "300000"
             }
         ],
-        "taller_orden": "Taller AAA",
-        "observaciones": "probando",
-        "total": "500000",
         "title": "Órden 7",
         "start": "2021-07-21T12:30",
         "end": "2021-07-23T12:30",
         "allDay": false
     },
     {
-        "id_orden": 6,
-        "patente_activo": "AAAA4",
-        "km_recorridos": "12000 Km",
-        "horas_uso": null,
-        "area_vehiculo": "Área 21",
+        "idOrden": 6,
+        "fechaCreacion": "2021-07-05T12:30",
+        "fechaInicial": "2021-07-26T12:30",
+        "fechaFinal": "2021-07-28T12:30",
+
+        "tipoOrdenIdTipoOrden": 1,
         "tipo_orden": "Preventivo",
-        "tipo_activo": "Vehículo",
-        "estados_posibles": {},
+        "tallerServicioIdTallerServicio": 1,
+        "taller_orden": "Taller AAA",
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
+        "observaciones": "probando",
+
+        "activoIdActivo": 2,
+        "area_vehiculo": "Área 101",
+        "tipo_activo": "Vehículo",
+
+        "patente_activo": "MAQ-A1",
+        "km_recorridos": null,
+        "horas_uso": "612 Horas",
+        "estados_posibles": {},
+        "total": "500000",
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "rango_fecha_orden": true,
         "ordenEstados": [
             {
-                "id_estado": 1,
-                "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-07-05T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 6,
                 "estadoIdEstado": 1,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-07-05T12:30"
             },
             {
-                "id_estado": 2,
-                "nombre_estado": "Planificado",
-                "fecha_estado": "2021-07-15T12:30",
-                "estado_asignado_por": "Usuario",
-
                 "ordenIdOrden": 6,
                 "estadoIdEstado": 2,
                 "idUsuario": 1,
                 "fechaAsignado": "2021-07-15T12:30"
             }
         ],
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-07-05T12:30",
-        "rango_fecha_orden": true,
-        "fecha_inicio": "2021-07-26T12:30",
-        "fecha_limite": "2021-07-28T12:30",
         "ordenCategorias": [
             {
                 "id": 5,
@@ -659,57 +580,53 @@
                 "costo": "300000"
             }
         ],
-        "taller_orden": "Taller AAA",
-        "observaciones": "probando",
-        "total": "500000",
         "title": "Órden 6",
         "start": "2021-07-26T12:30",
         "end": "2021-07-28T12:30",
         "allDay": false
     },
     {
-        "id_orden": 5,
-        "patente_activo": "AAAA5",
-        "km_recorridos": "1200 Km",
-        "horas_uso": null,
-        "area_vehiculo": "Área 21",
+        "idOrden": 5,
+        "fechaCreacion": "2021-07-08T12:30",
+        "fechaInicial": "2021-07-28T12:30",
+        "fechaFinal": "2021-07-30T12:30",
+
+        "tipoOrdenIdTipoOrden": 1,
         "tipo_orden": "Preventivo",
-        "tipo_activo": "Vehículo",
-        "estados_posibles": {},
+        "tallerServicioIdTallerServicio": 1,
+        "taller_orden": "Taller AAA",
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
+        "observaciones": "probando",
+
+        "activoIdActivo": 1,
+        "area_vehiculo": "Área 101",
+        "tipo_activo": "Máquina",
+
+        "patente_activo": "MAQ-A2",
+        "km_recorridos": null,
+        "horas_uso": "120 HOras",
+        "estados_posibles": {},
+        "total": "600000",
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "rango_fecha_orden": true,
         "ordenEstados": [
             {
-                "id_estado": 1,
-                "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-07-08T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 5,
                 "estadoIdEstado": 1,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-07-08T12:30"
             },
             {
-                "id_estado": 2,
-                "nombre_estado": "Planificado",
-                "fecha_estado": "2021-07-18T12:30",
-                "estado_asignado_por": "Usuario",
-
                 "ordenIdOrden": 5,
                 "estadoIdEstado": 2,
                 "idUsuario": 1,
                 "fechaAsignado": "2021-07-18T12:30"
             }
         ],
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-07-08T12:30",
-        "rango_fecha_orden": true,
-        "fecha_inicio": "2021-07-28T12:30",
-        "fecha_limite": "2021-07-30T12:30",
         "ordenCategorias": [
             {
                 "id": 5,
@@ -722,79 +639,65 @@
                 "costo": "300000"
             }
         ],
-        "taller_orden": "Taller AAA",
-        "observaciones": "probando",
-        "total": "600000",
         "title": "Órden 5",
         "start": "2021-07-28T12:30",
         "end": "2021-07-30T12:30",
         "allDay": false
     },
     {
-        "id_orden": 4,
+        "idOrden": 4,
+        "fechaCreacion": "2021-05-15T12:30",
+        "fechaInicial": "2021-05-24T12:30",
+        "fechaFinal": "2021-05-26T12:30",
+
+        "tipoOrdenIdTipoOrden": 2,
+        "tipo_orden": "Correctivo",
+        "tallerServicioIdTallerServicio": 1,
+        "taller_orden": "Taller AAA",
+        "rutaAdjuntoCompletado": "/path/documentoCompletado_4.pdf",
+        "fechaRutaCompletado": "2021-05-26T12:31",
+        "observaciones": "probando",
+
+        "activoIdActivo": null,
+        "area_vehiculo": "Área 21",
+        "tipo_activo": "Vehículo",
+        
         "patente_activo": "ZZZ88-P",
         "km_recorridos": "500 Km",
         "horas_uso": null,
-        "area_vehiculo": "Área 21",
-        "tipo_orden": "Correctivo",
-        "tipo_activo": "Vehículo",
         "estados_posibles": {},
-        "rutaAdjuntoCompletado": "/path/documentoCompletado_4.pdf",
-        "fechaRutaCompletado": "2021-05-26T12:31",
+        "total": "600000",
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "rango_fecha_orden": true,
         "ordenEstados": [
             {
-                "id_estado": 2,
-                "nombre_estado": "Planificado",
-                "fecha_estado": "2021-05-15T12:30",
-                "estado_asignado_por": "Usuario",
-
                 "ordenIdOrden": 4,
                 "estadoIdEstado": 2,
                 "idUsuario": 1,
                 "fechaAsignado": "2021-05-15T12:30"
             },
             {
-                "id_estado": 5,
-                "nombre_estado": "En taller",
-                "fecha_estado": "2021-05-24T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 4,
                 "estadoIdEstado": 5,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-05-24T12:30"
             },
             {
-                "id_estado": 7,
-                "nombre_estado": "Salida de taller",
-                "fecha_estado": "2021-05-26T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 4,
                 "estadoIdEstado": 7,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-05-26T12:30"
             },
             {
-                "id_estado": 8,
-                "nombre_estado": "Completado",
-                "fecha_estado": "2021-05-26T12:31",
-                "estado_asignado_por": "Usuario",
-
                 "ordenIdOrden": 4,
                 "estadoIdEstado": 8,
                 "idUsuario": 1,
                 "fechaAsignado": "2021-05-26T12:31"
             }
         ],
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-05-15T12:30",
-        "rango_fecha_orden": true,
-        "fecha_inicio": "2021-05-24T12:30",
-        "fecha_limite": "2021-05-26T12:30",
         "ordenCategorias": [
             {
                 "id": 5,
@@ -807,79 +710,66 @@
                 "costo": "300000"
             }
         ],
-        "taller_orden": "Taller AAA",
-        "observaciones": "probando",
-        "total": "600000",
         "title": "Órden 4",
         "start": "2021-05-24T12:30",
         "end": "2021-05-26T12:30",
         "allDay": false
     },
     {
-        "id_orden": 3,
+        "idOrden": 3,
+        "fechaCreacion": "2021-05-10T12:30",
+        "fechaInicial": "2021-05-24T12:30",
+        "fechaFinal": "2021-05-26T12:30",
+
+        "tipoOrdenIdTipoOrden": 2,
+        "tipo_orden": "Correctivo",
+        "tallerServicioIdTallerServicio": 1,
+        "taller_orden": "Taller AAA",
+        "rutaAdjuntoCompletado": "/path/documentoCompletado_3.pdf",
+        "fechaRutaCompletado": "2021-05-26T12:31",
+        "observaciones": "probando",
+
+        "activoIdActivo": null,
+        "area_vehiculo": "Área 21",
+        "tipo_activo": "Vehículo",
+
         "patente_activo": "YYY77-P",
         "km_recorridos": "1500 Km",
         "horas_uso": null,
-        "area_vehiculo": "Área 21",
-        "tipo_orden": "Correctivo",
-        "tipo_activo": "Vehículo",
+        
         "estados_posibles": {},
-        "rutaAdjuntoCompletado": "/path/documentoCompletado_3.pdf",
-        "fechaRutaCompletado": "2021-05-26T12:31",
+        "total": "600000",
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "rango_fecha_orden": true,
         "ordenEstados": [
             {
-                "id_estado": 2,
-                "nombre_estado": "Planificado",
-                "fecha_estado": "2021-05-10T12:30",
-                "estado_asignado_por": "Usuario",
-
                 "ordenIdOrden": 3,
                 "estadoIdEstado": 2,
                 "idUsuario": 1,
                 "fechaAsignado": "2021-05-10T12:30"
             },
             {
-                "id_estado": 5,
-                "nombre_estado": "En taller",
-                "fecha_estado": "2021-05-24T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 3,
                 "estadoIdEstado": 5,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-05-24T12:30"
             },
             {
-                "id_estado": 7,
-                "nombre_estado": "Salida de taller",
-                "fecha_estado": "2021-05-26T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 3,
                 "estadoIdEstado": 7,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-05-26T12:30"
             },
             {
-                "id_estado": 8,
-                "nombre_estado": "Completado",
-                "fecha_estado": "2021-05-26T12:31",
-                "estado_asignado_por": "Usuario",
-
                 "ordenIdOrden": 3,
                 "estadoIdEstado": 8,
                 "idUsuario": 1,
                 "fechaAsignado": "2021-05-26T12:31"
             }
         ],
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-05-10T12:30",
-        "rango_fecha_orden": true,
-        "fecha_inicio": "2021-05-24T12:30",
-        "fecha_limite": "2021-05-26T12:30",
         "ordenCategorias": [
             {
                 "id": 5,
@@ -892,57 +782,53 @@
                 "costo": "300000"
             }
         ],
-        "taller_orden": "Taller AAA",
-        "observaciones": "probando",
-        "total": "600000",
         "title": "Órden 3",
         "start": "2021-05-24T12:30",
         "end": "2021-05-26T12:30",
         "allDay": false
     },
     {
-        "id_orden": 2,
+        "idOrden": 2,
+        "fechaCreacion": "2021-06-30T12:30",
+        "fechaInicial": "",
+        "fechaFinal": "",
+
+        "tipoOrdenIdTipoOrden": 1,
+        "tipo_orden": "Preventivo",
+        "tallerServicioIdTallerServicio": 1,
+        "taller_orden": "Taller AAA",
+        "rutaAdjuntoCompletado": "",
+        "fechaRutaCompletado": "",
+        "observaciones": "probando",
+
+        "activoIdActivo": null,
+        "area_vehiculo": "Área 21",
+        "tipo_activo": "Vehículo",
+
         "patente_activo": "XXX66-P",
         "km_recorridos": "13000 Km",
         "horas_uso": null,
-        "area_vehiculo": "Área 21",
-        "tipo_orden": "Preventivo",
-        "tipo_activo": "Vehículo",
         "estados_posibles": {},
-        "rutaAdjuntoCompletado": "",
-        "fechaRutaCompletado": "",
+        "total": "500000",
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "rango_fecha_orden": true,
         "ordenEstados": [
             {
-                "id_estado": 1,
-                "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-06-30T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 2,
                 "estadoIdEstado": 1,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-06-30T12:30"
             },
             {
-                "id_estado": 3,
-                "nombre_estado": "Retrasado",
-                "fecha_estado": "2021-07-10T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 2,
                 "estadoIdEstado": 3,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-07-10T12:30"
             }
         ],
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-06-30T12:30",
-        "rango_fecha_orden": true,
-        "fecha_inicio": "",
-        "fecha_limite": "",
         "ordenCategorias": [
             {
                 "id": 5,
@@ -955,57 +841,53 @@
                 "costo": "300000"
             }
         ],
-        "taller_orden": "Taller AAA",
-        "observaciones": "probando",
-        "total": "500000",
         "title": "Órden 2",
         "start": "",
         "end": "",
         "allDay": false
     },
     {
-        "id_orden": 1,
+        "idOrden": 1,
+        "fechaCreacion": "2021-06-28T12:30",
+        "fechaInicial": "",
+        "fechaFinal": "",
+
+        "tipoOrdenIdTipoOrden": 1,
+        "tipo_orden": "Preventivo",
+        "tallerServicioIdTallerServicio": 1,
+        "taller_orden": "Taller AAA",
+        "rutaAdjuntoCompletado": "",
+        "fechaRutaCompletado": "",
+        "observaciones": "probando",
+
+        "activoIdActivo": null,
+        "area_vehiculo": "Área 21",
+        "tipo_activo": "Vehículo",
+
         "patente_activo": "OOO66-P",
         "km_recorridos": "16000 Km",
         "horas_uso": null,
-        "area_vehiculo": "Área 21",
-        "tipo_orden": "Preventivo",
-        "tipo_activo": "Vehículo",
         "estados_posibles": {},
-        "rutaAdjuntoCompletado": "",
-        "fechaRutaCompletado": "",
+        "total": "500000",
+        "periodo_orden": false,
+        "periodo_inicio": null,
+        "periodo_cada": null,
+        "periodo_frecuencia_cada": null,
+        "rango_fecha_orden": true,
         "ordenEstados": [
             {
-                "id_estado": 1,
-                "nombre_estado": "Por planificar",
-                "fecha_estado": "2021-06-28T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 1,
                 "estadoIdEstado": 1,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-06-28T12:30"
             },
             {
-                "id_estado": 3,
-                "nombre_estado": "Retrasado",
-                "fecha_estado": "2021-07-06T12:30",
-                "estado_asignado_por": "Sistema",
-
                 "ordenIdOrden": 1,
                 "estadoIdEstado": 3,
                 "idUsuario": 2,
                 "fechaAsignado": "2021-07-06T12:30"
             }
         ],
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "fecha_creacion": "2021-06-28T12:30",
-        "rango_fecha_orden": true,
-        "fecha_inicio": "",
-        "fecha_limite": "",
         "ordenCategorias": [
             {
                 "id": 5,
@@ -1018,9 +900,6 @@
                 "costo": "300000"
             }
         ],
-        "taller_orden": "Taller AAA",
-        "observaciones": "probando",
-        "total": "500000",
         "title": "Órden 1",
         "start": "",
         "end": "",

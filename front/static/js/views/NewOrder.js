@@ -39,10 +39,12 @@ let nuevaOrdenJSON = {
     "fechaCreacion": "",
     "fechaInicial": "",
     "fechaFinal": "",
-    "tipoOrdenidTipoOrden": null,
+    "tipoOrdenIdTipoOrden": null,
     "activoIdActivo": null,
     "tallerServicioIdTallerServicio": null,
     "observaciones": "",
+    "rutaAdjuntoCompletado": "",
+    "fechaRutaCompletado": "",
     "ordenEstados": [],
     "ordenCategorias": [],
     "title": "",
@@ -410,7 +412,7 @@ const guardarOrdenParaJSON = () => {
 
         const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType').value);
         if (tipoOrden) {
-            nuevaOrdenJSON.tipoOrdenidTipoOrden = tipoOrden.idTipoOrden;
+            nuevaOrdenJSON.tipoOrdenIdTipoOrden = tipoOrden.idTipoOrden;
         }
 
         const taller = getTalleres.find((taller) => taller.nombre == document.getElementById('orderProvider').value);
@@ -419,7 +421,7 @@ const guardarOrdenParaJSON = () => {
         }
 
         let estadoNuevaOrdenJSON = {
-            //"ordenIdOrden: "
+            //"ordenIdOrden": 
             "estadoIdEstado": 2, // 2 es el Estado Planificado
             "idUsuario": 1, //1 temporalmente hasta implementar sincronización con usuario conectado
             "fechaAsignado": nuevaOrdenJSON.fechaCreacion

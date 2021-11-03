@@ -3,7 +3,7 @@ import TableLanguage from "./TableLanguage.js";
 import {
     areas, bodegas, tiposActivos, marcas, planes,
     getAreas, getBodegas, getTiposActivos, getEstados, getActivos, getPlanes,
-    getTiposMantenimientos, 
+    getTiposMantenimientos,
     listAllElement,
     loadSelectContent,
     loadSelectContentAndSelected,
@@ -27,7 +27,7 @@ let getActivoPatente = ``;
 let getOrdenTipoOrden = ``;
 let getOrdenFechaCreacion = ``;
 let getOrdenFechaInicio = ``;
-let getOrdenTaller =``;
+let getOrdenTaller = ``;
 
 //Variable para controlar la creación de JSON de activo
 let banderaActivo = false;
@@ -629,49 +629,6 @@ const fillAssetLogOrders = () => {
                     })
 
 
-                    /*switch (orden.estado_orden) {
-                        case 'Por planificar':
-                            classTr = "warning"
-                            stringContainer = 'Se requiere completar datos'
-                            break;
-                        case 'No realizado':
-                            classTr = "muted"
-                            stringContainer = 'La órden de mantenimiento no fue ejecutada'
-                            break;
-                        case 'Retrasado':
-                            classTr = "error"
-                            stringContainer = 'La orden no ha sigo planificada'
-                            break;
-                        case 'Retrasado en taller':
-                            classTr = "error"
-                            stringContainer = 'El servicio en taller excede el tiempo planificado'
-                            break;
-                        case 'Planificado':
-                            classTr = ""
-                            stringContainer = 'El próximo paso es la realización del servicio en Taller'
-                            break;
-                        case 'Planificado con retraso':
-                            classTr = ""
-                            stringContainer = 'La órden fue planificada con retraso'
-                            break;
-                        case 'En taller':
-                            classTr = "info"
-                            stringContainer = 'Se están realizando los servicios de mantenimiento'
-                            break;
-                        case 'Completado':
-                            classTr = "success"
-                            stringContainer = 'La orden ha sido completada'
-                            break;
-                        case 'Completado con retraso':
-                            classTr = "success"
-                            stringContainer = 'La orden ha sido completada con retraso'
-                            break;
-                        default:
-                            classTr = ""
-                            stringContainer = ''
-                            console.log('Estado de la orden desconocido');
-                    }*/
-
 
                     /*let getOrdenTipoOrden = ``;
                     let getOrdenFechaCreacion = ``;
@@ -685,16 +642,16 @@ const fillAssetLogOrders = () => {
 
                     fillAssetOrders += `
                         <tr class=${classTr}>
-                            <td>${orden.id_orden}</td>
+                            <td>${orden.idOrden}</td>
                             <td>${orden.tipo_orden}</td>
                             <!--<td>${orden.estado_orden} <a data-toggle="tooltip" title="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>-->
                             <td>${getEstado} <a data-toggle="tooltip" title="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                            <td>${orden.fecha_creacion}</td>
-                            <td>${orden.fecha_inicio}</td>
+                            <td>${orden.fechaCreacion.slice(0, 10)}</td>
+                            <td>${orden.fechaInicial.slice(0, 10)}</td>
                             <td>${orden.taller_orden}</td>
                             <td>${total}</td>
                             <td class="align-center">
-                                <a id="editOrder_${orden.id_orden}" class="btn" href="/ordenes/${orden.id_orden}"><i class="icon-pencil"></i></a>
+                                <a id="editOrder_${orden.idOrden}" class="btn" href="/ordenes/${orden.idOrden}"><i class="icon-pencil"></i></a>
                             </td>
                         </tr>`
                 }
@@ -784,7 +741,7 @@ const guardarActivoJSON = () => {
     //Luego si agregar los nuevos seleccionados
     //Validar que solo se muestren los documentos más nuevos
     //Comparando el tipo del documento y su fecha de adjuntado
-    //No es necesario asignar el idDocumento al json
+    //No es necesario asignar el idDocumento al json ---> depende
 
 
     let fileInfoSeguro = document.getElementById('fileInfoSeguro');

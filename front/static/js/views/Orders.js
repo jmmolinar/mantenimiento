@@ -224,22 +224,22 @@ export default class extends AbstractView {
 
                     fillOrders += `
                         <tr class=${classTr}>
-                            <td>${orden.id_orden}</td>
+                            <td>${orden.idOrden}</td>
                             <td>${orden.patente_activo}</td>
                             <td>${orden.tipo_orden}</td>
                             <td>${getEstado} <a data-toggle="tooltip" title="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
                             <!--<td>${orden.estado_orden} <a data-toggle="tooltip" title="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>-->
                             <!--<td>${orden.estado_orden} <a href="" data-toggle="popover" title="${orden.estado_orden}" data-content="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>-->  
                             <td>${orden.area_vehiculo}</td>
-                            <td>${orden.fecha_creacion.slice(0,10)}</td>
-                            <td>${orden.fecha_inicio.slice(0,10)}</td>
+                            <td>${orden.fechaCreacion.slice(0,10)}</td>
+                            <td>${orden.fechaInicial.slice(0,10)}</td>
                             <td>${orden.taller_orden}</td> <!-- MOdificar para obtener el nombre desde el tallerServicioIdTallerServicio
                             <!--<td>${formatGetCategoriasActivoNombre}</td>
                             <td>${formatGetCategoriasActivoCosto}</td>-->
                             <td>${orden.total}</td>
                             <td class="align-center">
-                                <a id="editOrder_${orden.id_orden}" class="btn only-to-id-url" href="/ordenes/${orden.id_orden}"><i class="icon-pencil"></i></a>
-                                <a id="deleteOrder_${orden.id_orden}" class="btn" disabled><i class="icon-trash"></i></a>
+                                <a id="editOrder_${orden.idOrden}" class="btn only-to-id-url" href="/ordenes/${orden.idOrden}"><i class="icon-pencil"></i></a>
+                                <a id="deleteOrder_${orden.idOrden}" class="btn" disabled><i class="icon-trash"></i></a>
                             </td>
                         </tr>`
                 }
@@ -339,10 +339,10 @@ const customOrdersTable = () => {
                     data: "area_vehiculo"
                 },
                 {
-                    data: "fecha_creacion"
+                    data: "fechaCreacion"
                 },
                 {
-                    data: "fecha_inicio",
+                    data: "fechaInicial",
                     render: filtrarFechas() //Ejecutar la función de filtrado de fechas
                 },
                 {
@@ -395,8 +395,8 @@ const filtrarFechas = () => {
 
                 let min = minDate.val();
                 let max = maxDate.val();
-                //let date = new Date(data[5]); //Filtrando por fecha_creacion
-                let date = new Date(data[6]); //Filtrando por fecha_inicio
+                //let date = new Date(data[5]); //Filtrando por fechaCreacion
+                let date = new Date(data[6]); //Filtrando por fechaInicial
 
                 if (
                     (min === null && max === null) ||

@@ -38,7 +38,7 @@ let ordenJSON = {
     "fechaCreacion": "",
     "fechaInicial": "",
     "fechaFinal": "",
-    "tipoOrdenidTipoOrden": null,
+    "tipoOrdenIdTipoOrden": null,
     "activoIdActivo": null,
     "tallerServicioIdTallerServicio": null,
     "observaciones": "",
@@ -98,7 +98,7 @@ export default class extends AbstractView {
                 let minFechaInicio = "";
                 //let getEstadosOrden = [];
 
-                const order = data.find((order) => order.id_orden == identificador)
+                const order = data.find((order) => order.idOrden == identificador)
 
                 if (order) {
 
@@ -111,19 +111,19 @@ export default class extends AbstractView {
                     getTaller = order.taller_orden; // Temporal, debe traer tallerServicioIdTallerServicio y de allí tomar el nombre
                     getRutaAdjuntoCompletado = order.rutaAdjuntoCompletado;
                     getFechaRutaAdjuntoCompletado = order.fechaRutaCompletado;
-                    getFechaCreacion = order.fecha_creacion;
+                    getFechaCreacion = order.fechaCreacion;
 
-                    if (order.fecha_inicio == "") {
+                    if (order.fechaInicial == "") {
                         minFechaInicio = `${currentDate().slice(0, 16)}`;
                         fechaDeshabilitado = "disabled";
                     } else {
-                        minFechaInicio = order.fecha_inicio
+                        minFechaInicio = order.fechaInicial
                         fechaDeshabilitado = "";
                     }
 
                     //getFrecuenciaPeriodo = order.periodo_frecuencia_cada;
                     console.log("Verificando postId: " + identificador)
-                    console.log("Vericando id de order: " + order.id_orden)
+                    console.log("Vericando id de order: " + order.idOrden)
 
                     if (order.km_recorridos == null) {
                         uso = order.horas_uso
@@ -133,7 +133,7 @@ export default class extends AbstractView {
 
                     // OJO: Validar posteriormente obteniendo de la base de datos el tiempo en la geocerca del taller
                     if (getEstado == "En taller") {
-                        tiempoTaller = Math.abs(new Date(order.fecha_limite) - new Date(order.fecha_inicio)) / (1000 * 3600 * 24)
+                        tiempoTaller = Math.abs(new Date(order.fechaFinal) - new Date(order.fechaInicial)) / (1000 * 3600 * 24)
                     }
 
                     /*if (order.periodo_orden == true) {
@@ -205,8 +205,8 @@ export default class extends AbstractView {
 
                         getEstadosOrdenItem.push(`<li><strong class="${classFocusState}">${getEstado}</strong>
                                                     <ul>
-                                                        <li>${elem["fecha_estado"]}</li>
-                                                        <li><u>Por</u>: ${elem["estado_asignado_por"]}</li>
+                                                        <li>${elem["fechaAsignado"]}</li>
+                                                        <li><u>Por</u>: ${elem["idUsuario"]}</li>
                                                     </ul>
                                                 </li>`)
                     });
@@ -219,20 +219,20 @@ export default class extends AbstractView {
 
 
                     fillOrder = `<h1></h1>
-                    <form id="orderFormQuery_${order.id_orden}" action="/ordenes">
+                    <form id="orderFormQuery_${order.idOrden}" action="/ordenes">
 
                         <!--IDENTIFICADOR DE LA ORDEN-->
-                        <div id="orderId_${order.id_orden}" class="control-group order-identity border-transparent-1px">
-                            <h1>Orden ${order.id_orden}</h1>
+                        <div id="orderId_${order.idOrden}" class="control-group order-identity border-transparent-1px">
+                            <h1>Orden ${order.idOrden}</h1>
                             <!--<h3>Patente: ${order.patente_activo}</h3>-->
                             <h3 style="display:inline;">Patente: </h3>
                             <h3 id="valorPatente" style="display:inline;">${order.patente_activo}</h3>
                             <h3>${uso}</h3>
-                            <a id="downloadOrder_${order.id_orden}" class="btn btn-success" href=""> Orden ${order.id_orden}  <i class="fa fa-cloud-download" ></i></a>
+                            <a id="downloadOrder_${order.idOrden}" class="btn btn-success" href=""> Orden ${order.idOrden}  <i class="fa fa-cloud-download" ></i></a>
                         </div>
 
                         <!--PRIMEROS DATOS DEL ACTIVO-->
-                        <div id="orderData_${order.id_orden}" class="row-fluid control-group border-transparent-1px">
+                        <div id="orderData_${order.idOrden}" class="row-fluid control-group border-transparent-1px">
 
                             <div class="span6">
                         
@@ -330,7 +330,7 @@ export default class extends AbstractView {
                                                 </label>
                                             </div>
                                             <div class="row-fluid">
-                                                <input class="span4" id="rangeStartDate" type="datetime-local" value="${order.fecha_inicio}" ${requeridoPorRango}
+                                                <input class="span4" id="rangeStartDate" type="datetime-local" value="${order.fechaInicial}" ${requeridoPorRango}
                                                     min="${minFechaInicio}" ${fechaDeshabilitado}>
                                                     <!--min="${currentDate().slice(0, 16)}">-->
                                             </div>
@@ -342,8 +342,8 @@ export default class extends AbstractView {
                                                 </label>
                                             </div>
                                             <div class="row-fluid">
-                                                <input class="span4" id="rangeEndDate" type="datetime-local" value="${order.fecha_limite}" ${requeridoPorRango}
-                                                    min="${order.fecha_inicio}" ${fechaDeshabilitado}>
+                                                <input class="span4" id="rangeEndDate" type="datetime-local" value="${order.fechaFinal}" ${requeridoPorRango}
+                                                    min="${order.fechaInicial}" ${fechaDeshabilitado}>
                                             </div>
                                         </div>
                                     </div>
@@ -352,7 +352,7 @@ export default class extends AbstractView {
                             </div>
 
                             <!--HISTORIAL DE ESTADOS-->
-                            <div id="orderStatusHistory_${order.id_orden}" class="span3 control-group contenedor-arbol border-table-status-order-transparent-1px">
+                            <div id="orderStatusHistory_${order.idOrden}" class="span3 control-group contenedor-arbol border-table-status-order-transparent-1px">
                                 <table class="table table-bordered table-striped">
                                     <tr>
                                         <th>Historial de Estados</th>
@@ -389,12 +389,12 @@ export default class extends AbstractView {
                         </div>
 
                         <!--GUARDAR / CANCELAR-->
-                        <div id="orderActionButtons_${order.id_orden}" class="control-group">
+                        <div id="orderActionButtons_${order.idOrden}" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <!--<a id="saveOrder_${order.id_orden}" class="btn btn-primary" href="/ordenes">Guardar</a>
-                                <a id="dontSaveOrder_${order.id_orden}" class="btn btn-primary" href="/ordenes">Cancelar</a>-->
-                                <button id="saveOrder_${order.id_orden}" ${guardarDeshabilitado} class="btn btn-primary" type="submit">Guardar</button>
-                                <button id="dontSaveOrder_${order.id_orden}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
+                                <!--<a id="saveOrder_${order.idOrden}" class="btn btn-primary" href="/ordenes">Guardar</a>
+                                <a id="dontSaveOrder_${order.idOrden}" class="btn btn-primary" href="/ordenes">Cancelar</a>-->
+                                <button id="saveOrder_${order.idOrden}" ${guardarDeshabilitado} class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSaveOrder_${order.idOrden}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
@@ -426,56 +426,56 @@ const fillOrderOptions = () => {
 
     console.log("Entré al fillOptions en OrderView")
 
-    $(window).on("load", function () {
-        
-        $(document).ready(function () {
+    //$(window).on("load", function () {
 
-            // Select tipo de mantenimiento
-            const selectTipoMantenimiento = document.getElementById('orderType');
-            //const optionTipoMantenimiento = listSelect(tiposMantenimiento, "nombre"); // Paso la clave "nombre"
-            const optionTipoMantenimiento = listSelect(getTiposMantenimientos, "nombre"); // Paso la clave "nombre"
-            loadSelectContentAndSelected(optionTipoMantenimiento, selectTipoMantenimiento, getTipoMantenimiento);
-            console.log("Tipo mantenimiento seleccionado: " + getTipoMantenimiento);
+    $(document).ready(function () {
 
-            // Select estado
-            const selectEstado = document.getElementById('orderStatus');
-            //const optionEstado = listSelect(estados, "nombre"); // Paso la clave "nombre"
-            const optionEstado = listSelect(getEstados, "nombre"); // Paso la clave "nombre"
-            loadSelectContentAndSelected(optionEstado, selectEstado, getEstado);
-            console.log("Estado seleccionado: " + getEstado);
+        // Select tipo de mantenimiento
+        const selectTipoMantenimiento = document.getElementById('orderType');
+        //const optionTipoMantenimiento = listSelect(tiposMantenimiento, "nombre"); // Paso la clave "nombre"
+        const optionTipoMantenimiento = listSelect(getTiposMantenimientos, "nombre"); // Paso la clave "nombre"
+        loadSelectContentAndSelected(optionTipoMantenimiento, selectTipoMantenimiento, getTipoMantenimiento);
+        console.log("Tipo mantenimiento seleccionado: " + getTipoMantenimiento);
 
-            // Select area
-            const selectArea = document.getElementById('orderAreasOptions');
-            //const optionArea = listSelect(areas, "nombre"); // Paso la clave "nombre"
-            const optionArea = listSelect(getAreas, "nombre"); // Paso la clave "nombre"
-            loadSelectContentAndSelected(optionArea, selectArea, getArea);
-            console.log("Área seleccionada: " + getArea);
+        // Select estado
+        const selectEstado = document.getElementById('orderStatus');
+        //const optionEstado = listSelect(estados, "nombre"); // Paso la clave "nombre"
+        const optionEstado = listSelect(getEstados, "nombre"); // Paso la clave "nombre"
+        loadSelectContentAndSelected(optionEstado, selectEstado, getEstado);
+        console.log("Estado seleccionado: " + getEstado);
 
-            // Select tipo de activo
-            const selectTipoActivo = document.getElementById('orderAssetType');
-            //const optionTipoActivo = listSelect(tiposActivos, "nombre"); // Paso la clave "nombre"
-            const optionTipoActivo = listSelect(getTiposActivos, "nombre"); // Paso la clave "nombre"
-            loadSelectContentAndSelected(optionTipoActivo, selectTipoActivo, getTipoActivo);
-            console.log("Tipo de activo seleccionado: " + getTipoActivo);
+        // Select area
+        const selectArea = document.getElementById('orderAreasOptions');
+        //const optionArea = listSelect(areas, "nombre"); // Paso la clave "nombre"
+        const optionArea = listSelect(getAreas, "nombre"); // Paso la clave "nombre"
+        loadSelectContentAndSelected(optionArea, selectArea, getArea);
+        console.log("Área seleccionada: " + getArea);
 
-            // Select taller
-            const selectTaller = document.getElementById('orderProvider');
-            //const optionTaller = listSelect(talleres, "nombre"); // Paso la clave "nombre"
-            const optionTaller = listSelect(getTalleres, "nombre"); // Paso la clave "nombre"
-            loadSelectContentAndSelected(optionTaller, selectTaller, getTaller);
-            console.log("Taller seleccionado: " + getTaller);
+        // Select tipo de activo
+        const selectTipoActivo = document.getElementById('orderAssetType');
+        //const optionTipoActivo = listSelect(tiposActivos, "nombre"); // Paso la clave "nombre"
+        const optionTipoActivo = listSelect(getTiposActivos, "nombre"); // Paso la clave "nombre"
+        loadSelectContentAndSelected(optionTipoActivo, selectTipoActivo, getTipoActivo);
+        console.log("Tipo de activo seleccionado: " + getTipoActivo);
 
-            // Select Frecuencia del Período
-            // Ya no se utilizará en esta instancia
-            /*
-            const selectFrecuenciaPeriodo = document.getElementById('frequencyType');
-            const optionFrecuenciaPeriodo = listSelect(frecuenciaPeriodo, "nombre"); // Paso la clave "nombre"
-            loadSelectContentAndSelected(optionFrecuenciaPeriodo, selectFrecuenciaPeriodo, getFrecuenciaPeriodo);
-            console.log("Frecuencia Periodo seleccionada: " + getFrecuenciaPeriodo);
-            */
+        // Select taller
+        const selectTaller = document.getElementById('orderProvider');
+        //const optionTaller = listSelect(talleres, "nombre"); // Paso la clave "nombre"
+        const optionTaller = listSelect(getTalleres, "nombre"); // Paso la clave "nombre"
+        loadSelectContentAndSelected(optionTaller, selectTaller, getTaller);
+        console.log("Taller seleccionado: " + getTaller);
 
-        });
+        // Select Frecuencia del Período
+        // Ya no se utilizará en esta instancia
+        /*
+        const selectFrecuenciaPeriodo = document.getElementById('frequencyType');
+        const optionFrecuenciaPeriodo = listSelect(frecuenciaPeriodo, "nombre"); // Paso la clave "nombre"
+        loadSelectContentAndSelected(optionFrecuenciaPeriodo, selectFrecuenciaPeriodo, getFrecuenciaPeriodo);
+        console.log("Frecuencia Periodo seleccionada: " + getFrecuenciaPeriodo);
+        */
+
     });
+    //});
 
 }
 
@@ -607,7 +607,7 @@ const guardarOrdenParaJSON = () => {
 
     const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType').value);
     if (tipoOrden) {
-        ordenJSON.tipoOrdenidTipoOrden = tipoOrden.idTipoOrden;
+        ordenJSON.tipoOrdenIdTipoOrden = tipoOrden.idTipoOrden;
     }
 
     const taller = getTalleres.find((taller) => taller.nombre == document.getElementById('orderProvider').value);
@@ -652,10 +652,10 @@ const guardarOrdenParaJSON = () => {
     //Asignado el historial de estados de la orden a ordenJSON.ordenEstados
     for (const elem of getEstadosOrden) {
         /*let usuario = 0;
-        if (elem["estado_asignado_por"] == "Sistema") {
+        if (elem["idUsuario"] == "Sistema") {
             usuario = 2;
         } else {
-            if (elem["estado_asignado_por"] == "Usuario") {
+            if (elem["idUsuario"] == "Usuario") {
                 usuario = 1;
             }
         }*/
