@@ -164,12 +164,15 @@ export default class extends AbstractView {
 
                     getEstadosOrden.forEach(elem => {
 
-                        if (new Date(elem["fecha_estado"]) > new Date(fechaUltimoEstado)) {
+                        if (new Date(elem["fechaAsignado"]) > new Date(fechaUltimoEstado)) {
 
-                            //alert("Comparando fechas")
-                            //Cambiar elem["nombre_estado"] por elem["estado_id_estado"]
-                            getEstado = elem["nombre_estado"];
-                            fechaUltimoEstado = elem["fecha_estado"];
+                            const estado = getEstados.find((estado) => estado.idEstado == elem["estadoIdEstado"]);
+                            if (estado) {
+                                getEstado = estado.nombre;
+                            }
+
+                            //getEstado = elem["nombre_estado"];
+                            fechaUltimoEstado = elem["fechaAsignado"];
 
                             if (getEstado == "Completado"
                                 || getEstado == "Completado con retraso"
@@ -189,12 +192,7 @@ export default class extends AbstractView {
 
                         }
 
-                        /*if (elem["estado_actual"] == true) {
-                            getEstado = elem["nombre_estado"];
-                            classFocusState = "text-success";
-                        }*/
-
-                        if (elem["nombre_estado"] == "Completado" || elem["nombre_estado"] == "Completado con retraso") {
+                        if (getEstado == "Completado" || getEstado == "Completado con retraso") {
                             //getDocumentoCompletado = elem["documento_completado"];
                             ocultoAdjuntoCompletado = "controls new-div-file-upload";
                             requeridoAdjuntoCompletado = "required";
@@ -205,7 +203,7 @@ export default class extends AbstractView {
                             requeridoAdjuntoCompletado = "";
                         }
 
-                        getEstadosOrdenItem.push(`<li><strong class="${classFocusState}">${elem["nombre_estado"]}</strong>
+                        getEstadosOrdenItem.push(`<li><strong class="${classFocusState}">${getEstado}</strong>
                                                     <ul>
                                                         <li>${elem["fecha_estado"]}</li>
                                                         <li><u>Por</u>: ${elem["estado_asignado_por"]}</li>
@@ -653,20 +651,21 @@ const guardarOrdenParaJSON = () => {
 
     //Asignado el historial de estados de la orden a ordenJSON.ordenEstados
     for (const elem of getEstadosOrden) {
-        let usuario = 0;
+        /*let usuario = 0;
         if (elem["estado_asignado_por"] == "Sistema") {
             usuario = 2;
         } else {
             if (elem["estado_asignado_por"] == "Usuario") {
                 usuario = 1;
             }
-        }
+        }*/
 
         let estadoOrdenJSON = {
             "ordenIdOrden": idUrl,
-            "estadoIdEstado": elem["id_estado"],
-            "idUsuario": usuario, //temporalmente hasta implementar sincronización con usuario conectado
-            "fechaAsignado": elem["fecha_estado"]
+            "estadoIdEstado": elem["estadoIdEstado"],
+            //"idUsuario": usuario, //temporalmente hasta implementar sincronización con usuario conectado
+            "idUsuario": elem["idUsuario"], //temporalmente hasta implementar sincronización con usuario conectado
+            "fechaAsignado": elem["fechaAsignado"]
         }
 
         ordenJSON.ordenEstados.push(estadoOrdenJSON);
@@ -688,7 +687,7 @@ const guardarOrdenParaJSON = () => {
 
         let estadoOrdenActualJSON = {
             "ordenIdOrden": idUrl,
-            "estadoIdEstado": estadoSeleccionado.id_estado,
+            "estadoIdEstado": estadoSeleccionado.idEstado,
             "idUsuario": 1, //temporalmente hasta implementar sincronización con usuario conectado
             "fechaAsignado": currentDate()
         }

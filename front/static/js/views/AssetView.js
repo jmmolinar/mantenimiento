@@ -2,7 +2,8 @@ import AbstractView from "./AbstractView.js";
 import TableLanguage from "./TableLanguage.js";
 import {
     areas, bodegas, tiposActivos, marcas, planes,
-    getAreas, getBodegas, getTiposActivos, getActivos, getPlanes,
+    getAreas, getBodegas, getTiposActivos, getEstados, getActivos, getPlanes,
+    getTiposMantenimientos, 
     listAllElement,
     loadSelectContent,
     loadSelectContentAndSelected,
@@ -23,6 +24,10 @@ let getAnio = ``;
 let getEstado = ``;
 let getPlanesActivo = [];
 let getActivoPatente = ``;
+let getOrdenTipoOrden = ``;
+let getOrdenFechaCreacion = ``;
+let getOrdenFechaInicio = ``;
+let getOrdenTaller =``;
 
 //Variable para controlar la creación de JSON de activo
 let banderaActivo = false;
@@ -77,13 +82,13 @@ export default class extends AbstractView {
                     if (area) {
                         getArea = area.nombre;
                     }
-                
+
                     //getBodega = asset.bodega;
                     const bodega = getBodegas.find((bodega) => bodega.idBodegaActivos == asset.bodegaActivosIdBodegaActivos);
                     if (bodega) {
                         getBodega = bodega.nombre;
                     }
-                
+
                     //getTipoActivo = asset.tipo;
                     const tipoActivo = getTiposActivos.find((tipoActivo) => tipoActivo.idTipoActivo == asset.tipoActivoIdTipoActivo);
                     if (tipoActivo) {
@@ -567,13 +572,18 @@ const fillAssetLogOrders = () => {
 
                     getEstadosOrdenActivo.forEach(elem => {
 
-                        if (new Date(elem["fecha_estado"]) > new Date(fechaUltimoEstado)) {
+                        if (new Date(elem["fechaAsignado"]) > new Date(fechaUltimoEstado)) {
 
-                            getEstado = elem["nombre_estado"]; // MOdificar para traer el idEstado y de allí el nombre
-                            fechaUltimoEstado = elem["fecha_estado"];
+                            const estado = getEstados.find((estado) => estado.idEstado == elem["estadoIdEstado"]);
+                            if (estado) {
+                                getEstado = estado.nombre;
+                            }
+
+                            //getEstado = elem["nombre_estado"]; // MOdificar para traer el idEstado y de allí el nombre
+                            fechaUltimoEstado = elem["fechaAsignado"];
                         }
 
-                        switch (elem["id_estado"]) {
+                        switch (elem["estadoIdEstado"]) {
                             case 1:
                                 classTr = "warning"
                                 stringContainer = 'Se requiere completar datos'
@@ -660,6 +670,17 @@ const fillAssetLogOrders = () => {
                             classTr = ""
                             stringContainer = ''
                             console.log('Estado de la orden desconocido');
+                    }*/
+
+
+                    /*let getOrdenTipoOrden = ``;
+                    let getOrdenFechaCreacion = ``;
+                    let getOrdenFechaInicio = ``;
+                    let getOrdenTaller =``;
+
+                    const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType').value);
+                    if (tipoOrden) {
+                        ordenJSON.tipoOrdenidTipoOrden = tipoOrden.idTipoOrden;
                     }*/
 
                     fillAssetOrders += `

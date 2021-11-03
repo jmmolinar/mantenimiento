@@ -15,13 +15,25 @@
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-08-06T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 14,
+                "estadoIdEstado": 1,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-08-06T12:30"
+
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-08-08T12:30",
-                "estado_asignado_por": "Usuario"
+                "estado_asignado_por": "Usuario",
+
+                "ordenIdOrden": 14,
+                "estadoIdEstado": 2,
+                "idUsuario": 1,
+                "fechaAsignado": "2021-08-08T12:30"
+
             }
         ],
         "periodo_orden": false,
@@ -68,13 +80,23 @@
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-07-30T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 13,
+                "estadoIdEstado": 1,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-07-30T12:30"
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-07-31T12:30",
-                "estado_asignado_por": "Usuario"
+                "estado_asignado_por": "Usuario",
+
+                "ordenIdOrden": 13,
+                "estadoIdEstado": 2,
+                "idUsuario": 1,
+                "fechaAsignado": "2021-07-31T12:30"
             }
         ],
         "periodo_orden": false,
@@ -121,31 +143,56 @@
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-06-15T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 12,
+                "estadoIdEstado": 1,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-06-15T12:30"
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-06-20T12:30",
-                "estado_asignado_por": "Usuario"
+                "estado_asignado_por": "Usuario",
+
+                "ordenIdOrden": 12,
+                "estadoIdEstado": 2,
+                "idUsuario": 1,
+                "fechaAsignado": "2021-06-20T12:30"
             },
             {
                 "id_estado": 5,
                 "nombre_estado": "En taller",
                 "fecha_estado": "2021-07-05T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 12,
+                "estadoIdEstado": 5,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-07-05T12:30"
             },
             {
                 "id_estado": 7,
                 "nombre_estado": "Salida de taller",
                 "fecha_estado": "2021-07-06T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 12,
+                "estadoIdEstado": 7,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-07-06T12:30"
             },
             {
                 "id_estado": 8,
                 "nombre_estado": "Completado",
                 "fecha_estado": "2021-07-06T12:31",
-                "estado_asignado_por": "Usuario"
+                "estado_asignado_por": "Usuario",
+
+                "ordenIdOrden": 12,
+                "estadoIdEstado": 8,
+                "idUsuario": 1,
+                "fechaAsignado": "2021-07-06T12:31"
             }
         ],
         "periodo_orden": false,
@@ -187,43 +234,78 @@
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-06-15T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 11,
+                "estadoIdEstado": 1,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-06-15T12:30"
             },
             {
                 "id_estado": 3,
                 "nombre_estado": "Retrasado",
                 "fecha_estado": "2021-07-01T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 11,
+                "estadoIdEstado": 3,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-07-01T12:30"
             },
             {
                 "id_estado": 4,
                 "nombre_estado": "Planificado con retraso",
                 "fecha_estado": "2021-07-10T12:30",
-                "estado_asignado_por": "Usuario"
+                "estado_asignado_por": "Usuario",
+
+                "ordenIdOrden": 11,
+                "estadoIdEstado": 4,
+                "idUsuario": 1,
+                "fechaAsignado": "2021-07-10T12:30"
             },
             {
                 "id_estado": 5,
                 "nombre_estado": "En taller",
                 "fecha_estado": "2021-07-14T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 11,
+                "estadoIdEstado": 5,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-07-14T12:30"
             },
             {
                 "id_estado": 6,
                 "nombre_estado": "Retraso en taller",
                 "fecha_estado": "2021-07-17T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 11,
+                "estadoIdEstado": 6,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-07-17T12:30"
             },
             {
                 "id_estado": 7,
                 "nombre_estado": "Salida de taller",
                 "fecha_estado": "2021-07-19T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 11,
+                "estadoIdEstado": 7,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-07-19T12:30"
             },
             {
                 "id_estado": 9,
                 "nombre_estado": "Completado con retraso",
                 "fecha_estado": "2021-07-19T12:31",
-                "estado_asignado_por": "Usuario"
+                "estado_asignado_por": "Usuario",
+
+                "ordenIdOrden": 11,
+                "estadoIdEstado": 9,
+                "idUsuario": 1,
+                "fechaAsignado": "2021-07-19T12:31"
             }
         ],
         "periodo_orden": false,
@@ -270,13 +352,23 @@
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-06-30T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 10,
+                "estadoIdEstado": 1,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-06-30T12:30"
             },
             {
                 "id_estado": 3,
                 "nombre_estado": "Retrasado",
                 "fecha_estado": "2021-07-10T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 10,
+                "estadoIdEstado": 3,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-07-10T12:30"
             }
         ],
         "periodo_orden": false,
@@ -323,7 +415,12 @@
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-06-25T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 9,
+                "estadoIdEstado": 1,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-06-25T12:30"
             }
         ],
         "periodo_orden": false,
@@ -375,19 +472,34 @@
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-05-01T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 8,
+                "estadoIdEstado": 1,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-05-01T12:30"
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-05-10T12:30",
-                "estado_asignado_por": "Usuario"
+                "estado_asignado_por": "Usuario",
+
+                "ordenIdOrden": 8,
+                "estadoIdEstado": 2,
+                "idUsuario": 1,
+                "fechaAsignado": "2021-05-10T12:30"
             },
             {
                 "id_estado": 10,
                 "nombre_estado": "No realizado",
                 "fecha_estado": "2021-05-30T12:30",
-                "estado_asignado_por": "Usuario"
+                "estado_asignado_por": "Usuario",
+
+                "ordenIdOrden": 8,
+                "estadoIdEstado": 10,
+                "idUsuario": 1,
+                "fechaAsignado": "2021-05-30T12:30"
             }
         ],
         "periodo_orden": false,
@@ -434,19 +546,34 @@
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-07-01T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 7,
+                "estadoIdEstado": 1,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-07-01T12:30"
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-07-15T12:30",
-                "estado_asignado_por": "Usuario"
+                "estado_asignado_por": "Usuario",
+
+                "ordenIdOrden": 7,
+                "estadoIdEstado": 2,
+                "idUsuario": 1,
+                "fechaAsignado": "2021-07-15T12:30"
             },
             {
                 "id_estado": 5,
                 "nombre_estado": "En taller",
                 "fecha_estado": "2021-07-21T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 7,
+                "estadoIdEstado": 5,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-07-21T12:30"
             }
         ],
         "periodo_orden": false,
@@ -493,13 +620,23 @@
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-07-05T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 6,
+                "estadoIdEstado": 1,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-07-05T12:30"
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-07-15T12:30",
-                "estado_asignado_por": "Usuario"
+                "estado_asignado_por": "Usuario",
+
+                "ordenIdOrden": 6,
+                "estadoIdEstado": 2,
+                "idUsuario": 1,
+                "fechaAsignado": "2021-07-15T12:30"
             }
         ],
         "periodo_orden": false,
@@ -546,13 +683,23 @@
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-07-08T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 5,
+                "estadoIdEstado": 1,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-07-08T12:30"
             },
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-07-18T12:30",
-                "estado_asignado_por": "Usuario"
+                "estado_asignado_por": "Usuario",
+
+                "ordenIdOrden": 5,
+                "estadoIdEstado": 2,
+                "idUsuario": 1,
+                "fechaAsignado": "2021-07-18T12:30"
             }
         ],
         "periodo_orden": false,
@@ -599,25 +746,45 @@
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-05-15T12:30",
-                "estado_asignado_por": "Usuario"
+                "estado_asignado_por": "Usuario",
+
+                "ordenIdOrden": 4,
+                "estadoIdEstado": 2,
+                "idUsuario": 1,
+                "fechaAsignado": "2021-05-15T12:30"
             },
             {
                 "id_estado": 5,
                 "nombre_estado": "En taller",
                 "fecha_estado": "2021-05-24T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 4,
+                "estadoIdEstado": 5,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-05-24T12:30"
             },
             {
                 "id_estado": 7,
                 "nombre_estado": "Salida de taller",
                 "fecha_estado": "2021-05-26T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 4,
+                "estadoIdEstado": 7,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-05-26T12:30"
             },
             {
                 "id_estado": 8,
                 "nombre_estado": "Completado",
                 "fecha_estado": "2021-05-26T12:31",
-                "estado_asignado_por": "Usuario"
+                "estado_asignado_por": "Usuario",
+
+                "ordenIdOrden": 4,
+                "estadoIdEstado": 8,
+                "idUsuario": 1,
+                "fechaAsignado": "2021-05-26T12:31"
             }
         ],
         "periodo_orden": false,
@@ -664,25 +831,45 @@
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
                 "fecha_estado": "2021-05-10T12:30",
-                "estado_asignado_por": "Usuario"
+                "estado_asignado_por": "Usuario",
+
+                "ordenIdOrden": 3,
+                "estadoIdEstado": 2,
+                "idUsuario": 1,
+                "fechaAsignado": "2021-05-10T12:30"
             },
             {
                 "id_estado": 5,
                 "nombre_estado": "En taller",
                 "fecha_estado": "2021-05-24T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 3,
+                "estadoIdEstado": 5,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-05-24T12:30"
             },
             {
                 "id_estado": 7,
                 "nombre_estado": "Salida de taller",
                 "fecha_estado": "2021-05-26T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 3,
+                "estadoIdEstado": 7,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-05-26T12:30"
             },
             {
                 "id_estado": 8,
                 "nombre_estado": "Completado",
                 "fecha_estado": "2021-05-26T12:31",
-                "estado_asignado_por": "Usuario"
+                "estado_asignado_por": "Usuario",
+
+                "ordenIdOrden": 3,
+                "estadoIdEstado": 8,
+                "idUsuario": 1,
+                "fechaAsignado": "2021-05-26T12:31"
             }
         ],
         "periodo_orden": false,
@@ -729,13 +916,23 @@
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-06-30T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 2,
+                "estadoIdEstado": 1,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-06-30T12:30"
             },
             {
                 "id_estado": 3,
                 "nombre_estado": "Retrasado",
                 "fecha_estado": "2021-07-10T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 2,
+                "estadoIdEstado": 3,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-07-10T12:30"
             }
         ],
         "periodo_orden": false,
@@ -782,13 +979,23 @@
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
                 "fecha_estado": "2021-06-28T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 1,
+                "estadoIdEstado": 1,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-06-28T12:30"
             },
             {
                 "id_estado": 3,
                 "nombre_estado": "Retrasado",
                 "fecha_estado": "2021-07-06T12:30",
-                "estado_asignado_por": "Sistema"
+                "estado_asignado_por": "Sistema",
+
+                "ordenIdOrden": 1,
+                "estadoIdEstado": 3,
+                "idUsuario": 2,
+                "fechaAsignado": "2021-07-06T12:30"
             }
         ],
         "periodo_orden": false,

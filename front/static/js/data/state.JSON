@@ -1,13 +1,13 @@
 [
     {
-        "id_estado": 1,
+        "idEstado": 1,
         "nombre": "Por planificar",
         "alias": "PC",
         "asignado_por": "Sistema",
         "id_padre": []
     },
     {
-        "id_estado": 2,
+        "idEstado": 2,
         "nombre": "Planificado",
         "alias": "P",
         "asignado_por": "Usuario",
@@ -16,7 +16,7 @@
         ]
     },
     {
-        "id_estado": 3,
+        "idEstado": 3,
         "nombre": "Retrasado",
         "alias": "R",
         "asignado_por": "Sistema",
@@ -25,7 +25,7 @@
         ]
     },
     {
-        "id_estado": 4,
+        "idEstado": 4,
         "nombre": "Planificado con retraso",
         "alias": "PCR",
         "asignado_por": [
@@ -38,7 +38,7 @@
         ]
     },
     {
-        "id_estado": 5,
+        "idEstado": 5,
         "nombre": "En taller",
         "alias": "ET",
         "asignado_por": "Sistema",
@@ -48,7 +48,7 @@
         ]
     },
     {
-        "id_estado": 6,
+        "idEstado": 6,
         "nombre": "Retraso en taller",
         "alias": "RT",
         "asignado_por": "Sistema",
@@ -57,7 +57,7 @@
         ]
     },
     {
-        "id_estado": 7,
+        "idEstado": 7,
         "nombre": "Salida de taller",
         "alias": "ST",
         "asignado_por": "Sistema",
@@ -67,7 +67,7 @@
         ]
     },
     {
-        "id_estado": 8,
+        "idEstado": 8,
         "nombre": "Completado",
         "alias": "C",
         "asignado_por": "Usuario",
@@ -76,7 +76,7 @@
         ]
     },
     {
-        "id_estado": 9,
+        "idEstado": 9,
         "nombre": "Completado con retraso",
         "alias": "CR",
         "asignado_por": "Usuario",
@@ -85,7 +85,7 @@
         ]
     },
     {
-        "id_estado": 10,
+        "idEstado": 10,
         "nombre": "No realizado",
         "alias": "NR",
         "asignado_por": "Usuario",

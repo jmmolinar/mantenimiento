@@ -1,6 +1,9 @@
 import AbstractView from "./AbstractView.js";
 import TableLanguage from "./TableLanguage.js";
-import { listAllElement } from "./Options.js";
+import { 
+    listAllElement,
+    getEstados
+} from "./Options.js";
 
 // Variables para filtrar fechas en la tabla
 // va de la mano con la función de filtrado personalizado
@@ -98,13 +101,19 @@ export default class extends AbstractView {
                     
                     getEstadosOrden.forEach(elem => {
 
-                        if (new Date(elem["fecha_estado"]) > new Date(fechaUltimoEstado)) {
+                        if (new Date(elem["fechaAsignado"]) > new Date(fechaUltimoEstado)) {
 
-                            getEstado = elem["nombre_estado"]; // MOdificar por id y de allí si traer el nombre
-                            fechaUltimoEstado = elem["fecha_estado"];
+
+                            const estado = getEstados.find((estado) => estado.idEstado == elem["estadoIdEstado"]);
+                            if (estado) {
+                                getEstado = estado.nombre;
+                            }
+
+                            //getEstado = elem["nombre_estado"]; // MOdificar por id y de allí si traer el nombre
+                            fechaUltimoEstado = elem["fechaAsignado"];
                         }
 
-                        switch (elem["id_estado"]) {
+                        switch (elem["estadoIdEstado"]) {
                             case 1:
                                 classTr = "warning"
                                 stringContainer = 'Se requiere completar datos'
