@@ -1,13 +1,22 @@
 import AbstractView from "./AbstractView.js";
 import TableLanguage from "./TableLanguage.js";
-import { listAllElement } from "./Options.js";
+import { 
+    listAllElement,
+    getAreas,
+    getBodegas,
+    getTiposActivos
+ } from "./Options.js";
+
+
+let getArea = ``;
+let getBodega = ``;
+let getTipoActivo = ``;
 
 export default class extends AbstractView {
     constructor(params) {
         super(params);
         this.setTitle("Inicio");
     }
-
 
     async getHtml() {
 
@@ -50,8 +59,6 @@ export default class extends AbstractView {
         </div>
         `;
 
-
-
         $.ajax({
             type: 'GET',
             url: 'http://192.168.1.114:8080/static/js/data/assets.JSON',
@@ -60,7 +67,7 @@ export default class extends AbstractView {
                 customTable();
                 console.log(jqXHR)
                 let fillAssets = ''
-                let km_hora = ''
+                let kmHora = ''
                 let mantenimiento_en = ''
                 let formatGetPlanesActivoNombre = ``
                 let formatRealizadas = ``
@@ -68,8 +75,27 @@ export default class extends AbstractView {
 
                 for (const activo of data) {
 
+                    //Finalmente se debe sincronizar con las áreas de la
+                    //base de datos de Blackgps
+                    const area = getAreas.find((area) => area.idArea == activo.areaIdArea);
+                    if (area) {
+                        getArea = area.nombre;
+                    }
+
+                    const tipoActivo = getTiposActivos.find((tipoActivo) => tipoActivo.idTipoActivo == activo.tipoActivoIdTipoActivo);
+                    if (tipoActivo) {
+                        getTipoActivo = tipoActivo.nombre;
+                    }
+
+                    const bodega = getBodegas.find((bodega) => bodega.idBodegaActivos == activo.bodegaActivosIdBodegaActivos);
+                    if (bodega) {
+                        getBodega = bodega.nombre;
+                    }
+
                     getPlanesActivo = listAllElement(activo.activoPlanes);
+
                     let getPlanesActivoNombre = [];
+
                     getPlanesActivo.forEach(elem => {
                         getPlanesActivoNombre.push(`<div class="alert alert-info no-margin new-padding-top-bottom"><strong>${elem["nombre"]}</strong></div>`)
                     })
@@ -90,9 +116,9 @@ export default class extends AbstractView {
                     formatRealizadas = `<div class="alert alert-success no-margin new-padding-top-bottom new-color-alert"><strong>${activo.mant_realizadas}</strong></div>`
 
                     if (activo.km == null) {
-                        km_hora = `<div class="alert new-alert-use no-margin new-padding-top-bottom"><strong>${activo.horas}</strong></div>`
+                        kmHora = `<div class="alert new-alert-use no-margin new-padding-top-bottom"><strong>${activo.horas}</strong></div>`
                     } else {
-                        km_hora = `<div class="alert new-alert-use no-margin new-padding-top-bottom"><strong>${activo.km}</strong></div>`
+                        kmHora = `<div class="alert new-alert-use no-margin new-padding-top-bottom"><strong>${activo.km}</strong></div>`
                     }
 
                     if (activo.mant_en_km == null && activo.mant_en_horas == null) {
@@ -114,17 +140,17 @@ export default class extends AbstractView {
 
                     fillAssets += `
                     <tr>
-                        <td>${activo.id}</td>
-                        <td><strong>${activo.activo}</strong></td>
-                        <td>${activo.tipo}</td>
+                        <td>${activo.idActivo}</td>
+                        <td><strong>${activo.activo}</strong></td> <!-- temporal - depende de idVehiculo para obtener patente-->
+                        <td>${getTipoActivo}</td>
                         <td><div class="new-flex">${formatGetPlanesActivoNombre}</div></td>
-                        <td>${km_hora}</td>
-                        <td>${mantenimiento_en}</td>
-                        <td>${formatRealizadas}</td>
-                        <td>${activo.area}</td>
-                        <td>${activo.bodega}</td>
+                        <td>${kmHora}</td>
+                        <td>${mantenimiento_en}</td> <!-- temporal - depende de idVehiculo -->
+                        <td>${formatRealizadas}</td> <!-- temporal - depende de idVehiculo -->
+                        <td>${getArea}</td>
+                        <td>${getBodega}</td>
                         <td class="align-center">
-                            <a id="editAsset_${activo.id}" class="btn only-to-id-url" href="/activos/${activo.id}"><i class="icon-pencil"></i></a>
+                            <a id="editAsset_${activo.idActivo}" class="btn only-to-id-url" href="/activos/${activo.idActivo}"><i class="icon-pencil"></i></a>
                         </td>
                     </tr>`
                 }

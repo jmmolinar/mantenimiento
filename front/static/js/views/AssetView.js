@@ -22,7 +22,7 @@ let getGPS = ``;
 let getAnio = ``;
 let getEstado = ``;
 let getPlanesActivo = [];
-let activoPatente = ``;
+let getActivoPatente = ``;
 
 //Variable para controlar la creación de JSON de activo
 let banderaActivo = false;
@@ -70,21 +70,38 @@ export default class extends AbstractView {
 
                 if (asset) {
 
-                    getArea = asset.area; // temporal - traer de areaIdArea y de allí su nombre
-                    getBodega = asset.bodega; // temporal - traer de bodegaActivosIdBodegaActivos y de allí su nombre
-                    getTipoActivo = asset.tipo; // Temporal - traer de tipoActivoIdTipoActivo y de allí su nombre
+                    //Finalmente se debe sincronizar con las áreas de la
+                    //base de datos de Blackgps
+                    //getArea = asset.area;
+                    const area = getAreas.find((area) => area.idArea == asset.areaIdArea);
+                    if (area) {
+                        getArea = area.nombre;
+                    }
+                
+                    //getBodega = asset.bodega;
+                    const bodega = getBodegas.find((bodega) => bodega.idBodegaActivos == asset.bodegaActivosIdBodegaActivos);
+                    if (bodega) {
+                        getBodega = bodega.nombre;
+                    }
+                
+                    //getTipoActivo = asset.tipo;
+                    const tipoActivo = getTiposActivos.find((tipoActivo) => tipoActivo.idTipoActivo == asset.tipoActivoIdTipoActivo);
+                    if (tipoActivo) {
+                        getTipoActivo = tipoActivo.nombre;
+                    }
+
                     getMarca = asset.marca; // Temporal - traer de idVehiculo y de allí obtener la marca
                     getModelo = asset.modelo; // Temporal - traer de idVehiculo y de allí obtener el modelo
                     getAnio = asset.anio;
                     getGPS = asset.gps_imei; // Temporal - traer de idVehiculo y de allí obtener el gps
+                    getActivoPatente = asset.activo; // temporal - traer de idVehiculo y de allí obtener la patente
                     getPlanesActivo = listAllElement(asset.activoPlanes)
-                    activoPatente = asset.activo; // temporal - traer de idVehiculo y de allí obtener la patente
-                    console.log("Verificando postId: " + identificador)
-                    console.log("Vericando id de asset: " + asset.idActivo)
+                    //console.log("Verificando postId: " + identificador)
+                    //console.log("Vericando id de asset: " + asset.idActivo)
 
 
                     //REPARAR TAMBIÉN LA OBTENCIÓN DE LO DOCUMENTOS AL MODIFICAR
-                    //JSO assets.json
+                    //JSON assets.json
 
                     if (asset.km == null) {
                         kmHora = asset.horas // Temporal - se debe traer idVehiculo y de allí obtener sus horas
@@ -98,11 +115,11 @@ export default class extends AbstractView {
                         <!--IDENTIFICADOR DEL ACTIVO-->
                         <div id="assetsId_${asset.idActivo}" class="control-group order-identity border-transparent-1px">
                             <h1>Activo ${asset.idActivo}</h1>
-                            <!--<h3>Patente: ${activoPatente}</h3>-->
+                            <!--<h3>Patente: ${getActivoPatente}</h3>-->
                             <h3 style="display:inline;">Patente: </h3>
-                            <h3 id="valorPatente" style="display:inline;">${activoPatente}</h3>
+                            <h3 id="valorPatente" style="display:inline;">${getActivoPatente}</h3>
                             <h3>${kmHora}</h3>
-                            <a id="downloadAsset_${asset.idActivo}" class="btn btn-success" href=""> ${activoPatente}  <i class="fa fa-cloud-download"></i></a>
+                            <a id="downloadAsset_${asset.idActivo}" class="btn btn-success" href=""> ${getActivoPatente}  <i class="fa fa-cloud-download"></i></a>
                         </div>
 
 
@@ -531,11 +548,11 @@ const fillAssetLogOrders = () => {
             let stringContainer = ""
             let getEstadosOrdenActivo = [];
             //let fecha_log = ''
-            const onlyCurrentAssetOrders = data.filter((orden) => orden.patente_activo == activoPatente)
+            const onlyCurrentAssetOrders = data.filter((orden) => orden.patente_activo == getActivoPatente)
 
             for (const orden of onlyCurrentAssetOrders) {
 
-                if (orden.patente_activo == activoPatente) {
+                if (orden.patente_activo == getActivoPatente) {
 
                     let total = 'CLP '
 
@@ -722,7 +739,7 @@ const guardarActivoJSON = () => {
     let selectArea = document.getElementById('assetAreasOptions');
     const area = getAreas.find((area) => area.nombre == selectArea.value);
     if (area) {
-        activoJSON.areaIdArea = area.id_area;
+        activoJSON.areaIdArea = area.idArea;
     }
 
     let selectBodega = document.getElementById('assetWareHousesOptions');

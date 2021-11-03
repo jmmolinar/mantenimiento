@@ -383,10 +383,11 @@ const fillOptions = () => {
             const optionActivo = listSelect(getActivos, "activo"); // Paso la clave "activo"
             loadSelectContent(optionActivo, selectActivo);
 
-            // Select Marca desde Options.js
+            // Select Marca desde Options.js // Temporal porque debe traerla del idVehiculo asociado
             const selectMarca = document.getElementById('assetBrand');
             const optionMarca = listSelect(marcas, "nombre"); // Paso la clave "nombre"
-            loadSelectContentAndSelected(optionMarca, selectMarca, getMarca);
+            loadSelectContent(optionMarca, selectMarca);
+            //loadSelectContentAndSelected(optionMarca, selectMarca, getMarca);
             //console.log("Marca seleccionada: " + getMarca);
 
             // Select Anio desde Options.js
@@ -420,7 +421,7 @@ const guardarActivoJSON = () => {
     nuevoActivoJSON.anio = selectAnio.options[selectAnio.selectedIndex].text;
     nuevoActivoJSON.dadoDeBaja = false;
 
-    //Por asigno el id de activos, pero en realidad debo traer las patentes
+    //Por ahora asigno el id de activos, pero en realidad debo traer las patentes
     //de aquellos idVehiculo que aún no han sido creados como activo
     //y asignar dichos idVehiculos - Esto se completa al hacer FK a la 
     //Base de datos de BlackGPS
@@ -430,10 +431,12 @@ const guardarActivoJSON = () => {
         nuevoActivoJSON.idVehiculo = activo.id; // En realidad debo traer el idVehiculo
     }
 
+    //Finalmente se debe sincronizar con las áreas de la
+    //base de datos de Blackgps
     let selectArea = document.getElementById('assetAreasOptions');
     const area = getAreas.find((area) => area.nombre == selectArea.value);
     if (area) {
-        nuevoActivoJSON.areaIdArea = area.id_area;
+        nuevoActivoJSON.areaIdArea = area.idArea;
     }
 
     let selectBodega = document.getElementById('assetWareHousesOptions');
@@ -498,19 +501,17 @@ const guardarActivoJSON = () => {
     nuevoActivoJSON.documentos.push(docRevisionTecnica);
 
     const planesSeleccionados = document.getElementById('buttonsSelectedPlan').getElementsByClassName('name-plan');
-    let contPlans = 0; //sin uso
+    //let contPlans = 0;
     for (const element of planesSeleccionados) {
 
         banderaPlanes = true;
-
-        contPlans++; //sin uso
+        //contPlans++;
 
         const plan = getPlanes.find((plan) => plan.nombre == element.textContent);
         if (plan) {
 
-
             let planesNuevoActivoJSON = {
-                //"ActivoIdActivo: "
+                //"activoIdActivo": 
                 "planMantenimientoIdPlanMantenimiento": plan.idPlanMantenimiento
             }
 
@@ -545,7 +546,6 @@ const guardarActivoJSON = () => {
         sessionStorage.setItem(`NuevoActivo`, JSON.stringify(nuevoActivoJSON));
     }
 
-
 }
 
 const removerVariableActivoStorageJSON = () => {
@@ -568,7 +568,6 @@ const mostrarActivoStorageJSON = () => {
 
 
 $(document).ready(function () {
-
 
     $('div #pages').on('click', 'button#saveAsset_new', function (e) {
 

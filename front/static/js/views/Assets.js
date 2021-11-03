@@ -1,12 +1,17 @@
 import AbstractView from "./AbstractView.js";
 import TableLanguage from "./TableLanguage.js"
+import {
+    getAreas, getTiposActivos
+} from "./Options.js"
+
+let getArea = ``;
+let getTipoActivo = ``;
 
 export default class extends AbstractView {
     constructor(params) {
         super(params);
         this.setTitle("Activos");
     }
-
 
     async getHtml() {
 
@@ -42,8 +47,6 @@ export default class extends AbstractView {
         </div>
         `;
 
-
-
         $.ajax({
             type: 'GET',
             url: 'http://192.168.1.114:8080/static/js/data/assets.JSON',
@@ -52,23 +55,35 @@ export default class extends AbstractView {
                 customTable();
                 console.log(jqXHR)
                 let fillAssets = ''
-                let km_hora = ''
+                let kmHora = ''
                 for (const activo of data) {
 
+                    //Finalmente se debe sincronizar con las áreas de la
+                    //base de datos de Blackgps
+                    const area = getAreas.find((area) => area.idArea == activo.areaIdArea);
+                    if (area) {
+                        getArea = area.nombre;
+                    }
+
+                    const tipoActivo = getTiposActivos.find((tipoActivo) => tipoActivo.idTipoActivo == activo.tipoActivoIdTipoActivo);
+                    if (tipoActivo) {
+                        getTipoActivo = tipoActivo.nombre;
+                    }
+
                     if (activo.km == null) {
-                        km_hora = activo.horas // Temporal porque se debe traer a través de idVehiculo
+                        kmHora = activo.horas // Temporal - se debe traer idVehiculo y de allí obtener sus horas
                     } else {
-                        km_hora = activo.km // Temporal porque se debe traer a través de idVehiculo
+                        kmHora = activo.km // Temporal - se debe traer idVehiculo y de allí obtener sus km
                     }
 
                     fillAssets += `
                     <tr>
                         <td>${activo.idActivo}</td>
                         <td>${activo.activo}</td> <!--Modificar para leer el idVehículo y de allí traer la patente -->
-                        <td>${activo.tipo}</td> <!--Modificar para leer el idTipo y de allí traer el nombre del tipo -->
+                        <td>${getTipoActivo}</td>
                         <td>${activo.gps_imei}</td> <!-- Temporal porque se debe traer mediante idVehiculo -->
-                        <td>${activo.area}</td>
-                        <td>${km_hora}</td>
+                        <td>${getArea}</td>
+                        <td>${kmHora}</td>
                         <td class="align-center">
                             <a id="editAsset_${activo.idActivo}" class="btn only-to-id-url" href="/activos/${activo.idActivo}"><i class="icon-pencil"></i></a>
                             <a id="deleteAsset_${activo.idActivo}" class="btn" disabled><i class="icon-trash"></i></a>

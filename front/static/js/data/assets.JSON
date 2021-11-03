@@ -1,13 +1,12 @@
 [
     {
         "idActivo": 8,
-        "activo": "MAQ-A8",
-        "tipo": "Máquina",
-        "marca": "Caterpillar",
-        "modelo": "Retroexcavadora 150G LC",
         "anio": "2018",
-        "plan": "Plan CATERPILLAR",
         "dadoDeBaja": false,
+        "idVehiculo": null,
+        "areaIdArea": 10,
+        "bodegaActivosIdBodegaActivos": 1,
+        "tipoActivoIdTipoActivo": 2,
         "activoPlanes": [
             {
                 "id": "11",
@@ -56,6 +55,10 @@
                 "tipoDocumentoIdTipoDocumento": 4
             }
         ],
+        "activo": "MAQ-A8",
+        "tipo": "Máquina",
+        "marca": "Caterpillar",
+        "modelo": "Retroexcavadora 150G LC",
         "gps_imei": "850085008500852",
         "area": "Área 101",
         "bodega": "Sede Central",
@@ -75,13 +78,12 @@
     },
     {
         "idActivo": 7,
-        "activo": "MAQ-A4",
-        "tipo": "Máquina",
-        "marca": "Caterpillar",
-        "modelo": "Retroexcavadora 130G LC",
         "anio": "2020",
-        "plan": "Plan CATERPILLAR",
         "dadoDeBaja": false,
+        "idVehiculo": null,
+        "areaIdArea": 10,
+        "bodegaActivosIdBodegaActivos": 1,
+        "tipoActivoIdTipoActivo": 2,
         "activoPlanes": [],
         "documentos": [
             {
@@ -117,6 +119,10 @@
                 "tipoDocumentoIdTipoDocumento": 4
             }
         ],
+        "activo": "MAQ-A4",
+        "tipo": "Máquina",
+        "marca": "Caterpillar",
+        "modelo": "Retroexcavadora 130G LC",
         "gps_imei": "850085008500851",
         "area": "Área 101",
         "bodega": "Sede Central",
@@ -136,13 +142,12 @@
     },
     {
         "idActivo": 6,
-        "activo": "MAQ-A3",
-        "tipo": "Máquina",
-        "marca": "Caterpillar",
-        "modelo": "Retroexcavadora 130G LC",
         "anio": "2019",
-        "plan": "Plan CATERPILLAR",
         "dadoDeBaja": false,
+        "idVehiculo": null,
+        "areaIdArea": 10,
+        "bodegaActivosIdBodegaActivos": 1,
+        "tipoActivoIdTipoActivo": 2,
         "activoPlanes": [
             {
                 "id": "11",
@@ -191,6 +196,10 @@
                 "tipoDocumentoIdTipoDocumento": 4
             }
         ],
+        "activo": "MAQ-A3",
+        "tipo": "Máquina",
+        "marca": "Caterpillar",
+        "modelo": "Retroexcavadora 130G LC",
         "gps_imei": "850085008500850",
         "area": "Área 101",
         "bodega": "Sede Central",
@@ -210,13 +219,12 @@
     },
     {
         "idActivo": 5,
-        "activo": "PATENTE-A1",
-        "tipo": "Vehículo",
-        "marca": "Toyota",
-        "modelo": "Tundra",
         "anio": "2020",
-        "plan": "Plan TOYOTA",
         "dadoDeBaja": false,
+        "idVehiculo": null,
+        "areaIdArea": 5,
+        "bodegaActivosIdBodegaActivos": 2,
+        "tipoActivoIdTipoActivo": 1,
         "activoPlanes": [
             {
                 "id": "11",
@@ -265,6 +273,10 @@
                 "tipoDocumentoIdTipoDocumento": 4
             }
         ],
+        "activo": "PATENTE-A1",
+        "tipo": "Vehículo",
+        "marca": "Toyota",
+        "modelo": "Tundra",
         "gps_imei": "850085008500851",
         "area": "Área 51",
         "bodega": "Sede Norte",
@@ -284,13 +296,12 @@
     },
     {
         "idActivo": 4,
-        "activo": "PATENTE-B1",
-        "tipo": "Vehículo",
-        "marca": "Ford",
-        "modelo": "F150",
         "anio": "2019",
-        "plan": "Plan FORD",
         "dadoDeBaja": false,
+        "idVehiculo": null,
+        "areaIdArea": 5,
+        "bodegaActivosIdBodegaActivos": 1,
+        "tipoActivoIdTipoActivo": 1,
         "activoPlanes": [
             {
                 "id": "11",
@@ -339,6 +350,10 @@
                 "tipoDocumentoIdTipoDocumento": 4
             }
         ],
+        "activo": "PATENTE-B1",
+        "tipo": "Vehículo",
+        "marca": "Ford",
+        "modelo": "F150",
         "gps_imei": "850085008500852",
         "area": "Área 51",
         "bodega": "Sede Norte",
@@ -358,13 +373,12 @@
     },
     {
         "idActivo": 3,
-        "activo": "PATENTE-C1",
-        "tipo": "Vehículo",
-        "marca": "Chevrolet",
-        "modelo": "Suburban",
         "anio": "2019",
-        "plan": "Plan CHEVROLET",
         "dadoDeBaja": false,
+        "idVehiculo": null,
+        "areaIdArea": 7,
+        "bodegaActivosIdBodegaActivos": 3,
+        "tipoActivoIdTipoActivo": 1,
         "activoPlanes": [
             {
                 "id": "11",
@@ -413,6 +427,10 @@
                 "tipoDocumentoIdTipoDocumento": 4
             }
         ],
+        "activo": "PATENTE-C1",
+        "tipo": "Vehículo",
+        "marca": "Chevrolet",
+        "modelo": "Suburban",
         "gps_imei": "850085008500853",
         "area": "Área 71",
         "bodega": "Sede Sur B",
@@ -432,13 +450,12 @@
     },
     {
         "idActivo": 2,
-        "activo": "MAQ-A1",
-        "tipo": "Máquina",
-        "marca": "Komatsu",
-        "modelo": "Retroexcavadora 100T",
         "anio": "2020",
-        "plan": "Plan KOMATSU",
         "dadoDeBaja": false,
+        "idVehiculo": null,
+        "areaIdArea": 10,
+        "bodegaActivosIdBodegaActivos": 1,
+        "tipoActivoIdTipoActivo": 2,
         "activoPlanes": [
             {
                 "id": "11",
@@ -487,6 +504,10 @@
                 "tipoDocumentoIdTipoDocumento": 4
             }
         ],
+        "activo": "MAQ-A1",
+        "tipo": "Máquina",
+        "marca": "Komatsu",
+        "modelo": "Retroexcavadora 100T",
         "gps_imei": "850085008500854",
         "area": "Área 101",
         "bodega": "Sede Central",
@@ -506,13 +527,12 @@
     },
     {
         "idActivo": 1,
-        "activo": "MAQ-A2",
-        "tipo": "Máquina",
-        "marca": "John Deere",
-        "modelo": "Sports Turf",
         "anio": "2021",
-        "plan": "Plan JOHN DEERE",
         "dadoDeBaja": false,
+        "idVehiculo": null,
+        "areaIdArea": 10,
+        "bodegaActivosIdBodegaActivos": 1,
+        "tipoActivoIdTipoActivo": 2,
         "activoPlanes": [
             {
                 "id": "11",
@@ -561,6 +581,10 @@
                 "tipoDocumentoIdTipoDocumento": 4
             }
         ],
+        "activo": "MAQ-A2",
+        "tipo": "Máquina",
+        "marca": "John Deere",
+        "modelo": "Sports Turf",
         "gps_imei": "850085008500855",
         "area": "Área 101",
         "bodega": "Sede Central",
