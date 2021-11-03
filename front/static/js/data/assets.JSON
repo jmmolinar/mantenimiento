@@ -1,6 +1,6 @@
 [
     {
-        "id": 8,
+        "idActivo": 8,
         "activo": "MAQ-A8",
         "tipo": "Máquina",
         "marca": "Caterpillar",
@@ -74,7 +74,7 @@
         "vencimiento_revision_tecnica": "2022-08-10"
     },
     {
-        "id": 7,
+        "idActivo": 7,
         "activo": "MAQ-A4",
         "tipo": "Máquina",
         "marca": "Caterpillar",
@@ -135,7 +135,7 @@
         "vencimiento_revision_tecnica": "2022-08-10"
     },
     {
-        "id": 6,
+        "idActivo": 6,
         "activo": "MAQ-A3",
         "tipo": "Máquina",
         "marca": "Caterpillar",
@@ -209,7 +209,7 @@
         "vencimiento_revision_tecnica": "2022-08-10"
     },
     {
-        "id": 5,
+        "idActivo": 5,
         "activo": "PATENTE-A1",
         "tipo": "Vehículo",
         "marca": "Toyota",
@@ -283,7 +283,7 @@
         "vencimiento_revision_tecnica": "2022-08-10"
     },
     {
-        "id": 4,
+        "idActivo": 4,
         "activo": "PATENTE-B1",
         "tipo": "Vehículo",
         "marca": "Ford",
@@ -357,7 +357,7 @@
         "vencimiento_revision_tecnica": "2022-08-10"
     },
     {
-        "id": 3,
+        "idActivo": 3,
         "activo": "PATENTE-C1",
         "tipo": "Vehículo",
         "marca": "Chevrolet",
@@ -431,7 +431,7 @@
         "vencimiento_revision_tecnica": "2022-08-10"
     },
     {
-        "id": 2,
+        "idActivo": 2,
         "activo": "MAQ-A1",
         "tipo": "Máquina",
         "marca": "Komatsu",
@@ -505,7 +505,7 @@
         "vencimiento_revision_tecnica": "2022-08-10"
     },
     {
-        "id": 1,
+        "idActivo": 1,
         "activo": "MAQ-A2",
         "tipo": "Máquina",
         "marca": "John Deere",

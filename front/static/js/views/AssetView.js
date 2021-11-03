@@ -17,11 +17,12 @@ let getArea = ``;
 let getBodega = ``;
 let getTipoActivo = ``;
 let getMarca = ``;
+let getModelo = ``;
+let getGPS = ``;
 let getAnio = ``;
 let getEstado = ``;
-let getPlan = ``;
 let getPlanesActivo = [];
-let compActivoPatente = ``;
+let activoPatente = ``;
 
 //Variable para controlar la creación de JSON de activo
 let banderaActivo = false;
@@ -64,8 +65,8 @@ export default class extends AbstractView {
 
                 console.log(jqXHR)
                 let fillAsset = ''
-                let km_hora = ''
-                const asset = data.find((asset) => asset.id == identificador)
+                let kmHora = ''
+                const asset = data.find((asset) => asset.idActivo == identificador)
 
                 if (asset) {
 
@@ -73,34 +74,35 @@ export default class extends AbstractView {
                     getBodega = asset.bodega; // temporal - traer de bodegaActivosIdBodegaActivos y de allí su nombre
                     getTipoActivo = asset.tipo; // Temporal - traer de tipoActivoIdTipoActivo y de allí su nombre
                     getMarca = asset.marca; // Temporal - traer de idVehiculo y de allí obtener la marca
+                    getModelo = asset.modelo; // Temporal - traer de idVehiculo y de allí obtener el modelo
                     getAnio = asset.anio;
-                    getPlan = asset.plan;
+                    getGPS = asset.gps_imei; // Temporal - traer de idVehiculo y de allí obtener el gps
                     getPlanesActivo = listAllElement(asset.activoPlanes)
-                    compActivoPatente = asset.activo;
+                    activoPatente = asset.activo; // temporal - traer de idVehiculo y de allí obtener la patente
                     console.log("Verificando postId: " + identificador)
-                    console.log("Vericando id de asset: " + asset.id)
+                    console.log("Vericando id de asset: " + asset.idActivo)
 
 
                     //REPARAR TAMBIÉN LA OBTENCIÓN DE LO DOCUMENTOS AL MODIFICAR
                     //JSO assets.json
 
                     if (asset.km == null) {
-                        km_hora = asset.horas // Temporal porque se debe traer a través de idVehiculo
+                        kmHora = asset.horas // Temporal - se debe traer idVehiculo y de allí obtener sus horas
                     } else {
-                        km_hora = asset.km // Temporal porque se debe traer a través de idVehiculo
+                        kmHora = asset.km // Temporal - se debe traer idVehiculo y de allí obtener sus km
                     }
 
                     fillAsset = `<h1></h1>
-                    <form id="assetFormQuery_${asset.id}" action="/activos">
+                    <form id="assetFormQuery_${asset.idActivo}" action="/activos">
 
                         <!--IDENTIFICADOR DEL ACTIVO-->
-                        <div id="assetsId_${asset.id}" class="control-group order-identity border-transparent-1px">
-                            <h1>Activo ${asset.id}</h1>
-                            <!--<h3>Patente: ${asset.activo}</h3>-->
+                        <div id="assetsId_${asset.idActivo}" class="control-group order-identity border-transparent-1px">
+                            <h1>Activo ${asset.idActivo}</h1>
+                            <!--<h3>Patente: ${activoPatente}</h3>-->
                             <h3 style="display:inline;">Patente: </h3>
-                            <h3 id="valorPatente" style="display:inline;">${asset.activo}</h3>
-                            <h3>${km_hora}</h3>
-                            <a id="downloadAsset_${asset.id}" class="btn btn-success" href=""> ${asset.activo}  <i class="fa fa-cloud-download"></i></a>
+                            <h3 id="valorPatente" style="display:inline;">${activoPatente}</h3>
+                            <h3>${kmHora}</h3>
+                            <a id="downloadAsset_${asset.idActivo}" class="btn btn-success" href=""> ${activoPatente}  <i class="fa fa-cloud-download"></i></a>
                         </div>
 
 
@@ -116,7 +118,7 @@ export default class extends AbstractView {
                                 <!--<p>I'm in Section 1.</p>-->
 
                                 <!--DATOS DEL ACTIVO-->
-                                <div id="assetData_${asset.id}" class="control-group border-transparent-1px">
+                                <div id="assetData_${asset.idActivo}" class="control-group border-transparent-1px">
 
                                     <!--ÁREA DEL ACTIVO-->
                                     <div class="control-group">
@@ -158,7 +160,7 @@ export default class extends AbstractView {
                                         </label>
                                         <div class="controls">
                                             <input id="assetModel" type="text" min="3" maxlength="15"
-                                                value="${asset.modelo}" required>
+                                                value="${getModelo}" required>
                                         </div>
                                     </div>
 
@@ -180,7 +182,7 @@ export default class extends AbstractView {
                                         </label>
                                         <div class="controls">
                                             <input id="assetUse" type="text" min="3" maxlength="15" 
-                                                value="${km_hora}" required>
+                                                value="${kmHora}" required>
                                         </div>
                                     </div>
 
@@ -191,7 +193,7 @@ export default class extends AbstractView {
                                         </label>
                                         <div class="controls">
                                             <input id="assetGPS" type="text" min="3" maxlength="15" 
-                                                value="${asset.gps_imei}" disabled> <!-- Temporal porque se debe traer mediante idVehiculo -->
+                                                value="${getGPS}" disabled>
                                         </div>
                                     </div>
 
@@ -227,7 +229,7 @@ export default class extends AbstractView {
                                 <!--<p>Oh, I'm in Section 2.</p>-->
 
                                 <!--DOCUMENTOS DEL ACTIVO-->
-                                <div id="assetDocuments_${asset.id}" class="new-div-documents control-group border-transparent-1px">
+                                <div id="assetDocuments_${asset.idActivo}" class="new-div-documents control-group border-transparent-1px">
                                 
                                     <!--SEGURO CIVIL-->
                                     <div class="control-group">
@@ -364,7 +366,7 @@ export default class extends AbstractView {
                     
 
                         <!--DAR DE BAJA-->
-                        <div id="downAsset_${asset.id}" class="control-group border-transparent-1px order-identity">
+                        <div id="downAsset_${asset.idActivo}" class="control-group border-transparent-1px order-identity">
                             <div class="row-fluid">
                                 <div class="span4">
                                     <label class="checkbox">
@@ -377,12 +379,12 @@ export default class extends AbstractView {
 
 
                         <!--GUARDAR / CANCELAR-->
-                        <div id="assetActionButtons_${asset.id}" class="control-group">
+                        <div id="assetActionButtons_${asset.idActivo}" class="control-group">
                             <div class="span12 text-right border-transparent-1px">
-                                <!--<a id="saveAsset_${asset.id}" class="btn btn-primary" href="/activos">Guardar</a>
-                                <a id="dontSaveAsset_${asset.id}" class="btn btn-primary" href="/activos">Cancelar</a>-->
-                                <button id="saveAsset_${asset.id}" class="btn btn-primary" type="submit">Guardar</button>
-                                <button id="dontSaveAsset_${asset.id}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
+                                <!--<a id="saveAsset_${asset.idActivo}" class="btn btn-primary" href="/activos">Guardar</a>
+                                <a id="dontSaveAsset_${asset.idActivo}" class="btn btn-primary" href="/activos">Cancelar</a>-->
+                                <button id="saveAsset_${asset.idActivo}" class="btn btn-primary" type="submit">Guardar</button>
+                                <button id="dontSaveAsset_${asset.idActivo}" class="btn btn-primary" type="button" onclick="window.history.back();">Cancelar</button>
                             </div>
                         </div>
                     </form>`;
@@ -529,11 +531,11 @@ const fillAssetLogOrders = () => {
             let stringContainer = ""
             let getEstadosOrdenActivo = [];
             //let fecha_log = ''
-            const onlyCurrentAssetOrders = data.filter((orden) => orden.patente_activo == compActivoPatente)
+            const onlyCurrentAssetOrders = data.filter((orden) => orden.patente_activo == activoPatente)
 
             for (const orden of onlyCurrentAssetOrders) {
 
-                if (orden.patente_activo == compActivoPatente) {
+                if (orden.patente_activo == activoPatente) {
 
                     let total = 'CLP '
 
@@ -550,7 +552,7 @@ const fillAssetLogOrders = () => {
 
                         if (new Date(elem["fecha_estado"]) > new Date(fechaUltimoEstado)) {
 
-                            getEstado = elem["nombre_estado"];
+                            getEstado = elem["nombre_estado"]; // MOdificar para traer el idEstado y de allí el nombre
                             fechaUltimoEstado = elem["fecha_estado"];
                         }
 
@@ -793,16 +795,15 @@ const guardarActivoJSON = () => {
     activoJSON.documentos.push(docRevisionTecnica);
 
     const planesSeleccionados = document.getElementById('buttonsSelectedPlan').getElementsByClassName('name-plan');
-    let contPlans = 0; //sin uso
+    //let contPlans = 0; //sin uso
     for (const element of planesSeleccionados) {
 
         banderaPlanes = true;
 
-        contPlans++; //sin uso
+        //contPlans++; //sin uso
 
         const plan = getPlanes.find((plan) => plan.nombre == element.textContent);
         if (plan) {
-
 
             let planesactivoJSON = {
                 "activoIdActivo": idUrl,
