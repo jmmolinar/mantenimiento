@@ -1,10 +1,10 @@
 [
     {
-        "id_tipo_mantenimiento": 1,
+        "idTipoOrden": 1,
         "nombre": "Preventivo"
     },
     {
-        "id_tipo_mantenimiento": 2,
+        "idTipoOrden": 2,
         "nombre": "Correctivo"
     }
 ]

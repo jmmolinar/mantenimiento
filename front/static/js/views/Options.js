@@ -186,6 +186,7 @@ let getEstados = [];
 getEstados = getJson(stateJSON, titleStateJSON);
 
 //Areas
+//Ojo - finalmente getAreas se debe obtener de la base de datos de BlackGps
 let areasJSON = 'http://192.168.1.114:8080/static/js/data/areas.JSON';
 let titleAreasJSON = "Áreas";
 let getAreas = [];

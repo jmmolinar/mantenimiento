@@ -431,8 +431,6 @@ const guardarActivoJSON = () => {
         nuevoActivoJSON.idVehiculo = activo.id; // En realidad debo traer el idVehiculo
     }
 
-    //Finalmente se debe sincronizar con las áreas de la
-    //base de datos de Blackgps
     let selectArea = document.getElementById('assetAreasOptions');
     const area = getAreas.find((area) => area.nombre == selectArea.value);
     if (area) {

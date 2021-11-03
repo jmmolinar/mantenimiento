@@ -93,14 +93,14 @@ export default class extends AbstractView {
                 for (const orden of data) {
                     totalOrdenes.push(orden);
 
-                    getEstadosOrden = listAllElement(orden.historial_estados);
+                    getEstadosOrden = listAllElement(orden.ordenEstados);
                     let fechaUltimoEstado = "1900-01-01T00:00";
                     
                     getEstadosOrden.forEach(elem => {
 
                         if (new Date(elem["fecha_estado"]) > new Date(fechaUltimoEstado)) {
 
-                            getEstado = elem["nombre_estado"];
+                            getEstado = elem["nombre_estado"]; // MOdificar por id y de allí si traer el nombre
                             fechaUltimoEstado = elem["fecha_estado"];
                         }
 
@@ -194,7 +194,7 @@ export default class extends AbstractView {
                     }*/
                     //console.log("Estado de la orden: " + orden.estado_orden + " - Estilo asignado: " + classTr)
 
-                    getCategoriasActivo = listAllElement(orden.servicios_orden);
+                    getCategoriasActivo = listAllElement(orden.ordenCategorias);
                     let getCategoriasActivoNombre = [];
                     let getCategoriasActivoCosto = [];
                     getCategoriasActivo.forEach(elem => {
@@ -340,10 +340,10 @@ const customOrdersTable = () => {
                     data: "taller_orden"
                 },
                 /*{
-                    data: "servicios_orden.nombre"
+                    data: "ordenCategorias.nombre"
                 },
                 {
-                    data: "servicios_orden.costo"
+                    data: "ordenCategorias.costo"
                 },*/
                 {
                     data: "total",

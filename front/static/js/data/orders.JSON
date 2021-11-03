@@ -10,7 +10,7 @@
         "estados_posibles": {},
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
-        "historial_estados": [
+        "ordenEstados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
@@ -32,7 +32,7 @@
         "rango_fecha_orden": true,
         "fecha_inicio": "2021-08-21T12:30",
         "fecha_limite": "2021-08-23T16:30",
-        "servicios_orden": [
+        "ordenCategorias": [
             {
                 "id": 6,
                 "nombre": "Cambio de bujías",
@@ -63,7 +63,7 @@
         "estados_posibles": {},
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
-        "historial_estados": [
+        "ordenEstados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
@@ -85,7 +85,7 @@
         "rango_fecha_orden": true,
         "fecha_inicio": "2021-08-15T12:30",
         "fecha_limite": "2021-08-17T12:30",
-        "servicios_orden": [
+        "ordenCategorias": [
             {
                 "id": 7,
                 "nombre": "Engrase general",
@@ -116,7 +116,7 @@
         "estados_posibles": {},
         "rutaAdjuntoCompletado": "/path/documentoCompletado_12.pdf",
         "fechaRutaCompletado": "2021-07-06T12:31",
-        "historial_estados": [
+        "ordenEstados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
@@ -156,7 +156,7 @@
         "rango_fecha_orden": true,
         "fecha_inicio": "2021-07-05T12:30",
         "fecha_limite": "2021-07-07T12:30",
-        "servicios_orden": [
+        "ordenCategorias": [
             {
                 "id": 7,
                 "nombre": "Engrase general",
@@ -182,7 +182,7 @@
         "estados_posibles": {},
         "rutaAdjuntoCompletado": "/path/documentoCompletado_11.pdf",
         "fechaRutaCompletado": "2021-07-19T12:31",
-        "historial_estados": [
+        "ordenEstados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
@@ -234,7 +234,7 @@
         "rango_fecha_orden": true,
         "fecha_inicio": "2021-07-14T12:30",
         "fecha_limite": "2021-07-16T12:30",
-        "servicios_orden": [
+        "ordenCategorias": [
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
@@ -265,7 +265,7 @@
         "estados_posibles": {},
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
-        "historial_estados": [
+        "ordenEstados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
@@ -287,7 +287,7 @@
         "rango_fecha_orden": true,
         "fecha_inicio": "",
         "fecha_limite": "",
-        "servicios_orden": [
+        "ordenCategorias": [
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
@@ -318,7 +318,7 @@
         "estados_posibles": {},
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
-        "historial_estados": [
+        "ordenEstados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
@@ -334,7 +334,7 @@
         "rango_fecha_orden": true,
         "fecha_inicio": "",
         "fecha_limite": "",
-        "servicios_orden": [
+        "ordenCategorias": [
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
@@ -370,7 +370,7 @@
         "estados_posibles": {},
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
-        "historial_estados": [
+        "ordenEstados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
@@ -398,7 +398,7 @@
         "rango_fecha_orden": true,
         "fecha_inicio": "2021-05-24T12:30",
         "fecha_limite": "2021-05-26T12:30",
-        "servicios_orden": [
+        "ordenCategorias": [
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
@@ -429,7 +429,7 @@
         "estados_posibles": {},
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
-        "historial_estados": [
+        "ordenEstados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
@@ -457,7 +457,7 @@
         "rango_fecha_orden": true,
         "fecha_inicio": "2021-07-21T12:30",
         "fecha_limite": "2021-07-23T12:30",
-        "servicios_orden": [
+        "ordenCategorias": [
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
@@ -488,7 +488,7 @@
         "estados_posibles": {},
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
-        "historial_estados": [
+        "ordenEstados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
@@ -510,7 +510,7 @@
         "rango_fecha_orden": true,
         "fecha_inicio": "2021-07-26T12:30",
         "fecha_limite": "2021-07-28T12:30",
-        "servicios_orden": [
+        "ordenCategorias": [
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
@@ -541,7 +541,7 @@
         "estados_posibles": {},
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
-        "historial_estados": [
+        "ordenEstados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
@@ -563,7 +563,7 @@
         "rango_fecha_orden": true,
         "fecha_inicio": "2021-07-28T12:30",
         "fecha_limite": "2021-07-30T12:30",
-        "servicios_orden": [
+        "ordenCategorias": [
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
@@ -594,7 +594,7 @@
         "estados_posibles": {},
         "rutaAdjuntoCompletado": "/path/documentoCompletado_4.pdf",
         "fechaRutaCompletado": "2021-05-26T12:31",
-        "historial_estados": [
+        "ordenEstados": [
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
@@ -628,7 +628,7 @@
         "rango_fecha_orden": true,
         "fecha_inicio": "2021-05-24T12:30",
         "fecha_limite": "2021-05-26T12:30",
-        "servicios_orden": [
+        "ordenCategorias": [
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
@@ -659,7 +659,7 @@
         "estados_posibles": {},
         "rutaAdjuntoCompletado": "/path/documentoCompletado_3.pdf",
         "fechaRutaCompletado": "2021-05-26T12:31",
-        "historial_estados": [
+        "ordenEstados": [
             {
                 "id_estado": 2,
                 "nombre_estado": "Planificado",
@@ -693,7 +693,7 @@
         "rango_fecha_orden": true,
         "fecha_inicio": "2021-05-24T12:30",
         "fecha_limite": "2021-05-26T12:30",
-        "servicios_orden": [
+        "ordenCategorias": [
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
@@ -724,7 +724,7 @@
         "estados_posibles": {},
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
-        "historial_estados": [
+        "ordenEstados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
@@ -746,7 +746,7 @@
         "rango_fecha_orden": true,
         "fecha_inicio": "",
         "fecha_limite": "",
-        "servicios_orden": [
+        "ordenCategorias": [
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
@@ -777,7 +777,7 @@
         "estados_posibles": {},
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
-        "historial_estados": [
+        "ordenEstados": [
             {
                 "id_estado": 1,
                 "nombre_estado": "Por planificar",
@@ -799,7 +799,7 @@
         "rango_fecha_orden": true,
         "fecha_inicio": "",
         "fecha_limite": "",
-        "servicios_orden": [
+        "ordenCategorias": [
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",

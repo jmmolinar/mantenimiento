@@ -102,7 +102,7 @@ export default class extends AbstractView {
 
                 if (order) {
 
-                    getCategoriasOrden = listAllElement(order.servicios_orden)
+                    getCategoriasOrden = listAllElement(order.ordenCategorias)
                     console.log("Lista Objetos de Categorías de la Orden: " + getCategoriasOrden)
                     getTipoMantenimiento = order.tipo_orden; // Temporal, debe traer tipoOrdenIdTipoOrden y de allí tomar el nombre
                     //getEstado = order.estado_orden;
@@ -155,7 +155,7 @@ export default class extends AbstractView {
                     ocultoPeriodo = "hidden border-transparent-1px"
                     //}
 
-                    getEstadosOrden = listAllElement(order.historial_estados);
+                    getEstadosOrden = listAllElement(order.ordenEstados);
                     let getEstadosOrdenItem = [];
 
                     //Comparador para obtener la fecha máxima de un estado
@@ -609,7 +609,7 @@ const guardarOrdenParaJSON = () => {
 
     const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType').value);
     if (tipoOrden) {
-        ordenJSON.tipoOrdenidTipoOrden = tipoOrden.id_tipo_mantenimiento;
+        ordenJSON.tipoOrdenidTipoOrden = tipoOrden.idTipoOrden;
     }
 
     const taller = getTalleres.find((taller) => taller.nombre == document.getElementById('orderProvider').value);

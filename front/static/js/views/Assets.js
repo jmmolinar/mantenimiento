@@ -58,8 +58,6 @@ export default class extends AbstractView {
                 let kmHora = ''
                 for (const activo of data) {
 
-                    //Finalmente se debe sincronizar con las áreas de la
-                    //base de datos de Blackgps
                     const area = getAreas.find((area) => area.idArea == activo.areaIdArea);
                     if (area) {
                         getArea = area.nombre;

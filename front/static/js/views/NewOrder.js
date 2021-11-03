@@ -410,7 +410,7 @@ const guardarOrdenParaJSON = () => {
 
         const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType').value);
         if (tipoOrden) {
-            nuevaOrdenJSON.tipoOrdenidTipoOrden = tipoOrden.id_tipo_mantenimiento;
+            nuevaOrdenJSON.tipoOrdenidTipoOrden = tipoOrden.idTipoOrden;
         }
 
         const taller = getTalleres.find((taller) => taller.nombre == document.getElementById('orderProvider').value);

@@ -562,7 +562,7 @@ const fillAssetLogOrders = () => {
                         total = '';
                     }
 
-                    getEstadosOrdenActivo = listAllElement(orden.historial_estados);
+                    getEstadosOrdenActivo = listAllElement(orden.ordenEstados);
                     let fechaUltimoEstado = "1900-01-01T00:00";
 
                     getEstadosOrdenActivo.forEach(elem => {

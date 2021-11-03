@@ -1,42 +1,42 @@
 [
     {
-        "id_area": 1,
+        "idArea": 1,
         "nombre": "Área 11"
     },
     {
-        "id_area": 2,
+        "idArea": 2,
         "nombre": "Área 21"
     },
     {
-        "id_area": 3,
+        "idArea": 3,
         "nombre": "Área 31"
     },
     {
-        "id_area": 4,
+        "idArea": 4,
         "nombre": "Área 41"
     },
     {
-        "id_area": 5,
+        "idArea": 5,
         "nombre": "Área 51"
     },
     {
-        "id_area": 6,
+        "idArea": 6,
         "nombre": "Área 61"
     },
     {
-        "id_area": 7,
+        "idArea": 7,
         "nombre": "Área 71"
     },
     {
-        "id_area": 8,
+        "idArea": 8,
         "nombre": "Área 81"
     },
     {
-        "id_area": 9,
+        "idArea": 9,
         "nombre": "Área 91"
     },
     {
-        "id_area": 10,
+        "idArea": 10,
         "nombre": "Área 101"
     }
 ]
