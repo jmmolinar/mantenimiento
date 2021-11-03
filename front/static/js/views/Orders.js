@@ -2,7 +2,11 @@ import AbstractView from "./AbstractView.js";
 import TableLanguage from "./TableLanguage.js";
 import { 
     listAllElement,
-    getEstados
+    getEstados,
+    getTalleres,
+    getTiposMantenimientos,
+    getActivos,
+    getAreas
 } from "./Options.js";
 
 // Variables para filtrar fechas en la tabla
@@ -10,6 +14,11 @@ import {
 let minDate = "";
 let maxDate = "";
 let getEstado = ``;
+let getTaller = ``;
+let getTipoOrden = ``;
+let getActivo = ``;
+let getAreaActivo = ``;
+let getPatenteActivo = ``;
 
 let totalOrdenes = [];
 //let table;
@@ -94,7 +103,28 @@ export default class extends AbstractView {
                 let cont = 0;
 
                 for (const orden of data) {
+
                     totalOrdenes.push(orden);
+
+                    const taller = getTalleres.find((taller) => taller.idTallerServicio == orden.tallerServicioIdTallerServicio);
+                    if (taller) {
+                        getTaller = taller.nombre;
+                    }
+
+                    const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.idTipoOrden == orden.tipoOrdenIdTipoOrden);
+                    if (tipoOrden) {
+                        getTipoOrden = tipoOrden.nombre;
+                    }
+
+                    const activo = getActivos.find((activo) => activo.idActivo == orden.activoIdActivo);
+                    if(activo){
+                        getPatenteActivo = activo.activo; // Temporal porque se debe obtener desde idVehiculo
+                        const area = getAreas.find((area) => area.idArea == activo.areaIdArea);
+                        if(area){
+                            getAreaActivo = area.nombre;
+                        }
+                    }
+
 
                     getEstadosOrden = listAllElement(orden.ordenEstados);
                     let fechaUltimoEstado = "1900-01-01T00:00";
@@ -103,13 +133,11 @@ export default class extends AbstractView {
 
                         if (new Date(elem["fechaAsignado"]) > new Date(fechaUltimoEstado)) {
 
-
                             const estado = getEstados.find((estado) => estado.idEstado == elem["estadoIdEstado"]);
                             if (estado) {
                                 getEstado = estado.nombre;
                             }
 
-                            //getEstado = elem["nombre_estado"]; // MOdificar por id y de allí si traer el nombre
                             fechaUltimoEstado = elem["fechaAsignado"];
                         }
 
@@ -159,49 +187,6 @@ export default class extends AbstractView {
                     })
 
                     cont++
-                    /*switch (orden.estado_orden) {
-                        case 'Por planificar':
-                            classTr = "warning"
-                            stringContainer = 'Se requiere completar datos'
-                            break;
-                        case 'No realizado':
-                            classTr = "muted"
-                            stringContainer = 'La órden de mantenimiento no fue ejecutada'
-                            break;
-                        case 'Retrasado':
-                            classTr = "error"
-                            stringContainer = 'La orden no ha sigo planificada'
-                            break;
-                        case 'Retraso en taller':
-                            classTr = "error"
-                            stringContainer = 'El servicio en taller excede el tiempo planificado'
-                            break;
-                        case 'Planificado':
-                            classTr = ""
-                            stringContainer = 'El próximo paso es la realización del servicio en Taller'
-                            break;
-                        case 'Planificado con retraso':
-                            classTr = ""
-                            stringContainer = 'La órden fue planificada con retraso'
-                            break;
-                        case 'En taller':
-                            classTr = "info"
-                            stringContainer = 'Se están realizando los servicios de mantenimiento'
-                            break;
-                        case 'Completado':
-                            classTr = "success"
-                            stringContainer = 'La orden ha sido completada'
-                            break;
-                        case 'Completado con retraso':
-                            classTr = "success"
-                            stringContainer = 'La orden ha sido completada con retraso'
-                            break;
-                        default:
-                            classTr = ""
-                            stringContainer = ''
-                            console.log('Estado de la orden desconocido');
-                    }*/
-                    //console.log("Estado de la orden: " + orden.estado_orden + " - Estilo asignado: " + classTr)
 
                     getCategoriasActivo = listAllElement(orden.ordenCategorias);
                     let getCategoriasActivoNombre = [];
@@ -225,18 +210,16 @@ export default class extends AbstractView {
                     fillOrders += `
                         <tr class=${classTr}>
                             <td>${orden.idOrden}</td>
-                            <td>${orden.patente_activo}</td>
-                            <td>${orden.tipo_orden}</td>
+                            <td>${getPatenteActivo}</td> <!--Recordar modificar para traer desde idVehiculo -->
+                            <td>${getTipoOrden}</td>
                             <td>${getEstado} <a data-toggle="tooltip" title="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                            <!--<td>${orden.estado_orden} <a data-toggle="tooltip" title="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>-->
-                            <!--<td>${orden.estado_orden} <a href="" data-toggle="popover" title="${orden.estado_orden}" data-content="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>-->  
-                            <td>${orden.area_vehiculo}</td>
+                            <td>${getAreaActivo}</td>
                             <td>${orden.fechaCreacion.slice(0,10)}</td>
                             <td>${orden.fechaInicial.slice(0,10)}</td>
-                            <td>${orden.taller_orden}</td> <!-- MOdificar para obtener el nombre desde el tallerServicioIdTallerServicio
+                            <td>${getTaller}</td>
                             <!--<td>${formatGetCategoriasActivoNombre}</td>
                             <td>${formatGetCategoriasActivoCosto}</td>-->
-                            <td>${orden.total}</td>
+                            <td>${orden.total}</td> <!-- Modificar para calcular el total sin clave en json -->
                             <td class="align-center">
                                 <a id="editOrder_${orden.idOrden}" class="btn only-to-id-url" href="/ordenes/${orden.idOrden}"><i class="icon-pencil"></i></a>
                                 <a id="deleteOrder_${orden.idOrden}" class="btn" disabled><i class="icon-trash"></i></a>
@@ -323,20 +306,20 @@ const customOrdersTable = () => {
             // Si no lo hiciera no sería necesario agregar "columns"
             "columns": [
                 {
-                    data: 'id_orden'
+                    data: 'idOrden'
                 },
                 {
-                    data: 'patente_activo'
+                    data: 'getPatenteActivo'
                 },
                 {
-                    data: "tipo_orden"
+                    data: "getTipoOrden"
                 },
                 {
-                    data: "estado_orden"
+                    data: "getEstado"
                 },
             
                 {
-                    data: "area_vehiculo"
+                    data: "getAreaActivo"
                 },
                 {
                     data: "fechaCreacion"
@@ -346,7 +329,7 @@ const customOrdersTable = () => {
                     render: filtrarFechas() //Ejecutar la función de filtrado de fechas
                 },
                 {
-                    data: "taller_orden"
+                    data: "getTaller"
                 },
                 /*{
                     data: "ordenCategorias.nombre"

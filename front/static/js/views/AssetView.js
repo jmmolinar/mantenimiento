@@ -3,7 +3,7 @@ import TableLanguage from "./TableLanguage.js";
 import {
     areas, bodegas, tiposActivos, marcas, planes,
     getAreas, getBodegas, getTiposActivos, getEstados, getActivos, getPlanes,
-    getTiposMantenimientos,
+    getTiposMantenimientos, getTalleres,
     listAllElement,
     loadSelectContent,
     loadSelectContentAndSelected,
@@ -25,8 +25,6 @@ let getEstado = ``;
 let getPlanesActivo = [];
 let getActivoPatente = ``;
 let getOrdenTipoOrden = ``;
-let getOrdenFechaCreacion = ``;
-let getOrdenFechaInicio = ``;
 let getOrdenTaller = ``;
 
 //Variable para controlar la creación de JSON de activo
@@ -567,6 +565,17 @@ const fillAssetLogOrders = () => {
                         total = '';
                     }
 
+
+                    const taller = getTalleres.find((taller) => taller.idTallerServicio == orden.tallerServicioIdTallerServicio);
+                    if (taller) {
+                        getOrdenTaller = taller.nombre;
+                    }
+
+                    const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.idTipoOrden == orden.tipoOrdenIdTipoOrden);
+                    if (tipoOrden) {
+                        getOrdenTipoOrden = tipoOrden.nombre;
+                    }
+
                     getEstadosOrdenActivo = listAllElement(orden.ordenEstados);
                     let fechaUltimoEstado = "1900-01-01T00:00";
 
@@ -643,12 +652,12 @@ const fillAssetLogOrders = () => {
                     fillAssetOrders += `
                         <tr class=${classTr}>
                             <td>${orden.idOrden}</td>
-                            <td>${orden.tipo_orden}</td>
+                            <td>${getOrdenTipoOrden}</td>
                             <!--<td>${orden.estado_orden} <a data-toggle="tooltip" title="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>-->
                             <td>${getEstado} <a data-toggle="tooltip" title="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
                             <td>${orden.fechaCreacion.slice(0, 10)}</td>
                             <td>${orden.fechaInicial.slice(0, 10)}</td>
-                            <td>${orden.taller_orden}</td>
+                            <td>${getOrdenTaller}</td>
                             <td>${total}</td>
                             <td class="align-center">
                                 <a id="editOrder_${orden.idOrden}" class="btn" href="/ordenes/${orden.idOrden}"><i class="icon-pencil"></i></a>

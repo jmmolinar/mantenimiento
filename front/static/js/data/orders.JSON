@@ -658,12 +658,12 @@
         "fechaRutaCompletado": "2021-05-26T12:31",
         "observaciones": "probando",
 
-        "activoIdActivo": null,
-        "area_vehiculo": "Área 21",
+        "activoIdActivo": 4,
+        "area_vehiculo": "Área 51",
         "tipo_activo": "Vehículo",
         
-        "patente_activo": "ZZZ88-P",
-        "km_recorridos": "500 Km",
+        "patente_activo": "PATENTE-B1",
+        "km_recorridos": "14120 Km",
         "horas_uso": null,
         "estados_posibles": {},
         "total": "600000",
@@ -729,14 +729,13 @@
         "fechaRutaCompletado": "2021-05-26T12:31",
         "observaciones": "probando",
 
-        "activoIdActivo": null,
-        "area_vehiculo": "Área 21",
+        "activoIdActivo": 4,
+        "area_vehiculo": "Área 51",
         "tipo_activo": "Vehículo",
-
-        "patente_activo": "YYY77-P",
-        "km_recorridos": "1500 Km",
-        "horas_uso": null,
         
+        "patente_activo": "PATENTE-B1",
+        "km_recorridos": "14120 Km",
+        "horas_uso": null,
         "estados_posibles": {},
         "total": "600000",
         "periodo_orden": false,
@@ -801,12 +800,12 @@
         "fechaRutaCompletado": "",
         "observaciones": "probando",
 
-        "activoIdActivo": null,
-        "area_vehiculo": "Área 21",
+        "activoIdActivo": 4,
+        "area_vehiculo": "Área 51",
         "tipo_activo": "Vehículo",
-
-        "patente_activo": "XXX66-P",
-        "km_recorridos": "13000 Km",
+        
+        "patente_activo": "PATENTE-B1",
+        "km_recorridos": "14120 Km",
         "horas_uso": null,
         "estados_posibles": {},
         "total": "500000",
@@ -860,12 +859,12 @@
         "fechaRutaCompletado": "",
         "observaciones": "probando",
 
-        "activoIdActivo": null,
-        "area_vehiculo": "Área 21",
+        "activoIdActivo": 4,
+        "area_vehiculo": "Área 51",
         "tipo_activo": "Vehículo",
-
-        "patente_activo": "OOO66-P",
-        "km_recorridos": "16000 Km",
+        
+        "patente_activo": "PATENTE-B1",
+        "km_recorridos": "14120 Km",
         "horas_uso": null,
         "estados_posibles": {},
         "total": "500000",

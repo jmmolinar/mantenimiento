@@ -12,6 +12,7 @@ import {
 } from "./Options.js"
 
 let getTipoMantenimiento = ``;
+let getPatenteActivo = ``;
 let getEstado = ``;
 let getDocumentoCompletado = ``;
 let getArea = ``;
@@ -91,12 +92,14 @@ export default class extends AbstractView {
                 let classFocusState = "";
                 let guardarDeshabilitado = "";
                 let estadoDeshabilitado = "";
-
                 let formatGetEstadosOrdenItem = ``;
-
                 let fechaDeshabilitado = "";
                 let minFechaInicio = "";
                 //let getEstadosOrden = [];
+                radioSeleccionadoRango = "checked"
+                requeridoPorRango = "required"
+                ocultoRango = "border-transparent-1px"
+                ocultoPeriodo = "hidden border-transparent-1px"
 
                 const order = data.find((order) => order.idOrden == identificador)
 
@@ -104,11 +107,35 @@ export default class extends AbstractView {
 
                     getCategoriasOrden = listAllElement(order.ordenCategorias)
                     console.log("Lista Objetos de Categorías de la Orden: " + getCategoriasOrden)
-                    getTipoMantenimiento = order.tipo_orden; // Temporal, debe traer tipoOrdenIdTipoOrden y de allí tomar el nombre
-                    //getEstado = order.estado_orden;
-                    getArea = order.area_vehiculo; // Temporal, se debe obtener del activoIdActivo y de allí el areaIdArea para luego obtener su nombre
-                    getTipoActivo = order.tipo_activo; // Temporal, se debe obtener del activoIdActivo y de allí su tipoActivoIdTipoActivo para luego obtener su nombre
-                    getTaller = order.taller_orden; // Temporal, debe traer tallerServicioIdTallerServicio y de allí tomar el nombre
+
+                    const tipoMantenimiento = getTiposMantenimientos.find((tipoOrden) => tipoOrden.idTipoOrden == order.tipoOrdenIdTipoOrden);
+                    if (tipoMantenimiento) {
+                        getTipoMantenimiento = tipoMantenimiento.nombre;
+                        //getTipoMantenimiento = order.tipo_orden;
+                    }
+
+                    const activo = getActivos.find((activo) => activo.idActivo == order.activoIdActivo);
+                    if(activo){
+                        getPatenteActivo = activo.activo; // Temporal - la patente se debe obtener desde idVehiculo
+                        const area = getAreas.find((area) => area.idArea == activo.areaIdArea);
+                        if(area){
+                            getArea = area.nombre;
+                            //getArea = order.area_vehiculo;
+                        }
+
+                        const tipoActivo = getTiposActivos.find((tipoActivo) => tipoActivo.idTipoActivo == activo.tipoActivoIdTipoActivo);
+                        if (tipoActivo) {
+                            getTipoActivo = tipoActivo.nombre;
+                            //getTipoActivo = order.tipo_activo;
+                        }
+                    }
+
+                    const taller = getTalleres.find((taller) => taller.idTallerServicio == order.tallerServicioIdTallerServicio);
+                    if (taller) {
+                        getTaller = taller.nombre;
+                        //getTaller = order.taller_orden;
+                    }
+                    
                     getRutaAdjuntoCompletado = order.rutaAdjuntoCompletado;
                     getFechaRutaAdjuntoCompletado = order.fechaRutaCompletado;
                     getFechaCreacion = order.fechaCreacion;
@@ -126,9 +153,9 @@ export default class extends AbstractView {
                     console.log("Vericando id de order: " + order.idOrden)
 
                     if (order.km_recorridos == null) {
-                        uso = order.horas_uso
+                        uso = order.horas_uso // Temporal - Esto debe obtenerse mediante activo y su idVehiculo
                     } else {
-                        uso = order.km_recorridos
+                        uso = order.km_recorridos // Temporal - Esto debe obtenerse mediante activo y su idVehiculo
                     }
 
                     // OJO: Validar posteriormente obteniendo de la base de datos el tiempo en la geocerca del taller
@@ -136,24 +163,11 @@ export default class extends AbstractView {
                         tiempoTaller = Math.abs(new Date(order.fechaFinal) - new Date(order.fechaInicial)) / (1000 * 3600 * 24)
                     }
 
-                    /*if (order.periodo_orden == true) {
-                        radioSeleccionadoPeriodo = "checked"
-                        requeridoPorPeriodo = "required"
-                        ocultoPeriodo = "border-transparent-1px"
-                        ocultoRango = "hidden border-transparent-1px"
-                    } else {
-                        radioSeleccionadoRango = "checked"
-                        requeridoPorRango = "required"
-                        ocultoRango = "border-transparent-1px"
-                        ocultoPeriodo = "hidden border-transparent-1px"
-                    }*/
-
-                    //if (order.rango_fecha_orden == true) {
-                    radioSeleccionadoRango = "checked"
+                    /*radioSeleccionadoRango = "checked"
                     requeridoPorRango = "required"
                     ocultoRango = "border-transparent-1px"
-                    ocultoPeriodo = "hidden border-transparent-1px"
-                    //}
+                    ocultoPeriodo = "hidden border-transparent-1px"*/
+
 
                     getEstadosOrden = listAllElement(order.ordenEstados);
                     let getEstadosOrdenItem = [];
@@ -169,6 +183,7 @@ export default class extends AbstractView {
                             const estado = getEstados.find((estado) => estado.idEstado == elem["estadoIdEstado"]);
                             if (estado) {
                                 getEstado = estado.nombre;
+                                //getEstado = order.estado_orden;
                             }
 
                             //getEstado = elem["nombre_estado"];
@@ -224,9 +239,9 @@ export default class extends AbstractView {
                         <!--IDENTIFICADOR DE LA ORDEN-->
                         <div id="orderId_${order.idOrden}" class="control-group order-identity border-transparent-1px">
                             <h1>Orden ${order.idOrden}</h1>
-                            <!--<h3>Patente: ${order.patente_activo}</h3>-->
+                            <!--<h3>Patente: ${getPatenteActivo}</h3>-->
                             <h3 style="display:inline;">Patente: </h3>
-                            <h3 id="valorPatente" style="display:inline;">${order.patente_activo}</h3>
+                            <h3 id="valorPatente" style="display:inline;">${getPatenteActivo}</h3>
                             <h3>${uso}</h3>
                             <a id="downloadOrder_${order.idOrden}" class="btn btn-success" href=""> Orden ${order.idOrden}  <i class="fa fa-cloud-download" ></i></a>
                         </div>
@@ -600,9 +615,10 @@ const guardarOrdenParaJSON = () => {
     ordenJSON.allDay = false
 
     let valorPatente = document.getElementById('valorPatente');
+    //Temporal - el valor de la patente debe obtenerse mediante idVehiculo
     const activo = getActivos.find((activo) => activo.activo == valorPatente.textContent.trim());
     if (activo) {
-        ordenJSON.activoIdActivo = activo.id;
+        ordenJSON.activoIdActivo = activo.idActivo;
     }
 
     const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType').value);
@@ -688,6 +704,8 @@ const guardarOrdenParaJSON = () => {
         let estadoOrdenActualJSON = {
             "ordenIdOrden": idUrl,
             "estadoIdEstado": estadoSeleccionado.idEstado,
+            //tomar en cuenta que según el estado puede ser el sistema quien haga el cambio
+            //Entonces se tendría que hacer un IF para asignar el idUsuario correctamente
             "idUsuario": 1, //temporalmente hasta implementar sincronización con usuario conectado
             "fechaAsignado": currentDate()
         }
