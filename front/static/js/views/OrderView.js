@@ -541,17 +541,27 @@ const fillOrderCategories = () => {
                 let checkboxSeleccionado = ''
                 let requerido = '';
                 let deshabilitado = 'disabled';
-                let costo = '';
+                //let costo = '';
+                let costo = 0;
                 //costoTotal += costo; 
 
                 getCategoriasOrden.forEach(element => {
-                    if (category.nombre == element.nombre) {
-                        console.log(`idCategoría: ${element.categoriaServicioIdCategoriaServicio} - Categoría: ${element.nombre} - Costo: ${element.costo} - Orden: ${identificadorGlobal}`)
+
+                    if(category.idCategoriaServicio == element.categoriaServicioIdCategoriaServicio){
+                        console.log(`idCategoría: ${element.categoriaServicioIdCategoriaServicio} - Categoría: ${category.nombre} - Costo: ${element.costo} - Orden: ${identificadorGlobal}`)
                         checkboxSeleccionado = 'checked';
                         requerido = 'required';
                         deshabilitado = '';
                         costo = element.costo;
                     }
+
+                    /*if (category.nombre == element.nombre) {
+                        console.log(`idCategoría: ${element.categoriaServicioIdCategoriaServicio} - Categoría: ${element.nombre} - Costo: ${element.costo} - Orden: ${identificadorGlobal}`)
+                        checkboxSeleccionado = 'checked';
+                        requerido = 'required';
+                        deshabilitado = '';
+                        costo = element.costo;
+                    }*/
                 })
 
                 fillOrderCategories += `
@@ -735,20 +745,18 @@ const guardarOrdenParaJSON = () => {
             if (appendedPrependedInput.required
                 && appendedPrependedInput.value <= 0) {
 
-                //alert(`Verifique el costo en: ${labelCategoryCheckbox.textContent.trim()}`);
                 costoRequerido = true;
             }
 
             if (appendedPrependedInput.value > 0) {
 
-                //alert("Texto: " + labelCategoryCheckbox.textContent.trim() + " - Costo: " + appendedPrependedInput.value)
                 const category = getCategorias.find((c) => (c.codigo + ' - ' + c.nombre) == labelCategoryCheckbox.textContent.trim());
                 if (category) {
 
                     let categoriasordenJSON = {
                         "ordenIdOrden": idUrl,
                         "categoriaServicioIdCategoriaServicio": category.idCategoriaServicio,
-                        "costo": appendedPrependedInput.value,
+                        "costo": parseFloat(appendedPrependedInput.value),
                         "fechaCategoriaAsignada": ordenJSON.fechaCreacion,
                         "observacionCategoria": ""
                     }

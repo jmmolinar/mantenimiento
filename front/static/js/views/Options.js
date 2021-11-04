@@ -44,7 +44,13 @@ const loadDivSelectedPlan = (div, multiple, key) => {
 
         let strongChild = document.createElement("strong");
         strongChild.setAttribute("class", "name-plan");
-        strongChild.innerHTML = elem[key];
+
+        const plan = getPlanes.find((plan) => plan.idPlanMantenimiento == elem[key]);
+        if (plan) {
+            strongChild.innerHTML = plan.nombre;
+        }
+
+        //strongChild.innerHTML = elem[key];
 
         divChild.appendChild(buttonChild);
         divChild.appendChild(strongChild);

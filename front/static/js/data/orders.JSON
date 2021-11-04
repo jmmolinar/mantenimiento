@@ -44,8 +44,6 @@
         ],
         "ordenCategorias": [
             {
-                "id": 6,
-                "nombre": "Cambio de bujías",
 
                 "ordenIdOrden": 14,
                 "categoriaServicioIdCategoriaServicio": 6,
@@ -55,8 +53,6 @@
 
             },
             {
-                "id": 2,
-                "nombre": "Cambio de filtro de aceite",
 
                 "ordenIdOrden": 14,
                 "categoriaServicioIdCategoriaServicio": 2,
@@ -114,8 +110,6 @@
         ],
         "ordenCategorias": [
             {
-                "id": 7,
-                "nombre": "Engrase general",
 
                 "ordenIdOrden": 13,
                 "categoriaServicioIdCategoriaServicio": 7,
@@ -124,8 +118,6 @@
                 "observacionCategoria": ""
             },
             {
-                "id": 5,
-                "nombre": "Cambio de neumáticos traseros",
 
                 "ordenIdOrden": 13,
                 "categoriaServicioIdCategoriaServicio": 5,
@@ -201,8 +193,6 @@
         ],
         "ordenCategorias": [
             {
-                "id": 7,
-                "nombre": "Engrase general",
 
                 "ordenIdOrden": 12,
                 "categoriaServicioIdCategoriaServicio": 7,
@@ -290,8 +280,6 @@
         ],
         "ordenCategorias": [
             {
-                "id": 5,
-                "nombre": "Cambio de neumáticos traseros",
 
                 "ordenIdOrden": 11,
                 "categoriaServicioIdCategoriaServicio": 5,
@@ -300,8 +288,6 @@
                 "observacionCategoria": ""
             },
             {
-                "id": 1,
-                "nombre": "Cambio de aceite",
 
                 "ordenIdOrden": 11,
                 "categoriaServicioIdCategoriaServicio": 1,
@@ -359,8 +345,6 @@
         ],
         "ordenCategorias": [
             {
-                "id": 5,
-                "nombre": "Cambio de neumáticos traseros",
 
                 "ordenIdOrden": 10,
                 "categoriaServicioIdCategoriaServicio": 5,
@@ -369,8 +353,6 @@
                 "observacionCategoria": ""
             },
             {
-                "id": 1,
-                "nombre": "Cambio de aceite",
 
                 "ordenIdOrden": 10,
                 "categoriaServicioIdCategoriaServicio": 1,
@@ -422,8 +404,6 @@
         ],
         "ordenCategorias": [
             {
-                "id": 5,
-                "nombre": "Cambio de neumáticos traseros",
 
                 "ordenIdOrden": 9,
                 "categoriaServicioIdCategoriaServicio": 5,
@@ -432,8 +412,6 @@
                 "observacionCategoria": ""
             },
             {
-                "id": 4,
-                "nombre": "Cambio de neumáticos delanteros",
 
                 "ordenIdOrden": 9,
                 "categoriaServicioIdCategoriaServicio": 4,
@@ -442,8 +420,6 @@
                 "observacionCategoria": ""
             },
             {
-                "id": 1,
-                "nombre": "Cambio de aceite",
 
                 "ordenIdOrden": 9,
                 "categoriaServicioIdCategoriaServicio": 1,
@@ -507,8 +483,6 @@
         ],
         "ordenCategorias": [
             {
-                "id": 5,
-                "nombre": "Cambio de neumáticos traseros",
 
                 "ordenIdOrden": 8,
                 "categoriaServicioIdCategoriaServicio": 5,
@@ -517,8 +491,6 @@
                 "observacionCategoria": ""
             },
             {
-                "id": 1,
-                "nombre": "Cambio de aceite",
 
                 "ordenIdOrden": 8,
                 "categoriaServicioIdCategoriaServicio": 1,
@@ -582,8 +554,6 @@
         ],
         "ordenCategorias": [
             {
-                "id": 5,
-                "nombre": "Cambio de neumáticos traseros",
 
                 "ordenIdOrden": 7,
                 "categoriaServicioIdCategoriaServicio": 5,
@@ -592,8 +562,6 @@
                 "observacionCategoria": ""
             },
             {
-                "id": 1,
-                "nombre": "Cambio de aceite",
 
                 "ordenIdOrden": 7,
                 "categoriaServicioIdCategoriaServicio": 1,
@@ -651,8 +619,6 @@
         ],
         "ordenCategorias": [
             {
-                "id": 5,
-                "nombre": "Cambio de neumáticos traseros",
 
                 "ordenIdOrden": 6,
                 "categoriaServicioIdCategoriaServicio": 5,
@@ -661,8 +627,6 @@
                 "observacionCategoria": ""
             },
             {
-                "id": 1,
-                "nombre": "Cambio de aceite",
 
                 "ordenIdOrden": 6,
                 "categoriaServicioIdCategoriaServicio": 1,
@@ -720,8 +684,7 @@
         ],
         "ordenCategorias": [
             {
-                "id": 5,
-                "nombre": "Cambio de neumáticos traseros",
+
 
                 "ordenIdOrden": 5,
                 "categoriaServicioIdCategoriaServicio": 5,
@@ -730,8 +693,7 @@
                 "observacionCategoria": ""
             },
             {
-                "id": 1,
-                "nombre": "Cambio de aceite",
+
 
                 "ordenIdOrden": 5,
                 "categoriaServicioIdCategoriaServicio": 1,
@@ -801,8 +763,7 @@
         ],
         "ordenCategorias": [
             {
-                "id": 5,
-                "nombre": "Cambio de neumáticos traseros",
+
 
                 "ordenIdOrden": 4,
                 "categoriaServicioIdCategoriaServicio": 5,
@@ -811,8 +772,7 @@
                 "observacionCategoria": ""
             },
             {
-                "id": 1,
-                "nombre": "Cambio de aceite",
+
 
                 "ordenIdOrden": 4,
                 "categoriaServicioIdCategoriaServicio": 1,
@@ -882,8 +842,7 @@
         ],
         "ordenCategorias": [
             {
-                "id": 5,
-                "nombre": "Cambio de neumáticos traseros",
+
 
                 "ordenIdOrden": 3,
                 "categoriaServicioIdCategoriaServicio": 5,
@@ -892,8 +851,7 @@
                 "observacionCategoria": ""
             },
             {
-                "id": 1,
-                "nombre": "Cambio de aceite",
+
 
                 "ordenIdOrden": 3,
                 "categoriaServicioIdCategoriaServicio": 1,
@@ -951,8 +909,7 @@
         ],
         "ordenCategorias": [
             {
-                "id": 5,
-                "nombre": "Cambio de neumáticos traseros",
+
 
                 "ordenIdOrden": 2,
                 "categoriaServicioIdCategoriaServicio": 5,
@@ -961,8 +918,7 @@
                 "observacionCategoria": ""
             },
             {
-                "id": 1,
-                "nombre": "Cambio de aceite",
+
 
                 "ordenIdOrden": 2,
                 "categoriaServicioIdCategoriaServicio": 1,
@@ -1020,8 +976,6 @@
         ],
         "ordenCategorias": [
             {
-                "id": 5,
-                "nombre": "Cambio de neumáticos traseros",
 
                 "ordenIdOrden": 1,
                 "categoriaServicioIdCategoriaServicio": 5,
@@ -1030,8 +984,6 @@
                 "observacionCategoria": ""
             },
             {
-                "id": 1,
-                "nombre": "Cambio de aceite",
 
                 "ordenIdOrden": 1,
                 "categoriaServicioIdCategoriaServicio": 1,

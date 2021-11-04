@@ -451,7 +451,6 @@ const guardarOrdenParaJSON = () => {
                 if (appendedPrependedInput.required
                     && appendedPrependedInput.value <= 0) {
 
-                    //alert(`Verifique el costo en: ${labelCategoryCheckbox.textContent.trim()}`);
                     costoRequerido = true;
                 }
 
@@ -464,7 +463,7 @@ const guardarOrdenParaJSON = () => {
                         let categoriasNuevaOrdenJSON = {
                             //"ordenIdOrden": 
                             "categoriaServicioIdCategoriaServicio": category.idCategoriaServicio,
-                            "costo": appendedPrependedInput.value,
+                            "costo": parseFloat(appendedPrependedInput.value),
                             "fechaCategoriaAsignada": nuevaOrdenJSON.fechaCreacion,
                             "observacionCategoria": ""
                         }

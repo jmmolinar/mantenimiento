@@ -9,14 +9,10 @@
         "tipoActivoIdTipoActivo": 2,
         "activoPlanes": [
             {
-                "id": "11",
-                "nombre": "Plan GENERAL",
                 "activoIdActivo": 8,
                 "planMantenimientoIdPlanMantenimiento": 11
             },
             {
-                "id": "2",
-                "nombre": "Plan CATERPILLAR",
                 "activoIdActivo": 8,
                 "planMantenimientoIdPlanMantenimiento": 2
             }
@@ -150,14 +146,10 @@
         "tipoActivoIdTipoActivo": 2,
         "activoPlanes": [
             {
-                "id": "11",
-                "nombre": "Plan GENERAL",
                 "activoIdActivo": 6,
                 "planMantenimientoIdPlanMantenimiento": 11
             },
             {
-                "id": "2",
-                "nombre": "Plan CATERPILLAR",
                 "activoIdActivo": 6,
                 "planMantenimientoIdPlanMantenimiento": 2
             }
@@ -227,14 +219,10 @@
         "tipoActivoIdTipoActivo": 1,
         "activoPlanes": [
             {
-                "id": "11",
-                "nombre": "Plan GENERAL",
                 "activoIdActivo": 5,
                 "planMantenimientoIdPlanMantenimiento": 11
             },
             {
-                "id": "5",
-                "nombre": "Plan TOYOTA",
                 "activoIdActivo": 5,
                 "planMantenimientoIdPlanMantenimiento": 5
             }
@@ -304,14 +292,10 @@
         "tipoActivoIdTipoActivo": 1,
         "activoPlanes": [
             {
-                "id": "11",
-                "nombre": "Plan GENERAL",
                 "activoIdActivo": 4,
                 "planMantenimientoIdPlanMantenimiento": 11
             },
             {
-                "id": "6",
-                "nombre": "Plan FORD",
                 "activoIdActivo": 4,
                 "planMantenimientoIdPlanMantenimiento": 6
             }
@@ -381,14 +365,10 @@
         "tipoActivoIdTipoActivo": 1,
         "activoPlanes": [
             {
-                "id": "11",
-                "nombre": "Plan GENERAL",
                 "activoIdActivo": 3,
                 "planMantenimientoIdPlanMantenimiento": 11
             },
             {
-                "id": "8",
-                "nombre": "Plan CHEVROLET",
                 "activoIdActivo": 3,
                 "planMantenimientoIdPlanMantenimiento": 8
             }
@@ -458,14 +438,10 @@
         "tipoActivoIdTipoActivo": 2,
         "activoPlanes": [
             {
-                "id": "11",
-                "nombre": "Plan GENERAL",
                 "activoIdActivo": 2,
                 "planMantenimientoIdPlanMantenimiento": 11
             },
             {
-                "id": "9",
-                "nombre": "Plan KOMATSU",
                 "activoIdActivo": 2,
                 "planMantenimientoIdPlanMantenimiento": 9
             }
@@ -535,14 +511,10 @@
         "tipoActivoIdTipoActivo": 2,
         "activoPlanes": [
             {
-                "id": "11",
-                "nombre": "Plan GENERAL",
                 "activoIdActivo": 1,
                 "planMantenimientoIdPlanMantenimiento": 11
             },
             {
-                "id": "10",
-                "nombre": "Plan JOHN DEERE",
                 "activoIdActivo": 1,
                 "planMantenimientoIdPlanMantenimiento": 10
             }

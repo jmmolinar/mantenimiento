@@ -485,7 +485,7 @@ const fillOptions = () => {
         // Div con Planes del Activo
         const divPlanes = document.getElementById('buttonsSelectedPlan');
         // Cambiarlo para obtener por planMantenimientoIdPlanMantenimiento y no por Nombre
-        loadDivSelectedPlan(divPlanes, getPlanesActivo, "nombre"); // Paso la clave "nombre"
+        loadDivSelectedPlan(divPlanes, getPlanesActivo, "planMantenimientoIdPlanMantenimiento"); // Paso la clave "nombre"
 
         // Select Plan - Antes Individual
         /*const selectPlan = document.getElementById('assetPlan');
@@ -555,6 +555,7 @@ const fillAssetLogOrders = () => {
 
             for (const orden of onlyCurrentAssetOrders) {
 
+                //TEMPORAL - la patente hay que obtenerla desde el idVehiculo
                 if (orden.patente_activo == getActivoPatente) {
 
                     let total = 'CLP '
@@ -564,7 +565,6 @@ const fillAssetLogOrders = () => {
                     } else {
                         total = '';
                     }
-
 
                     const taller = getTalleres.find((taller) => taller.idTallerServicio == orden.tallerServicioIdTallerServicio);
                     if (taller) {
@@ -588,7 +588,6 @@ const fillAssetLogOrders = () => {
                                 getEstado = estado.nombre;
                             }
 
-                            //getEstado = elem["nombre_estado"]; // MOdificar para traer el idEstado y de allí el nombre
                             fechaUltimoEstado = elem["fechaAsignado"];
                         }
 
