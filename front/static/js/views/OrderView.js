@@ -168,7 +168,6 @@ export default class extends AbstractView {
                     ocultoRango = "border-transparent-1px"
                     ocultoPeriodo = "hidden border-transparent-1px"*/
 
-
                     getEstadosOrden = listAllElement(order.ordenEstados);
                     let getEstadosOrdenItem = [];
 
@@ -547,7 +546,7 @@ const fillOrderCategories = () => {
 
                 getCategoriasOrden.forEach(element => {
                     if (category.nombre == element.nombre) {
-                        console.log(`Categoría: ${element.nombre} - Costo: ${element.costo} - Orden: ${identificadorGlobal}`)
+                        console.log(`idCategoría: ${element.categoriaServicioIdCategoriaServicio} - Categoría: ${element.nombre} - Costo: ${element.costo} - Orden: ${identificadorGlobal}`)
                         checkboxSeleccionado = 'checked';
                         requerido = 'required';
                         deshabilitado = '';

@@ -46,12 +46,23 @@
             {
                 "id": 6,
                 "nombre": "Cambio de bujías",
-                "costo": "200000"
+
+                "ordenIdOrden": 14,
+                "categoriaServicioIdCategoriaServicio": 6,
+                "costo": 200000,
+                "fechaCategoriaAsignada": "2021-08-06T12:30",
+                "observacionCategoria": ""
+
             },
             {
                 "id": 2,
                 "nombre": "Cambio de filtro de aceite",
-                "costo": "320000"
+
+                "ordenIdOrden": 14,
+                "categoriaServicioIdCategoriaServicio": 2,
+                "costo": 320000,
+                "fechaCategoriaAsignada": "2021-08-06T12:30",
+                "observacionCategoria": ""
             }
         ],
         "title": "Órden 14",
@@ -105,12 +116,22 @@
             {
                 "id": 7,
                 "nombre": "Engrase general",
-                "costo": "100000"
+
+                "ordenIdOrden": 13,
+                "categoriaServicioIdCategoriaServicio": 7,
+                "costo": 100000,
+                "fechaCategoriaAsignada": "2021-07-30T12:30",
+                "observacionCategoria": ""
             },
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
-                "costo": "200000"
+
+                "ordenIdOrden": 13,
+                "categoriaServicioIdCategoriaServicio": 5,
+                "costo": 200000,
+                "fechaCategoriaAsignada": "2021-07-30T12:30",
+                "observacionCategoria": ""
             }
         ],
         "title": "Órden 13",
@@ -182,7 +203,12 @@
             {
                 "id": 7,
                 "nombre": "Engrase general",
-                "costo": "100000"
+
+                "ordenIdOrden": 12,
+                "categoriaServicioIdCategoriaServicio": 7,
+                "costo": 100000,
+                "fechaCategoriaAsignada": "2021-06-15T12:30",
+                "observacionCategoria": ""
             }
         ],
         "title": "Órden 12",
@@ -266,12 +292,22 @@
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
-                "costo": "200000"
+
+                "ordenIdOrden": 11,
+                "categoriaServicioIdCategoriaServicio": 5,
+                "costo": 200000,
+                "fechaCategoriaAsignada": "2021-06-15T12:30",
+                "observacionCategoria": ""
             },
             {
                 "id": 1,
                 "nombre": "Cambio de aceite",
-                "costo": "300000"
+
+                "ordenIdOrden": 11,
+                "categoriaServicioIdCategoriaServicio": 1,
+                "costo": 300000,
+                "fechaCategoriaAsignada": "2021-06-15T12:30",
+                "observacionCategoria": ""
             }
         ],
         "title": "Órden 11",
@@ -325,12 +361,22 @@
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
-                "costo": ""
+
+                "ordenIdOrden": 10,
+                "categoriaServicioIdCategoriaServicio": 5,
+                "costo": null,
+                "fechaCategoriaAsignada": "2021-06-30T12:30",
+                "observacionCategoria": ""
             },
             {
                 "id": 1,
                 "nombre": "Cambio de aceite",
-                "costo": ""
+
+                "ordenIdOrden": 10,
+                "categoriaServicioIdCategoriaServicio": 1,
+                "costo": null,
+                "fechaCategoriaAsignada": "2021-06-30T12:30",
+                "observacionCategoria": ""
             }
         ],
         "title": "Órden 10",
@@ -378,17 +424,32 @@
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
-                "costo": ""
+
+                "ordenIdOrden": 9,
+                "categoriaServicioIdCategoriaServicio": 5,
+                "costo": null,
+                "fechaCategoriaAsignada": "2021-06-25T12:30",
+                "observacionCategoria": ""
             },
             {
                 "id": 4,
                 "nombre": "Cambio de neumáticos delanteros",
-                "costo": ""
+
+                "ordenIdOrden": 9,
+                "categoriaServicioIdCategoriaServicio": 4,
+                "costo": null,
+                "fechaCategoriaAsignada": "2021-06-25T12:30",
+                "observacionCategoria": ""
             },
             {
                 "id": 1,
                 "nombre": "Cambio de aceite",
-                "costo": ""
+
+                "ordenIdOrden": 9,
+                "categoriaServicioIdCategoriaServicio": 1,
+                "costo": null,
+                "fechaCategoriaAsignada": "2021-06-25T12:30",
+                "observacionCategoria": ""
             }
         ],
         "title": "Órden 9",
@@ -448,12 +509,22 @@
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
-                "costo": "200000"
+
+                "ordenIdOrden": 8,
+                "categoriaServicioIdCategoriaServicio": 5,
+                "costo": 200000,
+                "fechaCategoriaAsignada": "2021-05-01T12:30",
+                "observacionCategoria": ""
             },
             {
                 "id": 1,
                 "nombre": "Cambio de aceite",
-                "costo": "300000"
+
+                "ordenIdOrden": 8,
+                "categoriaServicioIdCategoriaServicio": 1,
+                "costo": 300000,
+                "fechaCategoriaAsignada": "2021-05-01T12:30",
+                "observacionCategoria": ""
             }
         ],
         "title": "Órden 8",
@@ -513,12 +584,22 @@
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
-                "costo": "200000"
+
+                "ordenIdOrden": 7,
+                "categoriaServicioIdCategoriaServicio": 5,
+                "costo": 200000,
+                "fechaCategoriaAsignada": "2021-07-01T12:30",
+                "observacionCategoria": ""
             },
             {
                 "id": 1,
                 "nombre": "Cambio de aceite",
-                "costo": "300000"
+
+                "ordenIdOrden": 7,
+                "categoriaServicioIdCategoriaServicio": 1,
+                "costo": 300000,
+                "fechaCategoriaAsignada": "2021-07-01T12:30",
+                "observacionCategoria": ""
             }
         ],
         "title": "Órden 7",
@@ -572,12 +653,22 @@
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
-                "costo": "200000"
+
+                "ordenIdOrden": 6,
+                "categoriaServicioIdCategoriaServicio": 5,
+                "costo": 200000,
+                "fechaCategoriaAsignada": "2021-07-05T12:30",
+                "observacionCategoria": ""
             },
             {
                 "id": 1,
                 "nombre": "Cambio de aceite",
-                "costo": "300000"
+
+                "ordenIdOrden": 6,
+                "categoriaServicioIdCategoriaServicio": 1,
+                "costo": 300000,
+                "fechaCategoriaAsignada": "2021-07-05T12:30",
+                "observacionCategoria": ""
             }
         ],
         "title": "Órden 6",
@@ -631,12 +722,22 @@
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
-                "costo": "300000"
+
+                "ordenIdOrden": 5,
+                "categoriaServicioIdCategoriaServicio": 5,
+                "costo": 300000,
+                "fechaCategoriaAsignada": "2021-07-08T12:30",
+                "observacionCategoria": ""
             },
             {
                 "id": 1,
                 "nombre": "Cambio de aceite",
-                "costo": "300000"
+
+                "ordenIdOrden": 5,
+                "categoriaServicioIdCategoriaServicio": 1,
+                "costo": 300000,
+                "fechaCategoriaAsignada": "2021-07-08T12:30",
+                "observacionCategoria": ""
             }
         ],
         "title": "Órden 5",
@@ -702,12 +803,22 @@
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
-                "costo": "300000"
+
+                "ordenIdOrden": 4,
+                "categoriaServicioIdCategoriaServicio": 5,
+                "costo": 300000,
+                "fechaCategoriaAsignada": "2021-05-15T12:30",
+                "observacionCategoria": ""
             },
             {
                 "id": 1,
                 "nombre": "Cambio de aceite",
-                "costo": "300000"
+
+                "ordenIdOrden": 4,
+                "categoriaServicioIdCategoriaServicio": 1,
+                "costo": 300000,
+                "fechaCategoriaAsignada": "2021-05-15T12:30",
+                "observacionCategoria": ""
             }
         ],
         "title": "Órden 4",
@@ -773,12 +884,22 @@
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
-                "costo": "300000"
+
+                "ordenIdOrden": 3,
+                "categoriaServicioIdCategoriaServicio": 5,
+                "costo": 300000,
+                "fechaCategoriaAsignada": "2021-05-10T12:30",
+                "observacionCategoria": ""
             },
             {
                 "id": 1,
                 "nombre": "Cambio de aceite",
-                "costo": "300000"
+
+                "ordenIdOrden": 3,
+                "categoriaServicioIdCategoriaServicio": 1,
+                "costo": 300000,
+                "fechaCategoriaAsignada": "2021-05-10T12:30",
+                "observacionCategoria": ""
             }
         ],
         "title": "Órden 3",
@@ -832,12 +953,22 @@
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
-                "costo": "200000"
+
+                "ordenIdOrden": 2,
+                "categoriaServicioIdCategoriaServicio": 5,
+                "costo": 200000,
+                "fechaCategoriaAsignada": "2021-06-30T12:30",
+                "observacionCategoria": ""
             },
             {
                 "id": 1,
                 "nombre": "Cambio de aceite",
-                "costo": "300000"
+
+                "ordenIdOrden": 2,
+                "categoriaServicioIdCategoriaServicio": 1,
+                "costo": 300000,
+                "fechaCategoriaAsignada": "2021-06-30T12:30",
+                "observacionCategoria": ""
             }
         ],
         "title": "Órden 2",
@@ -891,12 +1022,22 @@
             {
                 "id": 5,
                 "nombre": "Cambio de neumáticos traseros",
-                "costo": "200000"
+
+                "ordenIdOrden": 1,
+                "categoriaServicioIdCategoriaServicio": 5,
+                "costo": 200000,
+                "fechaCategoriaAsignada": "2021-06-28T12:30",
+                "observacionCategoria": ""
             },
             {
                 "id": 1,
                 "nombre": "Cambio de aceite",
-                "costo": "300000"
+
+                "ordenIdOrden": 1,
+                "categoriaServicioIdCategoriaServicio": 1,
+                "costo": 300000,
+                "fechaCategoriaAsignada": "2021-06-28T12:30",
+                "observacionCategoria": ""
             }
         ],
         "title": "Órden 1",
