@@ -4,7 +4,8 @@ import {
     listAllElement,
     getAreas,
     getBodegas,
-    getTiposActivos
+    getTiposActivos,
+    getPlanes
  } from "./Options.js";
 
 
@@ -79,7 +80,7 @@ export default class extends AbstractView {
                     //base de datos de Blackgps
                     const area = getAreas.find((area) => area.idArea == activo.areaIdArea);
                     if (area) {
-                        getArea = area.nombre;
+                        getArea = area.nombreArea;
                     }
 
                     const tipoActivo = getTiposActivos.find((tipoActivo) => tipoActivo.idTipoActivo == activo.tipoActivoIdTipoActivo);
@@ -97,7 +98,11 @@ export default class extends AbstractView {
                     let getPlanesActivoNombre = [];
 
                     getPlanesActivo.forEach(elem => {
-                        getPlanesActivoNombre.push(`<div class="alert alert-info no-margin new-padding-top-bottom"><strong>${elem["nombre"]}</strong></div>`)
+                        const plan = getPlanes.find((plan) => plan.idPlanMantenimiento == elem.planMantenimientoIdPlanMantenimiento);
+                        if(plan){
+                            getPlanesActivoNombre.push(`<div class="alert alert-info no-margin new-padding-top-bottom"><strong>${plan.nombre}</strong></div>`)
+                        }
+                        
                     })
 
                     if (getPlanesActivoNombre.length) {

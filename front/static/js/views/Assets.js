@@ -60,7 +60,7 @@ export default class extends AbstractView {
 
                     const area = getAreas.find((area) => area.idArea == activo.areaIdArea);
                     if (area) {
-                        getArea = area.nombre;
+                        getArea = area.nombreArea;
                     }
 
                     const tipoActivo = getTiposActivos.find((tipoActivo) => tipoActivo.idTipoActivo == activo.tipoActivoIdTipoActivo);

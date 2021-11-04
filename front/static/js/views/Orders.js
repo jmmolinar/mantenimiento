@@ -121,7 +121,7 @@ export default class extends AbstractView {
                         getPatenteActivo = activo.activo; // Temporal porque se debe obtener desde idVehiculo
                         const area = getAreas.find((area) => area.idArea == activo.areaIdArea);
                         if(area){
-                            getAreaActivo = area.nombre;
+                            getAreaActivo = area.nombreArea;
                         }
                     }
 
