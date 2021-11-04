@@ -23,9 +23,18 @@ let getGPS = ``;
 let getAnio = ``;
 let getEstado = ``;
 let getPlanesActivo = [];
+let getDocumentosActivo = [];
 let getActivoPatente = ``;
 let getOrdenTipoOrden = ``;
 let getOrdenTaller = ``;
+let getSeguroObligatorio = ``;
+let getVencimientoSeguroObligatorio = ``;
+let getPadronVehicular = ``;
+let getVencimientoPadronVehicular = ``;
+let getPermisoCirculacion = ``;
+let getVencimientoPermisoCirculacion = ``;
+let getRevisionTecnica = ``;
+let getVencimientoRevisionTecnica = ``;
 
 //Variable para controlar la creación de JSON de activo
 let banderaActivo = false;
@@ -78,7 +87,7 @@ export default class extends AbstractView {
                     //getArea = asset.area;
                     const area = getAreas.find((area) => area.idArea == asset.areaIdArea);
                     if (area) {
-                        getArea = area.nombre;
+                        getArea = area.nombreArea;
                     }
 
                     //getBodega = asset.bodega;
@@ -98,13 +107,33 @@ export default class extends AbstractView {
                     getAnio = asset.anio;
                     getGPS = asset.gps_imei; // Temporal - traer de idVehiculo y de allí obtener el gps
                     getActivoPatente = asset.activo; // temporal - traer de idVehiculo y de allí obtener la patente
-                    getPlanesActivo = listAllElement(asset.activoPlanes)
-                    //console.log("Verificando postId: " + identificador)
-                    //console.log("Vericando id de asset: " + asset.idActivo)
+                    getPlanesActivo = listAllElement(asset.activoPlanes);
+                    getDocumentosActivo = listAllElement(asset.documentos);
 
+                    const seguro = getDocumentosActivo.find((seguro) => seguro.tipoDocumentoIdTipoDocumento == 1);
+                    if (seguro) {
+                        getSeguroObligatorio = seguro.rutaAdjunto;
+                        getVencimientoSeguroObligatorio = seguro.fechaVencimiento;
+                    }
 
-                    //REPARAR TAMBIÉN LA OBTENCIÓN DE LO DOCUMENTOS AL MODIFICAR
-                    //JSON assets.json
+                    const padron = getDocumentosActivo.find((padron) => padron.tipoDocumentoIdTipoDocumento == 2);
+                    if (padron) {
+                        getPadronVehicular = padron.rutaAdjunto;
+                        getVencimientoPadronVehicular = padron.fechaVencimiento;
+                    }
+
+                    const permiso = getDocumentosActivo.find((permiso) => permiso.tipoDocumentoIdTipoDocumento == 3);
+                    if (permiso) {
+                        getPermisoCirculacion = permiso.rutaAdjunto;
+                        getVencimientoPermisoCirculacion = permiso.fechaVencimiento;
+                    }
+
+                    const revision = getDocumentosActivo.find((revision) => revision.tipoDocumentoIdTipoDocumento == 4);
+                    if (revision) {
+                        getRevisionTecnica = revision.rutaAdjunto;
+                        getVencimientoRevisionTecnica = revision.fechaVencimiento;
+                    }
+
 
                     if (asset.km == null) {
                         kmHora = asset.horas // Temporal - se debe traer idVehiculo y de allí obtener sus horas
@@ -256,23 +285,21 @@ export default class extends AbstractView {
                                         <label class="span3">
                                             <h5>Seguro obligatorio</h5>
                                         </label>
-
                                         <div class="controls new-div-file-upload">
 		                                    <label id="clickFileSeguro" class='btn btn-primary' href='javascript:;' for="fileSeguro">
                                                 <i class="fa fa-cloud-upload" aria-hidden="true"></i>
                                                 <input id="fileSeguro" type="file" class="new-input-file"
-                                                    name="fileSeguro" size="40">
+                                                    name="fileSeguro" size="40" accept="application/pdf">
 		                                    </label>
                                             <a href="/static/img/Prueba.pdf" download>
-                                                <span class='label label-info' id="fileInfoSeguro" required style="margin-bottom: 5px;">${asset.seguro_obligatorio}</span>
+                                                <span class='label label-info' id="fileInfoSeguro" required style="margin-bottom: 5px;">${getSeguroObligatorio.split("/").pop()}</span>
                                             </a>
                                         </div>
-	                                    
                                         <div class="controls">
                                             <div class="input-prepend input-append">
                                                 <span class="add-on">Vence</span>
                                                 <input id="expireSeguro" type="date" name="expireSeguro" 
-                                                    value="${asset.vencimiento_seguro_obligatorio}" 
+                                                    value="${getVencimientoSeguroObligatorio.slice(0, 10)}" 
                                                     required style="border-radius:3px;"
                                                     min="${currentDate().slice(0, 10)}">
                                             </div>
@@ -288,17 +315,17 @@ export default class extends AbstractView {
 		                                    <label class='btn btn-primary' href='javascript:;' for="filePadron">
                                                 <i class="fa fa-cloud-upload" aria-hidden="true"></i>
 			                                    <input id="filePadron" type="file" class="new-input-file"
-                                                    name="filePadron" size="40">
+                                                    name="filePadron" size="40" accept="application/pdf">
 		                                    </label>
                                             <a href="/static/img/Prueba.pdf" download>
-                                                <span class='label label-info' id="fileInfoPadron" required style="margin-bottom: 5px;">${asset.padron_vehicular}</span>
+                                                <span class='label label-info' id="fileInfoPadron" required style="margin-bottom: 5px;">${getPadronVehicular.split("/").pop()}</span>
                                             </a>
 	                                    </div>
                                         <div class="controls">
                                             <div class="input-prepend input-append">
                                                 <span class="add-on">Vence</span>
                                                 <input id="expirePadron" type="date" name="expirePadron" 
-                                                    value="${asset.vencimiento_padron_vehicular}" 
+                                                    value="${getVencimientoPadronVehicular.slice(0, 10)}" 
                                                     required style="border-radius:3px;"
                                                     min="${currentDate().slice(0, 10)}">
                                             </div>
@@ -314,17 +341,17 @@ export default class extends AbstractView {
 		                                    <label class='btn btn-primary' href='javascript:;' for="fileCirculacion">
                                                 <i class="fa fa-cloud-upload" aria-hidden="true"></i>
 			                                    <input id="fileCirculacion" type="file" class="new-input-file"
-                                                    name="fileCirculacion" size="40">
+                                                    name="fileCirculacion" size="40" accept="application/pdf">
 		                                    </label>
                                             <a href="/static/img/Prueba.pdf" download>
-                                                <span class='label label-info' id="fileInfoCirculacion" required style="margin-bottom: 5px;">${asset.permiso_circulacion}</span>
+                                                <span class='label label-info' id="fileInfoCirculacion" required style="margin-bottom: 5px;">${getPermisoCirculacion.split("/").pop()}</span>
                                             </a>
 	                                    </div>
                                         <div class="controls">
                                             <div class="input-prepend input-append">
                                                 <span class="add-on">Vence</span>
                                                 <input id="expireCirculacion" type="date" name="expireCirculacion" 
-                                                    value="${asset.vencimiento_permiso_circulacion}" 
+                                                    value="${getVencimientoPermisoCirculacion.slice(0, 10)}" 
                                                     required style="border-radius:3px;"
                                                     min="${currentDate().slice(0, 10)}">
                                             </div>
@@ -340,17 +367,17 @@ export default class extends AbstractView {
 		                                    <label class='btn btn-primary' href='javascript:;' for="fileRevision">
                                                 <i class="fa fa-cloud-upload" aria-hidden="true"></i>
 			                                    <input id="fileRevision" type="file" class="new-input-file"
-                                                    name="fileRevision" size="40">
+                                                    name="fileRevision" size="40" accept="application/pdf">
 		                                    </label>
                                             <a href="/static/img/Prueba.pdf" download>
-                                                <span class='label label-info' id="fileInfoRevision" required style="margin-bottom: 5px;">${asset.revision_tecnica}</span>
+                                                <span class='label label-info' id="fileInfoRevision" required style="margin-bottom: 5px;">${getRevisionTecnica.split("/").pop()}</span>
                                             </a>	                                    
 	                                    </div>
                                         <div class="controls">
                                             <div class="input-prepend input-append">
                                                 <span class="add-on">Vence</span>
                                                 <input id="expireRevision" type="date" name="expireRevision" 
-                                                    value="${asset.vencimiento_revision_tecnica}" 
+                                                    value="${getVencimientoRevisionTecnica.slice(0, 10)}" 
                                                     required style="border-radius:3px;"
                                                     min="${currentDate().slice(0, 10)}">
                                             </div>
@@ -444,7 +471,7 @@ const fillOptions = () => {
         const selectArea = document.getElementById('assetAreasOptions');
         //console.log("Id del select: " + selectArea.id);
         //const optionArea = listSelect(areas, "nombre"); // Paso la clave "nombre"
-        const optionArea = listSelect(getAreas, "nombre"); // Paso la clave "nombre"
+        const optionArea = listSelect(getAreas, "nombreArea"); // Paso la clave "nombreArea"
         loadSelectContentAndSelected(optionArea, selectArea, getArea);
         console.log("Área seleccionada: " + getArea);
 
@@ -484,8 +511,7 @@ const fillOptions = () => {
 
         // Div con Planes del Activo
         const divPlanes = document.getElementById('buttonsSelectedPlan');
-        // Cambiarlo para obtener por planMantenimientoIdPlanMantenimiento y no por Nombre
-        loadDivSelectedPlan(divPlanes, getPlanesActivo, "planMantenimientoIdPlanMantenimiento"); // Paso la clave "nombre"
+        loadDivSelectedPlan(divPlanes, getPlanesActivo, "planMantenimientoIdPlanMantenimiento"); // Paso la clave "planMantenimientoIdPlanMantenimiento"
 
         // Select Plan - Antes Individual
         /*const selectPlan = document.getElementById('assetPlan');
@@ -723,7 +749,7 @@ const guardarActivoJSON = () => {
     }
 
     let selectArea = document.getElementById('assetAreasOptions');
-    const area = getAreas.find((area) => area.nombre == selectArea.value);
+    const area = getAreas.find((area) => area.nombreArea == selectArea.value);
     if (area) {
         activoJSON.areaIdArea = area.idArea;
     }

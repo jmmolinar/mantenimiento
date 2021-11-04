@@ -1,42 +1,42 @@
 [
     {
         "idArea": 1,
-        "nombre": "Área 11"
+        "nombreArea": "Área 11"
     },
     {
         "idArea": 2,
-        "nombre": "Área 21"
+        "nombreArea": "Área 21"
     },
     {
         "idArea": 3,
-        "nombre": "Área 31"
+        "nombreArea": "Área 31"
     },
     {
         "idArea": 4,
-        "nombre": "Área 41"
+        "nombreArea": "Área 41"
     },
     {
         "idArea": 5,
-        "nombre": "Área 51"
+        "nombreArea": "Área 51"
     },
     {
         "idArea": 6,
-        "nombre": "Área 61"
+        "nombreArea": "Área 61"
     },
     {
         "idArea": 7,
-        "nombre": "Área 71"
+        "nombreArea": "Área 71"
     },
     {
         "idArea": 8,
-        "nombre": "Área 81"
+        "nombreArea": "Área 81"
     },
     {
         "idArea": 9,
-        "nombre": "Área 91"
+        "nombreArea": "Área 91"
     },
     {
         "idArea": 10,
-        "nombre": "Área 101"
+        "nombreArea": "Área 101"
     }
 ]

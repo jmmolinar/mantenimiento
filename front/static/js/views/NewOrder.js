@@ -265,7 +265,7 @@ const fillOrderOptions = () => {
 
             // Select area -- emplea los datos obtenidos en getJson();
             const selectArea = document.getElementById('orderAreasOptions');
-            const optionArea = listSelect(getAreas, "nombre"); // Paso la clave "nombre"
+            const optionArea = listSelect(getAreas, "nombreArea"); // Paso la clave "nombre"
             loadSelectContent(optionArea, selectArea);
 
             // Select tipo de activo -- emplea los datos obtenidos en getJson();

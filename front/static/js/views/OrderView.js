@@ -119,7 +119,7 @@ export default class extends AbstractView {
                         getPatenteActivo = activo.activo; // Temporal - la patente se debe obtener desde idVehiculo
                         const area = getAreas.find((area) => area.idArea == activo.areaIdArea);
                         if(area){
-                            getArea = area.nombre;
+                            getArea = area.nombreArea;
                             //getArea = order.area_vehiculo;
                         }
 
@@ -461,7 +461,7 @@ const fillOrderOptions = () => {
         // Select area
         const selectArea = document.getElementById('orderAreasOptions');
         //const optionArea = listSelect(areas, "nombre"); // Paso la clave "nombre"
-        const optionArea = listSelect(getAreas, "nombre"); // Paso la clave "nombre"
+        const optionArea = listSelect(getAreas, "nombreArea"); // Paso la clave "nombreArea"
         loadSelectContentAndSelected(optionArea, selectArea, getArea);
         console.log("Área seleccionada: " + getArea);
 

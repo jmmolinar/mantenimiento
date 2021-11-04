@@ -199,18 +199,16 @@ export default class extends AbstractView {
                                 <label class="span3">
                                     <h5>Seguro obligatorio</h5>
                                 </label>
-
                                 <div class="controls new-div-file-upload">
 		                            <label id="clickFileSeguro" class='btn btn-primary' href='javascript:;' for="fileSeguro">
                                         <i class="fa fa-cloud-upload" aria-hidden="true"></i>
                                         <input id="fileSeguro" type="file" class="new-input-file"
-                                            name="fileSeguro" size="40">
+                                            name="fileSeguro" size="40" accept="application/pdf">
 		                            </label>
                                     <a href="/static/img/Prueba.pdf" download>
                                         <span class='label label-info' id="fileInfoSeguro" required style="margin-bottom: 5px;"></span>
                                     </a>
-                                </div>
-	                                    
+                                </div>     
                                 <div class="controls">
                                     <div class="input-prepend input-append">
                                         <span class="add-on">Vence</span>
@@ -230,7 +228,7 @@ export default class extends AbstractView {
 		                            <label class='btn btn-primary' href='javascript:;' for="filePadron">
                                         <i class="fa fa-cloud-upload" aria-hidden="true"></i>
 			                            <input id="filePadron" type="file" class="new-input-file"
-                                            name="filePadron" size="40">
+                                            name="filePadron" size="40" accept="application/pdf">
 		                            </label>
                                     <a href="/static/img/Prueba.pdf" download>
                                         <span class='label label-info' id="fileInfoPadron" required style="margin-bottom: 5px;"></span>
@@ -255,7 +253,7 @@ export default class extends AbstractView {
 		                            <label class='btn btn-primary' href='javascript:;' for="fileCirculacion">
                                         <i class="fa fa-cloud-upload" aria-hidden="true"></i>
 			                            <input id="fileCirculacion" type="file" class="new-input-file"
-                                            name="fileCirculacion" size="40">
+                                            name="fileCirculacion" size="40" accept="application/pdf">
 		                            </label>
                                     <a href="/static/img/Prueba.pdf" download>
                                         <span class='label label-info' id="fileInfoCirculacion" required style="margin-bottom: 5px;"></span>
@@ -280,7 +278,7 @@ export default class extends AbstractView {
 		                            <label class='btn btn-primary' href='javascript:;' for="fileRevision">
                                         <i class="fa fa-cloud-upload" aria-hidden="true"></i>
 			                            <input id="fileRevision" type="file" class="new-input-file"
-                                            name="fileRevision" size="40">
+                                            name="fileRevision" size="40" accept="application/pdf">
 		                            </label>
                                     <a href="/static/img/Prueba.pdf" download>
                                         <span class='label label-info' id="fileInfoRevision" required style="margin-bottom: 5px;"></span>
@@ -364,7 +362,7 @@ const fillOptions = () => {
 
             // Select area -- emplea los datos obtenidos en getJson();
             const selectArea = document.getElementById('assetAreasOptions');
-            const optionArea = listSelect(getAreas, "nombre"); // Paso la clave "nombre"
+            const optionArea = listSelect(getAreas, "nombreArea"); // Paso la clave "nombre"
             loadSelectContent(optionArea, selectArea);
 
             // Select bodega -- emplea los datos obtenidos en getJson();
@@ -432,7 +430,7 @@ const guardarActivoJSON = () => {
     }
 
     let selectArea = document.getElementById('assetAreasOptions');
-    const area = getAreas.find((area) => area.nombre == selectArea.value);
+    const area = getAreas.find((area) => area.nombreArea == selectArea.value);
     if (area) {
         nuevoActivoJSON.areaIdArea = area.idArea;
     }

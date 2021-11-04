@@ -62,15 +62,7 @@
         "mant_en_km": null,
         "horas": "820 Horas",
         "mant_en_horas": "250 Horas",
-        "mant_realizadas": 6,
-        "seguro_obligatorio": "",
-        "vencimiento_seguro_obligatorio": "2022-08-10",
-        "padron_vehicular": "padronVehicular_8.pdf",
-        "vencimiento_padron_vehicular": "2022-08-10",
-        "permiso_circulacion": "permisoCirculacion_8.pdf",
-        "vencimiento_permiso_circulacion": "2022-08-10",
-        "revision_tecnica": "revisionTecnica_8.pdf",
-        "vencimiento_revision_tecnica": "2022-08-10"
+        "mant_realizadas": 6
     },
     {
         "idActivo": 7,
@@ -126,15 +118,7 @@
         "mant_en_km": null,
         "horas": "310 Horas",
         "mant_en_horas": null,
-        "mant_realizadas": 5,
-        "seguro_obligatorio": "seguroObligatorio_7.pdf",
-        "vencimiento_seguro_obligatorio": "2022-08-10",
-        "padron_vehicular": "padronVehicular_7.pdf",
-        "vencimiento_padron_vehicular": "2022-08-10",
-        "permiso_circulacion": "permisoCirculacion_7.pdf",
-        "vencimiento_permiso_circulacion": "2022-08-10",
-        "revision_tecnica": "revisionTecnica_7.pdf",
-        "vencimiento_revision_tecnica": "2022-08-10"
+        "mant_realizadas": 5
     },
     {
         "idActivo": 6,
@@ -199,15 +183,7 @@
         "mant_en_km": null,
         "horas": "720 Horas",
         "mant_en_horas": "300 Horas",
-        "mant_realizadas": 3,
-        "seguro_obligatorio": "seguroObligatorio_6.pdf",
-        "vencimiento_seguro_obligatorio": "2022-08-10",
-        "padron_vehicular": "padronVehicular_6.pdf",
-        "vencimiento_padron_vehicular": "2022-08-10",
-        "permiso_circulacion": "permisoCirculacion_6.pdf",
-        "vencimiento_permiso_circulacion": "2022-08-10",
-        "revision_tecnica": "revisionTecnica_6.pdf",
-        "vencimiento_revision_tecnica": "2022-08-10"
+        "mant_realizadas": 3
     },
     {
         "idActivo": 5,
@@ -272,15 +248,7 @@
         "mant_en_km": "800 Km",
         "horas": null,
         "mant_en_horas": null,
-        "mant_realizadas": 2,
-        "seguro_obligatorio": "seguroObligatorio_5.pdf",
-        "vencimiento_seguro_obligatorio": "2022-08-10",
-        "padron_vehicular": "padronVehicular_5.pdf",
-        "vencimiento_padron_vehicular": "2022-08-10",
-        "permiso_circulacion": "permisoCirculacion_5.pdf",
-        "vencimiento_permiso_circulacion": "2022-08-10",
-        "revision_tecnica": "revisionTecnica_5.pdf",
-        "vencimiento_revision_tecnica": "2022-08-10"
+        "mant_realizadas": 2
     },
     {
         "idActivo": 4,
@@ -345,15 +313,7 @@
         "mant_en_km": "1000 Km",
         "horas": null,
         "mant_en_horas": null,
-        "mant_realizadas": 4,
-        "seguro_obligatorio": "seguroObligatorio_4.pdf",
-        "vencimiento_seguro_obligatorio": "2022-08-10",
-        "padron_vehicular": "padronVehicular_4.pdf",
-        "vencimiento_padron_vehicular": "2022-08-10",
-        "permiso_circulacion": "permisoCirculacion_4.pdf",
-        "vencimiento_permiso_circulacion": "2022-08-10",
-        "revision_tecnica": "revisionTecnica_4.pdf",
-        "vencimiento_revision_tecnica": "2022-08-10"
+        "mant_realizadas": 4
     },
     {
         "idActivo": 3,
@@ -418,15 +378,7 @@
         "mant_en_km": "1000 Km",
         "horas": null,
         "mant_en_horas": null,
-        "mant_realizadas": 6,
-        "seguro_obligatorio": "seguroObligatorio_3.pdf",
-        "vencimiento_seguro_obligatorio": "2022-08-10",
-        "padron_vehicular": "padronVehicular_3.pdf",
-        "vencimiento_padron_vehicular": "2022-08-10",
-        "permiso_circulacion": "permisoCirculacion_3.pdf",
-        "vencimiento_permiso_circulacion": "2022-08-10",
-        "revision_tecnica": "revisionTecnica_·.pdf",
-        "vencimiento_revision_tecnica": "2022-08-10"
+        "mant_realizadas": 6
     },
     {
         "idActivo": 2,
@@ -491,15 +443,7 @@
         "mant_en_km": null,
         "horas": "612 Horas",
         "mant_en_horas": "300 Horas",
-        "mant_realizadas": 2,
-        "seguro_obligatorio": "seguroObligatorio_2.pdf",
-        "vencimiento_seguro_obligatorio": "2022-08-10",
-        "padron_vehicular": "padronVehicular_2.pdf",
-        "vencimiento_padron_vehicular": "2022-08-10",
-        "permiso_circulacion": "permisoCirculacion_2.pdf",
-        "vencimiento_permiso_circulacion": "2022-08-10",
-        "revision_tecnica": "revisionTecnica_2.pdf",
-        "vencimiento_revision_tecnica": "2022-08-10"
+        "mant_realizadas": 2
     },
     {
         "idActivo": 1,
@@ -564,14 +508,6 @@
         "mant_en_km": null,
         "horas": "120 Horas",
         "mant_en_horas": "380 Horas",
-        "mant_realizadas": 1,
-        "seguro_obligatorio": "seguroObligatorio_1.pdf",
-        "vencimiento_seguro_obligatorio": "2022-08-10",
-        "padron_vehicular": "padronVehicular_1.pdf",
-        "vencimiento_padron_vehicular": "2022-08-10",
-        "permiso_circulacion": "permisoCirculacion_1.pdf",
-        "vencimiento_permiso_circulacion": "2022-08-10",
-        "revision_tecnica": "revisionTecnica_1.pdf",
-        "vencimiento_revision_tecnica": "2022-08-10"
+        "mant_realizadas": 1
     }
 ]
