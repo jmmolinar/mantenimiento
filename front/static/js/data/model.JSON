@@ -1,0 +1,1016 @@
+[
+    {
+      "idModeloVehiculo": 1,
+      "nombreModeloVehiculo": "HILUX",
+      "marcaVehiculoIdMarcaVehiculo": 7,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 4,
+      "nombreModeloVehiculo": "RX-8",
+      "marcaVehiculoIdMarcaVehiculo": 3,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 9,
+      "nombreModeloVehiculo": 306,
+      "marcaVehiculoIdMarcaVehiculo": 2,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 11,
+      "nombreModeloVehiculo": "FIORINO",
+      "marcaVehiculoIdMarcaVehiculo": 6,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 13,
+      "nombreModeloVehiculo": "FIORINO",
+      "marcaVehiculoIdMarcaVehiculo": 6,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 15,
+      "nombreModeloVehiculo": "F-150",
+      "marcaVehiculoIdMarcaVehiculo": 9,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 29,
+      "nombreModeloVehiculo": "TERRANO",
+      "marcaVehiculoIdMarcaVehiculo": 1,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 30,
+      "nombreModeloVehiculo": "MIATA",
+      "marcaVehiculoIdMarcaVehiculo": 3,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 31,
+      "nombreModeloVehiculo": "NEMO",
+      "marcaVehiculoIdMarcaVehiculo": 12,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 32,
+      "nombreModeloVehiculo": "PARTNER",
+      "marcaVehiculoIdMarcaVehiculo": 2,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 33,
+      "nombreModeloVehiculo": "AMAROK",
+      "marcaVehiculoIdMarcaVehiculo": 13,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 34,
+      "nombreModeloVehiculo": "CAMION",
+      "marcaVehiculoIdMarcaVehiculo": 14,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 35,
+      "nombreModeloVehiculo": "CAMION JAC",
+      "marcaVehiculoIdMarcaVehiculo": 15,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 36,
+      "nombreModeloVehiculo": "CAMION KIA",
+      "marcaVehiculoIdMarcaVehiculo": 16,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 37,
+      "nombreModeloVehiculo": "CAMION CHEVROLET",
+      "marcaVehiculoIdMarcaVehiculo": 10,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 38,
+      "nombreModeloVehiculo": "CAMION FREIGHTLINER",
+      "marcaVehiculoIdMarcaVehiculo": 17,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 39,
+      "nombreModeloVehiculo": "CAMION VOLKSWAGEN",
+      "marcaVehiculoIdMarcaVehiculo": 13,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 40,
+      "nombreModeloVehiculo": "CAMION CITROEN",
+      "marcaVehiculoIdMarcaVehiculo": 12,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 41,
+      "nombreModeloVehiculo": "CAMION FORD",
+      "marcaVehiculoIdMarcaVehiculo": 9,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 42,
+      "nombreModeloVehiculo": "CAMION HYUNDAI",
+      "marcaVehiculoIdMarcaVehiculo": 18,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 43,
+      "nombreModeloVehiculo": "CAMION ISUZU",
+      "marcaVehiculoIdMarcaVehiculo": 19,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 44,
+      "nombreModeloVehiculo": "CAMION JMC",
+      "marcaVehiculoIdMarcaVehiculo": 20,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 45,
+      "nombreModeloVehiculo": "CAMION MERCEDES",
+      "marcaVehiculoIdMarcaVehiculo": 21,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 46,
+      "nombreModeloVehiculo": "CAMION MITSUBISHI",
+      "marcaVehiculoIdMarcaVehiculo": 22,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 47,
+      "nombreModeloVehiculo": "CAMION PEUGEOT",
+      "marcaVehiculoIdMarcaVehiculo": 2,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 48,
+      "nombreModeloVehiculo": "H1",
+      "marcaVehiculoIdMarcaVehiculo": 18,
+      "rendimientoCombustible": 11.4
+    },
+    {
+      "idModeloVehiculo": 49,
+      "nombreModeloVehiculo": "H100",
+      "marcaVehiculoIdMarcaVehiculo": 18,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 50,
+      "nombreModeloVehiculo": 300,
+      "marcaVehiculoIdMarcaVehiculo": 23,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 51,
+      "nombreModeloVehiculo": "ATEGO",
+      "marcaVehiculoIdMarcaVehiculo": 21,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 52,
+      "nombreModeloVehiculo": 900,
+      "marcaVehiculoIdMarcaVehiculo": 23,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 53,
+      "nombreModeloVehiculo": "VEHICULO",
+      "marcaVehiculoIdMarcaVehiculo": 24,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 54,
+      "nombreModeloVehiculo": "CAMION MAN",
+      "marcaVehiculoIdMarcaVehiculo": 25,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 55,
+      "nombreModeloVehiculo": "CAMION VOLVO",
+      "marcaVehiculoIdMarcaVehiculo": 26,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 56,
+      "nombreModeloVehiculo": "CAMION MAC",
+      "marcaVehiculoIdMarcaVehiculo": 27,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 57,
+      "nombreModeloVehiculo": "CAMION INTERNATIONAL",
+      "marcaVehiculoIdMarcaVehiculo": 28,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 58,
+      "nombreModeloVehiculo": 420,
+      "marcaVehiculoIdMarcaVehiculo": 29,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 59,
+      "nombreModeloVehiculo": "G340",
+      "marcaVehiculoIdMarcaVehiculo": 30,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 60,
+      "nombreModeloVehiculo": "NPR",
+      "marcaVehiculoIdMarcaVehiculo": 10,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 61,
+      "nombreModeloVehiculo": "VITO",
+      "marcaVehiculoIdMarcaVehiculo": 21,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 62,
+      "nombreModeloVehiculo": "SPRINTER",
+      "marcaVehiculoIdMarcaVehiculo": 21,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 63,
+      "nombreModeloVehiculo": "NS300",
+      "marcaVehiculoIdMarcaVehiculo": 10,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 64,
+      "nombreModeloVehiculo": "D21",
+      "marcaVehiculoIdMarcaVehiculo": 1,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 65,
+      "nombreModeloVehiculo": "EXPERT",
+      "marcaVehiculoIdMarcaVehiculo": 2,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 67,
+      "nombreModeloVehiculo": "FRONTIER",
+      "marcaVehiculoIdMarcaVehiculo": 16,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 68,
+      "nombreModeloVehiculo": "BOXER",
+      "marcaVehiculoIdMarcaVehiculo": 2,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 69,
+      "nombreModeloVehiculo": "KANGOO",
+      "marcaVehiculoIdMarcaVehiculo": 29,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 70,
+      "nombreModeloVehiculo": 500,
+      "marcaVehiculoIdMarcaVehiculo": 23,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 71,
+      "nombreModeloVehiculo": "HD78",
+      "marcaVehiculoIdMarcaVehiculo": 18,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 72,
+      "nombreModeloVehiculo": "CARGO",
+      "marcaVehiculoIdMarcaVehiculo": 9,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 73,
+      "nombreModeloVehiculo": "HD120",
+      "marcaVehiculoIdMarcaVehiculo": 18,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 75,
+      "nombreModeloVehiculo": "FRONTIER 2.5",
+      "marcaVehiculoIdMarcaVehiculo": 16,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 76,
+      "nombreModeloVehiculo": 2636,
+      "marcaVehiculoIdMarcaVehiculo": 21,
+      "rendimientoCombustible": 2
+    },
+    {
+      "idModeloVehiculo": 77,
+      "nombreModeloVehiculo": "QASHQAI",
+      "marcaVehiculoIdMarcaVehiculo": 1,
+      "rendimientoCombustible": 12
+    },
+    {
+      "idModeloVehiculo": 78,
+      "nombreModeloVehiculo": "BIPPER",
+      "marcaVehiculoIdMarcaVehiculo": 2,
+      "rendimientoCombustible": 15
+    },
+    {
+      "idModeloVehiculo": 79,
+      "nombreModeloVehiculo": "L300",
+      "marcaVehiculoIdMarcaVehiculo": 22,
+      "rendimientoCombustible": 9
+    },
+    {
+      "idModeloVehiculo": 80,
+      "nombreModeloVehiculo": "JUMPER",
+      "marcaVehiculoIdMarcaVehiculo": 12,
+      "rendimientoCombustible": 11.7
+    },
+    {
+      "idModeloVehiculo": 81,
+      "nombreModeloVehiculo": "DUCATO",
+      "marcaVehiculoIdMarcaVehiculo": 6,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 82,
+      "nombreModeloVehiculo": "HAWK PICK UP",
+      "marcaVehiculoIdMarcaVehiculo": 31,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 83,
+      "nombreModeloVehiculo": "APV",
+      "marcaVehiculoIdMarcaVehiculo": 32,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 84,
+      "nombreModeloVehiculo": "GRANDTIGER",
+      "marcaVehiculoIdMarcaVehiculo": 33,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 85,
+      "nombreModeloVehiculo": "CAMIONETA",
+      "marcaVehiculoIdMarcaVehiculo": 34,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 86,
+      "nombreModeloVehiculo": "BESTA",
+      "marcaVehiculoIdMarcaVehiculo": 16,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 87,
+      "nombreModeloVehiculo": "TRANSP. DE MARINA Y ROCAS",
+      "marcaVehiculoIdMarcaVehiculo": 35,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 88,
+      "nombreModeloVehiculo": "MOVIMIENTO DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 36,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 89,
+      "nombreModeloVehiculo": "MOV. Y LEVANT. DE MATERIALES Y EQUIPOS",
+      "marcaVehiculoIdMarcaVehiculo": 36,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 90,
+      "nombreModeloVehiculo": "MOV. GRAL DE MATERIALES Y EQUIPOS",
+      "marcaVehiculoIdMarcaVehiculo": 37,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 91,
+      "nombreModeloVehiculo": "SERVICIOS GENERALES",
+      "marcaVehiculoIdMarcaVehiculo": 37,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 92,
+      "nombreModeloVehiculo": "TRANSP. DE AGUA Y HUMECTACION DE CAMINOS",
+      "marcaVehiculoIdMarcaVehiculo": 37,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 93,
+      "nombreModeloVehiculo": "TRANSP. DE COMBUSTIBLE",
+      "marcaVehiculoIdMarcaVehiculo": 37,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 94,
+      "nombreModeloVehiculo": "TRANSP. DE HORMIGON Y SHOTCRETE",
+      "marcaVehiculoIdMarcaVehiculo": 37,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 95,
+      "nombreModeloVehiculo": "TRANSP. DE LUBRICANTES",
+      "marcaVehiculoIdMarcaVehiculo": 37,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 96,
+      "nombreModeloVehiculo": "COMPACTACION DE SUPERFICIES",
+      "marcaVehiculoIdMarcaVehiculo": 38,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 97,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 39,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 98,
+      "nombreModeloVehiculo": "MOVIMIENTO DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 40,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 99,
+      "nombreModeloVehiculo": "EXCAVACION DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 41,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 100,
+      "nombreModeloVehiculo": "MOVIMIENTO DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 41,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 101,
+      "nombreModeloVehiculo": "NIVELACION DE SUPERFICIES DE CAMINOS",
+      "marcaVehiculoIdMarcaVehiculo": 41,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 102,
+      "nombreModeloVehiculo": "MOVIMIENTO GENERAL DE MATERIALES",
+      "marcaVehiculoIdMarcaVehiculo": 10,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 103,
+      "nombreModeloVehiculo": "TRANSP. DE AGUA Y HUMECTACION DE CAMINOS",
+      "marcaVehiculoIdMarcaVehiculo": 10,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 104,
+      "nombreModeloVehiculo": "TRANSP. DE LUBRICANTES",
+      "marcaVehiculoIdMarcaVehiculo": 10,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 105,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 10,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 106,
+      "nombreModeloVehiculo": "TRANSP. DE EMULSION",
+      "marcaVehiculoIdMarcaVehiculo": 42,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 107,
+      "nombreModeloVehiculo": "EXCAVACION DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 43,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 108,
+      "nombreModeloVehiculo": "MOVIMIENTO DE MATERIALES Y EQUIPOS",
+      "marcaVehiculoIdMarcaVehiculo": 43,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 109,
+      "nombreModeloVehiculo": "MOVIMIENTO DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 43,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 110,
+      "nombreModeloVehiculo": "COMPACTACION DE SUPERFICIES",
+      "marcaVehiculoIdMarcaVehiculo": 44,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 111,
+      "nombreModeloVehiculo": "MOVIMIENTO GENERAL DE MATERIALES",
+      "marcaVehiculoIdMarcaVehiculo": 9,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 112,
+      "nombreModeloVehiculo": "TRANSP. DE AGUA Y HUMECTACION DE CAMINOS",
+      "marcaVehiculoIdMarcaVehiculo": 9,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 113,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 9,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 114,
+      "nombreModeloVehiculo": "TRANSP. DE PERSONAL",
+      "marcaVehiculoIdMarcaVehiculo": 9,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 115,
+      "nombreModeloVehiculo": "TRANSP. DE COMBUSTIBLE",
+      "marcaVehiculoIdMarcaVehiculo": 34,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 116,
+      "nombreModeloVehiculo": "MOV. GRAL DE MATERIALES Y EQUIPOS",
+      "marcaVehiculoIdMarcaVehiculo": 17,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 117,
+      "nombreModeloVehiculo": "SERVICIOS GENERALES",
+      "marcaVehiculoIdMarcaVehiculo": 17,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 118,
+      "nombreModeloVehiculo": "TRANSP. DE HORMIGON Y SHOTCRETE",
+      "marcaVehiculoIdMarcaVehiculo": 17,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 119,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 17,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 120,
+      "nombreModeloVehiculo": "COMPACTACION DE SUPERFICIES",
+      "marcaVehiculoIdMarcaVehiculo": 45,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 121,
+      "nombreModeloVehiculo": "EXCAVACION DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 46,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 122,
+      "nombreModeloVehiculo": "TRANSP. DE COMBUSTIBLE",
+      "marcaVehiculoIdMarcaVehiculo": 18,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 123,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 18,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 124,
+      "nombreModeloVehiculo": "TRANSP. DE COMBUSTIBLE",
+      "marcaVehiculoIdMarcaVehiculo": 47,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 125,
+      "nombreModeloVehiculo": "MOV. GRAL DE MATERIALES Y EQUIPOS",
+      "marcaVehiculoIdMarcaVehiculo": 28,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 126,
+      "nombreModeloVehiculo": "TRANSP. DE AGUA Y HUMECTACION DE CAMINOS",
+      "marcaVehiculoIdMarcaVehiculo": 28,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 127,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 28,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 128,
+      "nombreModeloVehiculo": "MOV. GRAL DE MATERIALES Y EQUIPOS",
+      "marcaVehiculoIdMarcaVehiculo": 48,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 129,
+      "nombreModeloVehiculo": "TRANSP. DE AGUA Y HUMECTACION DE CAMINOS",
+      "marcaVehiculoIdMarcaVehiculo": 48,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 130,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 48,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 131,
+      "nombreModeloVehiculo": "TRANSP. DE MARINA Y ROCAS",
+      "marcaVehiculoIdMarcaVehiculo": 48,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 132,
+      "nombreModeloVehiculo": "TRANSP. DE PERSONAL",
+      "marcaVehiculoIdMarcaVehiculo": 15,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 133,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 49,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 134,
+      "nombreModeloVehiculo": "NIVELACION DE SUPERFICIES DE CAMINOS",
+      "marcaVehiculoIdMarcaVehiculo": 50,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 135,
+      "nombreModeloVehiculo": "TRANSP. DE MARINA Y ROCAS",
+      "marcaVehiculoIdMarcaVehiculo": 51,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 136,
+      "nombreModeloVehiculo": "EXCAVACION DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 52,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 137,
+      "nombreModeloVehiculo": "EXCAVACION DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 53,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 138,
+      "nombreModeloVehiculo": "MOVIMIENTO DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 53,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 139,
+      "nombreModeloVehiculo": "MOVIMIENTO DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 54,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 140,
+      "nombreModeloVehiculo": "SELECCIONADOR DE ARIDOS",
+      "marcaVehiculoIdMarcaVehiculo": 55,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 141,
+      "nombreModeloVehiculo": "TRANSP. DE AGUA Y HUMECTACION DE CAMINOS",
+      "marcaVehiculoIdMarcaVehiculo": 55,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 142,
+      "nombreModeloVehiculo": "TRANSP. DE HORMIGON Y SHOTCRETE",
+      "marcaVehiculoIdMarcaVehiculo": 55,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 143,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 55,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 144,
+      "nombreModeloVehiculo": "TRANSP. DE MARINA Y ROCAS",
+      "marcaVehiculoIdMarcaVehiculo": 55,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 145,
+      "nombreModeloVehiculo": "MOVIMIENTO DE MATERIALES Y EQUIPOS",
+      "marcaVehiculoIdMarcaVehiculo": 56,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 146,
+      "nombreModeloVehiculo": "MOV. Y LEVANT. DE MATERIALES Y EQUIPOS",
+      "marcaVehiculoIdMarcaVehiculo": 56,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 147,
+      "nombreModeloVehiculo": "MOV. GRAL DE MATERIALES Y EQUIPOS",
+      "marcaVehiculoIdMarcaVehiculo": 21,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 148,
+      "nombreModeloVehiculo": "SERVICIOS GENERALES",
+      "marcaVehiculoIdMarcaVehiculo": 21,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 149,
+      "nombreModeloVehiculo": "TRANSP. DE AGUA Y HUMECTACION DE CAMINOS",
+      "marcaVehiculoIdMarcaVehiculo": 21,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 150,
+      "nombreModeloVehiculo": "TRANSP. DE PERSONAL",
+      "marcaVehiculoIdMarcaVehiculo": 21,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 151,
+      "nombreModeloVehiculo": "TRANSP. Y APLICACION DE HORMIGON",
+      "marcaVehiculoIdMarcaVehiculo": 21,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 152,
+      "nombreModeloVehiculo": "TRANSP. DE MARINA Y ROCAS",
+      "marcaVehiculoIdMarcaVehiculo": 21,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 153,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 57,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 154,
+      "nombreModeloVehiculo": "TRANSP. DE LUBRICANTES",
+      "marcaVehiculoIdMarcaVehiculo": 22,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 155,
+      "nombreModeloVehiculo": "EXCAVACION DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 58,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 156,
+      "nombreModeloVehiculo": "TRANSP. DE HORMIGON Y SHOTCRETE",
+      "marcaVehiculoIdMarcaVehiculo": 59,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 157,
+      "nombreModeloVehiculo": "SERVICIOS GENERALES",
+      "marcaVehiculoIdMarcaVehiculo": 60,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 158,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 2,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 159,
+      "nombreModeloVehiculo": "TRANSP. DE PERSONAL",
+      "marcaVehiculoIdMarcaVehiculo": 2,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 160,
+      "nombreModeloVehiculo": "EXCAVACION DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 61,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 161,
+      "nombreModeloVehiculo": "TRANSP. DE HORMIGON Y SHOTCRETE",
+      "marcaVehiculoIdMarcaVehiculo": 61,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 162,
+      "nombreModeloVehiculo": "SERVICIOS GENERALES",
+      "marcaVehiculoIdMarcaVehiculo": 62,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 163,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 62,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 164,
+      "nombreModeloVehiculo": "TRANSP. DE MARINA Y ROCAS",
+      "marcaVehiculoIdMarcaVehiculo": 29,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 165,
+      "nombreModeloVehiculo": "MOVIMIENTO DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 63,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 166,
+      "nombreModeloVehiculo": "SERVICIOS GENERALES",
+      "marcaVehiculoIdMarcaVehiculo": 30,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 167,
+      "nombreModeloVehiculo": "TRANSP. DE HORMIGON Y SHOTCRETE",
+      "marcaVehiculoIdMarcaVehiculo": 30,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 168,
+      "nombreModeloVehiculo": "TRANSP. DE MARINA Y ROCAS",
+      "marcaVehiculoIdMarcaVehiculo": 30,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 169,
+      "nombreModeloVehiculo": "MOVIMIENTO DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 64,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 170,
+      "nombreModeloVehiculo": "TRANSP. DE AGUA Y HUMECTACION DE CAMINOS",
+      "marcaVehiculoIdMarcaVehiculo": 65,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 171,
+      "nombreModeloVehiculo": "MOV. Y LEVANT. DE MATERIALES Y EQUIPOS",
+      "marcaVehiculoIdMarcaVehiculo": 66,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 172,
+      "nombreModeloVehiculo": "SERVICIOS GENERALES",
+      "marcaVehiculoIdMarcaVehiculo": 67,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 173,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 13,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 174,
+      "nombreModeloVehiculo": "TRANSP. DE PERSONAL",
+      "marcaVehiculoIdMarcaVehiculo": 13,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 175,
+      "nombreModeloVehiculo": "MOV. GRAL DE MATERIALES Y EQUIPOS",
+      "marcaVehiculoIdMarcaVehiculo": 26,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 176,
+      "nombreModeloVehiculo": "NIVELACION DE SUPERFICIES DE CAMINOS",
+      "marcaVehiculoIdMarcaVehiculo": 26,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 177,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 26,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 178,
+      "nombreModeloVehiculo": "EXCAVACION DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 68,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 179,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 69,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 180,
+      "nombreModeloVehiculo": "TRANSP. DE PERSONAL",
+      "marcaVehiculoIdMarcaVehiculo": 69,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 181,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 70,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 182,
+      "nombreModeloVehiculo": "MOVIMIENTO DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 71,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 183,
+      "nombreModeloVehiculo": "TRANSP. DE HORMIGON Y SHOTCRETE",
+      "marcaVehiculoIdMarcaVehiculo": 42,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 184,
+      "nombreModeloVehiculo": "MOVIMIENTO DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 72,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 185,
+      "nombreModeloVehiculo": "MOV. Y LEVANT. DE MATERIALES Y EQUIPOS",
+      "marcaVehiculoIdMarcaVehiculo": 73,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 186,
+      "nombreModeloVehiculo": "COMPACTACIÓN DE SUPERFICIES",
+      "marcaVehiculoIdMarcaVehiculo": 45,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 187,
+      "nombreModeloVehiculo": "EXCAVACION DE TIERRA",
+      "marcaVehiculoIdMarcaVehiculo": 49,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 188,
+      "nombreModeloVehiculo": "MOV. GRAL DE MATERIALES Y EQUIPOS",
+      "marcaVehiculoIdMarcaVehiculo": 55,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 189,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 22,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 190,
+      "nombreModeloVehiculo": "TRANSP. DE MATERIAL",
+      "marcaVehiculoIdMarcaVehiculo": 74,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 191,
+      "nombreModeloVehiculo": "TRANSP. DE MARINA Y ROCAS",
+      "marcaVehiculoIdMarcaVehiculo": 65,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 192,
+      "nombreModeloVehiculo": "SERVICIOS GENERALES",
+      "marcaVehiculoIdMarcaVehiculo": 20,
+      "rendimientoCombustible": 0
+    },
+    {
+      "idModeloVehiculo": 193,
+      "nombreModeloVehiculo": "SERVICIOS GENERALES",
+      "marcaVehiculoIdMarcaVehiculo": 23,
+      "rendimientoCombustible": 0
+    }
+  ]

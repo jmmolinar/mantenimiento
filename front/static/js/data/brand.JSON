@@ -1,0 +1,290 @@
+[
+    {
+      "idMarcaVehiculo": 1,
+      "nombreMarcaVehiculo": "NISSAN"
+    },
+    {
+      "idMarcaVehiculo": 2,
+      "nombreMarcaVehiculo": "PEUGEOT"
+    },
+    {
+      "idMarcaVehiculo": 3,
+      "nombreMarcaVehiculo": "MAZDA"
+    },
+    {
+      "idMarcaVehiculo": 4,
+      "nombreMarcaVehiculo": "BMW"
+    },
+    {
+      "idMarcaVehiculo": 6,
+      "nombreMarcaVehiculo": "FIAT"
+    },
+    {
+      "idMarcaVehiculo": 7,
+      "nombreMarcaVehiculo": "TOYOTA"
+    },
+    {
+      "idMarcaVehiculo": 8,
+      "nombreMarcaVehiculo": "GELLY"
+    },
+    {
+      "idMarcaVehiculo": 9,
+      "nombreMarcaVehiculo": "FORD"
+    },
+    {
+      "idMarcaVehiculo": 10,
+      "nombreMarcaVehiculo": "CHEVROLET"
+    },
+    {
+      "idMarcaVehiculo": 12,
+      "nombreMarcaVehiculo": "CITROEN"
+    },
+    {
+      "idMarcaVehiculo": 13,
+      "nombreMarcaVehiculo": "VOLKSWAGEN"
+    },
+    {
+      "idMarcaVehiculo": 14,
+      "nombreMarcaVehiculo": "CAMION"
+    },
+    {
+      "idMarcaVehiculo": 15,
+      "nombreMarcaVehiculo": "JAC"
+    },
+    {
+      "idMarcaVehiculo": 16,
+      "nombreMarcaVehiculo": "KIA"
+    },
+    {
+      "idMarcaVehiculo": 17,
+      "nombreMarcaVehiculo": "FREIGHTLINER"
+    },
+    {
+      "idMarcaVehiculo": 18,
+      "nombreMarcaVehiculo": "HYUNDAI"
+    },
+    {
+      "idMarcaVehiculo": 19,
+      "nombreMarcaVehiculo": "ISUZU"
+    },
+    {
+      "idMarcaVehiculo": 20,
+      "nombreMarcaVehiculo": "JMC"
+    },
+    {
+      "idMarcaVehiculo": 21,
+      "nombreMarcaVehiculo": "MERCEDES BENZ"
+    },
+    {
+      "idMarcaVehiculo": 22,
+      "nombreMarcaVehiculo": "MITSUBISHI"
+    },
+    {
+      "idMarcaVehiculo": 23,
+      "nombreMarcaVehiculo": "HINO"
+    },
+    {
+      "idMarcaVehiculo": 24,
+      "nombreMarcaVehiculo": "VEHICULO"
+    },
+    {
+      "idMarcaVehiculo": 25,
+      "nombreMarcaVehiculo": "MAN"
+    },
+    {
+      "idMarcaVehiculo": 26,
+      "nombreMarcaVehiculo": "VOLVO"
+    },
+    {
+      "idMarcaVehiculo": 27,
+      "nombreMarcaVehiculo": "MAC"
+    },
+    {
+      "idMarcaVehiculo": 28,
+      "nombreMarcaVehiculo": "INTERNATIONAL"
+    },
+    {
+      "idMarcaVehiculo": 29,
+      "nombreMarcaVehiculo": "RENAULT"
+    },
+    {
+      "idMarcaVehiculo": 30,
+      "nombreMarcaVehiculo": "SCANIA"
+    },
+    {
+      "idMarcaVehiculo": 31,
+      "nombreMarcaVehiculo": "MAHINDRA"
+    },
+    {
+      "idMarcaVehiculo": 32,
+      "nombreMarcaVehiculo": "SUZUKI"
+    },
+    {
+      "idMarcaVehiculo": 33,
+      "nombreMarcaVehiculo": "ZX"
+    },
+    {
+      "idMarcaVehiculo": 34,
+      "nombreMarcaVehiculo": "FOTON"
+    },
+    {
+      "idMarcaVehiculo": 35,
+      "nombreMarcaVehiculo": "ASTRA"
+    },
+    {
+      "idMarcaVehiculo": 36,
+      "nombreMarcaVehiculo": "AUSA"
+    },
+    {
+      "idMarcaVehiculo": 37,
+      "nombreMarcaVehiculo": "BEIBEN"
+    },
+    {
+      "idMarcaVehiculo": 38,
+      "nombreMarcaVehiculo": "BOMAG"
+    },
+    {
+      "idMarcaVehiculo": 39,
+      "nombreMarcaVehiculo": "CANTER"
+    },
+    {
+      "idMarcaVehiculo": 40,
+      "nombreMarcaVehiculo": "CATERPIL"
+    },
+    {
+      "idMarcaVehiculo": 41,
+      "nombreMarcaVehiculo": "CATERPILLAR"
+    },
+    {
+      "idMarcaVehiculo": 42,
+      "nombreMarcaVehiculo": "DIECI"
+    },
+    {
+      "idMarcaVehiculo": 43,
+      "nombreMarcaVehiculo": "DOOSAN"
+    },
+    {
+      "idMarcaVehiculo": 44,
+      "nombreMarcaVehiculo": "DYNAPAC"
+    },
+    {
+      "idMarcaVehiculo": 45,
+      "nombreMarcaVehiculo": "HAMM"
+    },
+    {
+      "idMarcaVehiculo": 46,
+      "nombreMarcaVehiculo": "HITACHI"
+    },
+    {
+      "idMarcaVehiculo": 47,
+      "nombreMarcaVehiculo": "HYUNDAY"
+    },
+    {
+      "idMarcaVehiculo": 48,
+      "nombreMarcaVehiculo": "IVECO"
+    },
+    {
+      "idMarcaVehiculo": 49,
+      "nombreMarcaVehiculo": "JCB"
+    },
+    {
+      "idMarcaVehiculo": 50,
+      "nombreMarcaVehiculo": "JDEERE"
+    },
+    {
+      "idMarcaVehiculo": 51,
+      "nombreMarcaVehiculo": "KENWORTH"
+    },
+    {
+      "idMarcaVehiculo": 52,
+      "nombreMarcaVehiculo": "KOBELCO"
+    },
+    {
+      "idMarcaVehiculo": 53,
+      "nombreMarcaVehiculo": "KOMATSU"
+    },
+    {
+      "idMarcaVehiculo": 54,
+      "nombreMarcaVehiculo": "LIEBHERR"
+    },
+    {
+      "idMarcaVehiculo": 55,
+      "nombreMarcaVehiculo": "MACK"
+    },
+    {
+      "idMarcaVehiculo": 56,
+      "nombreMarcaVehiculo": "MANITOU"
+    },
+    {
+      "idMarcaVehiculo": 57,
+      "nombreMarcaVehiculo": "MERLO"
+    },
+    {
+      "idMarcaVehiculo": 58,
+      "nombreMarcaVehiculo": "NEW HOLLAND"
+    },
+    {
+      "idMarcaVehiculo": 59,
+      "nombreMarcaVehiculo": "NORMET"
+    },
+    {
+      "idMarcaVehiculo": 60,
+      "nombreMarcaVehiculo": "OZGUL"
+    },
+    {
+      "idMarcaVehiculo": 61,
+      "nombreMarcaVehiculo": "PUTZMEISTER"
+    },
+    {
+      "idMarcaVehiculo": 62,
+      "nombreMarcaVehiculo": "RANDON"
+    },
+    {
+      "idMarcaVehiculo": 63,
+      "nombreMarcaVehiculo": "SANDVIK"
+    },
+    {
+      "idMarcaVehiculo": 64,
+      "nombreMarcaVehiculo": "SDLG"
+    },
+    {
+      "idMarcaVehiculo": 65,
+      "nombreMarcaVehiculo": "SINOTRUCK"
+    },
+    {
+      "idMarcaVehiculo": 66,
+      "nombreMarcaVehiculo": "TEREX"
+    },
+    {
+      "idMarcaVehiculo": 67,
+      "nombreMarcaVehiculo": "TREMAC"
+    },
+    {
+      "idMarcaVehiculo": 68,
+      "nombreMarcaVehiculo": "WACKER"
+    },
+    {
+      "idMarcaVehiculo": 69,
+      "nombreMarcaVehiculo": "WOLKSWAGEN"
+    },
+    {
+      "idMarcaVehiculo": 70,
+      "nombreMarcaVehiculo": "YUEJIN"
+    },
+    {
+      "idMarcaVehiculo": 71,
+      "nombreMarcaVehiculo": "ATLAS COPCO"
+    },
+    {
+      "idMarcaVehiculo": 72,
+      "nombreMarcaVehiculo": "GHH"
+    },
+    {
+      "idMarcaVehiculo": 73,
+      "nombreMarcaVehiculo": "GROVE"
+    },
+    {
+      "idMarcaVehiculo": 74,
+      "nombreMarcaVehiculo": "REFORM"
+    }
+  ]
