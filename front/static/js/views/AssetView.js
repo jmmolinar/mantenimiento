@@ -3,7 +3,7 @@ import TableLanguage from "./TableLanguage.js";
 import {
     areas, bodegas, tiposActivos, marcas, planes,
     getAreas, getBodegas, getTiposActivos, getEstados, getActivos, getPlanes,
-    getTiposMantenimientos, getTalleres,
+    getTiposMantenimientos, getTalleres, getVehiculos, getGPS, getMarcas, getModelos,
     listAllElement,
     loadSelectContent,
     loadSelectContentAndSelected,
@@ -19,12 +19,14 @@ let getBodega = ``;
 let getTipoActivo = ``;
 let getMarca = ``;
 let getModelo = ``;
-let getGPS = ``;
+let getGPSImei = ``;
 let getAnio = ``;
 let getEstado = ``;
 let getPlanesActivo = [];
 let getDocumentosActivo = [];
 let getActivoPatente = ``;
+let getActivoKmGps = ``;
+let getActivoHorometro = ``;
 let getOrdenTipoOrden = ``;
 let getOrdenTaller = ``;
 let getSeguroObligatorio = ``;
@@ -45,7 +47,7 @@ let activoJSON = {
     "idActivo": 0,
     "anio": null,
     "dadoDeBaja": false,
-    "idVehiculo": null,
+    "vehiculoIdVehiculo": null,
     "areaIdArea": null,
     "bodegaActivosIdBodegaActivos": null,
     "tipoActivoIdTipoActivo": null,
@@ -77,36 +79,55 @@ export default class extends AbstractView {
 
                 console.log(jqXHR)
                 let fillAsset = ''
-                let kmHora = ''
+                //let kmHora = ''
+                let getActivoUso = ``;
                 const asset = data.find((asset) => asset.idActivo == identificador)
 
                 if (asset) {
 
-                    //Finalmente se debe sincronizar con las áreas de la
-                    //base de datos de Blackgps
-                    //getArea = asset.area;
                     const area = getAreas.find((area) => area.idArea == asset.areaIdArea);
                     if (area) {
                         getArea = area.nombreArea;
                     }
 
-                    //getBodega = asset.bodega;
                     const bodega = getBodegas.find((bodega) => bodega.idBodegaActivos == asset.bodegaActivosIdBodegaActivos);
                     if (bodega) {
                         getBodega = bodega.nombre;
                     }
 
-                    //getTipoActivo = asset.tipo;
                     const tipoActivo = getTiposActivos.find((tipoActivo) => tipoActivo.idTipoActivo == asset.tipoActivoIdTipoActivo);
                     if (tipoActivo) {
                         getTipoActivo = tipoActivo.nombre;
                     }
 
-                    getMarca = asset.marca; // Temporal - traer de idVehiculo y de allí obtener la marca
-                    getModelo = asset.modelo; // Temporal - traer de idVehiculo y de allí obtener el modelo
+
                     getAnio = asset.anio;
-                    getGPS = asset.gps_imei; // Temporal - traer de idVehiculo y de allí obtener el gps
-                    getActivoPatente = asset.activo; // temporal - traer de idVehiculo y de allí obtener la patente
+
+
+                    const vehiculo = getVehiculos.find((vehiculo) => vehiculo.idVehiculo == asset.vehiculoIdVehiculo);
+                    if (vehiculo) {
+
+                        const modelo = getModelos.find((modelo) => modelo.idModeloVehiculo == vehiculo.modeloVehiculoIdModeloVehiculo);
+                        if (modelo) {
+                            getModelo = modelo.nombreModeloVehiculo;
+                            const marca = getMarcas.find((marca) => marca.idMarcaVehiculo == modelo.marcaVehiculoIdMarcaVehiculo);
+                            if (marca) {
+                                getMarca = marca.nombreMarcaVehiculo;
+                            }
+                        }
+
+                        const gps = getGPS.find((gps) => gps.idGps == vehiculo.gpsIdGps);
+                        if (gps) {
+                            getGPSImei = gps.imeiGps;
+                        }
+
+                        getActivoPatente = vehiculo.ppuVehiculo;
+                        getActivoKmGps = parseFloat(vehiculo.kmGps).toFixed(2);
+                        getActivoHorometro = parseFloat(vehiculo.horometro).toFixed(2);
+                        getActivoUso = getActivoKmGps.toString().concat(" Km / ", getActivoHorometro.toString(), " Horas")
+
+                    }
+
                     getPlanesActivo = listAllElement(asset.activoPlanes);
                     getDocumentosActivo = listAllElement(asset.documentos);
 
@@ -135,11 +156,11 @@ export default class extends AbstractView {
                     }
 
 
-                    if (asset.km == null) {
+                    /*if (asset.km == null) {
                         kmHora = asset.horas // Temporal - se debe traer idVehiculo y de allí obtener sus horas
                     } else {
                         kmHora = asset.km // Temporal - se debe traer idVehiculo y de allí obtener sus km
-                    }
+                    }*/
 
                     fillAsset = `<h1></h1>
                     <form id="assetFormQuery_${asset.idActivo}" action="/activos">
@@ -150,7 +171,7 @@ export default class extends AbstractView {
                             <!--<h3>Patente: ${getActivoPatente}</h3>-->
                             <h3 style="display:inline;">Patente: </h3>
                             <h3 id="valorPatente" style="display:inline;">${getActivoPatente}</h3>
-                            <h3>${kmHora}</h3>
+                            <h3>${getActivoUso}</h3>
                             <a id="downloadAsset_${asset.idActivo}" class="btn btn-success" href=""> ${getActivoPatente}  <i class="fa fa-cloud-download"></i></a>
                         </div>
 
@@ -231,7 +252,7 @@ export default class extends AbstractView {
                                         </label>
                                         <div class="controls">
                                             <input id="assetUse" type="text" min="3" maxlength="15" 
-                                                value="${kmHora}" required>
+                                                value="${getActivoUso}" required>
                                         </div>
                                     </div>
 
@@ -242,7 +263,7 @@ export default class extends AbstractView {
                                         </label>
                                         <div class="controls">
                                             <input id="assetGPS" type="text" min="3" maxlength="15" 
-                                                value="${getGPS}" disabled>
+                                                value="${getGPSImei}" disabled>
                                         </div>
                                     </div>
 
@@ -491,7 +512,7 @@ const fillOptions = () => {
 
         // Select Marca desde Options.js
         const selectMarca = document.getElementById('assetBrand');
-        const optionMarca = listSelect(marcas, "nombre"); // Paso la clave "nombre"
+        const optionMarca = listSelect(getMarcas, "nombreMarcaVehiculo"); // Paso la clave "nombreMarcaVehiculo"
         loadSelectContentAndSelected(optionMarca, selectMarca, getMarca);
         console.log("Marca seleccionada: " + getMarca);
 
@@ -742,11 +763,20 @@ const guardarActivoJSON = () => {
     //Por ahora asigno el id de activos, pero en realidad debo traer el idVehiculo
     //que contiene a la patente - Esto se resuelve al hacer el Fk a la 
     //base de datos de BlackGPS
-    let valorPatente = document.getElementById('valorPatente');
+    /*let valorPatente = document.getElementById('valorPatente');
     const activo = getActivos.find((activo) => activo.activo == valorPatente.textContent.trim());
     if (activo) {
-        activoJSON.idVehiculo = activo.id; // Finalmente debe ser el idVehiculo
+        activoJSON.vehiculoIdVehiculo = activo.id; // Finalmente debe ser el idVehiculo
+    }*/
+
+    const activo = getActivos.find((activo) => activo.idActivo == idUrl);
+    if (activo) {
+        const vehiculo = getVehiculos.find((vehiculo) => vehiculo.idVehiculo == activo.vehiculoIdVehiculo);
+        if (vehiculo) {
+            activoJSON.vehiculoIdVehiculo = vehiculo.idVehiculo;
+        }
     }
+
 
     let selectArea = document.getElementById('assetAreasOptions');
     const area = getAreas.find((area) => area.nombreArea == selectArea.value);

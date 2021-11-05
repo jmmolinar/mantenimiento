@@ -215,6 +215,19 @@ let titleVehiculosJSON = 'Vehículos BLACKGPS';
 let getVehiculos = [];
 getVehiculos = getJson(vehiculosJSON, titleVehiculosJSON);
 
+//Marcas de BlackGPS
+let marcasJSON = 'http://192.168.1.114:8080/static/js/data/brand.JSON';
+let titleMarcasJSON = 'Marcas BLACKGPS';
+let getMarcas = [];
+getMarcas = getJson(marcasJSON, titleMarcasJSON);
+
+//Modelos de BlackGPS
+let modelosJSON = 'http://192.168.1.114:8080/static/js/data/model.JSON';
+let titleModelosJSON = 'Modelos BLACKGPS';
+let getModelos = [];
+getModelos = getJson(modelosJSON, titleModelosJSON);
+
+
 //GPS de BlackGPS
 let gpsJSON = 'http://192.168.1.114:8080/static/js/data/gps.JSON';
 let titleGpsJSON = 'GPS BLACKGPS';
@@ -1148,6 +1161,8 @@ export {
     getPlanes,
     getVehiculos,
     getGPS,
+    getMarcas,
+    getModelos,
     //getRegiones,
     loadSelectContent,
     loadDivSelectedPlan,

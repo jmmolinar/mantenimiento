@@ -73,7 +73,7 @@ export default class extends AbstractView {
                         getTipoActivo = tipoActivo.nombre;
                     }
 
-                    const vehiculo = getVehiculos.find((vehiculo) => vehiculo.idVehiculo == activo.idVehiculo);
+                    const vehiculo = getVehiculos.find((vehiculo) => vehiculo.idVehiculo == activo.vehiculoIdVehiculo);
                     if(vehiculo){
                         getVehiculoPatente = vehiculo.ppuVehiculo;
                         getVehiculoKmGps = parseFloat(vehiculo.kmGps).toFixed(2);
