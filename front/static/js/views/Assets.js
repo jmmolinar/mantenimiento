@@ -1,11 +1,15 @@
 import AbstractView from "./AbstractView.js";
 import TableLanguage from "./TableLanguage.js"
 import {
-    getAreas, getTiposActivos
+    getAreas, getTiposActivos, getVehiculos, getGPS
 } from "./Options.js"
 
 let getArea = ``;
 let getTipoActivo = ``;
+let getGPSImei = ``;
+let getVehiculoPatente = ``;
+let getVehiculoKmGps = ``;
+let getVehiculoHorometro = ``;
 
 export default class extends AbstractView {
     constructor(params) {
@@ -55,7 +59,8 @@ export default class extends AbstractView {
                 customTable();
                 console.log(jqXHR)
                 let fillAssets = ''
-                let kmHora = ''
+                //let kmHora = ''
+                let uso = ``;
                 for (const activo of data) {
 
                     const area = getAreas.find((area) => area.idArea == activo.areaIdArea);
@@ -68,20 +73,32 @@ export default class extends AbstractView {
                         getTipoActivo = tipoActivo.nombre;
                     }
 
-                    if (activo.km == null) {
+                    const vehiculo = getVehiculos.find((vehiculo) => vehiculo.idVehiculo == activo.idVehiculo);
+                    if(vehiculo){
+                        getVehiculoPatente = vehiculo.ppuVehiculo;
+                        getVehiculoKmGps = parseFloat(vehiculo.kmGps).toFixed(2);
+                        getVehiculoHorometro = parseFloat(vehiculo.horometro).toFixed(2);
+                        uso = getVehiculoKmGps.toString().concat(" Km / ", getVehiculoHorometro.toString(), " Horas")
+                        const gps = getGPS.find((gps) => gps.idGps == vehiculo.gpsIdGps);
+                        if(gps){
+                            getGPSImei = gps.imeiGps;
+                        }
+                    }
+
+                    /*if (activo.km == null) {
                         kmHora = activo.horas // Temporal - se debe traer idVehiculo y de allí obtener sus horas
                     } else {
                         kmHora = activo.km // Temporal - se debe traer idVehiculo y de allí obtener sus km
-                    }
+                    }*/
 
                     fillAssets += `
                     <tr>
                         <td>${activo.idActivo}</td>
-                        <td>${activo.activo}</td> <!--Modificar para leer el idVehículo y de allí traer la patente -->
+                        <td>${getVehiculoPatente}</td>
                         <td>${getTipoActivo}</td>
-                        <td>${activo.gps_imei}</td> <!-- Temporal porque se debe traer mediante idVehiculo -->
+                        <td>${getGPSImei}</td> <!-- Temporal porque se debe traer mediante idVehiculo -->
                         <td>${getArea}</td>
-                        <td>${kmHora}</td>
+                        <td>${uso}</td>
                         <td class="align-center">
                             <a id="editAsset_${activo.idActivo}" class="btn only-to-id-url" href="/activos/${activo.idActivo}"><i class="icon-pencil"></i></a>
                             <a id="deleteAsset_${activo.idActivo}" class="btn" disabled><i class="icon-trash"></i></a>

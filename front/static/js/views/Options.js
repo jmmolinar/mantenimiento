@@ -192,7 +192,6 @@ let getEstados = [];
 getEstados = getJson(stateJSON, titleStateJSON);
 
 //Areas
-//Ojo - finalmente getAreas se debe obtener de la base de datos de BlackGps
 let areasJSON = 'http://192.168.1.114:8080/static/js/data/areas.JSON';
 let titleAreasJSON = "Áreas";
 let getAreas = [];
@@ -209,6 +208,18 @@ let activosJSON = 'http://192.168.1.114:8080/static/js/data/assets.JSON';
 let titleActivosJSON = 'Activos';
 let getActivos = [];
 getActivos = getJson(activosJSON, titleActivosJSON);
+
+//Vehiculos de BlackGPS
+let vehiculosJSON = 'http://192.168.1.114:8080/static/js/data/vehicle.JSON';
+let titleVehiculosJSON = 'Vehículos BLACKGPS';
+let getVehiculos = [];
+getVehiculos = getJson(vehiculosJSON, titleVehiculosJSON);
+
+//GPS de BlackGPS
+let gpsJSON = 'http://192.168.1.114:8080/static/js/data/gps.JSON';
+let titleGpsJSON = 'GPS BLACKGPS';
+let getGPS = [];
+getGPS = getJson(gpsJSON, titleGpsJSON);
 
 //Talleres
 let talleresJSON = 'http://192.168.1.114:8080/static/js/data/workshops.JSON';
@@ -1135,6 +1146,8 @@ export {
     getBodegas,
     getCategorias,
     getPlanes,
+    getVehiculos,
+    getGPS,
     //getRegiones,
     loadSelectContent,
     loadDivSelectedPlan,
