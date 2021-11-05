@@ -4,30 +4,14 @@
         "fechaCreacion": "2021-08-06T12:30",
         "fechaInicial": "2021-08-21T12:30",
         "fechaFinal": "2021-08-23T16:30",
-
         "tipoOrdenIdTipoOrden": 1,
-        "tipo_orden": "Preventivo",
         "tallerServicioIdTallerServicio": 4,
-        "taller_orden": "Taller DDD",
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
         "observaciones": "",
-
         "activoIdActivo": 6,
-        "area_vehiculo": "Área 101",
-        "tipo_activo": "Máquina",
-        
-        "patente_activo": "MAQ-A3",
-
-        "km_recorridos": null,
-        "horas_uso": "920 Horas",
         "estados_posibles": {},
         "total": "520000",
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "rango_fecha_orden": true,
         "ordenEstados": [
             {
                 "ordenIdOrden": 14,
@@ -71,29 +55,14 @@
         "fechaCreacion": "2021-07-30T12:30",
         "fechaInicial": "2021-08-15T12:30",
         "fechaFinal": "2021-08-17T12:30",
-
         "tipoOrdenIdTipoOrden": 1,
-        "tipo_orden": "Preventivo",
         "tallerServicioIdTallerServicio": 3,
-        "taller_orden": "Taller CCC",
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
         "observaciones": "",
-
         "activoIdActivo": 8,
-        "area_vehiculo": "Área 101",
-        "tipo_activo": "Máquina",
-        "patente_activo": "MAQ-A8",
-
-        "km_recorridos": null,
-        "horas_uso": "820 Horas",
         "estados_posibles": {},
         "total": "300000",
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "rango_fecha_orden": true,
         "ordenEstados": [
             {
                 "ordenIdOrden": 13,
@@ -136,29 +105,14 @@
         "fechaCreacion": "2021-06-15T12:30",
         "fechaInicial": "2021-07-05T12:30",
         "fechaFinal": "2021-07-07T12:30",
-
         "tipoOrdenIdTipoOrden": 1,
-        "tipo_orden": "Preventivo",
         "tallerServicioIdTallerServicio": 2,
-        "taller_orden": "Taller BBB",
         "rutaAdjuntoCompletado": "/path/documentoCompletado_12.pdf",
         "fechaRutaCompletado": "2021-07-06T12:31",
         "observaciones": "",
-
         "activoIdActivo": 6,
-        "area_vehiculo": "Área 101",
-        "tipo_activo": "Máquina",
-
-        "patente_activo": "MAQ-A3",
-        "km_recorridos": null,
-        "horas_uso": "720 Horas",
         "estados_posibles": {},
         "total": "100000",
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "rango_fecha_orden": true,
         "ordenEstados": [
             {
                 "ordenIdOrden": 12,
@@ -193,7 +147,6 @@
         ],
         "ordenCategorias": [
             {
-
                 "ordenIdOrden": 12,
                 "categoriaServicioIdCategoriaServicio": 7,
                 "costo": 100000,
@@ -211,29 +164,14 @@
         "fechaCreacion": "2021-06-15T12:30",
         "fechaInicial": "2021-07-14T12:30",
         "fechaFinal": "2021-07-16T12:30",
-
         "tipoOrdenIdTipoOrden": 1,
-        "tipo_orden": "Preventivo",
         "tallerServicioIdTallerServicio": 1,
-        "taller_orden": "Taller AAA",
         "rutaAdjuntoCompletado": "/path/documentoCompletado_11.pdf",
         "fechaRutaCompletado": "2021-07-19T12:31",
         "observaciones": "prueba",
-
         "activoIdActivo": 5,
-        "area_vehiculo": "Área 51",
-        "tipo_activo": "Vehículo",
-
-        "patente_activo": "PATENTE-A1",
-        "km_recorridos": "10200 Km",
-        "horas_uso": null,
         "estados_posibles": {},
         "total": "500000",
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "rango_fecha_orden": true,
         "ordenEstados": [
             {
                 "ordenIdOrden": 11,
@@ -280,7 +218,6 @@
         ],
         "ordenCategorias": [
             {
-
                 "ordenIdOrden": 11,
                 "categoriaServicioIdCategoriaServicio": 5,
                 "costo": 200000,
@@ -288,7 +225,6 @@
                 "observacionCategoria": ""
             },
             {
-
                 "ordenIdOrden": 11,
                 "categoriaServicioIdCategoriaServicio": 1,
                 "costo": 300000,
@@ -306,29 +242,14 @@
         "fechaCreacion": "2021-06-30T12:30",
         "fechaInicial": "",
         "fechaFinal": "",
-
         "tipoOrdenIdTipoOrden": 1,
-        "tipo_orden": "Preventivo",
-        "tallerServicioIdTallerServicio": 1,
-        "taller_orden": "Taller AAA",
+        "tallerServicioIdTallerServicio": null,
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
         "observaciones": "",
-
         "activoIdActivo": 6,
-        "area_vehiculo": "Área 101",
-        "tipo_activo": "Máquina",
-
-        "patente_activo": "MAQ-A3",
-        "km_recorridos": null,
-        "horas_uso": "720 Horas",
         "estados_posibles": {},
         "total": "",
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "rango_fecha_orden": true,
         "ordenEstados": [
             {
                 "ordenIdOrden": 10,
@@ -345,7 +266,6 @@
         ],
         "ordenCategorias": [
             {
-
                 "ordenIdOrden": 10,
                 "categoriaServicioIdCategoriaServicio": 5,
                 "costo": null,
@@ -353,7 +273,6 @@
                 "observacionCategoria": ""
             },
             {
-
                 "ordenIdOrden": 10,
                 "categoriaServicioIdCategoriaServicio": 1,
                 "costo": null,
@@ -371,29 +290,14 @@
         "fechaCreacion": "2021-06-25T12:30",
         "fechaInicial": "",
         "fechaFinal": "",
-
         "tipoOrdenIdTipoOrden": 1,
-        "tipo_orden": "Preventivo",
-        "tallerServicioIdTallerServicio": 3,
-        "taller_orden": "Taller CCC",
+        "tallerServicioIdTallerServicio": null,
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
         "observaciones": "prueba",
-
         "activoIdActivo": 4,
-        "area_vehiculo": "Área 51",
-        "tipo_activo": "Vehículo",
-
-        "patente_activo": "PATENTE-B1",
-        "km_recorridos": "14120 Km",
-        "horas_uso": null,
         "estados_posibles": {},
         "total": "",
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "rango_fecha_orden": true,
         "ordenEstados": [
             {
                 "ordenIdOrden": 9,
@@ -404,7 +308,6 @@
         ],
         "ordenCategorias": [
             {
-
                 "ordenIdOrden": 9,
                 "categoriaServicioIdCategoriaServicio": 5,
                 "costo": null,
@@ -412,7 +315,6 @@
                 "observacionCategoria": ""
             },
             {
-
                 "ordenIdOrden": 9,
                 "categoriaServicioIdCategoriaServicio": 4,
                 "costo": null,
@@ -420,7 +322,6 @@
                 "observacionCategoria": ""
             },
             {
-
                 "ordenIdOrden": 9,
                 "categoriaServicioIdCategoriaServicio": 1,
                 "costo": null,
@@ -438,29 +339,14 @@
         "fechaCreacion": "2021-05-01T12:30",
         "fechaInicial": "2021-05-24T12:30",
         "fechaFinal": "2021-05-26T12:30",
-
         "tipoOrdenIdTipoOrden": 1,
-        "tipo_orden": "Preventivo",
         "tallerServicioIdTallerServicio": 1,
-        "taller_orden": "Taller AAA",
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
         "observaciones": "probando",
-
         "activoIdActivo": 3,
-        "area_vehiculo": "Área 71",
-        "tipo_activo": "Vehículo",
-
-        "patente_activo": "PATENTE-C1",
-        "km_recorridos": "1200 Km",
-        "horas_uso": null,
         "estados_posibles": {},
         "total": "500000",
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "rango_fecha_orden": true,
         "ordenEstados": [
             {
                 "ordenIdOrden": 8,
@@ -483,7 +369,6 @@
         ],
         "ordenCategorias": [
             {
-
                 "ordenIdOrden": 8,
                 "categoriaServicioIdCategoriaServicio": 5,
                 "costo": 200000,
@@ -491,7 +376,6 @@
                 "observacionCategoria": ""
             },
             {
-
                 "ordenIdOrden": 8,
                 "categoriaServicioIdCategoriaServicio": 1,
                 "costo": 300000,
@@ -509,29 +393,14 @@
         "fechaCreacion": "2021-07-01T12:30",
         "fechaInicial": "2021-07-21T12:30",
         "fechaFinal": "2021-07-23T12:30",
-
         "tipoOrdenIdTipoOrden": 1,
-        "tipo_orden": "Preventivo",
-        "tallerServicioIdTallerServicio": 1,
-        "taller_orden": "Taller AAA",
+        "tallerServicioIdTallerServicio": 2,
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
         "observaciones": "probando",
-
         "activoIdActivo": 5,
-        "area_vehiculo": "Área 51",
-        "tipo_activo": "Vehículo",
-
-        "patente_activo": "PATENTE-A1",
-        "km_recorridos": "10200 Km",
-        "horas_uso": null,
         "estados_posibles": {},
         "total": "500000",
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "rango_fecha_orden": true,
         "ordenEstados": [
             {
                 "ordenIdOrden": 7,
@@ -554,7 +423,6 @@
         ],
         "ordenCategorias": [
             {
-
                 "ordenIdOrden": 7,
                 "categoriaServicioIdCategoriaServicio": 5,
                 "costo": 200000,
@@ -562,7 +430,6 @@
                 "observacionCategoria": ""
             },
             {
-
                 "ordenIdOrden": 7,
                 "categoriaServicioIdCategoriaServicio": 1,
                 "costo": 300000,
@@ -580,29 +447,14 @@
         "fechaCreacion": "2021-07-05T12:30",
         "fechaInicial": "2021-07-26T12:30",
         "fechaFinal": "2021-07-28T12:30",
-
         "tipoOrdenIdTipoOrden": 1,
-        "tipo_orden": "Preventivo",
         "tallerServicioIdTallerServicio": 1,
-        "taller_orden": "Taller AAA",
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
         "observaciones": "probando",
-
         "activoIdActivo": 2,
-        "area_vehiculo": "Área 101",
-        "tipo_activo": "Vehículo",
-
-        "patente_activo": "MAQ-A1",
-        "km_recorridos": null,
-        "horas_uso": "612 Horas",
         "estados_posibles": {},
         "total": "500000",
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "rango_fecha_orden": true,
         "ordenEstados": [
             {
                 "ordenIdOrden": 6,
@@ -627,7 +479,6 @@
                 "observacionCategoria": ""
             },
             {
-
                 "ordenIdOrden": 6,
                 "categoriaServicioIdCategoriaServicio": 1,
                 "costo": 300000,
@@ -645,29 +496,14 @@
         "fechaCreacion": "2021-07-08T12:30",
         "fechaInicial": "2021-07-28T12:30",
         "fechaFinal": "2021-07-30T12:30",
-
         "tipoOrdenIdTipoOrden": 1,
-        "tipo_orden": "Preventivo",
         "tallerServicioIdTallerServicio": 1,
-        "taller_orden": "Taller AAA",
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
         "observaciones": "probando",
-
         "activoIdActivo": 1,
-        "area_vehiculo": "Área 101",
-        "tipo_activo": "Máquina",
-
-        "patente_activo": "MAQ-A2",
-        "km_recorridos": null,
-        "horas_uso": "120 HOras",
         "estados_posibles": {},
         "total": "600000",
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "rango_fecha_orden": true,
         "ordenEstados": [
             {
                 "ordenIdOrden": 5,
@@ -684,8 +520,6 @@
         ],
         "ordenCategorias": [
             {
-
-
                 "ordenIdOrden": 5,
                 "categoriaServicioIdCategoriaServicio": 5,
                 "costo": 300000,
@@ -693,8 +527,6 @@
                 "observacionCategoria": ""
             },
             {
-
-
                 "ordenIdOrden": 5,
                 "categoriaServicioIdCategoriaServicio": 1,
                 "costo": 300000,
@@ -712,29 +544,14 @@
         "fechaCreacion": "2021-05-15T12:30",
         "fechaInicial": "2021-05-24T12:30",
         "fechaFinal": "2021-05-26T12:30",
-
         "tipoOrdenIdTipoOrden": 2,
-        "tipo_orden": "Correctivo",
         "tallerServicioIdTallerServicio": 1,
-        "taller_orden": "Taller AAA",
         "rutaAdjuntoCompletado": "/path/documentoCompletado_4.pdf",
         "fechaRutaCompletado": "2021-05-26T12:31",
         "observaciones": "probando",
-
         "activoIdActivo": 4,
-        "area_vehiculo": "Área 51",
-        "tipo_activo": "Vehículo",
-        
-        "patente_activo": "PATENTE-B1",
-        "km_recorridos": "14120 Km",
-        "horas_uso": null,
         "estados_posibles": {},
         "total": "600000",
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "rango_fecha_orden": true,
         "ordenEstados": [
             {
                 "ordenIdOrden": 4,
@@ -763,8 +580,6 @@
         ],
         "ordenCategorias": [
             {
-
-
                 "ordenIdOrden": 4,
                 "categoriaServicioIdCategoriaServicio": 5,
                 "costo": 300000,
@@ -772,8 +587,6 @@
                 "observacionCategoria": ""
             },
             {
-
-
                 "ordenIdOrden": 4,
                 "categoriaServicioIdCategoriaServicio": 1,
                 "costo": 300000,
@@ -791,29 +604,14 @@
         "fechaCreacion": "2021-05-10T12:30",
         "fechaInicial": "2021-05-24T12:30",
         "fechaFinal": "2021-05-26T12:30",
-
         "tipoOrdenIdTipoOrden": 2,
-        "tipo_orden": "Correctivo",
         "tallerServicioIdTallerServicio": 1,
-        "taller_orden": "Taller AAA",
         "rutaAdjuntoCompletado": "/path/documentoCompletado_3.pdf",
         "fechaRutaCompletado": "2021-05-26T12:31",
         "observaciones": "probando",
-
         "activoIdActivo": 4,
-        "area_vehiculo": "Área 51",
-        "tipo_activo": "Vehículo",
-        
-        "patente_activo": "PATENTE-B1",
-        "km_recorridos": "14120 Km",
-        "horas_uso": null,
         "estados_posibles": {},
         "total": "600000",
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "rango_fecha_orden": true,
         "ordenEstados": [
             {
                 "ordenIdOrden": 3,
@@ -842,8 +640,6 @@
         ],
         "ordenCategorias": [
             {
-
-
                 "ordenIdOrden": 3,
                 "categoriaServicioIdCategoriaServicio": 5,
                 "costo": 300000,
@@ -851,8 +647,6 @@
                 "observacionCategoria": ""
             },
             {
-
-
                 "ordenIdOrden": 3,
                 "categoriaServicioIdCategoriaServicio": 1,
                 "costo": 300000,
@@ -870,29 +664,14 @@
         "fechaCreacion": "2021-06-30T12:30",
         "fechaInicial": "",
         "fechaFinal": "",
-
         "tipoOrdenIdTipoOrden": 1,
-        "tipo_orden": "Preventivo",
-        "tallerServicioIdTallerServicio": 1,
-        "taller_orden": "Taller AAA",
+        "tallerServicioIdTallerServicio": null,
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
         "observaciones": "probando",
-
         "activoIdActivo": 4,
-        "area_vehiculo": "Área 51",
-        "tipo_activo": "Vehículo",
-        
-        "patente_activo": "PATENTE-B1",
-        "km_recorridos": "14120 Km",
-        "horas_uso": null,
         "estados_posibles": {},
         "total": "500000",
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "rango_fecha_orden": true,
         "ordenEstados": [
             {
                 "ordenIdOrden": 2,
@@ -909,8 +688,6 @@
         ],
         "ordenCategorias": [
             {
-
-
                 "ordenIdOrden": 2,
                 "categoriaServicioIdCategoriaServicio": 5,
                 "costo": 200000,
@@ -918,8 +695,6 @@
                 "observacionCategoria": ""
             },
             {
-
-
                 "ordenIdOrden": 2,
                 "categoriaServicioIdCategoriaServicio": 1,
                 "costo": 300000,
@@ -937,29 +712,14 @@
         "fechaCreacion": "2021-06-28T12:30",
         "fechaInicial": "",
         "fechaFinal": "",
-
         "tipoOrdenIdTipoOrden": 1,
-        "tipo_orden": "Preventivo",
-        "tallerServicioIdTallerServicio": 1,
-        "taller_orden": "Taller AAA",
+        "tallerServicioIdTallerServicio": null,
         "rutaAdjuntoCompletado": "",
         "fechaRutaCompletado": "",
         "observaciones": "probando",
-
         "activoIdActivo": 4,
-        "area_vehiculo": "Área 51",
-        "tipo_activo": "Vehículo",
-        
-        "patente_activo": "PATENTE-B1",
-        "km_recorridos": "14120 Km",
-        "horas_uso": null,
         "estados_posibles": {},
         "total": "500000",
-        "periodo_orden": false,
-        "periodo_inicio": null,
-        "periodo_cada": null,
-        "periodo_frecuencia_cada": null,
-        "rango_fecha_orden": true,
         "ordenEstados": [
             {
                 "ordenIdOrden": 1,
@@ -976,7 +736,6 @@
         ],
         "ordenCategorias": [
             {
-
                 "ordenIdOrden": 1,
                 "categoriaServicioIdCategoriaServicio": 5,
                 "costo": 200000,
@@ -984,7 +743,6 @@
                 "observacionCategoria": ""
             },
             {
-
                 "ordenIdOrden": 1,
                 "categoriaServicioIdCategoriaServicio": 1,
                 "costo": 300000,

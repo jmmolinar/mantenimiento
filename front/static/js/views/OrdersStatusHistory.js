@@ -69,7 +69,7 @@ export default class extends AbstractView {
                 <th>Área</th>
                 <!--<th>Creación</th>-->
                 <th>Fecha inicio</th>
-                <!--<th>Taller</th>-->
+                <th>Taller</th>
                 <th>Estados</th>
                 <th>Fecha estado</th>
                 <th>Asignado por</th>
@@ -196,7 +196,7 @@ export default class extends AbstractView {
                             <td>${getAreaActivo}</td>
                             <!--<td>${orden.fechaCreacion.slice(0,10)}</td>-->
                             <td>${orden.fechaInicial.slice(0,10)}</td>
-                            <!--<td>${getTaller}</td>-->
+                            <td>${getTaller}</td>
                             <td>${formatGetEstadosOrdenNombre}</td>
                             <td>${formatGetEstadosOrdenFecha}</td>
                             <td>${formatGetEstadosOrdenPor}</td>
@@ -263,38 +263,38 @@ const customOrdersStatusHistoryTable = () => {
             // Si no lo hiciera no sería necesario agregar "columns"
             "columns": [
                 {
-                    data: 'id_orden'
+                    data: 'idOrden'
                 },
                 {
-                    data: 'patente_activo'
+                    data: 'getPatenteActivo'
                 },
                 /*{
                     data: "estado_orden"
                 },*/
                 {
-                    data: "tipo_orden"
+                    data: "getTipoOrden"
                 },
                 {
-                    data: "area_vehiculo"
+                    data: "getAreaActivo"
                 },
                 /*{
-                    data: "fecha_creacion"
+                    data: "fechaCreacion"
                 },*/
                 {
-                    data: "fecha_inicio",
+                    data: "fechaInicial",
                     render: filtrarFechasStatusHistory() //Ejecutar la función de filtrado de fechas
                 },
-                /*{
-                    data: "taller_orden"
-                },*/
                 {
-                    data: "historial_estados.nombre_estado"
+                    data: "getTaller"
                 },
                 {
-                    data: "historial_estados.fecha_estado"
+                    data: "formatGetEstadosOrdenNombre"
                 },
                 {
-                    data: "historial_estados.estado_asignado_por"
+                    data: "formatGetEstadosOrdenFecha"
+                },
+                {
+                    data: "formatGetEstadosOrdenPor"
                 },
                 /*{
                     data: "total",

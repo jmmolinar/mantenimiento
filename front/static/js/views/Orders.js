@@ -323,7 +323,6 @@ const customOrdersTable = () => {
                 {
                     data: "getEstado"
                 },
-            
                 {
                     data: "getAreaActivo"
                 },
