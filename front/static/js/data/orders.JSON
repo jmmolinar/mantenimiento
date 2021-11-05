@@ -690,14 +690,14 @@
             {
                 "ordenIdOrden": 2,
                 "categoriaServicioIdCategoriaServicio": 5,
-                "costo": 200000,
+                "costo": null,
                 "fechaCategoriaAsignada": "2021-06-30T12:30",
                 "observacionCategoria": ""
             },
             {
                 "ordenIdOrden": 2,
                 "categoriaServicioIdCategoriaServicio": 1,
-                "costo": 300000,
+                "costo": null,
                 "fechaCategoriaAsignada": "2021-06-30T12:30",
                 "observacionCategoria": ""
             }
@@ -738,14 +738,14 @@
             {
                 "ordenIdOrden": 1,
                 "categoriaServicioIdCategoriaServicio": 5,
-                "costo": 200000,
+                "costo": null,
                 "fechaCategoriaAsignada": "2021-06-28T12:30",
                 "observacionCategoria": ""
             },
             {
                 "ordenIdOrden": 1,
                 "categoriaServicioIdCategoriaServicio": 1,
-                "costo": 300000,
+                "costo": null,
                 "fechaCategoriaAsignada": "2021-06-28T12:30",
                 "observacionCategoria": ""
             }

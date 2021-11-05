@@ -621,6 +621,7 @@ const fillAssetLogOrders = () => {
                         total = '';
                     }
 
+                    getOrdenTaller = ``;
                     const taller = getTalleres.find((taller) => taller.idTallerServicio == orden.tallerServicioIdTallerServicio);
                     if (taller) {
                         getOrdenTaller = taller.nombre;

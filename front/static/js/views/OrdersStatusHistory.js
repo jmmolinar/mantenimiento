@@ -109,6 +109,7 @@ export default class extends AbstractView {
                     totalOrdenes.push(orden);
                     cont++
 
+                    getTaller = ``;
                     const taller = getTalleres.find((taller) => taller.idTallerServicio == orden.tallerServicioIdTallerServicio);
                     if (taller) {
                         getTaller = taller.nombre;

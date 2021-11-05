@@ -107,6 +107,7 @@ export default class extends AbstractView {
 
                     totalOrdenes.push(orden);
 
+                    getTaller = ``;
                     const taller = getTalleres.find((taller) => taller.idTallerServicio == orden.tallerServicioIdTallerServicio);
                     if (taller) {
                         getTaller = taller.nombre;
@@ -222,7 +223,7 @@ export default class extends AbstractView {
                             <td>${getAreaActivo}</td>
                             <td>${orden.fechaCreacion.slice(0,10)}</td>
                             <td>${orden.fechaInicial.slice(0,10)}</td>
-                            <td>${getTaller}</td>
+                            <td>${getTaller.toString()}</td>
                             <!--<td>${formatGetCategoriasActivoNombre}</td>
                             <td>${formatGetCategoriasActivoCosto}</td>-->
                             <td>${orden.total}</td> <!-- Modificar para calcular el total sin clave en json -->
