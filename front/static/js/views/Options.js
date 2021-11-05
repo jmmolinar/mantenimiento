@@ -257,13 +257,33 @@ let titlePlanesJSON = 'Planes';
 let getPlanes = [];
 getPlanes = getJson(planesJSON, titlePlanesJSON);
 
+let frecuenciaPeriodo = [
+    {
+        "id_frecuencia": "1",
+        "nombre": "Días"
+    },
+    {
+        "id_frecuencia": "2",
+        "nombre": "Semanas"
+    },
+    {
+        "id_frecuencia": "3",
+        "nombre": "Meses"
+    },
+    {
+        "id_frecuencia": "4",
+        "nombre": "Años"
+    }
+]
+
+
 //Regiones
 /*let regionesJSON = 'http://192.168.1.114:8080/static/js/data/regions.JSON';
 let titleRegionesJSON = 'Regiones';
 let getRegiones = [];
 getRegiones = getJson(regionesJSON, titleRegionesJSON);*/
 
-let estados = [
+/*let estados = [
     {
         "id_estado": 1,
         "nombre": "Por planificar",
@@ -335,9 +355,9 @@ let estados = [
         "id_padre": [1,2,3,4]
     }
 
-]
+]*/
 
-let tiposMantenimiento = [
+/*let tiposMantenimiento = [
     {
         "id_tipo_mantenimiento": "1",
         "nombre": "Preventivo"
@@ -346,9 +366,9 @@ let tiposMantenimiento = [
         "id_tipo_mantenimiento": "2",
         "nombre": "Correctivo"
     }
-]
+]*/
 
-let tiposActivos = [
+/*let tiposActivos = [
     {
         "id_activo": "3",
         "nombre": "Herramienta"
@@ -361,28 +381,9 @@ let tiposActivos = [
         "id_activo": "1",
         "nombre": "Vehículo"
     }
-]
+]*/
 
-let frecuenciaPeriodo = [
-    {
-        "id_frecuencia": "1",
-        "nombre": "Días"
-    },
-    {
-        "id_frecuencia": "2",
-        "nombre": "Semanas"
-    },
-    {
-        "id_frecuencia": "3",
-        "nombre": "Meses"
-    },
-    {
-        "id_frecuencia": "4",
-        "nombre": "Años"
-    }
-]
-
-let areas = [
+/*let areas = [
     {
         "id_area": "1",
         "nombre": "Área 11"
@@ -423,9 +424,9 @@ let areas = [
         "id_area": "10",
         "nombre": "Área 101"
     }
-]
+]*/
 
-let marcas = [
+/*let marcas = [
     {
         "id_marca": "1",
         "nombre": "Caterpillar"
@@ -462,9 +463,9 @@ let marcas = [
         "id_marca": "9",
         "nombre": "Chevrolet"
     }
-]
+]*/
 
-let planes = [
+/*let planes = [
     {
         "id": "11",
         "nombre": "Plan GENERAL"
@@ -509,9 +510,9 @@ let planes = [
         "id": "1",
         "nombre": "Plan IVECO"
     }
-]
+]*/
 
-let bodegas = [
+/*let bodegas = [
     {
         "id": "5",
         "nombre": "Sede Oeste",
@@ -567,9 +568,9 @@ let bodegas = [
         "longitud": "-70.6188521",
         "cantidad_activos": "120"
     }
-]
+]*/
 
-let talleres = [
+/*let talleres = [
     {
         "id": "5",
         "nombre": "Taller EEE",
@@ -620,7 +621,7 @@ let talleres = [
         "latitud": "-33.4530769",
         "longitud": "-70.6188521"
     }
-]
+]*/
 
 let regiones = [
     {
@@ -1139,15 +1140,7 @@ let regiones = [
 ]*/
 
 export {
-    estados,
-    tiposMantenimiento,
-    tiposActivos,
     frecuenciaPeriodo,
-    areas,
-    bodegas,
-    marcas,
-    planes,
-    talleres,
     regiones,
     getTiposMantenimientos,
     getEstados,

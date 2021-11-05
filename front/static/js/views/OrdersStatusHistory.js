@@ -1,11 +1,28 @@
 import AbstractView from "./AbstractView.js";
 import TableLanguage from "./TableLanguage.js";
-import { listAllElement } from "./Options.js";
+import { 
+    listAllElement,
+    getEstados,
+    getTalleres,
+    getTiposMantenimientos,
+    getActivos,
+    getAreas,
+    getVehiculos,
+} from "./Options.js";
 
 // Variables para filtrar fechas en la tabla
 // va de la mano con la función de filtrado personalizado
 let minDate = "";
 let maxDate = "";
+
+let getEstado = ``;
+let getEstadoActual = ``;
+let getTaller = ``;
+let getTipoOrden = ``;
+let getActivo = ``;
+let getAreaActivo = ``;
+let getPatenteActivo = ``;
+
 let totalOrdenes = [];
 
 export default class extends AbstractView {
@@ -88,70 +105,71 @@ export default class extends AbstractView {
                 let cont = 0;
 
                 for (const orden of data) {
+
                     totalOrdenes.push(orden);
                     cont++
-                    /*switch (orden.estado_orden) {
-                        case 'Por planificar':
-                            classTr = "warning"
-                            stringContainer = 'Se requiere completar datos'
-                            break;
-                        case 'No realizado':
-                            classTr = "muted"
-                            stringContainer = 'La órden de mantenimiento no fue ejecutada'
-                            break;
-                        case 'Retrasado':
-                            classTr = "error"
-                            stringContainer = 'La orden no ha sigo planificada'
-                            break;
-                        case 'Retrasado en taller':
-                            classTr = "error"
-                            stringContainer = 'El servicio en taller excede el tiempo planificado'
-                            break;
-                        case 'Planificado':
-                            classTr = ""
-                            stringContainer = 'El próximo paso es la realización del servicio en Taller'
-                            break;
-                        case 'Planificado con retraso':
-                            classTr = ""
-                            stringContainer = 'La órden fue planificada con retraso'
-                            break;
-                        case 'En taller':
-                            classTr = "info"
-                            stringContainer = 'Se están realizando los servicios de mantenimiento'
-                            break;
-                        case 'Completado':
-                            classTr = "success"
-                            stringContainer = 'La orden ha sido completada'
-                            break;
-                        case 'Completado con retraso':
-                            classTr = "success"
-                            stringContainer = 'La orden ha sido completada con retraso'
-                            break;
-                        default:
-                            classTr = ""
-                            stringContainer = ''
-                            console.log('Estado de la orden desconocido');
-                    }*/
-                    //console.log("Estado de la orden: " + orden.estado_orden + " - Estilo asignado: " + classTr)
 
+                    const taller = getTalleres.find((taller) => taller.idTallerServicio == orden.tallerServicioIdTallerServicio);
+                    if (taller) {
+                        getTaller = taller.nombre;
+                    }
 
+                    const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.idTipoOrden == orden.tipoOrdenIdTipoOrden);
+                    if (tipoOrden) {
+                        getTipoOrden = tipoOrden.nombre;
+                    }
 
-                    getEstadosOrden = listAllElement(orden.historial_estados);
+                    const activo = getActivos.find((activo) => activo.idActivo == orden.activoIdActivo);
+                    if(activo){
+                        
+                        const vehiculo = getVehiculos.find((vehiculo) => vehiculo.idVehiculo == activo.vehiculoIdVehiculo);
+                        if (vehiculo) {
+                            getPatenteActivo = vehiculo.ppuVehiculo;
+                        }
+                        
+                        const area = getAreas.find((area) => area.idArea == activo.areaIdArea);
+                        if(area){
+                            getAreaActivo = area.nombreArea;
+                        }
+                    }
+
+                    getEstadosOrden = listAllElement(orden.ordenEstados);
+                    let fechaUltimoEstado = "1900-01-01T00:00"; // Inicio de fecha a comparar
                     let getEstadosOrdenNombre = [];
                     let getEstadosOrdenFecha = [];
                     let getEstadosOrdenPor = [];
 
+                    //Obtengo el último estado comparando las fechas para darle estilo en el historial
                     getEstadosOrden.forEach(elem => {
-                        if (elem["estado_actual"]) {
-                            getEstadosOrdenNombre.push(`<div class="alert alert-success no-margin new-padding-top-bottom"><strong>${elem["nombre_estado"]}</strong></div>`)
-                            getEstadosOrdenFecha.push(`<div class="alert alert-success no-margin new-padding-top-bottom"><strong>${elem["fecha_estado"]}</strong></div>`)
-                            getEstadosOrdenPor.push(`<div class="alert alert-success no-margin new-padding-top-bottom"><strong>${elem["estado_asignado_por"]}</strong></div>`)
-                        } else {
-                            getEstadosOrdenNombre.push(`<div class="alert alert-info no-margin new-padding-top-bottom"><strong>${elem["nombre_estado"]}</strong></div>`)
-                            getEstadosOrdenFecha.push(`<div class="alert alert-info no-margin new-padding-top-bottom"><strong>${elem["fecha_estado"]}</strong></div>`)
-                            getEstadosOrdenPor.push(`<div class="alert alert-info no-margin new-padding-top-bottom"><strong>${elem["estado_asignado_por"]}</strong></div>`)
-                        }
 
+                        if (new Date(elem["fechaAsignado"]) > new Date(fechaUltimoEstado)) {
+
+                            const estadoActual = getEstados.find((estado) => estado.idEstado == elem["estadoIdEstado"]);
+                            if (estadoActual) {
+                                getEstadoActual = estadoActual.nombre;
+                            }
+
+                            fechaUltimoEstado = elem["fechaAsignado"];
+                        } 
+
+                    })
+
+                    //Recorro de nuevo para dar estilo al último estado en el historial
+                    getEstadosOrden.forEach(elem => {
+                            
+                        const styleEstadoActual = getEstados.find((estado) => estado.idEstado == elem["estadoIdEstado"]);
+                        if (styleEstadoActual) {
+                            //Estilo al estado actual
+                            if(getEstadoActual == styleEstadoActual.nombre){
+                                getEstadosOrdenNombre.push(`<div class="alert alert-success no-margin new-padding-top-bottom"><strong>${getEstadoActual}</strong></div>`)
+                                getEstadosOrdenFecha.push(`<div class="alert alert-success no-margin new-padding-top-bottom"><strong>${elem["fechaAsignado"]}</strong></div>`)
+                                getEstadosOrdenPor.push(`<div class="alert alert-success no-margin new-padding-top-bottom"><strong>${elem["idUsuario"]}</strong></div>`)
+                            } else { //Estilo a los estados anteriores
+                                getEstadosOrdenNombre.push(`<div class="alert alert-info no-margin new-padding-top-bottom"><strong>${styleEstadoActual.nombre}</strong></div>`)
+                                getEstadosOrdenFecha.push(`<div class="alert alert-info no-margin new-padding-top-bottom"><strong>${elem["fechaAsignado"]}</strong></div>`)
+                                getEstadosOrdenPor.push(`<div class="alert alert-info no-margin new-padding-top-bottom"><strong>${elem["idUsuario"]}</strong></div>`)
+                            }
+                        }
                     })
 
                     if (getEstadosOrdenNombre.length) {
@@ -165,29 +183,27 @@ export default class extends AbstractView {
                     }
 
 
-                    /*console.log(`Estados de la orden ${orden.id_orden}`)
+                    /*console.log(`Estados de la orden ${orden.idOrden}`)
                     getEstadosOrden.forEach(element => {
                         console.log(`Estado: ${element.nombre_estado} - ID: ${element.id_estado} - Asignación: ${element.fecha_estado} - Por: ${element.estado_asignado_por}`)
                     })*/
 
                     fillOrdersStatusHistory += `
                         <tr class=${classTr}>
-                            <td>${orden.id_orden}</td>
-                            <td>${orden.patente_activo}</td>
-                            <!--<td>${orden.estado_orden} <a data-toggle="tooltip" title="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>-->
-                            <!--<td>${orden.estado_orden} <a href="" data-toggle="popover" title="${orden.estado_orden}" data-content="${stringContainer}"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>-->
-                            <td>${orden.tipo_orden}</td>
-                            <td>${orden.area_vehiculo}</td>
-                            <!--<td>${orden.fecha_creacion}</td>-->
-                            <td>${orden.fecha_inicio}</td>
-                            <!--<td>${orden.taller_orden}</td>-->
+                            <td>${orden.idOrden}</td>
+                            <td>${getPatenteActivo}</td>
+                            <td>${getTipoOrden}</td>
+                            <td>${getAreaActivo}</td>
+                            <!--<td>${orden.fechaCreacion.slice(0,10)}</td>-->
+                            <td>${orden.fechaInicial.slice(0,10)}</td>
+                            <!--<td>${getTaller}</td>-->
                             <td>${formatGetEstadosOrdenNombre}</td>
                             <td>${formatGetEstadosOrdenFecha}</td>
                             <td>${formatGetEstadosOrdenPor}</td>
                             <!--<td>${orden.total}</td>-->
                             <td class="align-center">
-                                <a id="editOrder_${orden.id_orden}" class="btn only-to-id-url" href="/ordenes/${orden.id_orden}"><i class="icon-pencil"></i></a>
-                                <!--<a id="deleteOrder_${orden.id_orden}" class="btn" disabled><i class="icon-trash"></i></a>-->
+                                <a id="editOrder_${orden.idOrden}" class="btn only-to-id-url" href="/ordenes/${orden.idOrden}"><i class="icon-pencil"></i></a>
+                                <!--<a id="deleteOrder_${orden.idOrden}" class="btn" disabled><i class="icon-trash"></i></a>-->
                             </td>
                         </tr>`
                 }

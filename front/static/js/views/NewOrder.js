@@ -1,13 +1,11 @@
 import AbstractView from "./AbstractView.js";
 import {
-    tiposMantenimiento, estados, tiposActivos, areas, talleres,
-    frecuenciaPeriodo, getTiposMantenimientos, getEstados, getAreas,
+    getTiposMantenimientos, getAreas,
     getTiposActivos, getActivos, getTalleres, getCategorias, getVehiculos,
     loadSelectContent,
     loadSelectContentAndSelected,
     listSelect,
     currentDate,
-    getJson,
     listAllElement
 } from "./Options.js"
 

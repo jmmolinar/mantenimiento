@@ -51,16 +51,7 @@
                 "tipoDocumentoIdTipoDocumento": 4
             }
         ],
-        "activo": "MAQ-A8",
-        "tipo": "Máquina",
-        "marca": "Caterpillar",
-        "modelo": "Retroexcavadora 150G LC",
-        "gps_imei": "850085008500852",
-        "area": "Área 101",
-        "bodega": "Sede Central",
-        "km": null,
         "mant_en_km": null,
-        "horas": "820 Horas",
         "mant_en_horas": "250 Horas",
         "mant_realizadas": 6
     },
@@ -107,16 +98,7 @@
                 "tipoDocumentoIdTipoDocumento": 4
             }
         ],
-        "activo": "MAQ-A4",
-        "tipo": "Máquina",
-        "marca": "Caterpillar",
-        "modelo": "Retroexcavadora 130G LC",
-        "gps_imei": "850085008500851",
-        "area": "Área 101",
-        "bodega": "Sede Central",
-        "km": null,
         "mant_en_km": null,
-        "horas": "310 Horas",
         "mant_en_horas": null,
         "mant_realizadas": 5
     },
@@ -172,16 +154,7 @@
                 "tipoDocumentoIdTipoDocumento": 4
             }
         ],
-        "activo": "MAQ-A3",
-        "tipo": "Máquina",
-        "marca": "Caterpillar",
-        "modelo": "Retroexcavadora 130G LC",
-        "gps_imei": "850085008500850",
-        "area": "Área 101",
-        "bodega": "Sede Central",
-        "km": null,
         "mant_en_km": null,
-        "horas": "720 Horas",
         "mant_en_horas": "300 Horas",
         "mant_realizadas": 3
     },
@@ -237,16 +210,7 @@
                 "tipoDocumentoIdTipoDocumento": 4
             }
         ],
-        "activo": "PATENTE-A1",
-        "tipo": "Vehículo",
-        "marca": "Toyota",
-        "modelo": "Tundra",
-        "gps_imei": "850085008500851",
-        "area": "Área 51",
-        "bodega": "Sede Norte",
-        "km": "10200 Km",
         "mant_en_km": "800 Km",
-        "horas": null,
         "mant_en_horas": null,
         "mant_realizadas": 2
     },
@@ -302,16 +266,7 @@
                 "tipoDocumentoIdTipoDocumento": 4
             }
         ],
-        "activo": "PATENTE-B1",
-        "tipo": "Vehículo",
-        "marca": "Ford",
-        "modelo": "F150",
-        "gps_imei": "850085008500852",
-        "area": "Área 51",
-        "bodega": "Sede Norte",
-        "km": "14120 Km",
         "mant_en_km": "1000 Km",
-        "horas": null,
         "mant_en_horas": null,
         "mant_realizadas": 4
     },
@@ -367,16 +322,7 @@
                 "tipoDocumentoIdTipoDocumento": 4
             }
         ],
-        "activo": "PATENTE-C1",
-        "tipo": "Vehículo",
-        "marca": "Chevrolet",
-        "modelo": "Suburban",
-        "gps_imei": "850085008500853",
-        "area": "Área 71",
-        "bodega": "Sede Sur B",
-        "km": "1200 Km",
         "mant_en_km": "1000 Km",
-        "horas": null,
         "mant_en_horas": null,
         "mant_realizadas": 6
     },
@@ -432,16 +378,7 @@
                 "tipoDocumentoIdTipoDocumento": 4
             }
         ],
-        "activo": "MAQ-A1",
-        "tipo": "Máquina",
-        "marca": "Komatsu",
-        "modelo": "Retroexcavadora 100T",
-        "gps_imei": "850085008500854",
-        "area": "Área 101",
-        "bodega": "Sede Central",
-        "km": null,
         "mant_en_km": null,
-        "horas": "612 Horas",
         "mant_en_horas": "300 Horas",
         "mant_realizadas": 2
     },
@@ -497,16 +434,7 @@
                 "tipoDocumentoIdTipoDocumento": 4
             }
         ],
-        "activo": "MAQ-A2",
-        "tipo": "Máquina",
-        "marca": "John Deere",
-        "modelo": "Sports Turf",
-        "gps_imei": "850085008500855",
-        "area": "Área 101",
-        "bodega": "Sede Central",
-        "km": null,
         "mant_en_km": null,
-        "horas": "120 Horas",
         "mant_en_horas": "380 Horas",
         "mant_realizadas": 1
     }

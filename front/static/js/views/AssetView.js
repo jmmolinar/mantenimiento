@@ -1,7 +1,6 @@
 import AbstractView from "./AbstractView.js";
 import TableLanguage from "./TableLanguage.js";
 import {
-    areas, bodegas, tiposActivos, marcas, planes,
     getAreas, getBodegas, getTiposActivos, getEstados, getActivos, getPlanes,
     getTiposMantenimientos, getTalleres, getVehiculos, getGPS, getMarcas, getModelos,
     listAllElement,
