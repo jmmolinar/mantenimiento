@@ -671,7 +671,7 @@
         "observaciones": "probando",
         "activoIdActivo": 4,
         "estados_posibles": {},
-        "total": "500000",
+        "total": "",
         "ordenEstados": [
             {
                 "ordenIdOrden": 2,
@@ -719,7 +719,7 @@
         "observaciones": "probando",
         "activoIdActivo": 4,
         "estados_posibles": {},
-        "total": "500000",
+        "total": "",
         "ordenEstados": [
             {
                 "ordenIdOrden": 1,
