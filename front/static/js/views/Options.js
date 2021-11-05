@@ -227,7 +227,6 @@ let titleModelosJSON = 'Modelos BLACKGPS';
 let getModelos = [];
 getModelos = getJson(modelosJSON, titleModelosJSON);
 
-
 //GPS de BlackGPS
 let gpsJSON = 'http://192.168.1.114:8080/static/js/data/gps.JSON';
 let titleGpsJSON = 'GPS BLACKGPS';

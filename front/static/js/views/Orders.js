@@ -6,7 +6,8 @@ import {
     getTalleres,
     getTiposMantenimientos,
     getActivos,
-    getAreas
+    getAreas,
+    getVehiculos,
 } from "./Options.js";
 
 // Variables para filtrar fechas en la tabla
@@ -118,7 +119,12 @@ export default class extends AbstractView {
 
                     const activo = getActivos.find((activo) => activo.idActivo == orden.activoIdActivo);
                     if(activo){
-                        getPatenteActivo = activo.activo; // Temporal porque se debe obtener desde idVehiculo
+                        
+                        const vehiculo = getVehiculos.find((vehiculo) => vehiculo.idVehiculo == activo.vehiculoIdVehiculo);
+                        if (vehiculo) {
+                            getPatenteActivo = vehiculo.ppuVehiculo;
+                        }
+                        
                         const area = getAreas.find((area) => area.idArea == activo.areaIdArea);
                         if(area){
                             getAreaActivo = area.nombreArea;

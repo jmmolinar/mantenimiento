@@ -3,6 +3,7 @@ import {
     tiposMantenimiento, estados, tiposActivos, areas, talleres,
     getTiposMantenimientos, getEstados, getAreas, getTiposActivos,
     getActivos, getTalleres, getCategorias, olderDate,
+    getVehiculos,
     frecuenciaPeriodo,
     loadSelectContent,
     loadSelectContentAndSelected,
@@ -13,6 +14,9 @@ import {
 
 let getTipoMantenimiento = ``;
 let getPatenteActivo = ``;
+let getKmGpsActivo = ``;
+let getHorometroActivo = ``;
+let getUsoActivo = ``;
 let getEstado = ``;
 let getDocumentoCompletado = ``;
 let getArea = ``;
@@ -79,7 +83,7 @@ export default class extends AbstractView {
 
                 console.log(jqXHR)
                 let fillOrder = ''
-                let uso = ''
+                //let uso = ''
                 let radioSeleccionadoPeriodo = ''
                 let radioSeleccionadoRango = ''
                 let requeridoPorRango = ''
@@ -115,10 +119,19 @@ export default class extends AbstractView {
                     }
 
                     const activo = getActivos.find((activo) => activo.idActivo == order.activoIdActivo);
-                    if(activo){
-                        getPatenteActivo = activo.activo; // Temporal - la patente se debe obtener desde idVehiculo
+                    if (activo) {
+
+                        const vehiculo = getVehiculos.find((vehiculo) => vehiculo.idVehiculo == activo.vehiculoIdVehiculo);
+                        if (vehiculo) {
+                            getPatenteActivo = vehiculo.ppuVehiculo;
+                            getKmGpsActivo = parseFloat(vehiculo.kmGps).toFixed(2);
+                            getHorometroActivo = parseFloat(vehiculo.horometro).toFixed(2);
+                            //getUsoActivo = getKmGpsActivo.toString().concat(`<input class="btn" type="button" value="Km " disabled>`, getHorometroActivo.toString(), `<input class="btn" type="button" value=" Horas" disabled> `)
+
+                        }
+
                         const area = getAreas.find((area) => area.idArea == activo.areaIdArea);
-                        if(area){
+                        if (area) {
                             getArea = area.nombreArea;
                             //getArea = order.area_vehiculo;
                         }
@@ -128,6 +141,7 @@ export default class extends AbstractView {
                             getTipoActivo = tipoActivo.nombre;
                             //getTipoActivo = order.tipo_activo;
                         }
+
                     }
 
                     const taller = getTalleres.find((taller) => taller.idTallerServicio == order.tallerServicioIdTallerServicio);
@@ -135,7 +149,7 @@ export default class extends AbstractView {
                         getTaller = taller.nombre;
                         //getTaller = order.taller_orden;
                     }
-                    
+
                     getRutaAdjuntoCompletado = order.rutaAdjuntoCompletado;
                     getFechaRutaAdjuntoCompletado = order.fechaRutaCompletado;
                     getFechaCreacion = order.fechaCreacion;
@@ -152,11 +166,11 @@ export default class extends AbstractView {
                     console.log("Verificando postId: " + identificador)
                     console.log("Vericando id de order: " + order.idOrden)
 
-                    if (order.km_recorridos == null) {
+                    /*if (order.km_recorridos == null) {
                         uso = order.horas_uso // Temporal - Esto debe obtenerse mediante activo y su idVehiculo
                     } else {
                         uso = order.km_recorridos // Temporal - Esto debe obtenerse mediante activo y su idVehiculo
-                    }
+                    }*/
 
                     // OJO: Validar posteriormente obteniendo de la base de datos el tiempo en la geocerca del taller
                     if (getEstado == "En taller") {
@@ -241,7 +255,9 @@ export default class extends AbstractView {
                             <!--<h3>Patente: ${getPatenteActivo}</h3>-->
                             <h3 style="display:inline;">Patente: </h3>
                             <h3 id="valorPatente" style="display:inline;">${getPatenteActivo}</h3>
-                            <h3>${uso}</h3>
+                            <!--<h3>${getUsoActivo}</h3>-->
+                            <h4>${getKmGpsActivo} Km</h4>
+                            <h4>${getHorometroActivo} Horas</h4>
                             <a id="downloadOrder_${order.idOrden}" class="btn btn-success" href=""> Orden ${order.idOrden}  <i class="fa fa-cloud-download" ></i></a>
                         </div>
 
@@ -547,7 +563,7 @@ const fillOrderCategories = () => {
 
                 getCategoriasOrden.forEach(element => {
 
-                    if(category.idCategoriaServicio == element.categoriaServicioIdCategoriaServicio){
+                    if (category.idCategoriaServicio == element.categoriaServicioIdCategoriaServicio) {
                         console.log(`idCategoría: ${element.categoriaServicioIdCategoriaServicio} - Categoría: ${category.nombre} - Costo: ${element.costo} - Orden: ${identificadorGlobal}`)
                         checkboxSeleccionado = 'checked';
                         requerido = 'required';

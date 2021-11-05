@@ -3,6 +3,7 @@ import TableLanguage from "./TableLanguage.js";
 import {
     areas, bodegas, tiposActivos, marcas, planes,
     getAreas, getBodegas, getTiposActivos, getActivos, getPlanes,
+    getVehiculos, getGPS, getMarcas, getModelos,
     listAllElement,
     loadSelectContent,
     loadSelectContentAndSelected,
@@ -17,6 +18,10 @@ let getArea = ``;
 let getBodega = ``;
 let getTipoActivo = ``;
 let getMarca = ``;
+let getModelo = ``;
+let getGPSImei = ``;
+let getActivoKmGps = ``;
+let getActivoHorometro = ``;
 let getAnio = ``;
 let getPlan = ``;
 let getPlanesActivo = [];
@@ -30,7 +35,7 @@ let banderaPlanes = false;
 let nuevoActivoJSON = {
     "anio": null,
     "dadoDeBaja": false,
-    "idVehiculo": null,
+    "vehiculoIdVehiculo": null,
     "areaIdArea": null,
     "bodegaActivosIdBodegaActivos": null,
     "tipoActivoIdTipoActivo": null,
@@ -50,6 +55,7 @@ export default class extends AbstractView {
         let assetHTML = ``;
         let fillAsset = ''
         let km_hora = ''
+        let getActivoUso = ``;
 
         fillAsset = `<h1></h1>
             <form id="assetFormQuery_new" action="/activos">
@@ -122,8 +128,10 @@ export default class extends AbstractView {
                                     <h5>Modelo</h5>
                                 </label>
                                 <div class="controls">
-                                    <input id="assetModel" type="text" min="3" maxlength="15"
-                                        value="" required>
+                                    <!--<input id="assetModel" type="text" min="3" maxlength="15"
+                                        value="" required>-->
+                                    <select id="assetModel" required>
+                                    </select>
                                 </div>
                             </div>
 
@@ -145,7 +153,7 @@ export default class extends AbstractView {
                                 </label>
                                 <div class="controls">
                                     <input id="assetUse" type="text" min="3" maxlength="15" 
-                                        value="" required>
+                                        value="" required disabled>
                                 </div>
                             </div>
 
@@ -156,7 +164,7 @@ export default class extends AbstractView {
                                 </label>
                                 <div class="controls">
                                     <input id="assetGPS" type="text" min="3" maxlength="15" 
-                                        value="0000000000000000" disabled>
+                                        value="" disabled>
                                 </div>
                             </div>
 
@@ -377,16 +385,27 @@ const fillOptions = () => {
 
             // Select activo -- emplea los datos obtenidos en getJson();
             // Se debe hacer una verificación para mostrar solo los activos que no han sido creados en el módulo de mantenimiento
-            const selectActivo = document.getElementById('assetPatent');
+            /*const selectActivo = document.getElementById('assetPatent');
             const optionActivo = listSelect(getActivos, "activo"); // Paso la clave "activo"
-            loadSelectContent(optionActivo, selectActivo);
+            loadSelectContent(optionActivo, selectActivo);*/
 
-            // Select Marca desde Options.js // Temporal porque debe traerla del idVehiculo asociado
+            const selectVehiculo = document.getElementById('assetPatent');
+            const optionVehiculo = listSelect(getVehiculos, "ppuVehiculo"); // Paso la clave "ppuVehiculo"
+            loadSelectContent(optionVehiculo, selectVehiculo);
+
+            // Select Marca -- emplea los datos obtenidos en getJson();
             const selectMarca = document.getElementById('assetBrand');
-            const optionMarca = listSelect(marcas, "nombre"); // Paso la clave "nombre"
+            const optionMarca = listSelect(getMarcas, "nombreMarcaVehiculo"); // Paso la clave "nombreMarcaVehiculo"
             loadSelectContent(optionMarca, selectMarca);
             //loadSelectContentAndSelected(optionMarca, selectMarca, getMarca);
             //console.log("Marca seleccionada: " + getMarca);
+
+            // Select Modelo -- emplea los datos obtenidos en getJson();
+            const selectModelo = document.getElementById('assetModel');
+            const optionModelo = listSelect(getModelos, "nombreModeloVehiculo") // Paso la clave "nombreModeloVehiculo"
+            loadSelectContent(optionModelo, selectModelo);
+            //loadSelectContentAndSelected(optionModelo, selectModelo, getModelo);
+            //console.log("Modelo seleccionado: " + getModelo);
 
             // Select Anio desde Options.js
             const selectAnio = document.getElementById('assetYear');
@@ -419,14 +438,10 @@ const guardarActivoJSON = () => {
     nuevoActivoJSON.anio = selectAnio.options[selectAnio.selectedIndex].text;
     nuevoActivoJSON.dadoDeBaja = false;
 
-    //Por ahora asigno el id de activos, pero en realidad debo traer las patentes
-    //de aquellos idVehiculo que aún no han sido creados como activo
-    //y asignar dichos idVehiculos - Esto se completa al hacer FK a la 
-    //Base de datos de BlackGPS
     let selectPatente = document.getElementById('assetPatent');
-    const activo = getActivos.find((activo) => activo.activo == selectPatente.value);
-    if (activo) {
-        nuevoActivoJSON.idVehiculo = activo.id; // En realidad debo traer el idVehiculo
+    const vehiculo = getVehiculos.find((vehiculo) => vehiculo.ppuVehiculo.trim() == selectPatente.value.trim());
+    if(vehiculo){
+        nuevoActivoJSON.vehiculoIdVehiculo = vehiculo.idVehiculo;
     }
 
     let selectArea = document.getElementById('assetAreasOptions');
@@ -448,7 +463,7 @@ const guardarActivoJSON = () => {
     }
 
     let selectMarca = document.getElementById('assetBrand');
-    let modeloActivo = document.getElementById('assetModel');
+    let selectModelo = document.getElementById('assetModel');
     let usoActivo = document.getElementById('assetUse');
 
     let fileInfoSeguro = document.getElementById('fileInfoSeguro');
@@ -522,8 +537,8 @@ const guardarActivoJSON = () => {
         && selectBodega.options[selectBodega.selectedIndex].text != ''
         && selectTipoActivo.options[selectTipoActivo.selectedIndex].text != ''
         && selectMarca.options[selectMarca.selectedIndex].text != ''
-        && modeloActivo.value != ''
-        && usoActivo.value != ''
+        && selectModelo.options[selectModelo.selectedIndex].text != ''
+        //&& usoActivo.value != ''
         && fileInfoSeguro.textContent.trim() != ''
         && fileInfoPadron.textContent.trim() != ''
         && fileInfoCirculacion.textContent.trim() != ''

@@ -5,13 +5,17 @@ import {
     getAreas,
     getBodegas,
     getTiposActivos,
-    getPlanes
+    getPlanes, getVehiculos, getGPS
  } from "./Options.js";
 
 
 let getArea = ``;
 let getBodega = ``;
 let getTipoActivo = ``;
+let getGPSImei = ``;
+let getVehiculoPatente = ``;
+let getVehiculoKmGps = ``;
+let getVehiculoHorometro = ``;
 
 export default class extends AbstractView {
     constructor(params) {
@@ -43,7 +47,7 @@ export default class extends AbstractView {
                     <th>Activo</th>
                     <th>Tipo</th>
                     <th>Planes</th>
-                    <th>Km/Horas (uso)</th>
+                    <th>Uso</th>
                     <th>Mantención</th>
                     <th>Realizadas</th>
                     <th>Área</th>
@@ -69,6 +73,7 @@ export default class extends AbstractView {
                 console.log(jqXHR)
                 let fillAssets = ''
                 let kmHora = ''
+                let formatUso = ``;
                 let mantenimiento_en = ''
                 let formatGetPlanesActivoNombre = ``
                 let formatRealizadas = ``
@@ -76,8 +81,6 @@ export default class extends AbstractView {
 
                 for (const activo of data) {
 
-                    //Finalmente se debe sincronizar con las áreas de la
-                    //base de datos de Blackgps
                     const area = getAreas.find((area) => area.idArea == activo.areaIdArea);
                     if (area) {
                         getArea = area.nombreArea;
@@ -91,6 +94,22 @@ export default class extends AbstractView {
                     const bodega = getBodegas.find((bodega) => bodega.idBodegaActivos == activo.bodegaActivosIdBodegaActivos);
                     if (bodega) {
                         getBodega = bodega.nombre;
+                    }
+
+                    const vehiculo = getVehiculos.find((vehiculo) => vehiculo.idVehiculo == activo.vehiculoIdVehiculo);
+                    if(vehiculo){
+                        let uso = [];
+                        getVehiculoPatente = vehiculo.ppuVehiculo;
+                        getVehiculoKmGps = parseFloat(vehiculo.kmGps).toFixed(2);
+                        getVehiculoHorometro = parseFloat(vehiculo.horometro).toFixed(2);
+                        uso.push(`<div class="alert new-alert-use no-margin new-padding-top-bottom"><strong>${getVehiculoKmGps} <input class="btn" type="button" value="Km" disabled></strong></div>`);
+                        uso.push(`<div class="alert new-alert-use no-margin new-padding-top-bottom"><strong>${getVehiculoHorometro} <input class="btn" type="button" value="Horas" disabled></strong></div>`);
+                        formatUso = uso.join('');
+                        //uso = getVehiculoKmGps.toString().concat(" Km / ", getVehiculoHorometro.toString(), " Horas")
+                        const gps = getGPS.find((gps) => gps.idGps == vehiculo.gpsIdGps);
+                        if(gps){
+                            getGPSImei = gps.imeiGps;
+                        }
                     }
 
                     getPlanesActivo = listAllElement(activo.activoPlanes);
@@ -112,20 +131,11 @@ export default class extends AbstractView {
                         formatGetPlanesActivoNombre = ``;
                     }
 
-                    /*if (activo.mant_realizadas){
-                        formatRealizadas = `<div class="alert alert-success no-margin new-padding-top-bottom"><strong>${activo.mant_realizadas}</strong></div>`
-                    } else {
-                        formatRealizas = activo.mant_realizadas
-                    }*/
 
+                    //Esto debe obtenerse con vehiculoIdVehiculo
                     formatRealizadas = `<div class="alert alert-success no-margin new-padding-top-bottom new-color-alert"><strong>${activo.mant_realizadas}</strong></div>`
 
-                    if (activo.km == null) {
-                        kmHora = `<div class="alert new-alert-use no-margin new-padding-top-bottom"><strong>${activo.horas}</strong></div>`
-                    } else {
-                        kmHora = `<div class="alert new-alert-use no-margin new-padding-top-bottom"><strong>${activo.km}</strong></div>`
-                    }
-
+                    //Esto debe optimizarse mediante vehiculoIdVehiculo
                     if (activo.mant_en_km == null && activo.mant_en_horas == null) {
                         mantenimiento_en = ''
                     } else {
@@ -146,12 +156,12 @@ export default class extends AbstractView {
                     fillAssets += `
                     <tr>
                         <td>${activo.idActivo}</td>
-                        <td><strong>${activo.activo}</strong></td> <!-- temporal - depende de idVehiculo para obtener patente-->
+                        <td><strong>${getVehiculoPatente}</strong></td>
                         <td>${getTipoActivo}</td>
                         <td><div class="new-flex">${formatGetPlanesActivoNombre}</div></td>
-                        <td>${kmHora}</td>
-                        <td>${mantenimiento_en}</td> <!-- temporal - depende de idVehiculo -->
-                        <td>${formatRealizadas}</td> <!-- temporal - depende de idVehiculo -->
+                        <td>${formatUso}</td>
+                        <td>${mantenimiento_en}</td> <!-- temporal - depende de vehiculoIdVehiculo -->
+                        <td>${formatRealizadas}</td> <!-- temporal - depende de vehiculoIdVehiculo -->
                         <td>${getArea}</td>
                         <td>${getBodega}</td>
                         <td class="align-center">

@@ -38,7 +38,7 @@ export default class extends AbstractView {
                     <th>Tipo</th>
                     <th>GPS</th>
                     <th>Área</th>
-                    <th>Km/Horas (uso)</th>
+                    <th>Uso</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -78,7 +78,7 @@ export default class extends AbstractView {
                         getVehiculoPatente = vehiculo.ppuVehiculo;
                         getVehiculoKmGps = parseFloat(vehiculo.kmGps).toFixed(2);
                         getVehiculoHorometro = parseFloat(vehiculo.horometro).toFixed(2);
-                        uso = getVehiculoKmGps.toString().concat(" Km / ", getVehiculoHorometro.toString(), " Horas")
+                        uso = getVehiculoKmGps.toString().concat(" Km  -  ", getVehiculoHorometro.toString(), " Horas")
                         const gps = getGPS.find((gps) => gps.idGps == vehiculo.gpsIdGps);
                         if(gps){
                             getGPSImei = gps.imeiGps;
