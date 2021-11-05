@@ -2,7 +2,7 @@ import AbstractView from "./AbstractView.js";
 import {
     tiposMantenimiento, estados, tiposActivos, areas, talleres,
     frecuenciaPeriodo, getTiposMantenimientos, getEstados, getAreas,
-    getTiposActivos, getActivos, getTalleres, getCategorias,
+    getTiposActivos, getActivos, getTalleres, getCategorias, getVehiculos,
     loadSelectContent,
     loadSelectContentAndSelected,
     listSelect,
@@ -274,9 +274,14 @@ const fillOrderOptions = () => {
             loadSelectContent(optionTipoActivo, selectTipoActivo);
 
             // Select activo -- emplea los datos obtenidos en getJson();
-            const selectActivo = document.getElementById('orderAsset');
+            /*const selectActivo = document.getElementById('orderAsset');
             const optionActivo = listSelect(getActivos, "activo"); // Paso la clave "activo"
-            loadSelectContent(optionActivo, selectActivo);
+            loadSelectContent(optionActivo, selectActivo);*/
+
+            // Select vehiculo -- emplea los datos obtenidos en getJson();
+            const selectVehiculo = document.getElementById('orderAsset');
+            const optionVehiculo = listSelect(getVehiculos, "ppuVehiculo") // Paso la clave "ppuVehiculo"
+            loadSelectContent(optionVehiculo, selectVehiculo);
 
             // Select taller -- emplea los datos obtenidos en getJson();
             const selectTaller = document.getElementById('orderProvider');
@@ -405,9 +410,12 @@ const guardarOrdenParaJSON = () => {
         //nuevaOrdenJSON.title = 
         nuevaOrdenJSON.allDay = false
 
-        const activo = getActivos.find((activo) => activo.activo == element.textContent);
-        if (activo) {
-            nuevaOrdenJSON.activoIdActivo = activo.id;
+        const vehiculo = getVehiculos.find((vehiculo) => vehiculo.ppuVehiculo.trim() == element.textContent.trim());
+        if(vehiculo){
+            const activo = getActivos.find((activo) => activo.vehiculoIdVehiculo == vehiculo.idVehiculo);
+            if(activo){
+                nuevaOrdenJSON.activoIdActivo = activo.idActivo;
+            }
         }
 
         const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType').value);
