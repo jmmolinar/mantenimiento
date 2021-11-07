@@ -1,3 +1,132 @@
+/* Carga de datos leyendo JSON */
+const getJson = (urlJson, title) => {
+    const result = [];
+    //console.log("Entré al getJson");
+    $.ajax({
+        type: 'GET',
+        url: urlJson,
+        dataType: 'json',
+        success: function (data, status, jqXHR){
+            console.log(`Entré al AJAX de: ${title}`);
+            console.log(jqXHR);
+            for (const element of data){
+                //arrayJson.push(element);
+                result.push(element);
+            }
+            console.log(`AJAX: ${title} -> Status: ${status}`)
+        },
+        error: function (jqXHR) {
+            console.log(`Error en AJAX de: ${title}`)
+            console.log(jqXHR)
+        }
+    })
+    //console.log(result);
+    return result;
+}
+
+//Tipos de mantenimientos
+let ordersTypeJSON = 'http://192.168.0.13:8080/static/js/data/ordersType.JSON';
+let titleOrdersTypeJSON = "Tipos de mantenimientos";
+let getTiposMantenimientos = [];
+getTiposMantenimientos = getJson(ordersTypeJSON, titleOrdersTypeJSON);
+
+//Estados
+let stateJSON = 'http://192.168.0.13:8080/static/js/data/state.JSON';
+let titleStateJSON = 'Estados';
+let getEstados = [];
+getEstados = getJson(stateJSON, titleStateJSON);
+
+//Areas
+let areasJSON = 'http://192.168.0.13:8080/static/js/data/areas.JSON';
+let titleAreasJSON = "Áreas";
+let getAreas = [];
+getAreas = getJson(areasJSON, titleAreasJSON);
+
+//Tipos de activos
+let tiposActivosJSON = 'http://192.168.0.13:8080/static/js/data/assetsType.JSON';
+let titleTiposActivosJSON = 'Tipos de activos';
+let getTiposActivos = [];
+getTiposActivos = getJson(tiposActivosJSON, titleTiposActivosJSON);
+
+//Activos
+let activosJSON = 'http://192.168.0.13:8080/static/js/data/assets.JSON';
+let titleActivosJSON = 'Activos';
+let getActivos = [];
+getActivos = getJson(activosJSON, titleActivosJSON);
+
+//Vehiculos de BlackGPS
+let vehiculosJSON = 'http://192.168.0.13:8080/static/js/data/vehicle.JSON';
+let titleVehiculosJSON = 'Vehículos BLACKGPS';
+let getVehiculos = [];
+getVehiculos = getJson(vehiculosJSON, titleVehiculosJSON);
+
+//Marcas de BlackGPS
+let marcasJSON = 'http://192.168.0.13:8080/static/js/data/brand.JSON';
+let titleMarcasJSON = 'Marcas BLACKGPS';
+let getMarcas = [];
+getMarcas = getJson(marcasJSON, titleMarcasJSON);
+
+//Modelos de BlackGPS
+let modelosJSON = 'http://192.168.0.13:8080/static/js/data/model.JSON';
+let titleModelosJSON = 'Modelos BLACKGPS';
+let getModelos = [];
+getModelos = getJson(modelosJSON, titleModelosJSON);
+
+//GPS de BlackGPS
+let gpsJSON = 'http://192.168.0.13:8080/static/js/data/gps.JSON';
+let titleGpsJSON = 'GPS BLACKGPS';
+let getGPS = [];
+getGPS = getJson(gpsJSON, titleGpsJSON);
+
+//Talleres
+let talleresJSON = 'http://192.168.0.13:8080/static/js/data/workshops.JSON';
+let titleTalleresJSON = 'Talleres';
+let getTalleres = [];
+getTalleres = getJson(talleresJSON, titleTalleresJSON);
+
+//Bodegas
+let bodegasJSON = 'http://192.168.0.13:8080/static/js/data/assetsWareHouses.JSON';
+let titleBodegasJSON = 'Bodegas';
+let getBodegas = [];
+getBodegas = getJson(bodegasJSON, titleBodegasJSON);
+
+//Categorías de servicio
+let categoriasJSON = 'http://192.168.0.13:8080/static/js/data/serviceCategories.JSON';
+let titleCategoriasJSON = 'Categorías';
+let getCategorias = [];
+getCategorias = getJson(categoriasJSON, titleCategoriasJSON);
+
+//Planes de mantenimiento
+let planesJSON = 'http://192.168.0.13:8080/static/js/data/planning.JSON';
+let titlePlanesJSON = 'Planes';
+let getPlanes = [];
+getPlanes = getJson(planesJSON, titlePlanesJSON);
+
+//Regiones
+/*let regionesJSON = 'http://192.168.0.13:8080/static/js/data/regions.JSON';
+let titleRegionesJSON = 'Regiones';
+let getRegiones = [];
+getRegiones = getJson(regionesJSON, titleRegionesJSON);*/
+
+let frecuenciaPeriodo = [
+    {
+        "id_frecuencia": "1",
+        "nombre": "Días"
+    },
+    {
+        "id_frecuencia": "2",
+        "nombre": "Semanas"
+    },
+    {
+        "id_frecuencia": "3",
+        "nombre": "Meses"
+    },
+    {
+        "id_frecuencia": "4",
+        "nombre": "Años"
+    }
+]
+
 /* Cargar contenido en el select */
 const loadSelectContent = (array, select) => {
     select.innerHTML = `<option></option>`;
@@ -153,475 +282,6 @@ const olderDate = (dateA, dateB) => {
     }
 
 }
-
-const getJson = (urlJson, title) => {
-    const result = [];
-    //console.log("Entré al getJson");
-    $.ajax({
-        type: 'GET',
-        url: urlJson,
-        dataType: 'json',
-        success: function (data, status, jqXHR){
-            console.log(`Entré al AJAX de: ${title}`);
-            console.log(jqXHR);
-            for (const element of data){
-                //arrayJson.push(element);
-                result.push(element);
-            }
-            console.log(`AJAX: ${title} -> Status: ${status}`)
-        },
-        error: function (jqXHR) {
-            console.log(`Error en AJAX de: ${title}`)
-            console.log(jqXHR)
-        }
-    })
-    //console.log(result);
-    return result;
-}
-
-//Tipos de mantenimientos
-let ordersTypeJSON = 'http://192.168.0.13:8080/static/js/data/ordersType.JSON';
-let titleOrdersTypeJSON = "Tipos de mantenimientos";
-let getTiposMantenimientos = [];
-getTiposMantenimientos = getJson(ordersTypeJSON, titleOrdersTypeJSON);
-
-//Estados
-let stateJSON = 'http://192.168.0.13:8080/static/js/data/state.JSON';
-let titleStateJSON = 'Estados';
-let getEstados = [];
-getEstados = getJson(stateJSON, titleStateJSON);
-
-//Areas
-let areasJSON = 'http://192.168.0.13:8080/static/js/data/areas.JSON';
-let titleAreasJSON = "Áreas";
-let getAreas = [];
-getAreas = getJson(areasJSON, titleAreasJSON);
-
-//Tipos de activos
-let tiposActivosJSON = 'http://192.168.0.13:8080/static/js/data/assetsType.JSON';
-let titleTiposActivosJSON = 'Tipos de activos';
-let getTiposActivos = [];
-getTiposActivos = getJson(tiposActivosJSON, titleTiposActivosJSON);
-
-//Activos
-let activosJSON = 'http://192.168.0.13:8080/static/js/data/assets.JSON';
-let titleActivosJSON = 'Activos';
-let getActivos = [];
-getActivos = getJson(activosJSON, titleActivosJSON);
-
-//Vehiculos de BlackGPS
-let vehiculosJSON = 'http://192.168.0.13:8080/static/js/data/vehicle.JSON';
-let titleVehiculosJSON = 'Vehículos BLACKGPS';
-let getVehiculos = [];
-getVehiculos = getJson(vehiculosJSON, titleVehiculosJSON);
-
-//Marcas de BlackGPS
-let marcasJSON = 'http://192.168.0.13:8080/static/js/data/brand.JSON';
-let titleMarcasJSON = 'Marcas BLACKGPS';
-let getMarcas = [];
-getMarcas = getJson(marcasJSON, titleMarcasJSON);
-
-//Modelos de BlackGPS
-let modelosJSON = 'http://192.168.0.13:8080/static/js/data/model.JSON';
-let titleModelosJSON = 'Modelos BLACKGPS';
-let getModelos = [];
-getModelos = getJson(modelosJSON, titleModelosJSON);
-
-//GPS de BlackGPS
-let gpsJSON = 'http://192.168.0.13:8080/static/js/data/gps.JSON';
-let titleGpsJSON = 'GPS BLACKGPS';
-let getGPS = [];
-getGPS = getJson(gpsJSON, titleGpsJSON);
-
-//Talleres
-let talleresJSON = 'http://192.168.0.13:8080/static/js/data/workshops.JSON';
-let titleTalleresJSON = 'Talleres';
-let getTalleres = [];
-getTalleres = getJson(talleresJSON, titleTalleresJSON);
-
-//Bodegas
-let bodegasJSON = 'http://192.168.0.13:8080/static/js/data/assetsWareHouses.JSON';
-let titleBodegasJSON = 'Bodegas';
-let getBodegas = [];
-getBodegas = getJson(bodegasJSON, titleBodegasJSON);
-
-//Categorías de servicio
-let categoriasJSON = 'http://192.168.0.13:8080/static/js/data/serviceCategories.JSON';
-let titleCategoriasJSON = 'Categorías';
-let getCategorias = [];
-getCategorias = getJson(categoriasJSON, titleCategoriasJSON);
-
-//Planes de mantenimiento
-let planesJSON = 'http://192.168.0.13:8080/static/js/data/planning.JSON';
-let titlePlanesJSON = 'Planes';
-let getPlanes = [];
-getPlanes = getJson(planesJSON, titlePlanesJSON);
-
-let frecuenciaPeriodo = [
-    {
-        "id_frecuencia": "1",
-        "nombre": "Días"
-    },
-    {
-        "id_frecuencia": "2",
-        "nombre": "Semanas"
-    },
-    {
-        "id_frecuencia": "3",
-        "nombre": "Meses"
-    },
-    {
-        "id_frecuencia": "4",
-        "nombre": "Años"
-    }
-]
-
-
-//Regiones
-/*let regionesJSON = 'http://192.168.0.13:8080/static/js/data/regions.JSON';
-let titleRegionesJSON = 'Regiones';
-let getRegiones = [];
-getRegiones = getJson(regionesJSON, titleRegionesJSON);*/
-
-/*let estados = [
-    {
-        "id_estado": 1,
-        "nombre": "Por planificar",
-        "alias": "PC",
-        "asignado_por": "Sistema",
-        "id_padre": []
-    },
-    {
-        "id_estado": 2,
-        "nombre": "Planificado",
-        "alias": "P",
-        "asignado_por": "Usuario",
-        "id_padre": [1]
-    },
-    {
-        "id_estado": 3,
-        "nombre": "Retrasado",
-        "alias": "R",
-        "asignado_por": "Sistema",
-        "id_padre": [1]
-    },
-    {
-        "id_estado": 4,
-        "nombre": "Planificado con retraso",
-        "alias": "PCR",
-        "asignado_por": ["Usuario","Sistema"],
-        "id_padre": [2,3]
-    },
-    {
-        "id_estado": 5,
-        "nombre": "En taller",
-        "alias": "ET",
-        "asignado_por": "Sistema",
-        "id_padre": [2,4]
-    },
-    {
-        "id_estado": 6,
-        "nombre": "Retraso en taller",
-        "alias": "RT",
-        "asignado_por": "Sistema",
-        "id_padre": [5]
-    },
-    {
-        "id_estado": 7,
-        "nombre": "Salida de taller",
-        "alias": "ST",
-        "asignado_por": "Sistema",
-        "id_padre": [5,6]
-    },
-    {
-        "id_estado": 8,
-        "nombre": "Completado",
-        "alias": "C",
-        "asignado_por": "Usuario",
-        "id_padre": [7]
-    },
-    {
-        "id_estado": 9,
-        "nombre": "Completado con retraso",
-        "alias": "CR",
-        "asignado_por": "Usuario",
-        "id_padre": [7]
-    },
-    {
-        "id_estado": 10,
-        "nombre": "No realizado",
-        "alias": "NR",
-        "asignado_por": "Usuario",
-        "id_padre": [1,2,3,4]
-    }
-
-]*/
-
-/*let tiposMantenimiento = [
-    {
-        "id_tipo_mantenimiento": "1",
-        "nombre": "Preventivo"
-    },
-    {
-        "id_tipo_mantenimiento": "2",
-        "nombre": "Correctivo"
-    }
-]*/
-
-/*let tiposActivos = [
-    {
-        "id_activo": "3",
-        "nombre": "Herramienta"
-    },
-    {
-        "id_activo": "2",
-        "nombre": "Máquina"
-    },
-    {
-        "id_activo": "1",
-        "nombre": "Vehículo"
-    }
-]*/
-
-/*let areas = [
-    {
-        "id_area": "1",
-        "nombre": "Área 11"
-    },
-    {
-        "id_area": "2",
-        "nombre": "Área 21"
-    },
-    {
-        "id_area": "3",
-        "nombre": "Área 31"
-    },
-    {
-        "id_area": "4",
-        "nombre": "Área 41"
-    },
-    {
-        "id_area": "5",
-        "nombre": "Área 51"
-    },
-    {
-        "id_area": "6",
-        "nombre": "Área 61"
-    },
-    {
-        "id_area": "7",
-        "nombre": "Área 71"
-    },
-    {
-        "id_area": "8",
-        "nombre": "Área 81"
-    },
-    {
-        "id_area": "9",
-        "nombre": "Área 91"
-    },
-    {
-        "id_area": "10",
-        "nombre": "Área 101"
-    }
-]*/
-
-/*let marcas = [
-    {
-        "id_marca": "1",
-        "nombre": "Caterpillar"
-    },
-    {
-        "id_marca": "2",
-        "nombre": "Komatsu"
-    },
-    {
-        "id_marca": "3",
-        "nombre": "John Deere"
-    },
-    {
-        "id_marca": "4",
-        "nombre": "Iveco"
-    },
-    {
-        "id_marca": "5",
-        "nombre": "Mazda"
-    },
-    {
-        "id_marca": "6",
-        "nombre": "Toyota"
-    },
-    {
-        "id_marca": "7",
-        "nombre": "Ford"
-    },
-    {
-        "id_marca": "8",
-        "nombre": "Fiat"
-    },
-    {
-        "id_marca": "9",
-        "nombre": "Chevrolet"
-    }
-]*/
-
-/*let planes = [
-    {
-        "id": "11",
-        "nombre": "Plan GENERAL"
-    },
-    {
-        "id": "10",
-        "nombre": "Plan JOHN DEERE"
-    },
-    {
-        "id": "9",
-        "nombre": "Plan KOMATSU"
-    },
-    {
-        "id": "8",
-        "nombre": "Plan CHEVROLET"
-    },
-    {
-        "id": "7",
-        "nombre": "Plan FIAT"
-    },
-    {
-        "id": "6",
-        "nombre": "Plan FORD"
-    },
-    {
-        "id": "5",
-        "nombre": "Plan TOYOTA"
-    },
-    {
-        "id": "4",
-        "nombre": "Plan ESTÁNDAR"
-    },
-    {
-        "id": "3",
-        "nombre": "Plan MAZDA"
-    },
-    {
-        "id": "2",
-        "nombre": "Plan CATERPILLAR"
-    },
-    {
-        "id": "1",
-        "nombre": "Plan IVECO"
-    }
-]*/
-
-/*let bodegas = [
-    {
-        "id": "5",
-        "nombre": "Sede Oeste",
-        "comuna": "Viña del Mar",
-        "region": "Valparaíso",
-        "calle": "Agua Santa",
-        "num_calle": "311",
-        "latitud": "-33.0466072",
-        "longitud": "-71.5654153",
-        "cantidad_activos": "50"
-    },
-    {
-        "id": "4",
-        "nombre": "Sede Sur A",
-        "comuna": "Villarrica",
-        "region": "Araucanía",
-        "calle": "San Martín",
-        "num_calle": "460",
-        "latitud": "-39.2771416",
-        "longitud": "-72.2271881",
-        "cantidad_activos": "4"
-    },
-    {
-        "id": "3",
-        "nombre": "Sede Sur B",
-        "comuna": "Valdivia",
-        "region": "Los Ríos",
-        "calle": "Las Encinas",
-        "num_calle": "51",
-        "latitud": "-39.8100413",
-        "longitud": "-73.2529351",
-        "cantidad_activos": "8"
-    },
-    {
-        "id": "2",
-        "nombre": "Sede Norte",
-        "comuna": "Iquique",
-        "region": "Tarapacá",
-        "calle": "Serrano",
-        "num_calle": "132",
-        "latitud": "-20.213486",
-        "longitud": "-70.1541984",
-        "cantidad_activos": "110"
-    },
-    {
-        "id": "1",
-        "nombre": "Sede Central",
-        "comuna": "Ñuñoa",
-        "region": "Metropolitana de Santiago",
-        "calle": "Irarrázaval",
-        "num_calle": "1220",
-        "latitud": "-33.4530769",
-        "longitud": "-70.6188521",
-        "cantidad_activos": "120"
-    }
-]*/
-
-/*let talleres = [
-    {
-        "id": "5",
-        "nombre": "Taller EEE",
-        "comuna": "Viña del Mar",
-        "region": "Valparaíso",
-        "calle": "Agua Santa",
-        "num_calle": "311",
-        "latitud": "-33.0466072",
-        "longitud": "-71.5654153"
-    },
-    {
-        "id": "4",
-        "nombre": "Taller DDD",
-        "comuna": "Villarrica",
-        "region": "Araucanía",
-        "calle": "San Martín",
-        "num_calle": "460",
-        "latitud": "-39.2771416",
-        "longitud": "-72.2271881"
-    },
-    {
-        "id": "3",
-        "nombre": "Taller CCC",
-        "comuna": "Valdivia",
-        "region": "Los Ríos",
-        "calle": "Las Encinas",
-        "num_calle": "51",
-        "latitud": "-39.8100413",
-        "longitud": "-73.2529351"
-    },
-    {
-        "id": "2",
-        "nombre": "Taller BBB",
-        "comuna": "Iquique",
-        "region": "Tarapacá",
-        "calle": "Serrano",
-        "num_calle": "132",
-        "latitud": "-20.213486",
-        "longitud": "-70.1541984"
-    },
-    {
-        "id": "1",
-        "nombre": "Taller AAA",
-        "comuna": "Ñuñoa",
-        "region": "Metropolitana de Santiago",
-        "calle": "Irarrázaval",
-        "num_calle": "1220",
-        "latitud": "-33.4530769",
-        "longitud": "-70.6188521"
-    }
-]*/
 
 let regiones = [
     {
@@ -1100,45 +760,6 @@ let regiones = [
     }
 ]
 
-/*let anios = [
-    {
-        "id_anio": 1,
-        "anio": "2021"
-    },
-    {
-        "id_anio": 2,
-        "anio": "2020"
-    },
-    {
-        "id_anio": 3,
-        "anio": "2019"
-    },
-    {
-        "id_anio": 4,
-        "anio": "2018"
-    },
-    {
-        "id_anio": 5,
-        "anio": "2017"
-    },
-    {
-        "id_anio": 6,
-        "anio": "2016"
-    },
-    {
-        "id_anio": 7,
-        "anio": "2015"
-    },
-    {
-        "id_anio": 8,
-        "anio": "2014"
-    },
-    {
-        "id_anio": 9,
-        "anio": "2013"
-    }
-]*/
-
 export {
     frecuenciaPeriodo,
     regiones,
@@ -1167,4 +788,344 @@ export {
     currentDate,
     olderDate
 };
+
+/*let estados = [
+    {
+        "id_estado": 1,
+        "nombre": "Por planificar",
+        "alias": "PC",
+        "asignado_por": "Sistema",
+        "id_padre": []
+    },
+    {
+        "id_estado": 2,
+        "nombre": "Planificado",
+        "alias": "P",
+        "asignado_por": "Usuario",
+        "id_padre": [1]
+    },
+    {
+        "id_estado": 3,
+        "nombre": "Retrasado",
+        "alias": "R",
+        "asignado_por": "Sistema",
+        "id_padre": [1]
+    },
+    {
+        "id_estado": 4,
+        "nombre": "Planificado con retraso",
+        "alias": "PCR",
+        "asignado_por": ["Usuario","Sistema"],
+        "id_padre": [2,3]
+    },
+    {
+        "id_estado": 5,
+        "nombre": "En taller",
+        "alias": "ET",
+        "asignado_por": "Sistema",
+        "id_padre": [2,4]
+    },
+    {
+        "id_estado": 6,
+        "nombre": "Retraso en taller",
+        "alias": "RT",
+        "asignado_por": "Sistema",
+        "id_padre": [5]
+    },
+    {
+        "id_estado": 7,
+        "nombre": "Salida de taller",
+        "alias": "ST",
+        "asignado_por": "Sistema",
+        "id_padre": [5,6]
+    },
+    {
+        "id_estado": 8,
+        "nombre": "Completado",
+        "alias": "C",
+        "asignado_por": "Usuario",
+        "id_padre": [7]
+    },
+    {
+        "id_estado": 9,
+        "nombre": "Completado con retraso",
+        "alias": "CR",
+        "asignado_por": "Usuario",
+        "id_padre": [7]
+    },
+    {
+        "id_estado": 10,
+        "nombre": "No realizado",
+        "alias": "NR",
+        "asignado_por": "Usuario",
+        "id_padre": [1,2,3,4]
+    }
+
+]*/
+
+/*let tiposMantenimiento = [
+    {
+        "id_tipo_mantenimiento": "1",
+        "nombre": "Preventivo"
+    },
+    {
+        "id_tipo_mantenimiento": "2",
+        "nombre": "Correctivo"
+    }
+]*/
+
+/*let tiposActivos = [
+    {
+        "id_activo": "3",
+        "nombre": "Herramienta"
+    },
+    {
+        "id_activo": "2",
+        "nombre": "Máquina"
+    },
+    {
+        "id_activo": "1",
+        "nombre": "Vehículo"
+    }
+]*/
+
+/*let areas = [
+    {
+        "id_area": "1",
+        "nombre": "Área 11"
+    },
+    {
+        "id_area": "2",
+        "nombre": "Área 21"
+    },
+    {
+        "id_area": "3",
+        "nombre": "Área 31"
+    },
+    {
+        "id_area": "4",
+        "nombre": "Área 41"
+    },
+    {
+        "id_area": "5",
+        "nombre": "Área 51"
+    },
+    {
+        "id_area": "6",
+        "nombre": "Área 61"
+    },
+    {
+        "id_area": "7",
+        "nombre": "Área 71"
+    },
+    {
+        "id_area": "8",
+        "nombre": "Área 81"
+    },
+    {
+        "id_area": "9",
+        "nombre": "Área 91"
+    },
+    {
+        "id_area": "10",
+        "nombre": "Área 101"
+    }
+]*/
+
+/*let marcas = [
+    {
+        "id_marca": "1",
+        "nombre": "Caterpillar"
+    },
+    {
+        "id_marca": "2",
+        "nombre": "Komatsu"
+    },
+    {
+        "id_marca": "3",
+        "nombre": "John Deere"
+    },
+    {
+        "id_marca": "4",
+        "nombre": "Iveco"
+    },
+    {
+        "id_marca": "5",
+        "nombre": "Mazda"
+    },
+    {
+        "id_marca": "6",
+        "nombre": "Toyota"
+    },
+    {
+        "id_marca": "7",
+        "nombre": "Ford"
+    },
+    {
+        "id_marca": "8",
+        "nombre": "Fiat"
+    },
+    {
+        "id_marca": "9",
+        "nombre": "Chevrolet"
+    }
+]*/
+
+/*let planes = [
+    {
+        "id": "11",
+        "nombre": "Plan GENERAL"
+    },
+    {
+        "id": "10",
+        "nombre": "Plan JOHN DEERE"
+    },
+    {
+        "id": "9",
+        "nombre": "Plan KOMATSU"
+    },
+    {
+        "id": "8",
+        "nombre": "Plan CHEVROLET"
+    },
+    {
+        "id": "7",
+        "nombre": "Plan FIAT"
+    },
+    {
+        "id": "6",
+        "nombre": "Plan FORD"
+    },
+    {
+        "id": "5",
+        "nombre": "Plan TOYOTA"
+    },
+    {
+        "id": "4",
+        "nombre": "Plan ESTÁNDAR"
+    },
+    {
+        "id": "3",
+        "nombre": "Plan MAZDA"
+    },
+    {
+        "id": "2",
+        "nombre": "Plan CATERPILLAR"
+    },
+    {
+        "id": "1",
+        "nombre": "Plan IVECO"
+    }
+]*/
+
+/*let bodegas = [
+    {
+        "id": "5",
+        "nombre": "Sede Oeste",
+        "comuna": "Viña del Mar",
+        "region": "Valparaíso",
+        "calle": "Agua Santa",
+        "num_calle": "311",
+        "latitud": "-33.0466072",
+        "longitud": "-71.5654153",
+        "cantidad_activos": "50"
+    },
+    {
+        "id": "4",
+        "nombre": "Sede Sur A",
+        "comuna": "Villarrica",
+        "region": "Araucanía",
+        "calle": "San Martín",
+        "num_calle": "460",
+        "latitud": "-39.2771416",
+        "longitud": "-72.2271881",
+        "cantidad_activos": "4"
+    },
+    {
+        "id": "3",
+        "nombre": "Sede Sur B",
+        "comuna": "Valdivia",
+        "region": "Los Ríos",
+        "calle": "Las Encinas",
+        "num_calle": "51",
+        "latitud": "-39.8100413",
+        "longitud": "-73.2529351",
+        "cantidad_activos": "8"
+    },
+    {
+        "id": "2",
+        "nombre": "Sede Norte",
+        "comuna": "Iquique",
+        "region": "Tarapacá",
+        "calle": "Serrano",
+        "num_calle": "132",
+        "latitud": "-20.213486",
+        "longitud": "-70.1541984",
+        "cantidad_activos": "110"
+    },
+    {
+        "id": "1",
+        "nombre": "Sede Central",
+        "comuna": "Ñuñoa",
+        "region": "Metropolitana de Santiago",
+        "calle": "Irarrázaval",
+        "num_calle": "1220",
+        "latitud": "-33.4530769",
+        "longitud": "-70.6188521",
+        "cantidad_activos": "120"
+    }
+]*/
+
+/*let talleres = [
+    {
+        "id": "5",
+        "nombre": "Taller EEE",
+        "comuna": "Viña del Mar",
+        "region": "Valparaíso",
+        "calle": "Agua Santa",
+        "num_calle": "311",
+        "latitud": "-33.0466072",
+        "longitud": "-71.5654153"
+    },
+    {
+        "id": "4",
+        "nombre": "Taller DDD",
+        "comuna": "Villarrica",
+        "region": "Araucanía",
+        "calle": "San Martín",
+        "num_calle": "460",
+        "latitud": "-39.2771416",
+        "longitud": "-72.2271881"
+    },
+    {
+        "id": "3",
+        "nombre": "Taller CCC",
+        "comuna": "Valdivia",
+        "region": "Los Ríos",
+        "calle": "Las Encinas",
+        "num_calle": "51",
+        "latitud": "-39.8100413",
+        "longitud": "-73.2529351"
+    },
+    {
+        "id": "2",
+        "nombre": "Taller BBB",
+        "comuna": "Iquique",
+        "region": "Tarapacá",
+        "calle": "Serrano",
+        "num_calle": "132",
+        "latitud": "-20.213486",
+        "longitud": "-70.1541984"
+    },
+    {
+        "id": "1",
+        "nombre": "Taller AAA",
+        "comuna": "Ñuñoa",
+        "region": "Metropolitana de Santiago",
+        "calle": "Irarrázaval",
+        "num_calle": "1220",
+        "latitud": "-33.4530769",
+        "longitud": "-70.6188521"
+    }
+]*/
 

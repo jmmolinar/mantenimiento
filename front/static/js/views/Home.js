@@ -1,13 +1,12 @@
 import AbstractView from "./AbstractView.js";
 import TableLanguage from "./TableLanguage.js";
-import { 
+import {
     listAllElement,
     getAreas,
     getBodegas,
     getTiposActivos,
     getPlanes, getVehiculos, getGPS
- } from "./Options.js";
-
+} from "./Options.js";
 
 let getArea = ``;
 let getBodega = ``;
@@ -97,7 +96,7 @@ export default class extends AbstractView {
                     }
 
                     const vehiculo = getVehiculos.find((vehiculo) => vehiculo.idVehiculo == activo.vehiculoIdVehiculo);
-                    if(vehiculo){
+                    if (vehiculo) {
                         let uso = [];
                         getVehiculoPatente = vehiculo.ppuVehiculo;
                         getVehiculoKmGps = parseFloat(vehiculo.kmGps).toFixed(2);
@@ -107,7 +106,7 @@ export default class extends AbstractView {
                         formatUso = uso.join('');
                         //uso = getVehiculoKmGps.toString().concat(" Km / ", getVehiculoHorometro.toString(), " Horas")
                         const gps = getGPS.find((gps) => gps.idGps == vehiculo.gpsIdGps);
-                        if(gps){
+                        if (gps) {
                             getGPSImei = gps.imeiGps;
                         }
                     }
@@ -118,10 +117,10 @@ export default class extends AbstractView {
 
                     getPlanesActivo.forEach(elem => {
                         const plan = getPlanes.find((plan) => plan.idPlanMantenimiento == elem.planMantenimientoIdPlanMantenimiento);
-                        if(plan){
+                        if (plan) {
                             getPlanesActivoNombre.push(`<div class="alert alert-info no-margin new-padding-top-bottom"><strong>${plan.nombre}</strong></div>`)
                         }
-                        
+
                     })
 
                     if (getPlanesActivoNombre.length) {
@@ -191,6 +190,9 @@ export default class extends AbstractView {
 
 const customTable = () => {
 
+
+    //$(window).on("load", function () {
+
     $(document).ready(function () {
         $('div #pages table#assetsTable').DataTable({
             "order": [[0, "desc"]],
@@ -205,4 +207,6 @@ const customTable = () => {
             console.log("Voy al activo: " + $(this).attr('href').slice(1).substring($(this).attr('href').slice(1).lastIndexOf('/') + 1))
         })
     });
+
+    //});
 }

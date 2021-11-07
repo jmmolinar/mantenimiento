@@ -21,6 +21,7 @@ let getModelo = ``;
 let getGPSImei = ``;
 let getActivoKmGps = ``;
 let getActivoHorometro = ``;
+let getUsoActivo = ``;
 let getAnio = ``;
 let getPlan = ``;
 let getPlanesActivo = [];
@@ -116,7 +117,7 @@ export default class extends AbstractView {
                                     <h5>Marca</h5>
                                 </label>
                                 <div class="controls">
-                                    <select id="assetBrand" required>
+                                    <select id="assetBrand" required disabled>
                                     </select>
                                 </div>
                             </div>
@@ -129,7 +130,7 @@ export default class extends AbstractView {
                                 <div class="controls">
                                     <!--<input id="assetModel" type="text" min="3" maxlength="15"
                                         value="" required>-->
-                                    <select id="assetModel" required>
+                                    <select id="assetModel" required disabled>
                                     </select>
                                 </div>
                             </div>
@@ -643,6 +644,52 @@ $(document).ready(function () {
         mostrarActivoStorageJSON();
 
     });
+
+    //Mostrar datos ligados a la patente (activo) seleccionada
+    $('div #pages').on('change', 'select#assetPatent', e => {
+        
+        const patenteSeleccionada = getVehiculos.find((vehiculo) => vehiculo.ppuVehiculo == e.target.value);
+        getUsoActivo = '';
+        if(patenteSeleccionada){
+            console.log("Patente: " + patenteSeleccionada.ppuVehiculo)
+
+            getActivoKmGps = parseFloat(patenteSeleccionada.kmGps).toFixed(2);
+            getActivoHorometro = parseFloat(patenteSeleccionada.horometro).toFixed(2);
+            getUsoActivo = getActivoKmGps.toString().concat(" Km - ", getActivoHorometro.toString(), " Horas");
+            console.log("Uso: " + getUsoActivo);
+            
+            const gpsImeiSeleccionado = getGPS.find((gps) => gps.idGps == patenteSeleccionada.gpsIdGps);
+            getGPSImei = '';
+            if(gpsImeiSeleccionado){
+                getGPSImei = gpsImeiSeleccionado.imeiGps;
+                console.log("GPS: " + getGPSImei)
+            }
+
+            const modeloSeleccionado = getModelos.find((modelo) => modelo.idModeloVehiculo == patenteSeleccionada.modeloVehiculoIdModeloVehiculo);
+            getModelo = '';
+            if(modeloSeleccionado){
+                getModelo = modeloSeleccionado.nombreModeloVehiculo;
+                console.log("Modelo: " + getModelo)
+                
+                const marcaSeleccionada = getMarcas.find((marca) => marca.idMarcaVehiculo == modeloSeleccionado.marcaVehiculoIdMarcaVehiculo);
+                getMarca = '';
+                if(marcaSeleccionada){
+                    getMarca = marcaSeleccionada.nombreMarcaVehiculo;
+                    console.log("Marca: " + getMarca)
+                }
+            }
+
+        }
+
+        //$(`#assetBrand option[value=${getMarca}]`).attr('selected','selected');
+        //$(`#assetModel option[value=${getModelo}]`).attr('selected','selected');
+        $(`#assetBrand`).val(getMarca);
+        $(`#assetModel`).val(getModelo);
+        $(`input#assetUse`).val(getUsoActivo);
+        $(`input#assetGPS`).val(getGPSImei);
+
+    })
+
 
     //Agregar Alert Button al seleccionar Plan de Mantenimiento en el activo
     $('div #pages').on('change', 'select#assetPlan', e => {
