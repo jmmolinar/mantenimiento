@@ -299,28 +299,6 @@ export default class extends AbstractView {
                                     </div>
                                 </div>
 
-                                <!--ÁREA DEL ACTIVO-->
-                                <div class="control-group">
-                                    <label class="span4" for="orderAreasOptions">
-                                        <h5>Área</h5>
-                                    </label>
-                                    <div class="controls">
-                                        <select id="orderAreasOptions" required disabled>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <!--TIPO DE ACTIVO-->
-                                <div class="control-group">
-                                    <label class="span4" for="orderAssetType">
-                                        <h5>Tipo de activo</h5>
-                                    </label>
-                                    <div class="controls">
-                                        <select id="orderAssetType" required disabled>
-                                        </select>
-                                    </div>
-                                </div>
-
                                 <!--PROVEEDOR DE SERVICIO - TALLER-->
                                 <div id="serviceProvider" class="control-group">
                                     <label class="span4" for="orderProvider">
@@ -340,6 +318,28 @@ export default class extends AbstractView {
                                     <div class="controls">
                                         <input id="timeProvider" type="text" min="3" maxlength="15" 
                                             value="${tiempoTaller}" disabled required>
+                                    </div>
+                                </div>
+
+                                <!--ÁREA DEL ACTIVO-->
+                                <div class="control-group">
+                                    <label class="span4" for="orderAreasOptions">
+                                        <h5>Área</h5>
+                                    </label>
+                                    <div class="controls">
+                                        <select id="orderAreasOptions" required disabled>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!--TIPO DE ACTIVO-->
+                                <div class="control-group">
+                                    <label class="span4" for="orderAssetType">
+                                        <h5>Tipo de activo</h5>
+                                    </label>
+                                    <div class="controls">
+                                        <select id="orderAssetType" required disabled>
+                                        </select>
                                     </div>
                                 </div>
 

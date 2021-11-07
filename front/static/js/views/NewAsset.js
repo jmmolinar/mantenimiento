@@ -106,7 +106,7 @@ export default class extends AbstractView {
                                     <h5>Patente</h5>
                                 </label>
                                 <div class="controls">
-                                    <select id="assetPatent" required>
+                                    <select id="assetPatent" required disabled>
                                     </select>
                                 </div>
                             </div>
@@ -440,7 +440,7 @@ const guardarActivoJSON = () => {
 
     let selectPatente = document.getElementById('assetPatent');
     const vehiculo = getVehiculos.find((vehiculo) => vehiculo.ppuVehiculo.trim() == selectPatente.value.trim());
-    if(vehiculo){
+    if (vehiculo) {
         nuevoActivoJSON.vehiculoIdVehiculo = vehiculo.idVehiculo;
     }
 
@@ -584,6 +584,14 @@ $(document).ready(function () {
 
         guardarActivoJSON();
 
+        if ($('#assetPatent').val().length == '') {
+            alert('Debe seleccionar una patente de alguna área');
+            $('html, body').animate({
+                scrollTop: $(`#assetAreasOptions`).offset().top - 50
+            }, 1000)
+            e.preventDefault();
+        }
+
         if ($('#assetYear').val().length != ''
             && $('#assetPatent').val().length != ''
             && $('#assetAreasOptions').val().length != ''
@@ -595,12 +603,12 @@ $(document).ready(function () {
 
             if (banderaPlanes == false) {
                 alert('Debe Seleccionar al menos un plan');
-                
+
                 $('#tabDocumentos').removeClass("active");
                 $('#tabDatos').addClass("active");
                 $('#tab2').removeClass("active");
                 $('#tab1').addClass("active");
-                
+
                 $('html, body').animate({
                     scrollTop: $(`#assetPlan`).offset().top - 50
                 }, 1000)
@@ -645,48 +653,90 @@ $(document).ready(function () {
 
     });
 
+
+    //SOLO ACTIVOS DE UNA AREA
+    $('div #pages').on('change', 'select#assetAreasOptions', e => {
+
+        let vehiculosArea = [];
+        const areaSeleccionada = getAreas.find((area) => area.nombreArea == e.target.value);
+        if (areaSeleccionada) {
+
+            const patentes = getVehiculos.filter((vehiculo) => vehiculo.areaIdArea == areaSeleccionada.idArea);
+
+            if (patentes) {
+                vehiculosArea = listAllElement(patentes);
+                if (vehiculosArea.length) {
+                    $('select#assetPatent').removeAttr("disabled");
+                    console.log(vehiculosArea);
+                    const selectPatente = document.getElementById('assetPatent');
+                    const optionPatente = listSelect(vehiculosArea, "ppuVehiculo"); // Paso la clave "ppuVehiculo"
+                    //selectPatente.innerHTML = '<option value="">-</option>';
+                    loadSelectContent(optionPatente, selectPatente);
+                } else {
+                    $(`#assetPatent`).val("");
+                    //$(`#assetPatent`).attr("disabled", "disabled");
+                }
+
+            }
+
+        } else {
+            $(`#assetPatent`).val("");
+            $(`#assetPatent`).attr("disabled", "disabled");
+            $(`#assetBrand`).val("");
+            $(`#assetModel`).val("");
+            $(`input#assetUse`).val("");
+            $(`input#assetGPS`).val("");
+        }
+
+    })
+
     //Mostrar datos ligados a la patente (activo) seleccionada
     $('div #pages').on('change', 'select#assetPatent', e => {
-        
+
         const patenteSeleccionada = getVehiculos.find((vehiculo) => vehiculo.ppuVehiculo == e.target.value);
         getUsoActivo = '';
-        if(patenteSeleccionada){
+        if (patenteSeleccionada) {
             console.log("Patente: " + patenteSeleccionada.ppuVehiculo)
 
             getActivoKmGps = parseFloat(patenteSeleccionada.kmGps).toFixed(2);
             getActivoHorometro = parseFloat(patenteSeleccionada.horometro).toFixed(2);
             getUsoActivo = getActivoKmGps.toString().concat(" Km - ", getActivoHorometro.toString(), " Horas");
             console.log("Uso: " + getUsoActivo);
-            
+
             const gpsImeiSeleccionado = getGPS.find((gps) => gps.idGps == patenteSeleccionada.gpsIdGps);
             getGPSImei = '';
-            if(gpsImeiSeleccionado){
+            if (gpsImeiSeleccionado) {
                 getGPSImei = gpsImeiSeleccionado.imeiGps;
                 console.log("GPS: " + getGPSImei)
             }
 
             const modeloSeleccionado = getModelos.find((modelo) => modelo.idModeloVehiculo == patenteSeleccionada.modeloVehiculoIdModeloVehiculo);
             getModelo = '';
-            if(modeloSeleccionado){
+            if (modeloSeleccionado) {
                 getModelo = modeloSeleccionado.nombreModeloVehiculo;
                 console.log("Modelo: " + getModelo)
-                
+
                 const marcaSeleccionada = getMarcas.find((marca) => marca.idMarcaVehiculo == modeloSeleccionado.marcaVehiculoIdMarcaVehiculo);
                 getMarca = '';
-                if(marcaSeleccionada){
+                if (marcaSeleccionada) {
                     getMarca = marcaSeleccionada.nombreMarcaVehiculo;
                     console.log("Marca: " + getMarca)
                 }
             }
 
-        }
+            //$(`#assetBrand option[value=${getMarca}]`).attr('selected','selected');
+            //$(`#assetModel option[value=${getModelo}]`).attr('selected','selected');
+            $(`#assetBrand`).val(getMarca);
+            $(`#assetModel`).val(getModelo);
+            $(`input#assetUse`).val(getUsoActivo);
+            $(`input#assetGPS`).val(getGPSImei);
 
-        //$(`#assetBrand option[value=${getMarca}]`).attr('selected','selected');
-        //$(`#assetModel option[value=${getModelo}]`).attr('selected','selected');
-        $(`#assetBrand`).val(getMarca);
-        $(`#assetModel`).val(getModelo);
-        $(`input#assetUse`).val(getUsoActivo);
-        $(`input#assetGPS`).val(getGPSImei);
+        } else {
+            $(`#assetBrand`).val("");
+            $(`#assetModel`).val("");
+            $(`input#assetUse`).val("");
+            $(`input#assetGPS`).val("");
+        }
 
     })
 

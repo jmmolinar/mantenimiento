@@ -46,7 +46,7 @@ export default class extends AbstractView {
             <form id="workshopFormQuery_new" action="/talleres">
                 <!--IDENTIFICADOR DEL TALLER-->
                 <div id="workshopId_new" class="control-group order-identity border-transparent-1px">
-                    <h1>Taller nuevo</h1>
+                    <h1>Nuevo taller</h1>
                 </div>
                 <!--DATOS DEL TALLER-->
                 <div id="workshopData_new" class="control-group border-transparent-1px">

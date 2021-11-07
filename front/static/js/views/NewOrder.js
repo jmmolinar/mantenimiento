@@ -112,17 +112,6 @@ export default class extends AbstractView {
                             </div>
                         </div>-->
 
-                        <!--ÁREA DEL ACTIVO-->
-                        <div class="control-group">
-                            <label class="span4" for="orderAreasOptions">
-                                <h5>Área</h5>
-                            </label>
-                            <div class="controls">
-                                <select id="orderAreasOptions" required>
-                                </select>
-                            </div>
-                        </div>
-
                         <!--PROVEEDOR DE SERVICIO - TALLER-->
                         <div id="serviceProvider" class="control-group">
                             <label class="span4" for="orderProvider">
@@ -130,6 +119,17 @@ export default class extends AbstractView {
                             </label>
                             <div class="controls">
                                 <select id="orderProvider" required>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!--ÁREA DEL ACTIVO-->
+                        <div class="control-group">
+                            <label class="span4" for="orderAreasOptions">
+                                <h5>Área</h5>
+                            </label>
+                            <div class="controls">
+                                <select id="orderAreasOptions" required>
                                 </select>
                             </div>
                         </div>
@@ -164,7 +164,6 @@ export default class extends AbstractView {
                         </div>
                     </div>
                 </div>
-                                
 
                 <!--RANGO DE FECHAS-->
                 <div id="datesRange" class="control-group border-transparent-1px">

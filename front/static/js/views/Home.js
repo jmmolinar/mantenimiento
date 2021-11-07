@@ -191,22 +191,22 @@ export default class extends AbstractView {
 const customTable = () => {
 
 
-    //$(window).on("load", function () {
+    $(window).on("load", function () {
 
-    $(document).ready(function () {
-        $('div #pages table#assetsTable').DataTable({
-            "order": [[0, "desc"]],
-            "language": TableLanguage,
-            "scrollX": true // De la mano con el width="100%" en la etiqueta table
+        $(document).ready(function () {
+            $('div #pages table#assetsTable').DataTable({
+                "order": [[0, "desc"]],
+                "language": TableLanguage,
+                "scrollX": true // De la mano con el width="100%" en la etiqueta table
+            });
         });
-    });
 
-    /*Agrego en CustomTable para generar eventos con hipervinculos que están dentro*/
-    $(document).ready(function () {
-        $('div #pages table#assetsTable').on('click', 'a.only-to-id-url', function () {
-            console.log("Voy al activo: " + $(this).attr('href').slice(1).substring($(this).attr('href').slice(1).lastIndexOf('/') + 1))
-        })
-    });
+        /*Agrego en CustomTable para generar eventos con hipervinculos que están dentro*/
+        $(document).ready(function () {
+            $('div #pages table#assetsTable').on('click', 'a.only-to-id-url', function () {
+                console.log("Voy al activo: " + $(this).attr('href').slice(1).substring($(this).attr('href').slice(1).lastIndexOf('/') + 1))
+            })
+        });
 
-    //});
+    });
 }
