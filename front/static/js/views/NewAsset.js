@@ -667,6 +667,11 @@ $(document).ready(function () {
                 vehiculosArea = listAllElement(patentes);
                 if (vehiculosArea.length) {
                     $('select#assetPatent').removeAttr("disabled");
+                    $(`#assetBrand`).val("");
+                    $(`#assetModel`).val("");
+                    $(`input#assetUse`).val("");
+                    $(`input#assetGPS`).val("");
+
                     console.log(vehiculosArea);
                     const selectPatente = document.getElementById('assetPatent');
                     const optionPatente = listSelect(vehiculosArea, "ppuVehiculo"); // Paso la clave "ppuVehiculo"
@@ -674,7 +679,11 @@ $(document).ready(function () {
                     loadSelectContent(optionPatente, selectPatente);
                 } else {
                     $(`#assetPatent`).val("");
-                    //$(`#assetPatent`).attr("disabled", "disabled");
+                    $(`#assetPatent`).attr("disabled", "disabled");
+                    $(`#assetBrand`).val("");
+                    $(`#assetModel`).val("");
+                    $(`input#assetUse`).val("");
+                    $(`input#assetGPS`).val("");
                 }
 
             }
