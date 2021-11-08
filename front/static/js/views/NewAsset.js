@@ -80,117 +80,117 @@ export default class extends AbstractView {
 
                             <!--ÁREA DEL ACTIVO-->
                             <div class="control-group">
-                                <label class="span2" for="assetAreasOptions">
+                                <label class="span2" for="assetAreasOptions_new">
                                     <h5>Área</h5>
                                 </label>
                                 <div class="controls">
-                                    <select id="assetAreasOptions" required>
+                                    <select id="assetAreasOptions_new" required>
                                     </select>
                                 </div>
                             </div>
 
                             <!--TIPO DE ACTIVO-->
                             <div class="control-group">
-                                <label class="span2" for="assetType">
+                                <label class="span2" for="assetType_new">
                                     <h5>Tipo</h5>
                                 </label>
                                 <div class="controls">
-                                    <select id="assetType" required>
+                                    <select id="assetType_new" required>
                                     </select>
                                 </div>
                             </div>
 
                             <!--PATENTE-->
                             <div class="control-group">
-                                <label class="span2" for="assetPatent">
+                                <label class="span2" for="assetPatent_new">
                                     <h5>Patente</h5>
                                 </label>
                                 <div class="controls">
-                                    <select id="assetPatent" required disabled>
+                                    <select id="assetPatent_new" required disabled>
                                     </select>
                                 </div>
                             </div>
 
                             <!--MARCA DEL ACTIVO-->
                             <div class="control-group">
-                                <label class="span2" for="assetBrand">
+                                <label class="span2" for="assetBrand_new">
                                     <h5>Marca</h5>
                                 </label>
                                 <div class="controls">
-                                    <select id="assetBrand" required disabled>
+                                    <select id="assetBrand_new" required disabled>
                                     </select>
                                 </div>
                             </div>
 
                             <!--MODELO DEL ACTIVO-->
                             <div class="control-group">
-                                <label class="span2" for="assetModel">
+                                <label class="span2" for="assetModel_new">
                                     <h5>Modelo</h5>
                                 </label>
                                 <div class="controls">
-                                    <!--<input id="assetModel" type="text" min="3" maxlength="15"
+                                    <!--<input id="assetModel_new" type="text" min="3" maxlength="15"
                                         value="" required>-->
-                                    <select id="assetModel" required disabled>
+                                    <select id="assetModel_new" required disabled>
                                     </select>
                                 </div>
                             </div>
 
                             <!--AÑO DEL ACTIVO-->
                             <div class="control-group">
-                                <label class="span2" for="assetYear">
+                                <label class="span2" for="assetYear_new">
                                     <h5>Año</h5>
                                 </label>
                                 <div class="controls">
-                                    <select id="assetYear" required>
+                                    <select id="assetYear_new" required>
                                     </select>
                                 </div>
                             </div>
 
                             <!--HORAS Ó KM DE USO DEL ACTIVO-->
                             <div class="control-group">
-                                <label class="span2" for="assetUse">
+                                <label class="span2" for="assetUse_new">
                                     <h5>Uso</h5>
                                 </label>
                                 <div class="controls">
-                                    <input id="assetUse" type="text" min="3" maxlength="15" 
+                                    <input id="assetUse_new" type="text" min="3" maxlength="15" 
                                         value="" required disabled>
                                 </div>
                             </div>
 
                             <!--GPS DEL ACTIVO-->
                             <div class="control-group">
-                                <label class="span2" for="assetGPS">
+                                <label class="span2" for="assetGPS_new">
                                     <h5>GPS</h5>
                                 </label>
                                 <div class="controls">
-                                    <input id="assetGPS" type="text" min="3" maxlength="15" 
+                                    <input id="assetGPS_new" type="text" min="3" maxlength="15" 
                                         value="" disabled>
                                 </div>
                             </div>
 
                             <!--BODEGA DEL ACTIVO-->
                             <div class="control-group">
-                                <label class="span2" for="assetWareHousesOptions">
+                                <label class="span2" for="assetWareHousesOptions_new">
                                     <h5>Bodega</h5>
                                 </label>
                                 <div class="controls">
-                                    <select id="assetWareHousesOptions" required>
+                                    <select id="assetWareHousesOptions_new" required>
                                     </select>
                                 </div>
                             </div>
 
                             <!--PLANES DE MANTENIMIENTO DEL ACTIVO-->
                             <div class="control-group">
-                                <label class="span2" for="assetPlan">
+                                <label class="span2" for="assetPlan_new">
                                     <h5>Planes</h5>
                                 </label>
                                 <div class="controls">
-                                    <!--<select id="assetPlan" multiple required size="10">-->
-                                    <select id="assetPlan">
+                                    <!--<select id="assetPlan_new" multiple required size="10">-->
+                                    <select id="assetPlan_new">
                                     </select>
                                 </div>
                                 <div class="controls">
-                                    <div class="controls btn-group" id="buttonsSelectedPlan"></div>
+                                    <div class="controls btn-group" id="buttonsSelectedPlan_new"></div>
                                 </div>
                             </div>
 
@@ -208,19 +208,19 @@ export default class extends AbstractView {
                                     <h5>Seguro obligatorio</h5>
                                 </label>
                                 <div class="controls new-div-file-upload">
-		                            <label id="clickFileSeguro" class='btn btn-primary' href='javascript:;' for="fileSeguro">
+		                            <label id="clickFileSeguro_new" class='btn btn-primary' href='javascript:;' for="fileSeguro_new">
                                         <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                                        <input id="fileSeguro" type="file" class="new-input-file"
-                                            name="fileSeguro" size="40" accept="application/pdf">
+                                        <input id="fileSeguro_new" type="file" class="new-input-file"
+                                            name="fileSeguro_new" size="40" accept="application/pdf">
 		                            </label>
                                     <a href="/static/img/Prueba.pdf" download>
-                                        <span class='label label-info' id="fileInfoSeguro" required style="margin-bottom: 5px;"></span>
+                                        <span class='label label-info' id="fileInfoSeguro_new" required style="margin-bottom: 5px;"></span>
                                     </a>
                                 </div>     
                                 <div class="controls">
                                     <div class="input-prepend input-append">
                                         <span class="add-on">Vence</span>
-                                        <input id="expireSeguro" type="date" name="expireSeguro" 
+                                        <input id="expireSeguro_new" type="date" name="expireSeguro_new" 
                                             value="" required style="border-radius:3px;"
                                             min="${currentDate().slice(0, 10)}">
                                     </div>
@@ -233,19 +233,19 @@ export default class extends AbstractView {
                                     <h5>Padrón vehicular</h5>
                                 </label>
                                 <div class="controls new-div-file-upload">
-		                            <label class='btn btn-primary' href='javascript:;' for="filePadron">
+		                            <label class='btn btn-primary' href='javascript:;' for="filePadron_new">
                                         <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-			                            <input id="filePadron" type="file" class="new-input-file"
-                                            name="filePadron" size="40" accept="application/pdf">
+			                            <input id="filePadron_new" type="file" class="new-input-file"
+                                            name="filePadron_new" size="40" accept="application/pdf">
 		                            </label>
                                     <a href="/static/img/Prueba.pdf" download>
-                                        <span class='label label-info' id="fileInfoPadron" required style="margin-bottom: 5px;"></span>
+                                        <span class='label label-info' id="fileInfoPadron_new" required style="margin-bottom: 5px;"></span>
                                     </a>
 	                            </div>
                                 <div class="controls">
                                     <div class="input-prepend input-append">
                                         <span class="add-on">Vence</span>
-                                        <input id="expirePadron" type="date" name="expirePadron" 
+                                        <input id="expirePadron_new" type="date" name="expirePadron_new" 
                                             value="" required style="border-radius:3px;"
                                             min="${currentDate().slice(0, 10)}">
                                     </div>
@@ -258,19 +258,19 @@ export default class extends AbstractView {
                                     <h5>Permiso de circulación</h5>
                                 </label>
                                 <div class="controls new-div-file-upload">
-		                            <label class='btn btn-primary' href='javascript:;' for="fileCirculacion">
+		                            <label class='btn btn-primary' href='javascript:;' for="fileCirculacion_new">
                                         <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-			                            <input id="fileCirculacion" type="file" class="new-input-file"
-                                            name="fileCirculacion" size="40" accept="application/pdf">
+			                            <input id="fileCirculacion_new" type="file" class="new-input-file"
+                                            name="fileCirculacion_new" size="40" accept="application/pdf">
 		                            </label>
                                     <a href="/static/img/Prueba.pdf" download>
-                                        <span class='label label-info' id="fileInfoCirculacion" required style="margin-bottom: 5px;"></span>
+                                        <span class='label label-info' id="fileInfoCirculacion_new" required style="margin-bottom: 5px;"></span>
                                     </a>
 	                            </div>
                                 <div class="controls">
                                     <div class="input-prepend input-append">
                                         <span class="add-on">Vence</span>
-                                        <input id="expireCirculacion" type="date" name="expireCirculacion" 
+                                        <input id="expireCirculacion_new" type="date" name="expireCirculacion_new" 
                                             value="" required style="border-radius:3px;"
                                             min="${currentDate().slice(0, 10)}">
                                     </div>
@@ -283,19 +283,19 @@ export default class extends AbstractView {
                                     <h5>Revisión técnica</h5>
                                 </label>
                                 <div class="controls new-div-file-upload">
-		                            <label class='btn btn-primary' href='javascript:;' for="fileRevision">
+		                            <label class='btn btn-primary' href='javascript:;' for="fileRevision_new">
                                         <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-			                            <input id="fileRevision" type="file" class="new-input-file"
-                                            name="fileRevision" size="40" accept="application/pdf">
+			                            <input id="fileRevision_new" type="file" class="new-input-file"
+                                            name="fileRevision_new" size="40" accept="application/pdf">
 		                            </label>
                                     <a href="/static/img/Prueba.pdf" download>
-                                        <span class='label label-info' id="fileInfoRevision" required style="margin-bottom: 5px;"></span>
+                                        <span class='label label-info' id="fileInfoRevision_new" required style="margin-bottom: 5px;"></span>
                                     </a>	                                    
 	                            </div>
                                 <div class="controls">
                                     <div class="input-prepend input-append">
                                         <span class="add-on">Vence</span>
-                                        <input id="expireRevision" type="date" name="expireRevision" 
+                                        <input id="expireRevision_new" type="date" name="expireRevision_new" 
                                             value="" required style="border-radius:3px;"
                                             min="${currentDate().slice(0, 10)}">
                                     </div>
@@ -369,56 +369,56 @@ const fillOptions = () => {
         $(document).ready(function () {
 
             // Select area -- emplea los datos obtenidos en getJson();
-            const selectArea = document.getElementById('assetAreasOptions');
+            const selectArea = document.getElementById('assetAreasOptions_new');
             const optionArea = listSelect(getAreas, "nombreArea"); // Paso la clave "nombre"
             loadSelectContent(optionArea, selectArea);
 
             // Select bodega -- emplea los datos obtenidos en getJson();
-            const selectBodega = document.getElementById('assetWareHousesOptions');
+            const selectBodega = document.getElementById('assetWareHousesOptions_new');
             const optionBodega = listSelect(getBodegas, "nombre"); // Paso la clave "nombre"
             loadSelectContent(optionBodega, selectBodega)
 
             // Select tipo de activo -- emplea los datos obtenidos en getJson();
-            const selectTipoActivo = document.getElementById('assetType');
+            const selectTipoActivo = document.getElementById('assetType_new');
             const optionTipoActivo = listSelect(getTiposActivos, "nombre"); // Paso la clave "nombre"
             loadSelectContent(optionTipoActivo, selectTipoActivo);
 
             // Select activo -- emplea los datos obtenidos en getJson();
             // Se debe hacer una verificación para mostrar solo los activos que no han sido creados en el módulo de mantenimiento
-            /*const selectActivo = document.getElementById('assetPatent');
+            /*const selectActivo = document.getElementById('assetPatent_new');
             const optionActivo = listSelect(getActivos, "activo"); // Paso la clave "activo"
             loadSelectContent(optionActivo, selectActivo);*/
 
-            const selectVehiculo = document.getElementById('assetPatent');
+            const selectVehiculo = document.getElementById('assetPatent_new');
             const optionVehiculo = listSelect(getVehiculos, "ppuVehiculo"); // Paso la clave "ppuVehiculo"
             loadSelectContent(optionVehiculo, selectVehiculo);
 
             // Select Marca -- emplea los datos obtenidos en getJson();
-            const selectMarca = document.getElementById('assetBrand');
+            const selectMarca = document.getElementById('assetBrand_new');
             const optionMarca = listSelect(getMarcas, "nombreMarcaVehiculo"); // Paso la clave "nombreMarcaVehiculo"
             loadSelectContent(optionMarca, selectMarca);
             //loadSelectContentAndSelected(optionMarca, selectMarca, getMarca);
             //console.log("Marca seleccionada: " + getMarca);
 
             // Select Modelo -- emplea los datos obtenidos en getJson();
-            const selectModelo = document.getElementById('assetModel');
+            const selectModelo = document.getElementById('assetModel_new');
             const optionModelo = listSelect(getModelos, "nombreModeloVehiculo") // Paso la clave "nombreModeloVehiculo"
             loadSelectContent(optionModelo, selectModelo);
             //loadSelectContentAndSelected(optionModelo, selectModelo, getModelo);
             //console.log("Modelo seleccionado: " + getModelo);
 
             // Select Anio desde Options.js
-            const selectAnio = document.getElementById('assetYear');
+            const selectAnio = document.getElementById('assetYear_new');
             listAnioAndSelected(selectAnio, getAnio);
 
             // Solo listado de Planes para agregar
             // Select planes -- emplea los datos obtenidos en getJson();
-            const selectPlan = document.getElementById('assetPlan');
+            const selectPlan = document.getElementById('assetPlan_new');
             const optionPlan = listSelect(getPlanes, "nombre"); // Paso la clave "nombre"
             loadSelectContent(optionPlan, selectPlan);
 
             // Div con Planes del Activo
-            //const divPlanes = document.getElementById('buttonsSelectedPlan');
+            //const divPlanes = document.getElementById('buttonsSelectedPlan_new');
             //loadDivSelectedPlan(divPlanes, getPlanesActivo, "nombre"); // Paso la clave "nombre"
 
         });
@@ -434,75 +434,75 @@ const guardarActivoJSON = () => {
     nuevoActivoJSON.activoPlanes = []; // reinicio planes
     nuevoActivoJSON.documentos = []; // reinicio documentos
 
-    let selectAnio = document.getElementById('assetYear');
+    let selectAnio = document.getElementById('assetYear_new');
     nuevoActivoJSON.anio = selectAnio.options[selectAnio.selectedIndex].text;
     nuevoActivoJSON.dadoDeBaja = false;
 
-    let selectPatente = document.getElementById('assetPatent');
+    let selectPatente = document.getElementById('assetPatent_new');
     const vehiculo = getVehiculos.find((vehiculo) => vehiculo.ppuVehiculo.trim() == selectPatente.value.trim());
     if (vehiculo) {
         nuevoActivoJSON.vehiculoIdVehiculo = vehiculo.idVehiculo;
     }
 
-    let selectArea = document.getElementById('assetAreasOptions');
+    let selectArea = document.getElementById('assetAreasOptions_new');
     const area = getAreas.find((area) => area.nombreArea == selectArea.value);
     if (area) {
         nuevoActivoJSON.areaIdArea = area.idArea;
     }
 
-    let selectBodega = document.getElementById('assetWareHousesOptions');
+    let selectBodega = document.getElementById('assetWareHousesOptions_new');
     const bodega = getBodegas.find((bodega) => bodega.nombre == selectBodega.value);
     if (bodega) {
         nuevoActivoJSON.bodegaActivosIdBodegaActivos = bodega.idBodegaActivos;
     }
 
-    let selectTipoActivo = document.getElementById('assetType');
+    let selectTipoActivo = document.getElementById('assetType_new');
     const tipoActivo = getTiposActivos.find((tipoActivo) => tipoActivo.nombre == selectTipoActivo.value);
     if (tipoActivo) {
         nuevoActivoJSON.tipoActivoIdTipoActivo = tipoActivo.idTipoActivo;
     }
 
-    let selectMarca = document.getElementById('assetBrand');
-    let selectModelo = document.getElementById('assetModel');
-    let usoActivo = document.getElementById('assetUse');
+    let selectMarca = document.getElementById('assetBrand_new');
+    let selectModelo = document.getElementById('assetModel_new');
+    let usoActivo = document.getElementById('assetUse_new');
 
-    let fileInfoSeguro = document.getElementById('fileInfoSeguro');
-    let expireSeguro = document.getElementById('expireSeguro');
+    let fileInfoSeguro_new = document.getElementById('fileInfoSeguro_new');
+    let expireSeguro_new = document.getElementById('expireSeguro_new');
     let docSeguroObligatorio = {
         //"activoIdActivo: "
-        "rutaAdjunto": `/path/${fileInfoSeguro.textContent.trim()}`,
+        "rutaAdjunto": `/path/${fileInfoSeguro_new.textContent.trim()}`,
         "fechaAdjunto": currentDate(),
-        "fechaVencimiento": expireSeguro.value,
+        "fechaVencimiento": expireSeguro_new.value,
         "tipoDocumentoIdTipoDocumento": 1
     }
 
-    let fileInfoPadron = document.getElementById('fileInfoPadron');
-    let expirePadron = document.getElementById('expirePadron');
+    let fileInfoPadron_new = document.getElementById('fileInfoPadron_new');
+    let expirePadron_new = document.getElementById('expirePadron_new');
     let docPadronVehicular = {
         //"activoIdActivo: "
-        "rutaAdjunto": `/path/${fileInfoPadron.textContent.trim()}`,
+        "rutaAdjunto": `/path/${fileInfoPadron_new.textContent.trim()}`,
         "fechaAdjunto": currentDate(),
-        "fechaVencimiento": expirePadron.value,
+        "fechaVencimiento": expirePadron_new.value,
         "tipoDocumentoIdTipoDocumento": 2
     }
 
-    let fileInfoCirculacion = document.getElementById('fileInfoCirculacion');
-    let expireCirculacion = document.getElementById('expireCirculacion');
+    let fileInfoCirculacion_new = document.getElementById('fileInfoCirculacion_new');
+    let expireCirculacion_new = document.getElementById('expireCirculacion_new');
     let docPermisoCirculacion = {
         //"activoIdActivo: "
-        "rutaAdjunto": `/path/${fileInfoCirculacion.textContent.trim()}`,
+        "rutaAdjunto": `/path/${fileInfoCirculacion_new.textContent.trim()}`,
         "fechaAdjunto": currentDate(),
-        "fechaVencimiento": expireCirculacion.value,
+        "fechaVencimiento": expireCirculacion_new.value,
         "tipoDocumentoIdTipoDocumento": 3
     }
 
-    let fileInfoRevision = document.getElementById('fileInfoRevision');
-    let expireRevision = document.getElementById('expireRevision');
+    let fileInfoRevision_new = document.getElementById('fileInfoRevision_new');
+    let expireRevision_new = document.getElementById('expireRevision_new');
     let docRevisionTecnica = {
         //"activoIdActivo: "
-        "rutaAdjunto": `/path/${fileInfoRevision.textContent.trim()}`,
+        "rutaAdjunto": `/path/${fileInfoRevision_new.textContent.trim()}`,
         "fechaAdjunto": currentDate(),
-        "fechaVencimiento": expireRevision.value,
+        "fechaVencimiento": expireRevision_new.value,
         "tipoDocumentoIdTipoDocumento": 4
     }
 
@@ -511,7 +511,7 @@ const guardarActivoJSON = () => {
     nuevoActivoJSON.documentos.push(docPermisoCirculacion);
     nuevoActivoJSON.documentos.push(docRevisionTecnica);
 
-    const planesSeleccionados = document.getElementById('buttonsSelectedPlan').getElementsByClassName('name-plan');
+    const planesSeleccionados = document.getElementById('buttonsSelectedPlan_new').getElementsByClassName('name-plan');
     //let contPlans = 0;
     for (const element of planesSeleccionados) {
 
@@ -539,14 +539,14 @@ const guardarActivoJSON = () => {
         && selectMarca.options[selectMarca.selectedIndex].text != ''
         && selectModelo.options[selectModelo.selectedIndex].text != ''
         //&& usoActivo.value != ''
-        && fileInfoSeguro.textContent.trim() != ''
-        && fileInfoPadron.textContent.trim() != ''
-        && fileInfoCirculacion.textContent.trim() != ''
-        && fileInfoRevision.textContent.trim() != ''
-        && expireSeguro.value != ''
-        && expirePadron.value != ''
-        && expireCirculacion.value != ''
-        && expireRevision.value != '') {
+        && fileInfoSeguro_new.textContent.trim() != ''
+        && fileInfoPadron_new.textContent.trim() != ''
+        && fileInfoCirculacion_new.textContent.trim() != ''
+        && fileInfoRevision_new.textContent.trim() != ''
+        && expireSeguro_new.value != ''
+        && expirePadron_new.value != ''
+        && expireCirculacion_new.value != ''
+        && expireRevision_new.value != '') {
 
         banderaActivo = true;
 
@@ -584,22 +584,22 @@ $(document).ready(function () {
 
         guardarActivoJSON();
 
-        if ($('#assetPatent').val().length == '') {
+        if ($('#assetPatent_new').val().length == '') {
             alert('Debe seleccionar una patente de alguna área');
             $('html, body').animate({
-                scrollTop: $(`#assetAreasOptions`).offset().top - 50
+                scrollTop: $(`#assetAreasOptions_new`).offset().top - 50
             }, 1000)
             e.preventDefault();
         }
 
-        if ($('#assetYear').val().length != ''
-            && $('#assetPatent').val().length != ''
-            && $('#assetAreasOptions').val().length != ''
-            && $('#assetWareHousesOptions').val().length != ''
-            && $('#assetType').val().length != ''
-            && $('#assetBrand').val().length != ''
-            && $('#assetModel').val().length != ''
-            && $('#assetUse').val().length != '') {
+        if ($('#assetYear_new').val().length != ''
+            && $('#assetPatent_new').val().length != ''
+            && $('#assetAreasOptions_new').val().length != ''
+            && $('#assetWareHousesOptions_new').val().length != ''
+            && $('#assetType_new').val().length != ''
+            && $('#assetBrand_new').val().length != ''
+            && $('#assetModel_new').val().length != ''
+            && $('#assetUse_new').val().length != '') {
 
             if (banderaPlanes == false) {
                 alert('Debe Seleccionar al menos un plan');
@@ -610,7 +610,7 @@ $(document).ready(function () {
                 $('#tab1').addClass("active");
 
                 $('html, body').animate({
-                    scrollTop: $(`#assetPlan`).offset().top - 50
+                    scrollTop: $(`#assetPlan_new`).offset().top - 50
                 }, 1000)
 
                 e.preventDefault();
@@ -622,19 +622,19 @@ $(document).ready(function () {
                 $('#tab1').removeClass("active");
                 $('#tab2').addClass("active");
 
-                if ($.trim($('#fileInfoSeguro').text()) == '') {
+                if ($.trim($('#fileInfoSeguro_new').text()) == '') {
                     alert('Debe adjuntar el "Seguro obligatorio"');
                     e.preventDefault();
                 } else {
-                    if ($.trim($('#fileInfoPadron').text()) == '') {
+                    if ($.trim($('#fileInfoPadron_new').text()) == '') {
                         alert('Debe adjuntar el "Padrón vehicular"');
                         e.preventDefault();
                     } else {
-                        if ($.trim($('#fileInfoCirculacion').text()) == '') {
+                        if ($.trim($('#fileInfoCirculacion_new').text()) == '') {
                             alert('Debe adjuntar el "Permiso de circulación"')
                             e.preventDefault();
                         } else {
-                            if ($.trim($('#fileInfoRevision').text()) == '') {
+                            if ($.trim($('#fileInfoRevision_new').text()) == '') {
                                 alert('Debe adjuntar la "Revisión técnica"')
                                 e.preventDefault();
                             }
@@ -654,8 +654,8 @@ $(document).ready(function () {
     });
 
 
-    //SOLO ACTIVOS DE UNA AREA
-    $('div #pages').on('change', 'select#assetAreasOptions', e => {
+    //Sólo Activos (patentes) de un área
+    $('div #pages').on('change', 'select#assetAreasOptions_new', e => {
 
         let vehiculosArea = [];
         const areaSeleccionada = getAreas.find((area) => area.nombreArea == e.target.value);
@@ -664,43 +664,48 @@ $(document).ready(function () {
             const patentes = getVehiculos.filter((vehiculo) => vehiculo.areaIdArea == areaSeleccionada.idArea);
 
             if (patentes) {
+
                 vehiculosArea = listAllElement(patentes);
+
                 if (vehiculosArea.length) {
-                    $('select#assetPatent').removeAttr("disabled");
-                    $(`#assetBrand`).val("");
-                    $(`#assetModel`).val("");
-                    $(`input#assetUse`).val("");
-                    $(`input#assetGPS`).val("");
+
+                    $('select#assetPatent_new').removeAttr("disabled");
+                    $(`#assetBrand_new`).val("");
+                    $(`#assetModel_new`).val("");
+                    $(`input#assetUse_new`).val("");
+                    $(`input#assetGPS_new`).val("");
 
                     console.log(vehiculosArea);
-                    const selectPatente = document.getElementById('assetPatent');
+                    const selectPatente = document.getElementById('assetPatent_new');
                     const optionPatente = listSelect(vehiculosArea, "ppuVehiculo"); // Paso la clave "ppuVehiculo"
-                    //selectPatente.innerHTML = '<option value="">-</option>';
                     loadSelectContent(optionPatente, selectPatente);
+
                 } else {
-                    $(`#assetPatent`).val("");
-                    $(`#assetPatent`).attr("disabled", "disabled");
-                    $(`#assetBrand`).val("");
-                    $(`#assetModel`).val("");
-                    $(`input#assetUse`).val("");
-                    $(`input#assetGPS`).val("");
+
+                    $(`#assetPatent_new`).val("");
+                    $(`#assetPatent_new`).attr("disabled", "disabled");
+                    $(`#assetBrand_new`).val("");
+                    $(`#assetModel_new`).val("");
+                    $(`input#assetUse_new`).val("");
+                    $(`input#assetGPS_new`).val("");
                 }
 
             }
 
         } else {
-            $(`#assetPatent`).val("");
-            $(`#assetPatent`).attr("disabled", "disabled");
-            $(`#assetBrand`).val("");
-            $(`#assetModel`).val("");
-            $(`input#assetUse`).val("");
-            $(`input#assetGPS`).val("");
+
+            $(`#assetPatent_new`).val("");
+            $(`#assetPatent_new`).attr("disabled", "disabled");
+            $(`#assetBrand_new`).val("");
+            $(`#assetModel_new`).val("");
+            $(`input#assetUse_new`).val("");
+            $(`input#assetGPS_new`).val("");
         }
 
     })
 
     //Mostrar datos ligados a la patente (activo) seleccionada
-    $('div #pages').on('change', 'select#assetPatent', e => {
+    $('div #pages').on('change', 'select#assetPatent_new', e => {
 
         const patenteSeleccionada = getVehiculos.find((vehiculo) => vehiculo.ppuVehiculo == e.target.value);
         getUsoActivo = '';
@@ -733,30 +738,31 @@ $(document).ready(function () {
                 }
             }
 
-            //$(`#assetBrand option[value=${getMarca}]`).attr('selected','selected');
-            //$(`#assetModel option[value=${getModelo}]`).attr('selected','selected');
-            $(`#assetBrand`).val(getMarca);
-            $(`#assetModel`).val(getModelo);
-            $(`input#assetUse`).val(getUsoActivo);
-            $(`input#assetGPS`).val(getGPSImei);
+            //$(`#assetBrand_new option[value=${getMarca}]`).attr('selected','selected');
+            //$(`#assetModel_new option[value=${getModelo}]`).attr('selected','selected');
+            $(`#assetBrand_new`).val(getMarca);
+            $(`#assetModel_new`).val(getModelo);
+            $(`input#assetUse_new`).val(getUsoActivo);
+            $(`input#assetGPS_new`).val(getGPSImei);
 
         } else {
-            $(`#assetBrand`).val("");
-            $(`#assetModel`).val("");
-            $(`input#assetUse`).val("");
-            $(`input#assetGPS`).val("");
+
+            $(`#assetBrand_new`).val("");
+            $(`#assetModel_new`).val("");
+            $(`input#assetUse_new`).val("");
+            $(`input#assetGPS_new`).val("");
         }
 
     })
 
 
     //Agregar Alert Button al seleccionar Plan de Mantenimiento en el activo
-    $('div #pages').on('change', 'select#assetPlan', e => {
+    $('div #pages').on('change', 'select#assetPlan_new', e => {
 
-        let divAgregados = document.getElementById('buttonsSelectedPlan');
+        let divAgregados = document.getElementById('buttonsSelectedPlan_new');
         let texto = e.target.value;
 
-        if ($(`#buttonsSelectedPlan:contains(${texto})`).length <= 0) {
+        if ($(`#buttonsSelectedPlan_new:contains(${texto})`).length <= 0) {
 
             let divChild = document.createElement("div");
             divChild.className = "alert new-alert";
@@ -778,29 +784,29 @@ $(document).ready(function () {
     });
 
 
-    $("div #pages").on('change', "input#fileSeguro", function () {
+    $("div #pages").on('change', "input#fileSeguro_new", function () {
         var filename = $(this).val().replace(/C:\\fakepath\\/i, '')
         console.log(filename);
-        //$('#fileInfoSeguro').val(filename); //para input
-        $('#fileInfoSeguro').html(filename); //para input
+        //$('#fileInfoSeguro_new').val(filename); //para input
+        $('#fileInfoSeguro_new').html(filename); //para input
     });
 
-    $("div #pages").on('change', "input#filePadron", function () {
+    $("div #pages").on('change', "input#filePadron_new", function () {
         var filename = $(this).val().replace(/C:\\fakepath\\/i, '')
         console.log(filename);
-        $('#fileInfoPadron').html(filename);
+        $('#fileInfoPadron_new').html(filename);
     });
 
-    $("div #pages").on('change', "input#fileCirculacion", function () {
+    $("div #pages").on('change', "input#fileCirculacion_new", function () {
         var filename = $(this).val().replace(/C:\\fakepath\\/i, '')
         console.log(filename);
-        $('#fileInfoCirculacion').html(filename);
+        $('#fileInfoCirculacion_new').html(filename);
     });
 
-    $("div #pages").on('change', "input#fileRevision", function () {
+    $("div #pages").on('change', "input#fileRevision_new", function () {
         var filename = $(this).val().replace(/C:\\fakepath\\/i, '')
         console.log(filename);
-        $('#fileInfoRevision').html(filename);
+        $('#fileInfoRevision_new').html(filename);
     });
 
 });

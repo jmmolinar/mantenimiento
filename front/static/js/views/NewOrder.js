@@ -92,11 +92,11 @@ export default class extends AbstractView {
                         
                         <!--TIPO DE MANTENIMIENTO DE LA ORDEN-->
                         <div class="control-group">
-                            <label class="span4" for="orderType">
+                            <label class="span4" for="orderType_new">
                                 <h5>Mantenimiento</h5>
                             </label>
                             <div class="controls">
-                                <select id="orderType" required>
+                                <select id="orderType_new" required>
                                 </select>
                             </div>
                         </div>
@@ -114,33 +114,33 @@ export default class extends AbstractView {
 
                         <!--PROVEEDOR DE SERVICIO - TALLER-->
                         <div id="serviceProvider" class="control-group">
-                            <label class="span4" for="orderProvider">
+                            <label class="span4" for="orderProvider_new">
                                 <h5>Taller de servicio</h5>
                             </label>
                             <div class="controls">
-                                <select id="orderProvider" required>
+                                <select id="orderProvider_new" required>
                                 </select>
                             </div>
                         </div>
 
                         <!--ÁREA DEL ACTIVO-->
                         <div class="control-group">
-                            <label class="span4" for="orderAreasOptions">
+                            <label class="span4" for="orderAreasOptions_new">
                                 <h5>Área</h5>
                             </label>
                             <div class="controls">
-                                <select id="orderAreasOptions" required>
+                                <select id="orderAreasOptions_new" required>
                                 </select>
                             </div>
                         </div>
 
                         <!--TIPO DE ACTIVO-->
                         <div class="control-group">
-                            <label class="span4" for="orderAssetType">
+                            <label class="span4" for="orderAssetType_new">
                                 <h5>Tipo de activo</h5>
                             </label>
                             <div class="controls">
-                                <select id="orderAssetType" required>
+                                <select id="orderAssetType_new" required>
                                 </select>
                             </div>
                         </div>
@@ -251,7 +251,7 @@ const fillOrderOptions = () => {
         $(document).ready(function () {
 
             // Select tipo de mantenimiento -- emplea los datos obtenidos en getJson();
-            const selectTipoMantenimiento = document.getElementById('orderType');
+            const selectTipoMantenimiento = document.getElementById('orderType_new');
             const optionTipoMantenimiento = listSelect(getTiposMantenimientos, "nombre"); // Paso la clave "nombre"
             loadSelectContent(optionTipoMantenimiento, selectTipoMantenimiento);
 
@@ -261,12 +261,12 @@ const fillOrderOptions = () => {
             loadSelectContent(optionEstado, selectEstado);*/
 
             // Select area -- emplea los datos obtenidos en getJson();
-            const selectArea = document.getElementById('orderAreasOptions');
+            const selectArea = document.getElementById('orderAreasOptions_new');
             const optionArea = listSelect(getAreas, "nombreArea"); // Paso la clave "nombre"
             loadSelectContent(optionArea, selectArea);
 
             // Select tipo de activo -- emplea los datos obtenidos en getJson();
-            const selectTipoActivo = document.getElementById('orderAssetType');
+            const selectTipoActivo = document.getElementById('orderAssetType_new');
             const optionTipoActivo = listSelect(getTiposActivos, "nombre"); // Paso la clave "nombre"
             loadSelectContent(optionTipoActivo, selectTipoActivo);
 
@@ -281,7 +281,7 @@ const fillOrderOptions = () => {
             loadSelectContent(optionVehiculo, selectVehiculo);
 
             // Select taller -- emplea los datos obtenidos en getJson();
-            const selectTaller = document.getElementById('orderProvider');
+            const selectTaller = document.getElementById('orderProvider_new');
             const optionTaller = listSelect(getTalleres, "nombre"); // Paso la clave "nombre"
             loadSelectContent(optionTaller, selectTaller)
 
@@ -298,7 +298,7 @@ const fillOrderCategories = () => {
 
     let orderCategoriesContainerA = `
     <div class="row-fluid">
-        <label class="span4" for="categoriesContainer">
+        <label class="span4" for="categoriesContainer_new">
             <h5>Categorías de servicio</h5>
         </label>
     </div>
@@ -316,7 +316,7 @@ const fillOrderCategories = () => {
         </div>
     </div>
 
-    <div id="categoriesContainer" class="categories-container-scroll">`;
+    <div id="categoriesContainer_new" class="categories-container-scroll">`;
 
     let orderCategoriesContainerB = `</div>`;
 
@@ -415,12 +415,12 @@ const guardarOrdenParaJSON = () => {
             }
         }
 
-        const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType').value);
+        const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType_new').value);
         if (tipoOrden) {
             nuevaOrdenJSON.tipoOrdenIdTipoOrden = tipoOrden.idTipoOrden;
         }
 
-        const taller = getTalleres.find((taller) => taller.nombre == document.getElementById('orderProvider').value);
+        const taller = getTalleres.find((taller) => taller.nombre == document.getElementById('orderProvider_new').value);
         if (taller) {
             nuevaOrdenJSON.tallerServicioIdTallerServicio = taller.idTallerServicio;
         }
@@ -435,7 +435,7 @@ const guardarOrdenParaJSON = () => {
 
 
         let costoRequerido = false;
-        const categoriasSeleccionadas = document.getElementById('categoriesContainer').getElementsByClassName('row-fluid');
+        const categoriasSeleccionadas = document.getElementById('categoriesContainer_new').getElementsByClassName('row-fluid');
         let contCategory = 0;
         for (const cat of categoriasSeleccionadas) {
             contCategory++;
@@ -523,10 +523,10 @@ $(document).ready(function () {
 
         guardarOrdenParaJSON();
 
-        if ($('#orderType').val().length != ''
-            && $('#orderAreasOptions').val().length != ''
-            && $('#orderProvider').val().length != ''
-            && $('#orderAssetType').val().length != ''
+        if ($('#orderType_new').val().length != ''
+            && $('#orderAreasOptions_new').val().length != ''
+            && $('#orderProvider_new').val().length != ''
+            && $('#orderAssetType_new').val().length != ''
             && $('#newRangeStartDate').val().length != ''
             && $('#newRangeEndDate').val().length != '') {
 

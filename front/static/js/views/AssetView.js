@@ -199,7 +199,7 @@ export default class extends AbstractView {
                                             <h5>Área</h5>
                                         </label>
                                         <div class="controls">
-                                            <select id="assetAreasOptions" required>
+                                            <select id="assetAreasOptions" required disabled>
                                             </select>
                                         </div>
                                     </div>
