@@ -532,7 +532,8 @@ $(document).ready(function () {
 
             if (banderaSeleccionActivo == false) {
 
-                alert('Escoja un área que contenga activos y selecciona los que necesite');
+                alert('Escoja un "Área" y "Tipo de activo"' + 
+                    '\npara filtrar los activos que puede seleccionar');
 
                 //$('#orderAsset').multiSelect();
 
@@ -560,7 +561,9 @@ $(document).ready(function () {
 
     });
 
-    //Creando el multiSelect de activos al hacer click en Seleccionar activos
+    //CREANDO EL MULTISELECT DE ACTIVOS AL HACER CLIC EN SELECCIONAR ACTIVOS
+    //NO SE UTILIZA ACTUALMENTE PORQUE SE EJECUTA ESTA FUNCIONALIDAD MEDIANTE
+    //LOS SIGUIENTES PAR DE CHANGE
     /*$('div #pages').on('click', 'label[id=labelOrderAsset]', function () {
 
         if (!$('#orderAsset').is(':disabled')) {
@@ -570,25 +573,24 @@ $(document).ready(function () {
         //$('#orderAsset').multiSelect();
     });*/
 
-
-    //Sólo Activos (patentes) de un área y un tipo de activo específico
+    //SOLO ACTIVOS (PATENTES) DE UN AREA Y TIPO DE ACTIVO ESPECÍFICO
+    //TRABAJA EN CONJUNTO CON EL SIGUIENTE CHANGE
     $('div #pages').on('change', 'select#orderAreasOptions_new', e => {
-
 
         $(`#orderAssetType_new`).val("");
         $(`#orderAssetType_new`).attr("disabled", "disabled");
         $('#orderAsset option').remove();
         $(`#orderAsset`).val("");
         $(`#orderAsset`).attr("disabled", "disabled");
-        $('.ms-container').empty();
+        $('.ms-container').empty(); // CONTENEDOS DEL MULTISELECT
 
         if ($('#orderAreasOptions_new').val() != "") {
             $('#orderAssetType_new').removeAttr("disabled");
         }
     })
 
-    //Solo patentes (activos) de un tipo de activo y área específica
-    //Trabaja en conjunto con el change anterior para activar los activos
+    //SOLO PATENTES (ACTIVOS) DE UN TIPO DE ACTIVO Y AREA ESPECÍFICA
+    //TRABAJA EN CONJUNTO CON EL CHANGE ANTERIOR PARA HABILITAR LOS "ACTIVOS"
     $('div #pages').on('change', 'select#orderAssetType_new', f => {
 
         if ($('#orderAssetType_new').val() != "") {
@@ -654,6 +656,39 @@ $(document).ready(function () {
             $('.ms-container').empty();
         }
     })
+
+    //Sólo Activos (patentes) FILTRANDO SOLO POR ÁREA
+    /*$('div #pages').on('change', 'select#orderAreasOptions_new', e => {
+        let vehiculosAreaOrden = [];
+        const areaOrdenSeleccionada = getAreas.find((area) => area.nombreArea == e.target.value);
+        if (areaOrdenSeleccionada) {
+            const patentesOrden = getVehiculos.filter((vehiculo) => vehiculo.areaIdArea == areaOrdenSeleccionada.idArea);
+            if (patentesOrden) {
+                vehiculosAreaOrden = listAllElement(patentesOrden);
+                if (vehiculosAreaOrden.length) {
+                    console.log(vehiculosAreaOrden);
+                    const selectPatenteOrden = document.getElementById('orderAsset');
+                    const optionPatenteOrden = listSelect(vehiculosAreaOrden, "ppuVehiculo"); // Paso la clave "ppuVehiculo"
+                    loadSelectContent(optionPatenteOrden, selectPatenteOrden);
+
+                    $('select#orderAsset').removeAttr("disabled");
+                    $('#orderAsset').multiSelect('refresh');
+
+                } else {
+                    $('#orderAsset option').remove();
+                    $(`#orderAsset`).val("");
+                    $(`#orderAsset`).attr("disabled", "disabled");
+                    $('.ms-container').empty();
+                }
+            }
+
+        } else {
+            $('#orderAsset option').remove();
+            $(`#orderAsset`).val("");
+            $(`#orderAsset`).attr("disabled", "disabled");
+            $('.ms-container').empty();
+        }
+    })*/
 
     //FILTRO DE CATEGORÍAS CON SUS COSTOS
     $('div #pages').on('click', 'input[id=busquedaCategoriasOrden]', function () {
