@@ -140,7 +140,7 @@ export default class extends AbstractView {
                                 <h5>Tipo de activo</h5>
                             </label>
                             <div class="controls">
-                                <select id="orderAssetType_new" required>
+                                <select id="orderAssetType_new" required disabled>
                                 </select>
                             </div>
                         </div>
@@ -202,11 +202,11 @@ export default class extends AbstractView {
 
                 <!--Observaciones-->
                 <div id="notes" class="control-group border-transparent-1px">
-                    <label class="span2" for="orderNotes">
+                    <label class="span2" for="orderNotes_new">
                         <h5>Observaciones</h5>
                     </label>
                     <div class="controls">
-                        <textarea class="span12" cols="10" id="orderNotes" maxlength="1000"></textarea>
+                        <textarea class="span12" cols="10" id="orderNotes_new" maxlength="1000"></textarea>
                     </div>
                 </div>
 
@@ -276,9 +276,9 @@ const fillOrderOptions = () => {
             loadSelectContent(optionActivo, selectActivo);*/
 
             // Select vehiculo -- emplea los datos obtenidos en getJson();
-            const selectVehiculo = document.getElementById('orderAsset');
+            /*const selectVehiculo = document.getElementById('orderAsset');
             const optionVehiculo = listSelect(getVehiculos, "ppuVehiculo") // Paso la clave "ppuVehiculo"
-            loadSelectContent(optionVehiculo, selectVehiculo);
+            loadSelectContent(optionVehiculo, selectVehiculo);*/
 
             // Select taller -- emplea los datos obtenidos en getJson();
             const selectTaller = document.getElementById('orderProvider_new');
@@ -403,14 +403,14 @@ const guardarOrdenParaJSON = () => {
         nuevaOrdenJSON.start = nuevaOrdenJSON.fechaInicial;
         nuevaOrdenJSON.fechaFinal = document.getElementById('newRangeEndDate').value;
         nuevaOrdenJSON.end = nuevaOrdenJSON.fechaFinal;
-        nuevaOrdenJSON.observaciones = document.getElementById('orderNotes').value;
+        nuevaOrdenJSON.observaciones = document.getElementById('orderNotes_new').value;
         //nuevaOrdenJSON.title = 
         nuevaOrdenJSON.allDay = false
 
         const vehiculo = getVehiculos.find((vehiculo) => vehiculo.ppuVehiculo.trim() == element.textContent.trim());
-        if(vehiculo){
+        if (vehiculo) {
             const activo = getActivos.find((activo) => activo.vehiculoIdVehiculo == vehiculo.idVehiculo);
-            if(activo){
+            if (activo) {
                 nuevaOrdenJSON.activoIdActivo = activo.idActivo;
             }
         }
@@ -532,12 +532,12 @@ $(document).ready(function () {
 
             if (banderaSeleccionActivo == false) {
 
-                alert('Debe Seleccionar al menos un activo');
+                alert('Escoja un área que contenga activos y selecciona los que necesite');
 
-                $('#orderAsset').multiSelect();
+                //$('#orderAsset').multiSelect();
 
                 $('html, body').animate({
-                    scrollTop: $(`#ms-orderAsset`).offset().top - 50
+                    scrollTop: $(`#orderAreasOptions_new`).offset().top - 50
                 }, 1000)
 
 
@@ -560,9 +560,100 @@ $(document).ready(function () {
 
     });
 
-    $('div #pages').on('click', 'label[id=labelOrderAsset]', function () {
-        $('#orderAsset').multiSelect();
-    });
+    //Creando el multiSelect de activos al hacer click en Seleccionar activos
+    /*$('div #pages').on('click', 'label[id=labelOrderAsset]', function () {
+
+        if (!$('#orderAsset').is(':disabled')) {
+            $('#orderAsset').multiSelect();
+        }
+
+        //$('#orderAsset').multiSelect();
+    });*/
+
+
+    //Sólo Activos (patentes) de un área y un tipo de activo específico
+    $('div #pages').on('change', 'select#orderAreasOptions_new', e => {
+
+
+        $(`#orderAssetType_new`).val("");
+        $(`#orderAssetType_new`).attr("disabled", "disabled");
+        $('#orderAsset option').remove();
+        $(`#orderAsset`).val("");
+        $(`#orderAsset`).attr("disabled", "disabled");
+        $('.ms-container').empty();
+
+        if ($('#orderAreasOptions_new').val() != "") {
+            $('#orderAssetType_new').removeAttr("disabled");
+        }
+    })
+
+    //Solo patentes (activos) de un tipo de activo y área específica
+    //Trabaja en conjunto con el change anterior para activar los activos
+    $('div #pages').on('change', 'select#orderAssetType_new', f => {
+
+        if ($('#orderAssetType_new').val() != "") {
+
+            let vehiculosAreaOrden = [];
+            const areaOrdenSeleccionada = getAreas.find((area) => area.nombreArea == $('#orderAreasOptions_new').val());
+            console.log("Area seleccionada: " + areaOrdenSeleccionada.nombreArea)
+
+            const tipoActivoOrdenSeleccionado = getTiposActivos.find((tipo) => tipo.nombre == f.target.value);
+            console.log("Tipo activo seleccionado: " + tipoActivoOrdenSeleccionado.nombre)
+
+            if (areaOrdenSeleccionada && tipoActivoOrdenSeleccionado) {
+
+                console.log("Entré a: areaOrdenSeleccionada && tipoActivoOrdenSeleccionado")
+
+                const activosOrden = getActivos.filter((activo) => ((activo.areaIdArea == areaOrdenSeleccionada.idArea) && (activo.tipoActivoIdTipoActivo == tipoActivoOrdenSeleccionado.idTipoActivo)));
+
+
+                if (activosOrden) {
+
+                    console.log("activosOrden")
+
+                    for (const elem of activosOrden) {
+                        console.log(elem.idActivo + " " + elem.vehiculoIdVehiculo + " " + elem.areaIdArea + " " + elem.tipoActivoIdTipoActivo)
+                        const patenteOrden = getVehiculos.find((vehiculo) => vehiculo.idVehiculo == elem.vehiculoIdVehiculo);
+                        if (patenteOrden) {
+                            vehiculosAreaOrden.push(patenteOrden);
+                        }
+                    }
+
+                    console.log("Longitud vehiculosAreaOrden: " + vehiculosAreaOrden.length)
+
+                    if (vehiculosAreaOrden.length) {
+
+                        console.log("Entré a: vehiculosAreaOrden.length")
+
+                        console.log(vehiculosAreaOrden);
+                        const selectPatenteOrden = document.getElementById('orderAsset');
+                        const optionPatenteOrden = listSelect(vehiculosAreaOrden, "ppuVehiculo"); // Paso la clave "ppuVehiculo"
+                        loadSelectContent(optionPatenteOrden, selectPatenteOrden);
+
+                        $('select#orderAsset').removeAttr("disabled");
+                        $('#orderAsset').multiSelect('refresh');
+
+                    } else {
+                        $('#orderAsset option').remove();
+                        $(`#orderAsset`).val("");
+                        $(`#orderAsset`).attr("disabled", "disabled");
+                        $('.ms-container').empty();
+                    }
+                }
+            } else {
+                $('#orderAsset option').remove();
+                $(`#orderAsset`).val("");
+                $(`#orderAsset`).attr("disabled", "disabled");
+                $('.ms-container').empty();
+            }
+
+        } else {
+            $('#orderAsset option').remove();
+            $(`#orderAsset`).val("");
+            $(`#orderAsset`).attr("disabled", "disabled");
+            $('.ms-container').empty();
+        }
+    })
 
     //FILTRO DE CATEGORÍAS CON SUS COSTOS
     $('div #pages').on('click', 'input[id=busquedaCategoriasOrden]', function () {

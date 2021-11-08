@@ -584,13 +584,25 @@ $(document).ready(function () {
 
         guardarActivoJSON();
 
-        if ($('#assetPatent_new').val().length == '') {
-            alert('Debe seleccionar una patente de alguna área');
+        if ($('#assetPatent_new').is(':disabled')) {
+            alert('Escoja un área que contenga activos y seleccione la patente que necesite');
             $('html, body').animate({
                 scrollTop: $(`#assetAreasOptions_new`).offset().top - 50
             }, 1000)
             e.preventDefault();
+        } else {
+
+            if ($('#assetPatent_new').val().length == '') {
+                alert('Seleccione la patente del activo');
+                $('html, body').animate({
+                    scrollTop: $(`#assetPatent_new`).offset().top - 50
+                }, 1000)
+                e.preventDefault();
+            }
+
         }
+
+
 
         if ($('#assetYear_new').val().length != ''
             && $('#assetPatent_new').val().length != ''
