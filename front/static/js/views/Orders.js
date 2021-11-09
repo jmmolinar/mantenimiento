@@ -198,13 +198,21 @@ export default class extends AbstractView {
                     getCategoriasActivo = listAllElement(orden.ordenCategorias);
                     let getCategoriasActivoNombre = [];
                     let getCategoriasActivoCosto = [];
+                    let costoOrden = 0;
+                    let totalOrden = ``;
                     getCategoriasActivo.forEach(elem => {
                         getCategoriasActivoNombre.push(`<div class="alert alert-info no-margin new-padding-top-bottom"><strong>${elem["nombre"]}</strong></div>`)
                         if (elem["costo"] != "") {
+                            costoOrden = (parseFloat(elem["costo"]) + parseFloat(costoOrden)).toFixed(2);
                             getCategoriasActivoCosto.push(`<div class="alert new-alert-use no-margin new-padding-top-bottom">CLP <strong>${(parseFloat(elem["costo"]) + 0.00).toFixed(2).toString().replace(".", ",")}</strong></div>`)
                         }
 
                     })
+                    if(isNaN(costoOrden)){
+                        totalOrden = "";
+                    } else {
+                        totalOrden = "$ " + costoOrden.toString().replace(".", ",");
+                    }
 
                     if (getCategoriasActivoNombre.length) {
                         formatGetCategoriasActivoNombre = getCategoriasActivoNombre.join('');
@@ -223,10 +231,10 @@ export default class extends AbstractView {
                             <td>${getAreaActivo}</td>
                             <td>${orden.fechaCreacion.slice(0,10)}</td>
                             <td>${orden.fechaInicial.slice(0,10)}</td>
-                            <td>${getTaller.toString()}</td>
-                            <!--<td>${formatGetCategoriasActivoNombre}</td>
-                            <td>${formatGetCategoriasActivoCosto}</td>-->
-                            <td>${orden.total}</td> <!-- Modificar para calcular el total sin clave en json -->
+                            <td>${getTaller}</td>
+                            <!--<td>${formatGetCategoriasActivoNombre}</td>-->
+                            <!--<td>${formatGetCategoriasActivoCosto}</td>-->
+                            <td>${totalOrden}</td>
                             <td class="align-center">
                                 <a id="editOrder_${orden.idOrden}" class="btn only-to-id-url" href="/ordenes/${orden.idOrden}"><i class="icon-pencil"></i></a>
                                 <a id="deleteOrder_${orden.idOrden}" class="btn" disabled><i class="icon-trash"></i></a>
@@ -311,7 +319,7 @@ const customOrdersTable = () => {
             "order": [[0, "desc"]],
             // Especifico las columnas a continuación para poder dar formato numérico al render de "Total"
             // Si no lo hiciera no sería necesario agregar "columns"
-            "columns": [
+            /*"columns": [
                 {
                     data: 'idOrden'
                 },
@@ -337,20 +345,20 @@ const customOrdersTable = () => {
                 {
                     data: "getTaller"
                 },
-                /*{
-                    data: "ordenCategorias.nombre"
-                },
+                //{
+                //    data: "ordenCategorias.nombre"
+                //},
+                //{
+                //    data: "ordenCategorias.costo"
+                //},
                 {
-                    data: "ordenCategorias.costo"
-                },*/
-                {
-                    data: "total",
+                    data: "costoOrden",
                     render: $.fn.dataTable.render.number('', ',', 2, 'CLP ')
                 },
                 {
-                    data: "Acciones"  /* No está dentro del JSON pero debe definirse para trabajar de la mano con la columna donde agrega botones de EDITAR y ELIMINAR */
+                    data: "Acciones"  // No está dentro del JSON pero debe definirse para trabajar de la mano con la columna donde agrega botones de EDITAR y ELIMINAR
                 }
-            ],
+            ],*/
 
             "language": TableLanguage,
             "scrollX": true // De la mano con el width="100%" en la etiqueta table
