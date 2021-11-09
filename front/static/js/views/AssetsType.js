@@ -12,10 +12,14 @@ export default class extends AbstractView {
 
         let assetsTypeHTML = ``;
 
-        let optionsAssetsTypeHTML = `<div id="optionsAssetsTypeHTML">
-        <h1></h1>
-        <a class="btn btn-primary" href="/tipos/nuevo">Nuevo <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-        <a class="btn btn-success" href="">Exportar <i class="fa fa-cloud-download"></i></a>
+        let optionsAssetsTypeHTML = `<h1></h1>
+        <div class="control-group order-identity border-transparent-1px">
+            <h1>Tipos de activos</h1>
+        </div>
+        <div id="optionsAssetsTypeHTML">
+            <h1></h1>
+            <a class="btn btn-primary" href="/tipos/nuevo">Nuevo <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            <a class="btn btn-success" href="">Exportar <i class="fa fa-cloud-download"></i></a>
         </div>
 
         `;

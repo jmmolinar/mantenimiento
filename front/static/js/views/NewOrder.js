@@ -200,6 +200,14 @@ export default class extends AbstractView {
                 <!--CATEGORÍA DE SERVICIO-->
                 <div id="orderServiceCategories_new" class="control-group border-transparent-1px"></div>
 
+                <div id="updateNewTotal" class="control-group border-transparent-1px">
+                    <div class="control-group">
+                        <div class="row-fluid">
+                            <a id="botonActualizarNuevoTotal" class="btn btn-success" href=""> Calcular total  <i class="fa fa-calculator" ></i></a>
+                        </div>
+                    </div>
+                </div>
+
                 <!--Observaciones-->
                 <div id="notes" class="control-group border-transparent-1px">
                     <label class="span2" for="orderNotes_new">
@@ -213,7 +221,8 @@ export default class extends AbstractView {
                 <!--TOTAL EN COSTOS DE LA ORDEN-->
                 <div id="totalCost" class="control-group">
                     <label class="span12 text-right order-identity border-transparent-1px">
-                        <h3>Total: <span class="add-on">$ </span></h3>
+                        <h3 style="display:inline;">Total: </h3>
+                        <h3 id="valorTotalNuevaOrden" style="display:inline;"></h3>
                     </label>
                 </div>
 
@@ -560,6 +569,34 @@ $(document).ready(function () {
         mostrarStorageJSON();
 
     });
+
+    //ACTUALIZAR COSTO TOTAL DENTRO DE LA ÓRDEN
+    $('div #pages').on('click', 'a#botonActualizarNuevoTotal', function (e) {
+
+        const costosCategorias = document.getElementById('categoriesContainer_new').getElementsByClassName('input-prepend input-append');
+        let contCostos = 0;
+        let sumCostos = 0;
+        let totalActualizado = "";
+        for (const elem of costosCategorias) {
+            contCostos++;
+            //Label de categoría
+            let appendedPrependedInput = document.getElementById(`appendedPrependedInput_${contCostos}`);
+            if(!appendedPrependedInput.disabled){
+                sumCostos = (parseFloat(appendedPrependedInput.value) + parseFloat(sumCostos)).toFixed(2);
+            }
+        }
+
+        if(isNaN(sumCostos)){
+            totalActualizado = "";
+        } else {
+            totalActualizado = "$ " + sumCostos.toString().replace(".", ",");
+        }
+
+        $('#valorTotalNuevaOrden').text(totalActualizado);
+        e.preventDefault();
+    });
+
+
 
     //CREANDO EL MULTISELECT DE ACTIVOS AL HACER CLIC EN SELECCIONAR ACTIVOS
     //NO SE UTILIZA ACTUALMENTE PORQUE SE EJECUTA ESTA FUNCIONALIDAD MEDIANTE

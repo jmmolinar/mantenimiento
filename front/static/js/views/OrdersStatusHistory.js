@@ -35,9 +35,13 @@ export default class extends AbstractView {
 
         let ordersStatusHistoryHTML = ``;
 
-        let optionsOrdersStatusHistoryHTML = `<div id="optionsOrdersStatusHistoryHTML">
-        <h1></h1>
-        <a class="btn btn-success" href="">Exportar <i class="fa fa-cloud-download"></i></a>
+        let optionsOrdersStatusHistoryHTML = `<h1></h1>
+        <div class="control-group order-identity border-transparent-1px">
+            <h1>Historial de estados</h1>
+        </div>
+        <div id="optionsOrdersStatusHistoryHTML">
+            <h1></h1>
+            <a class="btn btn-success" href="">Exportar <i class="fa fa-cloud-download"></i></a>
         </div>
         <div class="new-div-range-date-table">
             <div class="input-prepend input-append">

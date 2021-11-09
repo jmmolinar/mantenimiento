@@ -7,7 +7,11 @@ export default class extends AbstractView {
     }
 
     async getHtml() {
-        return `<div id="optionsDashboardHTML">
+        return `<h1></h1>
+            <div class="control-group order-identity border-transparent-1px">
+                <h1>Reportes</h1>
+            </div>
+            <div id="optionsDashboardHTML">
             <h1></h1>
                 <a class="btn btn-success" href="">Exportar <i class="fa fa-cloud-download"></i></a>
             </div>

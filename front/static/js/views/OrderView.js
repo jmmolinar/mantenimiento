@@ -415,8 +415,7 @@ export default class extends AbstractView {
                         <div id="updateTotal" class="control-group border-transparent-1px">
                             <div class="control-group">
                                 <div class="row-fluid">
-                                    <!--<button id="botonActualizarTotal" class="btn">Actualizar total</button>-->
-                                    <a id="botonActualizarTotal" class="btn btn-success" href=""> Actualizar total  <i class="fa fa-cloud-download" ></i></a>
+                                    <a id="botonActualizarTotal" class="btn btn-success" href=""> Calcular total  <i class="fa fa-calculator" ></i></a>
                                 </div>
                             </div>
                         </div>
