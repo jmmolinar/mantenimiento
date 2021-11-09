@@ -107,8 +107,22 @@ export default class extends AbstractView {
 
                 if (order) {
 
+                    getCategoriasOrden = [];
                     getCategoriasOrden = listAllElement(order.ordenCategorias)
                     console.log("Lista Objetos de Categorías de la Orden: " + getCategoriasOrden)
+                    let costoOrden = 0;
+                    let totalOrden = ``;
+                    getCategoriasOrden.forEach(elem => {
+                        if (elem["costo"] != "") {
+                            costoOrden = (parseFloat(elem["costo"]) + parseFloat(costoOrden)).toFixed(2);
+                        }
+
+                    })
+                    if(isNaN(costoOrden)){
+                        totalOrden = "";
+                    } else {
+                        totalOrden = "$ " + costoOrden.toString().replace(".", ",");
+                    }
 
                     const tipoMantenimiento = getTiposMantenimientos.find((tipoOrden) => tipoOrden.idTipoOrden == order.tipoOrdenIdTipoOrden);
                     if (tipoMantenimiento) {
@@ -411,8 +425,7 @@ export default class extends AbstractView {
                         <!--TOTAL EN COSTOS DE LA ORDEN-->
                         <div id="totalCost" class="control-group">
                             <label class="span12 text-right order-identity border-transparent-1px">
-                                <!--<h3>Total: <span class="add-on">$ </span>${order.total == "" ? parseFloat(0).toFixed(2) : parseFloat(order.total).toFixed(2)}</h3>-->
-                                <h3>Total: <span class="add-on">$ </span>${order.total == "" ? parseFloat(0).toFixed(2) : new Intl.NumberFormat("es-ES").format(order.total)}</h3>
+                                <h3>Total: ${totalOrden}</h3>
                             </label>
                         </div>
 

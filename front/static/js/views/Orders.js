@@ -97,9 +97,9 @@ export default class extends AbstractView {
                 let fillOrders = ''
                 let classTr = ""
                 let stringContainer = ""
-                let formatGetCategoriasActivoNombre = ``;
-                let formatGetCategoriasActivoCosto = ``;
-                let getCategoriasActivo = [];
+                let formatGetCategoriasOrdenNombre = ``;
+                let formatGetCategoriasOrdenCosto = ``;
+                let getCategoriasOrden = [];
                 let getEstadosOrden = [];
                 let cont = 0;
 
@@ -195,16 +195,16 @@ export default class extends AbstractView {
 
                     cont++
 
-                    getCategoriasActivo = listAllElement(orden.ordenCategorias);
-                    let getCategoriasActivoNombre = [];
-                    let getCategoriasActivoCosto = [];
+                    getCategoriasOrden = listAllElement(orden.ordenCategorias);
+                    let getCategoriasOrdenNombre = [];
+                    let getCategoriasOrdenCosto = [];
                     let costoOrden = 0;
                     let totalOrden = ``;
-                    getCategoriasActivo.forEach(elem => {
-                        getCategoriasActivoNombre.push(`<div class="alert alert-info no-margin new-padding-top-bottom"><strong>${elem["nombre"]}</strong></div>`)
+                    getCategoriasOrden.forEach(elem => {
+                        getCategoriasOrdenNombre.push(`<div class="alert alert-info no-margin new-padding-top-bottom"><strong>${elem["nombre"]}</strong></div>`)
                         if (elem["costo"] != "") {
                             costoOrden = (parseFloat(elem["costo"]) + parseFloat(costoOrden)).toFixed(2);
-                            getCategoriasActivoCosto.push(`<div class="alert new-alert-use no-margin new-padding-top-bottom">CLP <strong>${(parseFloat(elem["costo"]) + 0.00).toFixed(2).toString().replace(".", ",")}</strong></div>`)
+                            getCategoriasOrdenCosto.push(`<div class="alert new-alert-use no-margin new-padding-top-bottom">CLP <strong>${(parseFloat(elem["costo"]) + 0.00).toFixed(2).toString().replace(".", ",")}</strong></div>`)
                         }
 
                     })
@@ -214,12 +214,12 @@ export default class extends AbstractView {
                         totalOrden = "$ " + costoOrden.toString().replace(".", ",");
                     }
 
-                    if (getCategoriasActivoNombre.length) {
-                        formatGetCategoriasActivoNombre = getCategoriasActivoNombre.join('');
-                        formatGetCategoriasActivoCosto = getCategoriasActivoCosto.join('');
+                    if (getCategoriasOrdenNombre.length) {
+                        formatGetCategoriasOrdenNombre = getCategoriasOrdenNombre.join('');
+                        formatGetCategoriasOrdenCosto = getCategoriasOrdenCosto.join('');
                     } else {
-                        formatGetCategoriasActivoNombre = ``;
-                        formatGetCategoriasActivoCosto = ``;
+                        formatGetCategoriasOrdenNombre = ``;
+                        formatGetCategoriasOrdenCosto = ``;
                     }
 
                     fillOrders += `
@@ -232,8 +232,8 @@ export default class extends AbstractView {
                             <td>${orden.fechaCreacion.slice(0,10)}</td>
                             <td>${orden.fechaInicial.slice(0,10)}</td>
                             <td>${getTaller}</td>
-                            <!--<td>${formatGetCategoriasActivoNombre}</td>-->
-                            <!--<td>${formatGetCategoriasActivoCosto}</td>-->
+                            <!--<td>${formatGetCategoriasOrdenNombre}</td>-->
+                            <!--<td>${formatGetCategoriasOrdenCosto}</td>-->
                             <td>${totalOrden}</td>
                             <td class="align-center">
                                 <a id="editOrder_${orden.idOrden}" class="btn only-to-id-url" href="/ordenes/${orden.idOrden}"><i class="icon-pencil"></i></a>
@@ -317,49 +317,6 @@ const customOrdersTable = () => {
         // Tabla
         let table = $('div #pages table#ordersTable').DataTable({
             "order": [[0, "desc"]],
-            // Especifico las columnas a continuación para poder dar formato numérico al render de "Total"
-            // Si no lo hiciera no sería necesario agregar "columns"
-            /*"columns": [
-                {
-                    data: 'idOrden'
-                },
-                {
-                    data: 'getPatenteActivo'
-                },
-                {
-                    data: "getTipoOrden"
-                },
-                {
-                    data: "getEstado"
-                },
-                {
-                    data: "getAreaActivo"
-                },
-                {
-                    data: "fechaCreacion"
-                },
-                {
-                    data: "fechaInicial",
-                    render: filtrarFechas() //Ejecutar la función de filtrado de fechas
-                },
-                {
-                    data: "getTaller"
-                },
-                //{
-                //    data: "ordenCategorias.nombre"
-                //},
-                //{
-                //    data: "ordenCategorias.costo"
-                //},
-                {
-                    data: "costoOrden",
-                    render: $.fn.dataTable.render.number('', ',', 2, 'CLP ')
-                },
-                {
-                    data: "Acciones"  // No está dentro del JSON pero debe definirse para trabajar de la mano con la columna donde agrega botones de EDITAR y ELIMINAR
-                }
-            ],*/
-
             "language": TableLanguage,
             "scrollX": true // De la mano con el width="100%" en la etiqueta table
         });
