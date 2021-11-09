@@ -24,6 +24,12 @@ const getJson = (urlJson, title) => {
     return result;
 }
 
+//Ordenes
+let ordenesJSON = 'http://192.168.1.114:8080/static/js/data/orders.JSON';
+let titleOrdenesJSON = "Órdenes";
+let getOrdenes = [];
+getOrdenes = getJson(ordenesJSON, titleOrdenesJSON);
+
 //Tipos de mantenimientos
 let ordersTypeJSON = 'http://192.168.1.114:8080/static/js/data/ordersType.JSON';
 let titleOrdersTypeJSON = "Tipos de mantenimientos";
@@ -763,6 +769,7 @@ let regiones = [
 export {
     frecuenciaPeriodo,
     regiones,
+    getOrdenes,
     getTiposMantenimientos,
     getEstados,
     getAreas,

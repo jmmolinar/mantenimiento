@@ -1,5 +1,8 @@
 import AbstractView from "./AbstractView.js";
-import TableLanguage from "./TableLanguage.js"
+import TableLanguage from "./TableLanguage.js";
+import {
+    getOrdenes
+} from "./Options.js"
 
 export default class extends AbstractView {
     constructor(params) {
@@ -33,6 +36,7 @@ export default class extends AbstractView {
                     <th>Latitud</th>
                     <th>Longitud</th>-->
 
+                    <th>Órdenes asignadas</th>
                     <th>Activos en taller</th>
                     <th>Acciones</th>
                 </tr>
@@ -55,6 +59,15 @@ export default class extends AbstractView {
                 console.log(jqXHR)
                 let fillWorkshops = ''
                 for (const taller of data) {
+
+                    const ordenesAsignadas = getOrdenes.filter((orden) => orden.tallerServicioIdTallerServicio == taller.idTallerServicio);
+                    let contAsignadosTaller = 0;
+                    if (ordenesAsignadas) {
+                        ordenesAsignadas.forEach(element => {
+                            contAsignadosTaller++;
+                        });
+                    }
+
                     fillWorkshops += `
                     <tr>
                         <td>${taller.idTallerServicio}</td>
@@ -67,7 +80,8 @@ export default class extends AbstractView {
                         <td>${taller.latitud}</td>
                         <td>${taller.longitud}</td>-->
 
-                        <td>-</td>
+                        <td>${contAsignadosTaller}</td>
+                        <td>Desde Backend</td>
                         <td class="align-center">
                             <a id="editWorkShop_${taller.idTallerServicio}" class="btn only-to-id-url" href="/talleres/${taller.idTallerServicio}"><i class="icon-pencil"></i></a>
                             <a id="deleteWorkShop_${taller.idTallerServicio}" class="btn" disabled><i class="icon-trash"></i></a>

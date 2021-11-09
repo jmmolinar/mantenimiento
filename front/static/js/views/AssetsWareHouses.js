@@ -1,5 +1,8 @@
 import AbstractView from "./AbstractView.js";
 import TableLanguage from "./TableLanguage.js"
+import {
+    getActivos
+} from "./Options.js"
 
 export default class extends AbstractView {
     constructor(params) {
@@ -57,6 +60,15 @@ export default class extends AbstractView {
                 console.log(jqXHR)
                 let fillAssetsWareHouses = ''
                 for (const bodega of data) {
+
+                    const activosAsignados = getActivos.filter((activo) => activo.bodegaActivosIdBodegaActivos == bodega.idBodegaActivos);
+                    let contAsignados = 0;
+                    if (activosAsignados) {
+                        activosAsignados.forEach(element => {
+                            contAsignados++;
+                        });
+                    }
+
                     fillAssetsWareHouses += `
                     <tr>
                         <td>${bodega.idBodegaActivos}</td>
@@ -69,8 +81,8 @@ export default class extends AbstractView {
                         <td>${bodega.latitud}</td>
                         <td>${bodega.longitud}</td>-->
 
-                        <td>${bodega.cantidad_activos}</td>
-                        <td>${bodega.cantidad_activos}</td>
+                        <td>${contAsignados}</td>
+                        <td>Desde Backend</td>
                         <td class="align-center">
                             <a id="editAssetsWareHouse_${bodega.idBodegaActivos}" class="btn only-to-id-url" href="/bodegas/${bodega.idBodegaActivos}"><i class="icon-pencil"></i></a>
                             <a id="deleteAssetWareHouse_${bodega.idBodegaActivos}" class="btn" disabled><i class="icon-trash"></i></a>
