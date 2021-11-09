@@ -173,8 +173,8 @@ export default class extends AbstractView {
                             <h3 style="display:inline;">Patente: </h3>
                             <h3 id="valorPatente" style="display:inline;">${getActivoPatente}</h3>
                             <!--<h3>${getActivoUso}</h3>-->
-                            <h4>${getActivoKmGps} Km</h4>
-                            <h4>${getActivoHorometro} Horas</h4>
+                            <h5>Km: ${getActivoKmGps.toString().replace(".", ",")}</h5>
+                            <h5>Horas: ${getActivoHorometro.toString().replace(".", ",")}</h5>
                             <a id="downloadAsset_${asset.idActivo}" class="btn btn-success" href=""> ${getActivoPatente}  <i class="fa fa-cloud-download"></i></a>
                         </div>
 
