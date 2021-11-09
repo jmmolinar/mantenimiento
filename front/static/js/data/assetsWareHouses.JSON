@@ -7,8 +7,7 @@
         "calle": "Agua Santa",
         "numero": "311",
         "latitud": "-33.0466072",
-        "longitud": "-71.5654153",
-        "cantidad_activos": "50"
+        "longitud": "-71.5654153"
     },
     {
         "idBodegaActivos": 4,
@@ -18,8 +17,7 @@
         "calle": "San Martín",
         "numero": "460",
         "latitud": "-39.2771416",
-        "longitud": "-72.2271881",
-        "cantidad_activos": "4"
+        "longitud": "-72.2271881"
     },
     {
         "idBodegaActivos": 3,
@@ -29,8 +27,7 @@
         "calle": "Las Encinas",
         "numero": "51",
         "latitud": "-39.8100413",
-        "longitud": "-73.2529351",
-        "cantidad_activos": "8"
+        "longitud": "-73.2529351"
     },
     {
         "idBodegaActivos": 2,
@@ -40,8 +37,7 @@
         "calle": "Serrano",
         "numero": "132",
         "latitud": "-20.213486",
-        "longitud": "-70.1541984",
-        "cantidad_activos": "110"
+        "longitud": "-70.1541984"
     },
     {
         "idBodegaActivos": 1,
@@ -51,7 +47,6 @@
         "calle": "Irarrázaval",
         "numero": "1220",
         "latitud": "-33.4530769",
-        "longitud": "-70.6188521",
-        "cantidad_activos": "120"
+        "longitud": "-70.6188521"
     }
 ]

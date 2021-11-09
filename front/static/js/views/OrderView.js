@@ -410,7 +410,16 @@ export default class extends AbstractView {
                         </div>
 
                         <!--CATEGORÍA DE SERVICIO-->
-                        <div id="orderServiceCategories_${this.postId}" class="control-group border-transparent-1px"></div>
+                        <div id="orderServiceCategories_${identificadorGlobal}" class="control-group border-transparent-1px"></div>
+
+                        <div id="updateTotal" class="control-group border-transparent-1px">
+                            <div class="control-group">
+                                <div class="row-fluid">
+                                    <!--<button id="botonActualizarTotal" class="btn">Actualizar total</button>-->
+                                    <a id="botonActualizarTotal" class="btn btn-success" href=""> Actualizar total  <i class="fa fa-cloud-download" ></i></a>
+                                </div>
+                            </div>
+                        </div>
 
                         <!--Observaciones-->
                         <div id="notes" class="control-group border-transparent-1px">
@@ -425,7 +434,9 @@ export default class extends AbstractView {
                         <!--TOTAL EN COSTOS DE LA ORDEN-->
                         <div id="totalCost" class="control-group">
                             <label class="span12 text-right order-identity border-transparent-1px">
-                                <h3>Total: ${totalOrden}</h3>
+                                <!--<h3>Total: ${totalOrden}</h3>-->
+                                <h3 style="display:inline;">Total: </h3>
+                                <h3 id="valorTotalOrden" style="display:inline;">${totalOrden}</h3>
                             </label>
                         </div>
 
@@ -617,7 +628,7 @@ const fillOrderCategories = () => {
             orderCategoriesHTML = orderCategoriesHTML.concat(fillOrderCategories)
             orderCategoriesHTML = orderCategoriesHTML.concat(orderCategoriesContainerB)
 
-            $(`#orderServiceCategories_${this.postId}`).html(orderCategoriesHTML)
+            $(`#orderServiceCategories_${identificadorGlobal}`).html(orderCategoriesHTML)
             console.log(`AJAX orderServiceCategories -> Status: ${status}`)
 
         },
@@ -862,6 +873,33 @@ $(document).ready(function () {
 
         mostrarStorageJSON();
 
+    });
+
+
+    //ACTUALIZAR COSTO TOTAL DENTRO DE LA ÓRDEN
+    $('div #pages').on('click', 'a#botonActualizarTotal', function (e) {
+
+        const costosCategorias = document.getElementById('categoriesContainer').getElementsByClassName('input-prepend input-append');
+        let contCostos = 0;
+        let sumCostos = 0;
+        let totalActualizado = "";
+        for (const elem of costosCategorias) {
+            contCostos++;
+            //Label de categoría
+            let appendedPrependedInput = document.getElementById(`appendedPrependedInput_${contCostos}`);
+            if(!appendedPrependedInput.disabled){
+                sumCostos = (parseFloat(appendedPrependedInput.value) + parseFloat(sumCostos)).toFixed(2);
+            }
+        }
+
+        if(isNaN(sumCostos)){
+            totalActualizado = "";
+        } else {
+            totalActualizado = "$ " + sumCostos.toString().replace(".", ",");
+        }
+
+        $('#valorTotalOrden').text(totalActualizado);
+        e.preventDefault();
     });
 
 
