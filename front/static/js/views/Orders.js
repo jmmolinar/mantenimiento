@@ -91,7 +91,7 @@ export default class extends AbstractView {
 
         $.ajax({
             type: 'GET',
-            url: 'http://192.168.1.114:8080/static/js/data/orders.JSON',
+            url: 'http://192.168.1.114:8000/static/js/data/orders.JSON',
             dataType: 'json',
             success: function (data, status, jqXHR) {
 
