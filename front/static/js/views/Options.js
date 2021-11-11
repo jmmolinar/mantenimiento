@@ -84,6 +84,11 @@ let titleGpsJSON = 'GPS BLACKGPS';
 let getGPS = [];
 getGPS = getJson(gpsJSON, titleGpsJSON);
 
+let headerGeoJSON = 'http://192.168.1.114:8000/static/js/data/headergeo.JSON';
+let titleHeaderGeoJSON = "GEOCERCA CABECERA BLACKGPS";
+let getHeaderGeo = [];
+getHeaderGeo = getJson(headerGeoJSON, titleHeaderGeoJSON);
+
 //Talleres
 let talleresJSON = 'http://192.168.1.114:8000/static/js/data/workshops.JSON';
 let titleTalleresJSON = 'Talleres';
@@ -783,6 +788,7 @@ export {
     getGPS,
     getMarcas,
     getModelos,
+    headerGeoJSON,
     //getRegiones,
     loadSelectContent,
     loadDivSelectedPlan,
