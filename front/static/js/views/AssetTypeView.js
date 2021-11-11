@@ -41,7 +41,7 @@ export default class extends AbstractView {
                     console.log("Vericando const assetType: " + assetType)
 
                     fillAssetType = `<h1></h1>
-                    <form id="assetTypeFormQuery_${assetType.id}" action="/tipos">
+                    <form id="assetTypeFormQuery_${assetType.idTipoActivo}" action="/tipos">
                         <!--IDENTIFICADOR DEL TIPO DE ACTIVO-->
                         <div id="assetTypeId_${assetType.idTipoActivo}" class="control-group order-identity border-transparent-1px">
                             <h1>Tipo de activo ${assetType.idTipoActivo}</h1>
