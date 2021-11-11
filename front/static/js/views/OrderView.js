@@ -516,15 +516,6 @@ const fillOrderOptions = () => {
         loadSelectContentAndSelected(optionTaller, selectTaller, getTaller);
         console.log("Taller seleccionado: " + getTaller);
 
-        // Select Frecuencia del Período
-        // Ya no se utilizará en esta instancia
-        /*
-        const selectFrecuenciaPeriodo = document.getElementById('frequencyType');
-        const optionFrecuenciaPeriodo = listSelect(frecuenciaPeriodo, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionFrecuenciaPeriodo, selectFrecuenciaPeriodo, getFrecuenciaPeriodo);
-        console.log("Frecuencia Periodo seleccionada: " + getFrecuenciaPeriodo);
-        */
-
     });
     //});
 
@@ -568,8 +559,6 @@ const fillOrderCategories = () => {
             console.log("Entré al AJAX de Categorías de la Orden")
             console.log(jqXHR)
             let fillOrderCategories = ''
-            //let currentLabel = ''
-            //let currentInput = ''
             let cont = 0;
 
             for (const category of data) {
@@ -578,9 +567,7 @@ const fillOrderCategories = () => {
                 let checkboxSeleccionado = ''
                 let requerido = '';
                 let deshabilitado = 'disabled';
-                //let costo = '';
                 let costo = 0;
-                //costoTotal += costo; 
 
                 getCategoriasOrden.forEach(element => {
 
@@ -592,13 +579,6 @@ const fillOrderCategories = () => {
                         costo = element.costo;
                     }
 
-                    /*if (category.nombre == element.nombre) {
-                        console.log(`idCategoría: ${element.categoriaServicioIdCategoriaServicio} - Categoría: ${element.nombre} - Costo: ${element.costo} - Orden: ${identificadorGlobal}`)
-                        checkboxSeleccionado = 'checked';
-                        requerido = 'required';
-                        deshabilitado = '';
-                        costo = element.costo;
-                    }*/
                 })
 
                 fillOrderCategories += `
@@ -650,21 +630,27 @@ const guardarOrdenParaJSON = () => {
     ordenJSON.ordenCategorias = []; // reinicio las categorías por cada activo
 
     ordenJSON.idOrden = idUrl;
-    //ordenJSON.fechaCreacion = currentDate();
     ordenJSON.fechaCreacion = getFechaCreacion;
     ordenJSON.fechaInicial = document.getElementById('rangeStartDate').value;
-    ordenJSON.start = ordenJSON.fechaInicial;
     ordenJSON.fechaFinal = document.getElementById('rangeEndDate').value;
-    ordenJSON.end = ordenJSON.fechaFinal;
     ordenJSON.observaciones = document.getElementById('orderNotes').value;
-    //ordenJSON.title = 
+
+    /** Necesarias para el Calendario porque las utiliza la biblioteca Fullcalendar */
+    // Pero no se almacenan en Base de Datos
+    //ordenJSON.title = ""
+    ordenJSON.start = ordenJSON.fechaInicial;
+    ordenJSON.end = ordenJSON.fechaFinal;
     ordenJSON.allDay = false
+    /** */
 
     let valorPatente = document.getElementById('valorPatente');
-    //Temporal - el valor de la patente debe obtenerse mediante idVehiculo
-    const activo = getActivos.find((activo) => activo.activo == valorPatente.textContent.trim());
-    if (activo) {
-        ordenJSON.activoIdActivo = activo.idActivo;
+    const vehiculo = getVehiculos.find((vehiculo) => vehiculo.ppuVehiculo == valorPatente.textContent.trim());
+    if(vehiculo){
+        const activo = getActivos.find((activo) => activo.vehiculoIdVehiculo == vehiculo.idVehiculo);
+        if(activo){
+            alert("Obtuve el ID Vehiculo: " + vehiculo.idVehiculo + " - con Patente: " + vehiculo.ppuVehiculo + " - ID Activo: " +  activo.idActivo);
+            ordenJSON.activoIdActivo = activo.idActivo;
+        }
     }
 
     const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType').value);

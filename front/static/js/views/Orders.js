@@ -17,7 +17,6 @@ let maxDate = "";
 let getEstado = ``;
 let getTaller = ``;
 let getTipoOrden = ``;
-let getActivo = ``;
 let getAreaActivo = ``;
 let getPatenteActivo = ``;
 
@@ -96,7 +95,7 @@ export default class extends AbstractView {
             success: function (data, status, jqXHR) {
 
                 console.log("Entré al AJAX")
-                customOrdersTable(); /* Aqui renderizo con DataTable y doy formato a la columna costo*/
+                customOrdersTable(); /* Aqui renderizo con DataTable */
                 console.log(jqXHR)
                 let fillOrders = ''
                 let classTr = ""
@@ -105,7 +104,6 @@ export default class extends AbstractView {
                 let formatGetCategoriasOrdenCosto = ``;
                 let getCategoriasOrden = [];
                 let getEstadosOrden = [];
-                let cont = 0;
 
                 for (const orden of data) {
 
@@ -138,7 +136,7 @@ export default class extends AbstractView {
 
 
                     getEstadosOrden = listAllElement(orden.ordenEstados);
-                    let fechaUltimoEstado = "1900-01-01T00:00";
+                    let fechaUltimoEstado = "1900-01-01T00:00"; /** Comparador para obtener la fecha del último estado */
                     
                     getEstadosOrden.forEach(elem => {
 
@@ -196,8 +194,6 @@ export default class extends AbstractView {
                         }
 
                     })
-
-                    cont++
 
                     getCategoriasOrden = listAllElement(orden.ordenCategorias);
                     let getCategoriasOrdenNombre = [];
@@ -286,12 +282,6 @@ const customOrdersTable = () => {
             sessionStorage.removeItem('fechaFiltroFin')
             //filtrarFechas();
         }
-        /*else {
-            minDate = "";
-            maxDate = "";
-        }*/
-
-
 
         // Agregando inputs para filtro de fechas a la tabla
         minDate = new DateTime($('div #pages input#min'), {
@@ -334,12 +324,6 @@ const customOrdersTable = () => {
 
     });
 
-    /*Agrego en CustomOrderTable para generar eventos con hipervinculos que están dentro*/
-    /*$(document).ready(function () {
-        $('div #pages table#ordersTable').on('click', 'a.only-to-id-url', function () {
-            console.log("Voy a la orden: " + $(this).attr('href').slice(1).substring($(this).attr('href').slice(1).lastIndexOf('/') + 1))
-        })
-    });*/
 }
 
 // Función de filtrado personalizado que buscará datos en la columna 5 entre dos valores
@@ -377,17 +361,6 @@ const filtrarFechas = () => {
 
 $(document).ready(function () {
 
-    /*$('div #pages').on('click', 'button#borrarFiltro', function () {
-        console.log("Entré al botón")
-        $('#min').val("");
-        $('#max').val("");
-    });*/
-
     $('[data-toggle="tooltip"]').tooltip({ animation: true });
-    /*$('[data-toggle="popover"]').on("click",function(e){
-        e.preventDefault();
-    });
-    $('[data-toggle="popover"]').popover();*/
-    //$('[data-toggle="popover"]').popover('show')
 
 });
