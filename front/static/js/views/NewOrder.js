@@ -331,7 +331,7 @@ const fillOrderCategories = () => {
 
     $.ajax({
         type: 'GET',
-        url: 'http://192.168.1.114:8000/static/js/data/serviceCategories.JSON',
+        url: 'http://192.168.1.114:8080/static/js/data/serviceCategories.JSON',
         dataType: 'json',
         success: function (data, status, jqXHR) {
 
