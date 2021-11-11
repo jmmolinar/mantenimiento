@@ -84,6 +84,7 @@ let titleGpsJSON = 'GPS BLACKGPS';
 let getGPS = [];
 getGPS = getJson(gpsJSON, titleGpsJSON);
 
+//GEOCERCA CABECERA de BlackGPS
 let headerGeoJSON = 'http://192.168.1.114:8000/static/js/data/headergeo.JSON';
 let titleHeaderGeoJSON = "GEOCERCA CABECERA BLACKGPS";
 let getHeaderGeo = [];
