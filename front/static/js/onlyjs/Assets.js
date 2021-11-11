@@ -1,4 +1,4 @@
-/** Funcionalidades para listar órdenes de mantenimiento */
+/** Funcionalidades para listar activos */
 
 import TableLanguage from "./TableLanguage.js"
 import { getJson } from "./Options.js"
@@ -11,18 +11,31 @@ let getVehiculoKmGps = ``;
 let getVehiculoHorometro = ``;
 let getGPSImei = ``;
 
-//LISTADO DE ÓRDENES
-//OBTENCIÓN DE TODAS LAS ÓRDENES
-let ordenesJSON = 'http://192.168.1.114:8000/static/js/data/orders.JSON';
-let titleOrdenesJSON = "Órdenes";
-let getOrdenes = [];
-getOrdenes = getJson(ordenesJSON, titleOrdenesJSON);
+//Clase para asignar nombre a pestaña navegador
+class {
+    constructor(params) {
+        super(params);
+        this.setTitle(`Activos`);
+    }
+
+    setTitle(title) {
+        document.title = title;
+    }
+
+}
+
+//LISTADO DE ACTIVOS
+//OBTENCIÓN DE TODAS LOS ACTIVOS
+let activosJSON = 'http://192.168.1.114:8080/static/js/data/assets.JSON';
+let titleActivosJSON = 'Activos';
+let getActivos = [];
+getActivos = getJson(activosJSON, titleActivosJSON);
 
 //CREACIÓN DE FORMATO DATATABLE PARA EL LISTADO DE LAS ÓRDENES
 customTable();
 
 //RECORRIDO DE CADA ACTIVO
-for (const activo of getOrdenes) {
+for (const activo of getActivos) {
 
     //VARIABLE USO PARA ASIGNAR KM Y HORÓMETRO
     let getUsoActivo = ``;
@@ -32,7 +45,7 @@ for (const activo of getOrdenes) {
 
     //ÁREA DEL ACTIVO
     //OBTENCIÓN DE LAS ÁREAS
-    let areasJSON = 'http://192.168.1.114:8000/static/js/data/areas.JSON';
+    let areasJSON = 'http://192.168.1.114:8080/static/js/data/areas.JSON';
     let titleAreasJSON = "Áreas";
     let getAreas = [];
     getAreas = getJson(areasJSON, titleAreasJSON);
@@ -45,7 +58,7 @@ for (const activo of getOrdenes) {
 
     //TIPO DE ACTIVO DEL ACTIVO
     //OBTENCIÓN DE LOS TIPOS DE ACTIVOS
-    let tiposActivosJSON = 'http://192.168.1.114:8000/static/js/data/assetsType.JSON';
+    let tiposActivosJSON = 'http://192.168.1.114:8080/static/js/data/assetsType.JSON';
     let titleTiposActivosJSON = 'Tipos de activos';
     let getTiposActivos = [];
     getTiposActivos = getJson(tiposActivosJSON, titleTiposActivosJSON);
@@ -58,7 +71,7 @@ for (const activo of getOrdenes) {
 
     //PATENTE, KILOMETROS, HORÓMETRO, USO, IMEIGPS DEL ACTIVO
     //OBTENCIÓN DE LOS VEHÍCULOS
-    let vehiculosJSON = 'http://192.168.1.114:8000/static/js/data/vehicle.JSON';
+    let vehiculosJSON = 'http://192.168.1.114:8080/static/js/data/vehicle.JSON';
     let titleVehiculosJSON = 'Vehículos BLACKGPS';
     let getVehiculos = [];
     getVehiculos = getJson(vehiculosJSON, titleVehiculosJSON);
@@ -73,7 +86,7 @@ for (const activo of getOrdenes) {
         getUsoActivo = getVehiculoKmGps.toString().concat(" Km  -  ", getVehiculoHorometro.toString(), " Horas")
 
         //OBTENCIÓN DE LOS GPS
-        let gpsJSON = 'http://192.168.1.114:8000/static/js/data/gps.JSON';
+        let gpsJSON = 'http://192.168.1.114:8080/static/js/data/gps.JSON';
         let titleGpsJSON = 'GPS BLACKGPS';
         let getGPS = [];
         getGPS = getJson(gpsJSON, titleGpsJSON);
