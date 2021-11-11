@@ -311,6 +311,47 @@ const customOrdersTable = () => {
         // Tabla
         let table = $('div #pages table#ordersTable').DataTable({
             "order": [[0, "desc"]],
+            // Especifico las columnas a continuación para poder utilizar en render el filtrarFechas()
+            // Si no lo hiciera no sería necesario agregar "columns"
+            "columns": [
+                {
+                    data: 'idOrden'
+                },
+                {
+                    data: 'getPatenteActivo'
+                },
+                {
+                    data: "getTipoOrden"
+                },
+                {
+                    data: "getEstado"
+                },
+                {
+                    data: "getAreaActivo"
+                },
+                {
+                    data: "fechaCreacion"
+                },
+                {
+                    data: "fechaInicial",
+                    render: filtrarFechas() //Ejecutar la función de filtrado de fechas
+                },
+                {
+                    data: "getTaller"
+                },
+                /*{
+                    data: "ordenCategorias.nombre"
+                },
+                {
+                    data: "ordenCategorias.costo"
+                },*/
+                {
+                    data: "total"
+                },
+                {
+                    data: "Acciones"  /* No está dentro del JSON pero debe definirse para trabajar de la mano con la columna donde agrega botones de EDITAR y ELIMINAR */
+                }
+            ],
             "language": TableLanguage,
             "scrollX": true // De la mano con el width="100%" en la etiqueta table
         });
