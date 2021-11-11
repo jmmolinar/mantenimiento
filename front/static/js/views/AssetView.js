@@ -850,13 +850,9 @@ const guardarActivoJSON = () => {
     activoJSON.documentos.push(docRevisionTecnica);
 
     const planesSeleccionados = document.getElementById('buttonsSelectedPlan').getElementsByClassName('name-plan');
-    //let contPlans = 0; //sin uso
     for (const element of planesSeleccionados) {
-
+        
         banderaPlanes = true;
-
-        //contPlans++; //sin uso
-
         const plan = getPlanes.find((plan) => plan.nombre == element.textContent);
         if (plan) {
 
