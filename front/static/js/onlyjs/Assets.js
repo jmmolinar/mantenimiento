@@ -26,7 +26,11 @@ class {
 
 //LISTADO DE ACTIVOS
 //OBTENCIÓN DE TODAS LOS ACTIVOS
+<<<<<<< HEAD
 let activosJSON = 'http://192.168.0.13:8080/static/js/data/assets.JSON';
+=======
+let activosJSON = 'http://192.168.1.114:8080/static/js/data/assets.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleActivosJSON = 'Activos';
 let getActivos = [];
 getActivos = getJson(activosJSON, titleActivosJSON);
@@ -45,7 +49,11 @@ for (const activo of getActivos) {
 
     //ÁREA DEL ACTIVO
     //OBTENCIÓN DE LAS ÁREAS
+<<<<<<< HEAD
     let areasJSON = 'http://192.168.0.13:8080/static/js/data/areas.JSON';
+=======
+    let areasJSON = 'http://192.168.1.114:8080/static/js/data/areas.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
     let titleAreasJSON = "Áreas";
     let getAreas = [];
     getAreas = getJson(areasJSON, titleAreasJSON);
@@ -58,7 +66,11 @@ for (const activo of getActivos) {
 
     //TIPO DE ACTIVO DEL ACTIVO
     //OBTENCIÓN DE LOS TIPOS DE ACTIVOS
+<<<<<<< HEAD
     let tiposActivosJSON = 'http://192.168.0.13:8080/static/js/data/assetsType.JSON';
+=======
+    let tiposActivosJSON = 'http://192.168.1.114:8080/static/js/data/assetsType.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
     let titleTiposActivosJSON = 'Tipos de activos';
     let getTiposActivos = [];
     getTiposActivos = getJson(tiposActivosJSON, titleTiposActivosJSON);
@@ -71,7 +83,11 @@ for (const activo of getActivos) {
 
     //PATENTE, KILOMETROS, HORÓMETRO, USO, IMEIGPS DEL ACTIVO
     //OBTENCIÓN DE LOS VEHÍCULOS
+<<<<<<< HEAD
     let vehiculosJSON = 'http://192.168.0.13:8080/static/js/data/vehicle.JSON';
+=======
+    let vehiculosJSON = 'http://192.168.1.114:8080/static/js/data/vehicle.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
     let titleVehiculosJSON = 'Vehículos BLACKGPS';
     let getVehiculos = [];
     getVehiculos = getJson(vehiculosJSON, titleVehiculosJSON);
@@ -86,7 +102,11 @@ for (const activo of getActivos) {
         getUsoActivo = getVehiculoKmGps.toString().concat(" Km  -  ", getVehiculoHorometro.toString(), " Horas")
 
         //OBTENCIÓN DE LOS GPS
+<<<<<<< HEAD
         let gpsJSON = 'http://192.168.0.13:8080/static/js/data/gps.JSON';
+=======
+        let gpsJSON = 'http://192.168.1.114:8080/static/js/data/gps.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
         let titleGpsJSON = 'GPS BLACKGPS';
         let getGPS = [];
         getGPS = getJson(gpsJSON, titleGpsJSON);

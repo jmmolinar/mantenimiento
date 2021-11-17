@@ -12,8 +12,11 @@ import {
 let getIdBodega = 0;
 let getRegion = ``;
 let getComuna = ``;
+<<<<<<< HEAD
 let getCalle = ``;
 let getNumero = ``;
+=======
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let getComunasRegion = [];
 let comunasRegionCambiada = [];
 let getLatitud = ``;
@@ -53,12 +56,20 @@ class {
 
 }
 
+<<<<<<< HEAD
 let identificador = this.postId;
+=======
+identificador = this.postId;
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 idUrl = parseInt(identificador);
 
 //LISTADO DE BODEGAS
 //OBTENCIÓN DE TODAS LAS BODEGAS
+<<<<<<< HEAD
 let bodegasJSON = 'http://192.168.0.13:8080/static/js/data/assetsWareHouses.JSON';
+=======
+let bodegasJSON = 'http://192.168.1.114:8080/static/js/data/assetsWareHouses.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleBodegasJSON = 'Bodegas';
 let getBodegas = [];
 getBodegas = getJson(bodegasJSON, titleBodegasJSON);
@@ -71,8 +82,11 @@ if (bodega) {
     getIdBodega = bodega.idBodegaActivos;
     getRegion = bodega.region;
     getComuna = bodega.comuna;
+<<<<<<< HEAD
     getCalle = bodega.calle;
     getNumero = bodega.numero;
+=======
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
     getLatitud = bodega.latitud;
     getLongitud = bodega.longitud;
     console.log("Verificando postId: " + identificador)
@@ -91,13 +105,21 @@ const fillOptions = () => {
     console.log("Entré al fillOptions en AssetsWareHouseView")
     $(document).ready(function () {
 
+<<<<<<< HEAD
         //SELECT REGION - TRAIDO DESDE OPTIONS.JS
+=======
+        // Select Región
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
         const selectRegion = document.getElementById('wareHouseRegionOptions');
         const optionRegion = listSelect(regiones, "name"); // Paso la clave "name"
         loadSelectContentAndSelected(optionRegion, selectRegion, getRegion);
         console.log("Región seleccionada: " + getRegion);
 
+<<<<<<< HEAD
         //SELECT COMUNA - OBTENIDO DE REGIONES
+=======
+        // Select Comuna
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
         const region = regiones.find((region) => region.name == getRegion);
         getComunasRegion = listAllElement(region.communes)
         const selectComuna = document.getElementById('wareHouseCommuneOptions');
@@ -105,7 +127,11 @@ const fillOptions = () => {
         loadSelectContentAndSelected(optionComuna, selectComuna, getComuna);
         console.log("Comuna seleccionada: " + getComuna);
 
+<<<<<<< HEAD
         //CAMBIO DE REGION Y COMUNA
+=======
+        // Cambio de Región y comuna
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
         $('div #pages').on('change', 'select#wareHouseRegionOptions', e => {
             selectComuna.innerHTML = '<option value="">-</option>';
             const comunas = regiones.find(elem => elem.name == e.target.value); //Con filter no me completa el listAllElement
@@ -122,7 +148,11 @@ const fillOptions = () => {
 //FUNCIÓN PARA CREAR EL JSON QUE SERÁ PASADO A LA API
 const guardarBodegaJSON = () => {
 
+<<<<<<< HEAD
     banderaBodega = false; //Control para creación del JSON
+=======
+    banderaBodega = false;
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 
     bodegaJSON.idBodegaActivos = idUrl;
 
@@ -154,7 +184,11 @@ const guardarBodegaJSON = () => {
     //Debe tener valor de relación idGeocercaCabecera en BD de Plataforma
     bodegaJSON.idGeocercaCabecera = 0;
 
+<<<<<<< HEAD
     //Control para creación del JSON
+=======
+
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
     if (nombreBodega.value != ''
         && selectRegion.options[selectRegion.selectedIndex].text != ''
         && selectComuna.options[selectComuna.selectedIndex].text != ''
@@ -167,14 +201,21 @@ const guardarBodegaJSON = () => {
 
     }
 
+<<<<<<< HEAD
     //CREACIÓN DEL JSON PARA ACTUALIZAR LA BODEGA
+=======
+    //Creación del JSON
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
     if (banderaBodega == true) {
         sessionStorage.setItem(`ActualizacionBodega_${idUrl}`, JSON.stringify(bodegaJSON));
     }
 
 }
 
+<<<<<<< HEAD
 //ELIMINAR JSON DE SESSIÓN STORAGE
+=======
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 const removerVariableBodegaStorageJSON = () => {
 
     if (sessionStorage.getItem(`ActualizacionBodega_${idUrl}`)) {
@@ -183,7 +224,10 @@ const removerVariableBodegaStorageJSON = () => {
 
 }
 
+<<<<<<< HEAD
 //MOSTRAR JSON EXISTENTE EN SESSION STORAGE
+=======
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 const mostrarBodegaStorageJSON = () => {
 
     if (sessionStorage.getItem(`ActualizacionBodega_${idUrl}`)) {
@@ -195,7 +239,10 @@ const mostrarBodegaStorageJSON = () => {
 
 $(document).ready(function () {
 
+<<<<<<< HEAD
     //EVENTO PARA GUARDAR
+=======
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
     $('div #pages').on('click', `button#saveWareHouse_${idUrl}`, function () {
         guardarBodegaJSON();
         mostrarBodegaStorageJSON();

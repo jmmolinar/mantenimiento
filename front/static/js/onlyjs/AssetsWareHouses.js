@@ -26,7 +26,11 @@ class {
 
 //LISTADO DE BODEGAS
 //OBTENCIÓN DE TODAS LAS BODEGAS
+<<<<<<< HEAD
 let bodegasJSON = 'http://192.168.0.13:8080/static/js/data/assetsWareHouses.JSON';
+=======
+let bodegasJSON = 'http://192.168.1.114:8080/static/js/data/assetsWareHouses.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleBodegasJSON = 'Bodegas';
 let getBodegas = [];
 getBodegas = getJson(bodegasJSON, titleBodegasJSON);
@@ -47,7 +51,11 @@ for (const bodega of getBodegas) {
 
     //CANTIDAD DE ACTIVOS ASIGNADOS A CADA BODEGA
     //OBTENCIÓN DE TODAS LOS ACTIVOS
+<<<<<<< HEAD
     let activosJSON = 'http://192.168.0.13:8080/static/js/data/assets.JSON';
+=======
+    let activosJSON = 'http://192.168.1.114:8080/static/js/data/assets.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
     let titleActivosJSON = 'Activos';
     let getActivos = [];
     getActivos = getJson(activosJSON, titleActivosJSON);

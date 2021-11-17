@@ -25,98 +25,162 @@ const getJson = (urlJson, title) => {
 }
 
 //Ordenes
+<<<<<<< HEAD
 let ordenesJSON = 'http://192.168.0.13:8080/static/js/data/orders.JSON';
+=======
+let ordenesJSON = 'http://192.168.1.114:8080/static/js/data/orders.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleOrdenesJSON = "Órdenes";
 let getOrdenes = [];
 getOrdenes = getJson(ordenesJSON, titleOrdenesJSON);
 
 //Tipos de mantenimientos
+<<<<<<< HEAD
 let ordersTypeJSON = 'http://192.168.0.13:8080/static/js/data/ordersType.JSON';
+=======
+let ordersTypeJSON = 'http://192.168.1.114:8080/static/js/data/ordersType.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleOrdersTypeJSON = "Tipos de mantenimientos";
 let getTiposMantenimientos = [];
 getTiposMantenimientos = getJson(ordersTypeJSON, titleOrdersTypeJSON);
 
 //Estados
+<<<<<<< HEAD
 let stateJSON = 'http://192.168.0.13:8080/static/js/data/state.JSON';
+=======
+let stateJSON = 'http://192.168.1.114:8080/static/js/data/state.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleStateJSON = 'Estados';
 let getEstados = [];
 getEstados = getJson(stateJSON, titleStateJSON);
 
 //Areas
+<<<<<<< HEAD
 let areasJSON = 'http://192.168.0.13:8080/static/js/data/areas.JSON';
+=======
+let areasJSON = 'http://192.168.1.114:8080/static/js/data/areas.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleAreasJSON = "Áreas";
 let getAreas = [];
 getAreas = getJson(areasJSON, titleAreasJSON);
 
 //Tipos de activos
+<<<<<<< HEAD
 let tiposActivosJSON = 'http://192.168.0.13:8080/static/js/data/assetsType.JSON';
+=======
+let tiposActivosJSON = 'http://192.168.1.114:8080/static/js/data/assetsType.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleTiposActivosJSON = 'Tipos de activos';
 let getTiposActivos = [];
 getTiposActivos = getJson(tiposActivosJSON, titleTiposActivosJSON);
 
 //Activos
+<<<<<<< HEAD
 let activosJSON = 'http://192.168.0.13:8080/static/js/data/assets.JSON';
+=======
+let activosJSON = 'http://192.168.1.114:8080/static/js/data/assets.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleActivosJSON = 'Activos';
 let getActivos = [];
 getActivos = getJson(activosJSON, titleActivosJSON);
 
 //Vehiculos de BlackGPS
+<<<<<<< HEAD
 let vehiculosJSON = 'http://192.168.0.13:8080/static/js/data/vehicle.JSON';
+=======
+let vehiculosJSON = 'http://192.168.1.114:8080/static/js/data/vehicle.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleVehiculosJSON = 'Vehículos BLACKGPS';
 let getVehiculos = [];
 getVehiculos = getJson(vehiculosJSON, titleVehiculosJSON);
 
 //Marcas de BlackGPS
+<<<<<<< HEAD
 let marcasJSON = 'http://192.168.0.13:8080/static/js/data/brand.JSON';
+=======
+let marcasJSON = 'http://192.168.1.114:8080/static/js/data/brand.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleMarcasJSON = 'Marcas BLACKGPS';
 let getMarcas = [];
 getMarcas = getJson(marcasJSON, titleMarcasJSON);
 
 //Modelos de BlackGPS
+<<<<<<< HEAD
 let modelosJSON = 'http://192.168.0.13:8080/static/js/data/model.JSON';
+=======
+let modelosJSON = 'http://192.168.1.114:8080/static/js/data/model.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleModelosJSON = 'Modelos BLACKGPS';
 let getModelos = [];
 getModelos = getJson(modelosJSON, titleModelosJSON);
 
 //GPS de BlackGPS
+<<<<<<< HEAD
 let gpsJSON = 'http://192.168.0.13:8080/static/js/data/gps.JSON';
+=======
+let gpsJSON = 'http://192.168.1.114:8080/static/js/data/gps.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleGpsJSON = 'GPS BLACKGPS';
 let getGPS = [];
 getGPS = getJson(gpsJSON, titleGpsJSON);
 
 //GEOCERCA CABECERA de BlackGPS
+<<<<<<< HEAD
 let headerGeoJSON = 'http://192.168.0.13:8080/static/js/data/headergeo.JSON';
+=======
+let headerGeoJSON = 'http://192.168.1.114:8080/static/js/data/headergeo.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleHeaderGeoJSON = "GEOCERCA CABECERA BLACKGPS";
 let getHeaderGeo = [];
 getHeaderGeo = getJson(headerGeoJSON, titleHeaderGeoJSON);
 
 
 //Talleres
+<<<<<<< HEAD
 let talleresJSON = 'http://192.168.0.13:8080/static/js/data/workshops.JSON';
+=======
+let talleresJSON = 'http://192.168.1.114:8080/static/js/data/workshops.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleTalleresJSON = 'Talleres';
 let getTalleres = [];
 getTalleres = getJson(talleresJSON, titleTalleresJSON);
 
 //Bodegas
+<<<<<<< HEAD
 let bodegasJSON = 'http://192.168.0.13:8080/static/js/data/assetsWareHouses.JSON';
+=======
+let bodegasJSON = 'http://192.168.1.114:8080/static/js/data/assetsWareHouses.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleBodegasJSON = 'Bodegas';
 let getBodegas = [];
 getBodegas = getJson(bodegasJSON, titleBodegasJSON);
 
 //Categorías de servicio
+<<<<<<< HEAD
 let categoriasJSON = 'http://192.168.0.13:8080/static/js/data/serviceCategories.JSON';
+=======
+let categoriasJSON = 'http://192.168.1.114:8080/static/js/data/serviceCategories.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleCategoriasJSON = 'Categorías';
 let getCategorias = [];
 getCategorias = getJson(categoriasJSON, titleCategoriasJSON);
 
 //Planes de mantenimiento
+<<<<<<< HEAD
 let planesJSON = 'http://192.168.0.13:8080/static/js/data/planning.JSON';
+=======
+let planesJSON = 'http://192.168.1.114:8080/static/js/data/planning.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titlePlanesJSON = 'Planes';
 let getPlanes = [];
 getPlanes = getJson(planesJSON, titlePlanesJSON);
 
 //Regiones
+<<<<<<< HEAD
 /*let regionesJSON = 'http://192.168.0.13:8080/static/js/data/regions.JSON';
+=======
+/*let regionesJSON = 'http://192.168.1.114:8080/static/js/data/regions.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleRegionesJSON = 'Regiones';
 let getRegiones = [];
 getRegiones = getJson(regionesJSON, titleRegionesJSON);*/

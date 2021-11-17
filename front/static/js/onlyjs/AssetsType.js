@@ -21,7 +21,11 @@ class {
 
 //LISTADO DE TIPOS DE ACTIVOS
 //OBTENCIÓN DE TODAS LOS TIPOS DE ACTIVOS
+<<<<<<< HEAD
 let tiposActivosJSON = 'http://192.168.0.13:8080/static/js/data/assetsType.JSON';
+=======
+let tiposActivosJSON = 'http://192.168.1.114:8080/static/js/data/assetsType.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleTiposActivosJSON = 'Tipos de activos';
 let getTiposActivos = [];
 getTiposActivos = getJson(tiposActivosJSON, titleTiposActivosJSON);

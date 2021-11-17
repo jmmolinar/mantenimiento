@@ -52,7 +52,11 @@ const loadCalendar = () => {
             },
 
             //editable: true, //para mover el evento de día gráficamente
+<<<<<<< HEAD
             events: 'http://192.168.0.13:8080/static/js/data/orders.JSON',
+=======
+            events: 'http://192.168.1.114:8080/static/js/data/orders.JSON',
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 
             select: function (info) {
                 //VARIABLES DE SESSIÓN QUE SE EMPLEAN PARA FILTRAR LAS ÓRDENES

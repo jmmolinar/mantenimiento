@@ -89,12 +89,20 @@ class {
 
 }
 
+<<<<<<< HEAD
 let identificador = this.postId;
+=======
+identificador = this.postId;
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 idUrl = parseInt(identificador);
 
 //LISTADO DE ACTIVOS
 //OBTENCIÓN DE TODAS LOS ACTIVOS
+<<<<<<< HEAD
 let activosJSON = 'http://192.168.0.13:8080/static/js/data/assets.JSON';
+=======
+let activosJSON = 'http://192.168.1.114:8080/static/js/data/assets.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleActivosJSON = 'Activos';
 getActivos = getJson(activosJSON, titleActivosJSON);
 
@@ -111,7 +119,11 @@ if (asset) {
 
     //ÁREA DEL ACTIVO
     //OBTENCIÓN DE LAS ÁREAS
+<<<<<<< HEAD
     let areasJSON = 'http://192.168.0.13:8080/static/js/data/areas.JSON';
+=======
+    let areasJSON = 'http://192.168.1.114:8080/static/js/data/areas.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
     let titleAreasJSON = "Áreas";
     getAreas = getJson(areasJSON, titleAreasJSON);
     const area = getAreas.find((area) => area.idArea == asset.areaIdArea);
@@ -121,7 +133,11 @@ if (asset) {
 
     //BODEGA DEL ACTIVO
     //OBTENCIÓN DE LAS BODEGAS
+<<<<<<< HEAD
     let bodegasJSON = 'http://192.168.0.13:8080/static/js/data/assetsWareHouses.JSON';
+=======
+    let bodegasJSON = 'http://192.168.1.114:8080/static/js/data/assetsWareHouses.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
     let titleBodegasJSON = 'Bodegas';
     getBodegas = getJson(bodegasJSON, titleBodegasJSON);
     const bodega = getBodegas.find((bodega) => bodega.idBodegaActivos == asset.bodegaActivosIdBodegaActivos);
@@ -131,7 +147,11 @@ if (asset) {
 
     //TIPO DE ACTIVO DEL ACTIVO
     //OBTENCIÓN DE LOS TIPOS DE ACTIVOS
+<<<<<<< HEAD
     let tiposActivosJSON = 'http://192.168.0.13:8080/static/js/data/assetsType.JSON';
+=======
+    let tiposActivosJSON = 'http://192.168.1.114:8080/static/js/data/assetsType.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
     let titleTiposActivosJSON = 'Tipos de activos';
     getTiposActivos = getJson(tiposActivosJSON, titleTiposActivosJSON);
     const tipoActivo = getTiposActivos.find((tipoActivo) => tipoActivo.idTipoActivo == asset.tipoActivoIdTipoActivo);
@@ -144,14 +164,22 @@ if (asset) {
 
     //VEHICULO, PATENTE, MARCA, MODELO, KILOMETROS, HORÓMETRO, USO, IMEIGPS DEL ACTIVO
     //OBTENCIÓN DE LOS VEHÍCULOS
+<<<<<<< HEAD
     let vehiculosJSON = 'http://192.168.0.13:8080/static/js/data/vehicle.JSON';
+=======
+    let vehiculosJSON = 'http://192.168.1.114:8080/static/js/data/vehicle.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
     let titleVehiculosJSON = 'Vehículos BLACKGPS';
     getVehiculos = getJson(vehiculosJSON, titleVehiculosJSON);
     const vehiculo = getVehiculos.find((vehiculo) => vehiculo.idVehiculo == asset.vehiculoIdVehiculo);
     if (vehiculo) {
 
         //OBTENCIÓN DE LOS MODELOS
+<<<<<<< HEAD
         let modelosJSON = 'http://192.168.0.13:8080/static/js/data/model.JSON';
+=======
+        let modelosJSON = 'http://192.168.1.114:8080/static/js/data/model.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
         let titleModelosJSON = 'Modelos BLACKGPS';
         getModelos = getJson(modelosJSON, titleModelosJSON);
         //MODELO DEL ACTIVO
@@ -160,7 +188,11 @@ if (asset) {
             getModelo = modelo.nombreModeloVehiculo;
 
             //OBTENCIÓN DE LOS MARCAS
+<<<<<<< HEAD
             let marcasJSON = 'http://192.168.0.13:8080/static/js/data/brand.JSON';
+=======
+            let marcasJSON = 'http://192.168.1.114:8080/static/js/data/brand.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
             let titleMarcasJSON = 'Marcas BLACKGPS';
             getMarcas = getJson(marcasJSON, titleMarcasJSON);
             //MARCA DEL ACTIVO
@@ -171,7 +203,11 @@ if (asset) {
         }
 
         //OBTENCIÓN DE LOS GPS
+<<<<<<< HEAD
         let gpsJSON = 'http://192.168.0.13:8080/static/js/data/gps.JSON';
+=======
+        let gpsJSON = 'http://192.168.1.114:8080/static/js/data/gps.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
         let titleGpsJSON = 'GPS BLACKGPS';
         getGPS = getJson(gpsJSON, titleGpsJSON);
         //IMEIGPS DEL ACTIVO
@@ -284,7 +320,11 @@ const fillOptions = () => {
         // Select planes -- emplea los datos obtenidos en getJson();
         const selectPlan = document.getElementById('assetPlan');
         //OBTENIENDO TODOS LOS PLANES
+<<<<<<< HEAD
         let planesJSON = 'http://192.168.0.13:8080/static/js/data/planning.JSON';
+=======
+        let planesJSON = 'http://192.168.1.114:8080/static/js/data/planning.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
         let titlePlanesJSON = 'Planes';
         getPlanes = getJson(planesJSON, titlePlanesJSON);
         const optionPlan = listSelect(getPlanes, "nombre"); // Paso la clave "nombre"
@@ -306,7 +346,11 @@ const fillAssetLogOrders = () => {
 
     //LISTADO DE ÓRDENES
     //OBTENCIÓN DE TODAS LAS ÓRDENES PARA FILTRAR LAS DEL ACTIVO
+<<<<<<< HEAD
     let ordenesJSON = 'http://192.168.0.13:8080/static/js/data/orders.JSON';
+=======
+    let ordenesJSON = 'http://192.168.1.114:8080/static/js/data/orders.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
     let titleOrdenesJSON = "Órdenes";
     let getOrdenes = [];
     getOrdenes = getJson(ordenesJSON, titleOrdenesJSON);
@@ -336,7 +380,11 @@ const fillAssetLogOrders = () => {
 
             //TALLER DE LA ÓRDEN DEL ACTIVO
             //OBTENCIÓN DE TODOS LOS TALLERES
+<<<<<<< HEAD
             let talleresJSON = 'http://192.168.0.13:8080/static/js/data/workshops.JSON';
+=======
+            let talleresJSON = 'http://192.168.1.114:8080/static/js/data/workshops.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
             let titleTalleresJSON = 'Talleres';
             getTalleres = getJson(talleresJSON, titleTalleresJSON);
             getOrdenTaller = ``;
@@ -347,7 +395,11 @@ const fillAssetLogOrders = () => {
 
             //TIPO DE MANTENIMIENTO DE LA ÓRDEN DEL ACTIVO
             //OBTENCIÓN DE TODOS LOS TIPOS DE MANTENIMIENTOS
+<<<<<<< HEAD
             let ordersTypeJSON = 'http://192.168.0.13:8080/static/js/data/ordersType.JSON';
+=======
+            let ordersTypeJSON = 'http://192.168.1.114:8080/static/js/data/ordersType.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
             let titleOrdersTypeJSON = "Tipos de mantenimientos";
             getTiposMantenimientos = getJson(ordersTypeJSON, titleOrdersTypeJSON);
             getOrdenTipoOrden = ``;
@@ -376,7 +428,11 @@ const fillAssetLogOrders = () => {
             let fechaUltimoEstado = "1900-01-01T00:00"; //Fecha comparativa para llegar a la máxima y mostrar su estado
             
             //OBTENCIÓN DE TODOS LOS ESTADOS PARA PODER BUSCAR EL NOMBRE AL HACER EL FIND
+<<<<<<< HEAD
             let stateJSON = 'http://192.168.0.13:8080/static/js/data/state.JSON';
+=======
+            let stateJSON = 'http://192.168.1.114:8080/static/js/data/state.JSON';
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
             let titleStateJSON = 'Estados';
             getEstados = getJson(stateJSON, titleStateJSON);
             
@@ -584,13 +640,21 @@ const guardarActivoJSON = () => {
         if (plan) {
 
             //OBJETO QUE CONTIENE PLAN SELECCIONADO
+<<<<<<< HEAD
             let planesActivoJSON = {
+=======
+            let planesactivoJSON = {
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
                 "activoIdActivo": idUrl,
                 "planMantenimientoIdPlanMantenimiento": plan.idPlanMantenimiento
             }
 
             //AGREGANDO PLAN AL ARREGLO DE PLANES DEL ACTIVO
+<<<<<<< HEAD
             activoJSON.activoPlanes.push(planesActivoJSON);
+=======
+            activoJSON.activoPlanes.push(planesactivoJSON);
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
         }
 
     }
@@ -617,7 +681,11 @@ const guardarActivoJSON = () => {
 
     }
 
+<<<<<<< HEAD
     //CREACIÓN DEL JSON PARA ACTUALIZAR EL ACTIVO
+=======
+    //Creación del JSON
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
     if (banderaActivo == true && banderaPlanes == true) {
         sessionStorage.setItem(`ActualizacionActivo_${idUrl}`, JSON.stringify(activoJSON));
     }
@@ -646,7 +714,10 @@ const mostrarActivoStorageJSON = () => {
 
 $(document).ready(function () {
 
+<<<<<<< HEAD
     //EVENTOS PARA GUARDAR
+=======
+>>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
     $('div #pages').on('click', `button#saveAsset_${idUrl}`, function (e) {
 
         guardarActivoJSON();
