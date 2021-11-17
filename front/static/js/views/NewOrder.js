@@ -92,11 +92,11 @@ export default class extends AbstractView {
                         
                         <!--TIPO DE MANTENIMIENTO DE LA ORDEN-->
                         <div class="control-group">
-                            <label class="span4" for="orderType">
+                            <label class="span4" for="orderType_new">
                                 <h5>Mantenimiento</h5>
                             </label>
                             <div class="controls">
-                                <select id="orderType" required>
+                                <select id="orderType_new" required>
                                 </select>
                             </div>
                         </div>
@@ -114,33 +114,33 @@ export default class extends AbstractView {
 
                         <!--PROVEEDOR DE SERVICIO - TALLER-->
                         <div id="serviceProvider" class="control-group">
-                            <label class="span4" for="orderProvider">
+                            <label class="span4" for="orderProvider_new">
                                 <h5>Taller de servicio</h5>
                             </label>
                             <div class="controls">
-                                <select id="orderProvider" required>
+                                <select id="orderProvider_new" required>
                                 </select>
                             </div>
                         </div>
 
                         <!--ÁREA DEL ACTIVO-->
                         <div class="control-group">
-                            <label class="span4" for="orderAreasOptions">
+                            <label class="span4" for="orderAreasOptions_new">
                                 <h5>Área</h5>
                             </label>
                             <div class="controls">
-                                <select id="orderAreasOptions" required>
+                                <select id="orderAreasOptions_new" required>
                                 </select>
                             </div>
                         </div>
 
                         <!--TIPO DE ACTIVO-->
                         <div class="control-group">
-                            <label class="span4" for="orderAssetType">
+                            <label class="span4" for="orderAssetType_new">
                                 <h5>Tipo de activo</h5>
                             </label>
                             <div class="controls">
-                                <select id="orderAssetType" required>
+                                <select id="orderAssetType_new" required disabled>
                                 </select>
                             </div>
                         </div>
@@ -200,20 +200,29 @@ export default class extends AbstractView {
                 <!--CATEGORÍA DE SERVICIO-->
                 <div id="orderServiceCategories_new" class="control-group border-transparent-1px"></div>
 
+                <div id="updateNewTotal" class="control-group border-transparent-1px">
+                    <div class="control-group">
+                        <div class="row-fluid">
+                            <a id="botonActualizarNuevoTotal" class="btn btn-success" href=""> Calcular total  <i class="fa fa-calculator" ></i></a>
+                        </div>
+                    </div>
+                </div>
+
                 <!--Observaciones-->
                 <div id="notes" class="control-group border-transparent-1px">
-                    <label class="span2" for="orderNotes">
+                    <label class="span2" for="orderNotes_new">
                         <h5>Observaciones</h5>
                     </label>
                     <div class="controls">
-                        <textarea class="span12" cols="10" id="orderNotes" maxlength="1000"></textarea>
+                        <textarea class="span12" cols="10" id="orderNotes_new" maxlength="1000"></textarea>
                     </div>
                 </div>
 
                 <!--TOTAL EN COSTOS DE LA ORDEN-->
                 <div id="totalCost" class="control-group">
                     <label class="span12 text-right order-identity border-transparent-1px">
-                        <h3>Total: <span class="add-on">$ </span></h3>
+                        <h3 style="display:inline;">Total: </h3>
+                        <h3 id="valorTotalNuevaOrden" style="display:inline;"></h3>
                     </label>
                 </div>
 
@@ -251,7 +260,7 @@ const fillOrderOptions = () => {
         $(document).ready(function () {
 
             // Select tipo de mantenimiento -- emplea los datos obtenidos en getJson();
-            const selectTipoMantenimiento = document.getElementById('orderType');
+            const selectTipoMantenimiento = document.getElementById('orderType_new');
             const optionTipoMantenimiento = listSelect(getTiposMantenimientos, "nombre"); // Paso la clave "nombre"
             loadSelectContent(optionTipoMantenimiento, selectTipoMantenimiento);
 
@@ -261,12 +270,12 @@ const fillOrderOptions = () => {
             loadSelectContent(optionEstado, selectEstado);*/
 
             // Select area -- emplea los datos obtenidos en getJson();
-            const selectArea = document.getElementById('orderAreasOptions');
+            const selectArea = document.getElementById('orderAreasOptions_new');
             const optionArea = listSelect(getAreas, "nombreArea"); // Paso la clave "nombre"
             loadSelectContent(optionArea, selectArea);
 
             // Select tipo de activo -- emplea los datos obtenidos en getJson();
-            const selectTipoActivo = document.getElementById('orderAssetType');
+            const selectTipoActivo = document.getElementById('orderAssetType_new');
             const optionTipoActivo = listSelect(getTiposActivos, "nombre"); // Paso la clave "nombre"
             loadSelectContent(optionTipoActivo, selectTipoActivo);
 
@@ -276,12 +285,12 @@ const fillOrderOptions = () => {
             loadSelectContent(optionActivo, selectActivo);*/
 
             // Select vehiculo -- emplea los datos obtenidos en getJson();
-            const selectVehiculo = document.getElementById('orderAsset');
+            /*const selectVehiculo = document.getElementById('orderAsset');
             const optionVehiculo = listSelect(getVehiculos, "ppuVehiculo") // Paso la clave "ppuVehiculo"
-            loadSelectContent(optionVehiculo, selectVehiculo);
+            loadSelectContent(optionVehiculo, selectVehiculo);*/
 
             // Select taller -- emplea los datos obtenidos en getJson();
-            const selectTaller = document.getElementById('orderProvider');
+            const selectTaller = document.getElementById('orderProvider_new');
             const optionTaller = listSelect(getTalleres, "nombre"); // Paso la clave "nombre"
             loadSelectContent(optionTaller, selectTaller)
 
@@ -298,7 +307,7 @@ const fillOrderCategories = () => {
 
     let orderCategoriesContainerA = `
     <div class="row-fluid">
-        <label class="span4" for="categoriesContainer">
+        <label class="span4" for="categoriesContainer_new">
             <h5>Categorías de servicio</h5>
         </label>
     </div>
@@ -316,7 +325,7 @@ const fillOrderCategories = () => {
         </div>
     </div>
 
-    <div id="categoriesContainer" class="categories-container-scroll">`;
+    <div id="categoriesContainer_new" class="categories-container-scroll">`;
 
     let orderCategoriesContainerB = `</div>`;
 
@@ -403,24 +412,24 @@ const guardarOrdenParaJSON = () => {
         nuevaOrdenJSON.start = nuevaOrdenJSON.fechaInicial;
         nuevaOrdenJSON.fechaFinal = document.getElementById('newRangeEndDate').value;
         nuevaOrdenJSON.end = nuevaOrdenJSON.fechaFinal;
-        nuevaOrdenJSON.observaciones = document.getElementById('orderNotes').value;
+        nuevaOrdenJSON.observaciones = document.getElementById('orderNotes_new').value;
         //nuevaOrdenJSON.title = 
         nuevaOrdenJSON.allDay = false
 
         const vehiculo = getVehiculos.find((vehiculo) => vehiculo.ppuVehiculo.trim() == element.textContent.trim());
-        if(vehiculo){
+        if (vehiculo) {
             const activo = getActivos.find((activo) => activo.vehiculoIdVehiculo == vehiculo.idVehiculo);
-            if(activo){
+            if (activo) {
                 nuevaOrdenJSON.activoIdActivo = activo.idActivo;
             }
         }
 
-        const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType').value);
+        const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType_new').value);
         if (tipoOrden) {
             nuevaOrdenJSON.tipoOrdenIdTipoOrden = tipoOrden.idTipoOrden;
         }
 
-        const taller = getTalleres.find((taller) => taller.nombre == document.getElementById('orderProvider').value);
+        const taller = getTalleres.find((taller) => taller.nombre == document.getElementById('orderProvider_new').value);
         if (taller) {
             nuevaOrdenJSON.tallerServicioIdTallerServicio = taller.idTallerServicio;
         }
@@ -435,7 +444,7 @@ const guardarOrdenParaJSON = () => {
 
 
         let costoRequerido = false;
-        const categoriasSeleccionadas = document.getElementById('categoriesContainer').getElementsByClassName('row-fluid');
+        const categoriasSeleccionadas = document.getElementById('categoriesContainer_new').getElementsByClassName('row-fluid');
         let contCategory = 0;
         for (const cat of categoriasSeleccionadas) {
             contCategory++;
@@ -523,21 +532,22 @@ $(document).ready(function () {
 
         guardarOrdenParaJSON();
 
-        if ($('#orderType').val().length != ''
-            && $('#orderAreasOptions').val().length != ''
-            && $('#orderProvider').val().length != ''
-            && $('#orderAssetType').val().length != ''
+        if ($('#orderType_new').val().length != ''
+            && $('#orderAreasOptions_new').val().length != ''
+            && $('#orderProvider_new').val().length != ''
+            && $('#orderAssetType_new').val().length != ''
             && $('#newRangeStartDate').val().length != ''
             && $('#newRangeEndDate').val().length != '') {
 
             if (banderaSeleccionActivo == false) {
 
-                alert('Debe Seleccionar al menos un activo');
+                alert('Escoja un "Área" y "Tipo de activo"' + 
+                    '\npara filtrar los activos que puede seleccionar');
 
-                $('#orderAsset').multiSelect();
+                //$('#orderAsset').multiSelect();
 
                 $('html, body').animate({
-                    scrollTop: $(`#ms-orderAsset`).offset().top - 50
+                    scrollTop: $(`#orderAreasOptions_new`).offset().top - 50
                 }, 1000)
 
 
@@ -560,9 +570,162 @@ $(document).ready(function () {
 
     });
 
-    $('div #pages').on('click', 'label[id=labelOrderAsset]', function () {
-        $('#orderAsset').multiSelect();
+    //ACTUALIZAR COSTO TOTAL DENTRO DE LA ÓRDEN
+    $('div #pages').on('click', 'a#botonActualizarNuevoTotal', function (e) {
+
+        const costosCategorias = document.getElementById('categoriesContainer_new').getElementsByClassName('input-prepend input-append');
+        let contCostos = 0;
+        let sumCostos = 0;
+        let totalActualizado = "";
+        for (const elem of costosCategorias) {
+            contCostos++;
+            //Label de categoría
+            let appendedPrependedInput = document.getElementById(`appendedPrependedInput_${contCostos}`);
+            if(!appendedPrependedInput.disabled){
+                sumCostos = (parseFloat(appendedPrependedInput.value) + parseFloat(sumCostos)).toFixed(2);
+            }
+        }
+
+        if(isNaN(sumCostos)){
+            totalActualizado = "";
+        } else {
+            totalActualizado = "$ " + sumCostos.toString().replace(".", ",");
+        }
+
+        $('#valorTotalNuevaOrden').text(totalActualizado);
+        e.preventDefault();
     });
+
+
+
+    //CREANDO EL MULTISELECT DE ACTIVOS AL HACER CLIC EN SELECCIONAR ACTIVOS
+    //NO SE UTILIZA ACTUALMENTE PORQUE SE EJECUTA ESTA FUNCIONALIDAD MEDIANTE
+    //LOS SIGUIENTES PAR DE CHANGE
+    /*$('div #pages').on('click', 'label[id=labelOrderAsset]', function () {
+
+        if (!$('#orderAsset').is(':disabled')) {
+            $('#orderAsset').multiSelect();
+        }
+
+        //$('#orderAsset').multiSelect();
+    });*/
+
+    //SOLO ACTIVOS (PATENTES) DE UN AREA Y TIPO DE ACTIVO ESPECÍFICO
+    //TRABAJA EN CONJUNTO CON EL SIGUIENTE CHANGE
+    $('div #pages').on('change', 'select#orderAreasOptions_new', e => {
+
+        $(`#orderAssetType_new`).val("");
+        $(`#orderAssetType_new`).attr("disabled", "disabled");
+        $('#orderAsset option').remove();
+        $(`#orderAsset`).val("");
+        $(`#orderAsset`).attr("disabled", "disabled");
+        $('.ms-container').empty(); // CONTENEDOS DEL MULTISELECT
+
+        if ($('#orderAreasOptions_new').val() != "") {
+            $('#orderAssetType_new').removeAttr("disabled");
+        }
+    })
+
+    //SOLO PATENTES (ACTIVOS) DE UN TIPO DE ACTIVO Y AREA ESPECÍFICA
+    //TRABAJA EN CONJUNTO CON EL CHANGE ANTERIOR PARA HABILITAR LOS "ACTIVOS"
+    $('div #pages').on('change', 'select#orderAssetType_new', f => {
+
+        if ($('#orderAssetType_new').val() != "") {
+
+            let vehiculosAreaOrden = [];
+            const areaOrdenSeleccionada = getAreas.find((area) => area.nombreArea == $('#orderAreasOptions_new').val());
+            console.log("Area seleccionada: " + areaOrdenSeleccionada.nombreArea)
+
+            const tipoActivoOrdenSeleccionado = getTiposActivos.find((tipo) => tipo.nombre == f.target.value);
+            console.log("Tipo activo seleccionado: " + tipoActivoOrdenSeleccionado.nombre)
+
+            if (areaOrdenSeleccionada && tipoActivoOrdenSeleccionado) {
+
+                console.log("Entré a: areaOrdenSeleccionada && tipoActivoOrdenSeleccionado")
+
+                const activosOrden = getActivos.filter((activo) => ((activo.areaIdArea == areaOrdenSeleccionada.idArea) && (activo.tipoActivoIdTipoActivo == tipoActivoOrdenSeleccionado.idTipoActivo)));
+
+
+                if (activosOrden) {
+
+                    console.log("activosOrden")
+
+                    for (const elem of activosOrden) {
+                        console.log(elem.idActivo + " " + elem.vehiculoIdVehiculo + " " + elem.areaIdArea + " " + elem.tipoActivoIdTipoActivo)
+                        const patenteOrden = getVehiculos.find((vehiculo) => vehiculo.idVehiculo == elem.vehiculoIdVehiculo);
+                        if (patenteOrden) {
+                            vehiculosAreaOrden.push(patenteOrden);
+                        }
+                    }
+
+                    console.log("Longitud vehiculosAreaOrden: " + vehiculosAreaOrden.length)
+
+                    if (vehiculosAreaOrden.length) {
+
+                        console.log("Entré a: vehiculosAreaOrden.length")
+
+                        console.log(vehiculosAreaOrden);
+                        const selectPatenteOrden = document.getElementById('orderAsset');
+                        const optionPatenteOrden = listSelect(vehiculosAreaOrden, "ppuVehiculo"); // Paso la clave "ppuVehiculo"
+                        loadSelectContent(optionPatenteOrden, selectPatenteOrden);
+
+                        $('select#orderAsset').removeAttr("disabled");
+                        $('#orderAsset').multiSelect('refresh');
+
+                    } else {
+                        $('#orderAsset option').remove();
+                        $(`#orderAsset`).val("");
+                        $(`#orderAsset`).attr("disabled", "disabled");
+                        $('.ms-container').empty();
+                    }
+                }
+            } else {
+                $('#orderAsset option').remove();
+                $(`#orderAsset`).val("");
+                $(`#orderAsset`).attr("disabled", "disabled");
+                $('.ms-container').empty();
+            }
+
+        } else {
+            $('#orderAsset option').remove();
+            $(`#orderAsset`).val("");
+            $(`#orderAsset`).attr("disabled", "disabled");
+            $('.ms-container').empty();
+        }
+    })
+
+    //Sólo Activos (patentes) FILTRANDO SOLO POR ÁREA
+    /*$('div #pages').on('change', 'select#orderAreasOptions_new', e => {
+        let vehiculosAreaOrden = [];
+        const areaOrdenSeleccionada = getAreas.find((area) => area.nombreArea == e.target.value);
+        if (areaOrdenSeleccionada) {
+            const patentesOrden = getVehiculos.filter((vehiculo) => vehiculo.areaIdArea == areaOrdenSeleccionada.idArea);
+            if (patentesOrden) {
+                vehiculosAreaOrden = listAllElement(patentesOrden);
+                if (vehiculosAreaOrden.length) {
+                    console.log(vehiculosAreaOrden);
+                    const selectPatenteOrden = document.getElementById('orderAsset');
+                    const optionPatenteOrden = listSelect(vehiculosAreaOrden, "ppuVehiculo"); // Paso la clave "ppuVehiculo"
+                    loadSelectContent(optionPatenteOrden, selectPatenteOrden);
+
+                    $('select#orderAsset').removeAttr("disabled");
+                    $('#orderAsset').multiSelect('refresh');
+
+                } else {
+                    $('#orderAsset option').remove();
+                    $(`#orderAsset`).val("");
+                    $(`#orderAsset`).attr("disabled", "disabled");
+                    $('.ms-container').empty();
+                }
+            }
+
+        } else {
+            $('#orderAsset option').remove();
+            $(`#orderAsset`).val("");
+            $(`#orderAsset`).attr("disabled", "disabled");
+            $('.ms-container').empty();
+        }
+    })*/
 
     //FILTRO DE CATEGORÍAS CON SUS COSTOS
     $('div #pages').on('click', 'input[id=busquedaCategoriasOrden]', function () {

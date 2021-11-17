@@ -6,8 +6,9 @@
         "region": "Valparaíso",
         "calle": "Agua Santa",
         "numero": "311",
-        "latitud": "-33.0466072",
-        "longitud": "-71.5654153"
+        "latitud": "-34.98231329659815",
+        "longitud": "-71.2424111366272",
+        "geocercaCabeceraIdGeocercaCabecera": 35
     },
     {
         "idTallerServicio": 4,
@@ -16,8 +17,9 @@
         "region": "Araucanía",
         "calle": "San Martín",
         "numero": "460",
-        "latitud": "-39.2771416",
-        "longitud": "-72.2271881"
+        "latitud": "-34.984717445398864",
+        "longitud": "-71.245077252388",
+        "geocercaCabeceraIdGeocercaCabecera": 36
     },
     {
         "idTallerServicio": 3,
@@ -26,8 +28,9 @@
         "region": "Los Ríos",
         "calle": "Las Encinas",
         "numero": "51",
-        "latitud": "-39.8100413",
-        "longitud": "-73.2529351"
+        "latitud": "-35.42587328362875",
+        "longitud": "-71.62598848408379",
+        "geocercaCabeceraIdGeocercaCabecera": 37
     },
     {
         "idTallerServicio": 2,
@@ -36,8 +39,9 @@
         "region": "Tarapacá",
         "calle": "Serrano",
         "numero": "132",
-        "latitud": "-20.213486",
-        "longitud": "-70.1541984"
+        "latitud": "-35.44391593145004",
+        "longitud": "-71.68759882482846",
+        "geocercaCabeceraIdGeocercaCabecera": 38
     },
     {
         "idTallerServicio": 1,
@@ -46,7 +50,8 @@
         "region": "Metropolitana de Santiago",
         "calle": "Irarrázaval",
         "numero": "1220",
-        "latitud": "-33.4530769",
-        "longitud": "-70.6188521"
+        "latitud": "-35.848426262477716",
+        "longitud": "-71.59695893526077",
+        "geocercaCabeceraIdGeocercaCabecera": 39
     }
 ]

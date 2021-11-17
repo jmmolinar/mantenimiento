@@ -11,7 +11,6 @@
         "observaciones": "",
         "activoIdActivo": 6,
         "estados_posibles": {},
-        "total": "520000",
         "ordenEstados": [
             {
                 "ordenIdOrden": 14,
@@ -62,7 +61,6 @@
         "observaciones": "",
         "activoIdActivo": 8,
         "estados_posibles": {},
-        "total": "300000",
         "ordenEstados": [
             {
                 "ordenIdOrden": 13,
@@ -112,7 +110,6 @@
         "observaciones": "",
         "activoIdActivo": 6,
         "estados_posibles": {},
-        "total": "100000",
         "ordenEstados": [
             {
                 "ordenIdOrden": 12,
@@ -171,7 +168,6 @@
         "observaciones": "prueba",
         "activoIdActivo": 5,
         "estados_posibles": {},
-        "total": "500000",
         "ordenEstados": [
             {
                 "ordenIdOrden": 11,
@@ -249,7 +245,6 @@
         "observaciones": "",
         "activoIdActivo": 6,
         "estados_posibles": {},
-        "total": "",
         "ordenEstados": [
             {
                 "ordenIdOrden": 10,
@@ -297,7 +292,6 @@
         "observaciones": "prueba",
         "activoIdActivo": 4,
         "estados_posibles": {},
-        "total": "",
         "ordenEstados": [
             {
                 "ordenIdOrden": 9,
@@ -346,7 +340,6 @@
         "observaciones": "probando",
         "activoIdActivo": 3,
         "estados_posibles": {},
-        "total": "500000",
         "ordenEstados": [
             {
                 "ordenIdOrden": 8,
@@ -400,7 +393,6 @@
         "observaciones": "probando",
         "activoIdActivo": 5,
         "estados_posibles": {},
-        "total": "500000",
         "ordenEstados": [
             {
                 "ordenIdOrden": 7,
@@ -454,7 +446,6 @@
         "observaciones": "probando",
         "activoIdActivo": 2,
         "estados_posibles": {},
-        "total": "500000",
         "ordenEstados": [
             {
                 "ordenIdOrden": 6,
@@ -503,7 +494,6 @@
         "observaciones": "probando",
         "activoIdActivo": 1,
         "estados_posibles": {},
-        "total": "600000",
         "ordenEstados": [
             {
                 "ordenIdOrden": 5,
@@ -551,7 +541,6 @@
         "observaciones": "probando",
         "activoIdActivo": 4,
         "estados_posibles": {},
-        "total": "600000",
         "ordenEstados": [
             {
                 "ordenIdOrden": 4,
@@ -611,7 +600,6 @@
         "observaciones": "probando",
         "activoIdActivo": 4,
         "estados_posibles": {},
-        "total": "600000",
         "ordenEstados": [
             {
                 "ordenIdOrden": 3,
@@ -671,7 +659,6 @@
         "observaciones": "probando",
         "activoIdActivo": 4,
         "estados_posibles": {},
-        "total": "",
         "ordenEstados": [
             {
                 "ordenIdOrden": 2,
@@ -719,7 +706,6 @@
         "observaciones": "probando",
         "activoIdActivo": 4,
         "estados_posibles": {},
-        "total": "",
         "ordenEstados": [
             {
                 "ordenIdOrden": 1,

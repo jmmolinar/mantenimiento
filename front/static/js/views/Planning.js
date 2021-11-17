@@ -11,10 +11,14 @@ export default class extends AbstractView {
 
         let planningHTML = ``;
 
-        let optionsPlanningHTML = `<div id="optionsPlanningHTML">
-        <h1></h1>
-        <a class="btn btn-primary" href="/planes/nuevo">Nuevo <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-        <a class="btn btn-success" href="">Exportar <i class="fa fa-cloud-download"></i></a>
+        let optionsPlanningHTML = `<h1></h1>
+        <div class="control-group order-identity border-transparent-1px">
+            <h1>Planes de mantenimiento</h1>
+        </div>
+        <div id="optionsPlanningHTML">
+            <h1></h1>
+            <a class="btn btn-primary" href="/planes/nuevo">Nuevo <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            <a class="btn btn-success" href="">Exportar <i class="fa fa-cloud-download"></i></a>
         </div>
         `;
 

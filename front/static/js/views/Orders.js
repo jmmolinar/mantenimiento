@@ -17,7 +17,6 @@ let maxDate = "";
 let getEstado = ``;
 let getTaller = ``;
 let getTipoOrden = ``;
-let getActivo = ``;
 let getAreaActivo = ``;
 let getPatenteActivo = ``;
 
@@ -34,10 +33,14 @@ export default class extends AbstractView {
 
         let ordersHTML = ``;
 
-        let optionsOrdersHTML = `<div id="optionsOrdersHTML">
-        <h1></h1>
-        <a class="btn btn-primary" href="/ordenes/nuevo">Nuevo <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-        <a class="btn btn-success" href="">Exportar <i class="fa fa-cloud-download"></i></a>
+        let optionsOrdersHTML = `<h1></h1>
+        <div class="control-group order-identity border-transparent-1px">
+            <h1>Órdenes</h1>
+        </div>
+        <div id="optionsOrdersHTML">
+            <h1></h1>
+            <a class="btn btn-primary" href="/ordenes/nuevo">Nuevo <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            <a class="btn btn-success" href="">Exportar <i class="fa fa-cloud-download"></i></a>
         </div>
         <div class="new-div-range-date-table">
             <div class="input-prepend input-append">
@@ -92,16 +95,15 @@ export default class extends AbstractView {
             success: function (data, status, jqXHR) {
 
                 console.log("Entré al AJAX")
-                customOrdersTable(); /* Aqui renderizo con DataTable y doy formato a la columna costo*/
+                customOrdersTable(); /* Aqui renderizo con DataTable */
                 console.log(jqXHR)
                 let fillOrders = ''
                 let classTr = ""
                 let stringContainer = ""
-                let formatGetCategoriasActivoNombre = ``;
-                let formatGetCategoriasActivoCosto = ``;
-                let getCategoriasActivo = [];
+                let formatGetCategoriasOrdenNombre = ``;
+                let formatGetCategoriasOrdenCosto = ``;
+                let getCategoriasOrden = [];
                 let getEstadosOrden = [];
-                let cont = 0;
 
                 for (const orden of data) {
 
@@ -134,7 +136,7 @@ export default class extends AbstractView {
 
 
                     getEstadosOrden = listAllElement(orden.ordenEstados);
-                    let fechaUltimoEstado = "1900-01-01T00:00";
+                    let fechaUltimoEstado = "1900-01-01T00:00"; /** Comparador para obtener la fecha del último estado */
                     
                     getEstadosOrden.forEach(elem => {
 
@@ -193,25 +195,31 @@ export default class extends AbstractView {
 
                     })
 
-                    cont++
-
-                    getCategoriasActivo = listAllElement(orden.ordenCategorias);
-                    let getCategoriasActivoNombre = [];
-                    let getCategoriasActivoCosto = [];
-                    getCategoriasActivo.forEach(elem => {
-                        getCategoriasActivoNombre.push(`<div class="alert alert-info no-margin new-padding-top-bottom"><strong>${elem["nombre"]}</strong></div>`)
+                    getCategoriasOrden = listAllElement(orden.ordenCategorias);
+                    let getCategoriasOrdenNombre = [];
+                    let getCategoriasOrdenCosto = [];
+                    let costoOrden = 0;
+                    let totalOrden = ``;
+                    getCategoriasOrden.forEach(elem => {
+                        getCategoriasOrdenNombre.push(`<div class="alert alert-info no-margin new-padding-top-bottom"><strong>${elem["nombre"]}</strong></div>`)
                         if (elem["costo"] != "") {
-                            getCategoriasActivoCosto.push(`<div class="alert new-alert-use no-margin new-padding-top-bottom">CLP <strong>${(parseFloat(elem["costo"]) + 0.00).toFixed(2).toString().replace(".", ",")}</strong></div>`)
+                            costoOrden = (parseFloat(elem["costo"]) + parseFloat(costoOrden)).toFixed(2);
+                            getCategoriasOrdenCosto.push(`<div class="alert new-alert-use no-margin new-padding-top-bottom">CLP <strong>${(parseFloat(elem["costo"]) + 0.00).toFixed(2).toString().replace(".", ",")}</strong></div>`)
                         }
 
                     })
-
-                    if (getCategoriasActivoNombre.length) {
-                        formatGetCategoriasActivoNombre = getCategoriasActivoNombre.join('');
-                        formatGetCategoriasActivoCosto = getCategoriasActivoCosto.join('');
+                    if(isNaN(costoOrden)){
+                        totalOrden = "";
                     } else {
-                        formatGetCategoriasActivoNombre = ``;
-                        formatGetCategoriasActivoCosto = ``;
+                        totalOrden = "$ " + costoOrden.toString().replace(".", ",");
+                    }
+
+                    if (getCategoriasOrdenNombre.length) {
+                        formatGetCategoriasOrdenNombre = getCategoriasOrdenNombre.join('');
+                        formatGetCategoriasOrdenCosto = getCategoriasOrdenCosto.join('');
+                    } else {
+                        formatGetCategoriasOrdenNombre = ``;
+                        formatGetCategoriasOrdenCosto = ``;
                     }
 
                     fillOrders += `
@@ -223,10 +231,10 @@ export default class extends AbstractView {
                             <td>${getAreaActivo}</td>
                             <td>${orden.fechaCreacion.slice(0,10)}</td>
                             <td>${orden.fechaInicial.slice(0,10)}</td>
-                            <td>${getTaller.toString()}</td>
-                            <!--<td>${formatGetCategoriasActivoNombre}</td>
-                            <td>${formatGetCategoriasActivoCosto}</td>-->
-                            <td>${orden.total}</td> <!-- Modificar para calcular el total sin clave en json -->
+                            <td>${getTaller}</td>
+                            <!--<td>${formatGetCategoriasOrdenNombre}</td>-->
+                            <!--<td>${formatGetCategoriasOrdenCosto}</td>-->
+                            <td>${totalOrden}</td>
                             <td class="align-center">
                                 <a id="editOrder_${orden.idOrden}" class="btn only-to-id-url" href="/ordenes/${orden.idOrden}"><i class="icon-pencil"></i></a>
                                 <a id="deleteOrder_${orden.idOrden}" class="btn" disabled><i class="icon-trash"></i></a>
@@ -274,12 +282,6 @@ const customOrdersTable = () => {
             sessionStorage.removeItem('fechaFiltroFin')
             //filtrarFechas();
         }
-        /*else {
-            minDate = "";
-            maxDate = "";
-        }*/
-
-
 
         // Agregando inputs para filtro de fechas a la tabla
         minDate = new DateTime($('div #pages input#min'), {
@@ -309,7 +311,7 @@ const customOrdersTable = () => {
         // Tabla
         let table = $('div #pages table#ordersTable').DataTable({
             "order": [[0, "desc"]],
-            // Especifico las columnas a continuación para poder dar formato numérico al render de "Total"
+            // Especifico las columnas a continuación para poder utilizar en render el filtrarFechas()
             // Si no lo hiciera no sería necesario agregar "columns"
             "columns": [
                 {
@@ -344,14 +346,12 @@ const customOrdersTable = () => {
                     data: "ordenCategorias.costo"
                 },*/
                 {
-                    data: "total",
-                    render: $.fn.dataTable.render.number('', ',', 2, 'CLP ')
+                    data: "total"
                 },
                 {
                     data: "Acciones"  /* No está dentro del JSON pero debe definirse para trabajar de la mano con la columna donde agrega botones de EDITAR y ELIMINAR */
                 }
             ],
-
             "language": TableLanguage,
             "scrollX": true // De la mano con el width="100%" en la etiqueta table
         });
@@ -365,12 +365,6 @@ const customOrdersTable = () => {
 
     });
 
-    /*Agrego en CustomOrderTable para generar eventos con hipervinculos que están dentro*/
-    /*$(document).ready(function () {
-        $('div #pages table#ordersTable').on('click', 'a.only-to-id-url', function () {
-            console.log("Voy a la orden: " + $(this).attr('href').slice(1).substring($(this).attr('href').slice(1).lastIndexOf('/') + 1))
-        })
-    });*/
 }
 
 // Función de filtrado personalizado que buscará datos en la columna 5 entre dos valores
@@ -408,17 +402,6 @@ const filtrarFechas = () => {
 
 $(document).ready(function () {
 
-    /*$('div #pages').on('click', 'button#borrarFiltro', function () {
-        console.log("Entré al botón")
-        $('#min').val("");
-        $('#max').val("");
-    });*/
-
     $('[data-toggle="tooltip"]').tooltip({ animation: true });
-    /*$('[data-toggle="popover"]').on("click",function(e){
-        e.preventDefault();
-    });
-    $('[data-toggle="popover"]').popover();*/
-    //$('[data-toggle="popover"]').popover('show')
 
 });

@@ -9,10 +9,12 @@ export default class extends AbstractView {
 
     async getHtml() {
         loadCalendar(); //Completo los elementos del calandario que formarán parte del div myCalendar
-        return `
-            <h1></h1>
-            <div id='myCalendar'></div>
-            <h1></h1>
+        return `<h1></h1>
+        <div class="control-group order-identity border-transparent-1px">
+            <h1>Calendario de órdenes</h1>
+        </div>
+        <div id='myCalendar'></div>
+        <h1></h1>
         `;
     }
 }

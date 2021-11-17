@@ -6,9 +6,9 @@
         "region": "Valparaíso",
         "calle": "Agua Santa",
         "numero": "311",
-        "latitud": "-33.0466072",
-        "longitud": "-71.5654153",
-        "cantidad_activos": "50"
+        "latitud": "-33.3117553805843",
+        "longitud": "-70.71318447589874",
+        "geocercaCabeceraIdGeocercaCabecera": 28
     },
     {
         "idBodegaActivos": 4,
@@ -17,9 +17,9 @@
         "region": "Araucanía",
         "calle": "San Martín",
         "numero": "460",
-        "latitud": "-39.2771416",
-        "longitud": "-72.2271881",
-        "cantidad_activos": "4"
+        "latitud": "-34.972770709321395",
+        "longitud": "-71.25458300113672",
+        "geocercaCabeceraIdGeocercaCabecera": 30
     },
     {
         "idBodegaActivos": 3,
@@ -28,9 +28,9 @@
         "region": "Los Ríos",
         "calle": "Las Encinas",
         "numero": "51",
-        "latitud": "-39.8100413",
-        "longitud": "-73.2529351",
-        "cantidad_activos": "8"
+        "latitud": "-34.98557448587299",
+        "longitud": "-71.24145358800888",
+        "geocercaCabeceraIdGeocercaCabecera": 31
     },
     {
         "idBodegaActivos": 2,
@@ -39,9 +39,9 @@
         "region": "Tarapacá",
         "calle": "Serrano",
         "numero": "132",
-        "latitud": "-20.213486",
-        "longitud": "-70.1541984",
-        "cantidad_activos": "110"
+        "latitud": "-34.982790175521544",
+        "longitud": "-71.24497264623642",
+        "geocercaCabeceraIdGeocercaCabecera": 32
     },
     {
         "idBodegaActivos": 1,
@@ -50,8 +50,8 @@
         "region": "Metropolitana de Santiago",
         "calle": "Irarrázaval",
         "numero": "1220",
-        "latitud": "-33.4530769",
-        "longitud": "-70.6188521",
-        "cantidad_activos": "120"
+        "latitud": "-34.9912680228193",
+        "longitud": "-71.24429404735562",
+        "geocercaCabeceraIdGeocercaCabecera": 33
     }
 ]

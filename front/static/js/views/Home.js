@@ -26,14 +26,18 @@ export default class extends AbstractView {
 
         let assetsHTML = ``;
 
-        let optionsAssetsHTML = `<div id="optionsAssetsHTML">
-        <h1></h1>
-        <a class="btn btn-primary" href="/ordenes/nuevo">Órden <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-        <a class="btn btn-primary" href="/activos/nuevo">Activo <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-        <a class="btn btn-primary" href="/bodegas/nuevo">Bodega <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-        <a class="btn btn-primary" href="/categorias/nuevo">Categoría <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-        <a class="btn btn-primary" href="/planes/nuevo">Plan <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-        <a class="btn btn-primary" href="/talleres/nuevo">Taller <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+        let optionsAssetsHTML = `<h1></h1>
+        <div class="control-group order-identity border-transparent-1px">
+            <h1>Mantenimiento de activos</h1>
+        </div>
+        <div id="optionsAssetsHTML">
+            <h1></h1>
+            <a class="btn btn-primary" href="/ordenes/nuevo">Órden <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            <a class="btn btn-primary" href="/activos/nuevo">Activo <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            <a class="btn btn-primary" href="/bodegas/nuevo">Bodega <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            <a class="btn btn-primary" href="/categorias/nuevo">Categoría <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            <a class="btn btn-primary" href="/planes/nuevo">Plan <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            <a class="btn btn-primary" href="/talleres/nuevo">Taller <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
         </div>
         `;
 

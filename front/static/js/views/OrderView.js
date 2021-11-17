@@ -107,8 +107,22 @@ export default class extends AbstractView {
 
                 if (order) {
 
+                    getCategoriasOrden = [];
                     getCategoriasOrden = listAllElement(order.ordenCategorias)
                     console.log("Lista Objetos de Categorías de la Orden: " + getCategoriasOrden)
+                    let costoOrden = 0;
+                    let totalOrden = ``;
+                    getCategoriasOrden.forEach(elem => {
+                        if (elem["costo"] != "") {
+                            costoOrden = (parseFloat(elem["costo"]) + parseFloat(costoOrden)).toFixed(2);
+                        }
+
+                    })
+                    if(isNaN(costoOrden)){
+                        totalOrden = "";
+                    } else {
+                        totalOrden = "$ " + costoOrden.toString().replace(".", ",");
+                    }
 
                     const tipoMantenimiento = getTiposMantenimientos.find((tipoOrden) => tipoOrden.idTipoOrden == order.tipoOrdenIdTipoOrden);
                     if (tipoMantenimiento) {
@@ -254,8 +268,8 @@ export default class extends AbstractView {
                             <h3 style="display:inline;">Patente: </h3>
                             <h3 id="valorPatente" style="display:inline;">${getPatenteActivo}</h3>
                             <!--<h3>${getUsoActivo}</h3>-->
-                            <h4>${getKmGpsActivo} Km</h4>
-                            <h4>${getHorometroActivo} Horas</h4>
+                            <h5>Km: ${getKmGpsActivo.toString().replace(".", ",")}</h5>
+                            <h5>Horas: ${getHorometroActivo.toString().replace(".", ",")}</h5>
                             <a id="downloadOrder_${order.idOrden}" class="btn btn-success" href=""> Orden ${order.idOrden}  <i class="fa fa-cloud-download" ></i></a>
                         </div>
 
@@ -396,7 +410,15 @@ export default class extends AbstractView {
                         </div>
 
                         <!--CATEGORÍA DE SERVICIO-->
-                        <div id="orderServiceCategories_${this.postId}" class="control-group border-transparent-1px"></div>
+                        <div id="orderServiceCategories_${identificadorGlobal}" class="control-group border-transparent-1px"></div>
+
+                        <div id="updateTotal" class="control-group border-transparent-1px">
+                            <div class="control-group">
+                                <div class="row-fluid">
+                                    <a id="botonActualizarTotal" class="btn btn-success" href=""> Calcular total  <i class="fa fa-calculator" ></i></a>
+                                </div>
+                            </div>
+                        </div>
 
                         <!--Observaciones-->
                         <div id="notes" class="control-group border-transparent-1px">
@@ -411,8 +433,9 @@ export default class extends AbstractView {
                         <!--TOTAL EN COSTOS DE LA ORDEN-->
                         <div id="totalCost" class="control-group">
                             <label class="span12 text-right order-identity border-transparent-1px">
-                                <!--<h3>Total: <span class="add-on">$ </span>${order.total == "" ? parseFloat(0).toFixed(2) : parseFloat(order.total).toFixed(2)}</h3>-->
-                                <h3>Total: <span class="add-on">$ </span>${order.total == "" ? parseFloat(0).toFixed(2) : new Intl.NumberFormat("es-ES").format(order.total)}</h3>
+                                <!--<h3>Total: ${totalOrden}</h3>-->
+                                <h3 style="display:inline;">Total: </h3>
+                                <h3 id="valorTotalOrden" style="display:inline;">${totalOrden}</h3>
                             </label>
                         </div>
 
@@ -493,15 +516,6 @@ const fillOrderOptions = () => {
         loadSelectContentAndSelected(optionTaller, selectTaller, getTaller);
         console.log("Taller seleccionado: " + getTaller);
 
-        // Select Frecuencia del Período
-        // Ya no se utilizará en esta instancia
-        /*
-        const selectFrecuenciaPeriodo = document.getElementById('frequencyType');
-        const optionFrecuenciaPeriodo = listSelect(frecuenciaPeriodo, "nombre"); // Paso la clave "nombre"
-        loadSelectContentAndSelected(optionFrecuenciaPeriodo, selectFrecuenciaPeriodo, getFrecuenciaPeriodo);
-        console.log("Frecuencia Periodo seleccionada: " + getFrecuenciaPeriodo);
-        */
-
     });
     //});
 
@@ -545,8 +559,6 @@ const fillOrderCategories = () => {
             console.log("Entré al AJAX de Categorías de la Orden")
             console.log(jqXHR)
             let fillOrderCategories = ''
-            //let currentLabel = ''
-            //let currentInput = ''
             let cont = 0;
 
             for (const category of data) {
@@ -555,9 +567,7 @@ const fillOrderCategories = () => {
                 let checkboxSeleccionado = ''
                 let requerido = '';
                 let deshabilitado = 'disabled';
-                //let costo = '';
                 let costo = 0;
-                //costoTotal += costo; 
 
                 getCategoriasOrden.forEach(element => {
 
@@ -569,13 +579,6 @@ const fillOrderCategories = () => {
                         costo = element.costo;
                     }
 
-                    /*if (category.nombre == element.nombre) {
-                        console.log(`idCategoría: ${element.categoriaServicioIdCategoriaServicio} - Categoría: ${element.nombre} - Costo: ${element.costo} - Orden: ${identificadorGlobal}`)
-                        checkboxSeleccionado = 'checked';
-                        requerido = 'required';
-                        deshabilitado = '';
-                        costo = element.costo;
-                    }*/
                 })
 
                 fillOrderCategories += `
@@ -604,7 +607,7 @@ const fillOrderCategories = () => {
             orderCategoriesHTML = orderCategoriesHTML.concat(fillOrderCategories)
             orderCategoriesHTML = orderCategoriesHTML.concat(orderCategoriesContainerB)
 
-            $(`#orderServiceCategories_${this.postId}`).html(orderCategoriesHTML)
+            $(`#orderServiceCategories_${identificadorGlobal}`).html(orderCategoriesHTML)
             console.log(`AJAX orderServiceCategories -> Status: ${status}`)
 
         },
@@ -627,21 +630,27 @@ const guardarOrdenParaJSON = () => {
     ordenJSON.ordenCategorias = []; // reinicio las categorías por cada activo
 
     ordenJSON.idOrden = idUrl;
-    //ordenJSON.fechaCreacion = currentDate();
     ordenJSON.fechaCreacion = getFechaCreacion;
     ordenJSON.fechaInicial = document.getElementById('rangeStartDate').value;
-    ordenJSON.start = ordenJSON.fechaInicial;
     ordenJSON.fechaFinal = document.getElementById('rangeEndDate').value;
-    ordenJSON.end = ordenJSON.fechaFinal;
     ordenJSON.observaciones = document.getElementById('orderNotes').value;
-    //ordenJSON.title = 
+
+    /** Necesarias para el Calendario porque las utiliza la biblioteca Fullcalendar */
+    // Pero no se almacenan en Base de Datos
+    //ordenJSON.title = ""
+    ordenJSON.start = ordenJSON.fechaInicial;
+    ordenJSON.end = ordenJSON.fechaFinal;
     ordenJSON.allDay = false
+    /** */
 
     let valorPatente = document.getElementById('valorPatente');
-    //Temporal - el valor de la patente debe obtenerse mediante idVehiculo
-    const activo = getActivos.find((activo) => activo.activo == valorPatente.textContent.trim());
-    if (activo) {
-        ordenJSON.activoIdActivo = activo.idActivo;
+    const vehiculo = getVehiculos.find((vehiculo) => vehiculo.ppuVehiculo == valorPatente.textContent.trim());
+    if(vehiculo){
+        const activo = getActivos.find((activo) => activo.vehiculoIdVehiculo == vehiculo.idVehiculo);
+        if(activo){
+            alert("Obtuve el ID Vehiculo: " + vehiculo.idVehiculo + " - con Patente: " + vehiculo.ppuVehiculo + " - ID Activo: " +  activo.idActivo);
+            ordenJSON.activoIdActivo = activo.idActivo;
+        }
     }
 
     const tipoOrden = getTiposMantenimientos.find((tipoOrden) => tipoOrden.nombre == document.getElementById('orderType').value);
@@ -849,6 +858,33 @@ $(document).ready(function () {
 
         mostrarStorageJSON();
 
+    });
+
+
+    //ACTUALIZAR COSTO TOTAL DENTRO DE LA ÓRDEN
+    $('div #pages').on('click', 'a#botonActualizarTotal', function (e) {
+
+        const costosCategorias = document.getElementById('categoriesContainer').getElementsByClassName('input-prepend input-append');
+        let contCostos = 0;
+        let sumCostos = 0;
+        let totalActualizado = "";
+        for (const elem of costosCategorias) {
+            contCostos++;
+            //Label de categoría
+            let appendedPrependedInput = document.getElementById(`appendedPrependedInput_${contCostos}`);
+            if(!appendedPrependedInput.disabled){
+                sumCostos = (parseFloat(appendedPrependedInput.value) + parseFloat(sumCostos)).toFixed(2);
+            }
+        }
+
+        if(isNaN(sumCostos)){
+            totalActualizado = "";
+        } else {
+            totalActualizado = "$ " + sumCostos.toString().replace(".", ",");
+        }
+
+        $('#valorTotalOrden').text(totalActualizado);
+        e.preventDefault();
     });
 
 

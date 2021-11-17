@@ -173,8 +173,8 @@ export default class extends AbstractView {
                             <h3 style="display:inline;">Patente: </h3>
                             <h3 id="valorPatente" style="display:inline;">${getActivoPatente}</h3>
                             <!--<h3>${getActivoUso}</h3>-->
-                            <h4>${getActivoKmGps} Km</h4>
-                            <h4>${getActivoHorometro} Horas</h4>
+                            <h5>Km: ${getActivoKmGps.toString().replace(".", ",")}</h5>
+                            <h5>Horas: ${getActivoHorometro.toString().replace(".", ",")}</h5>
                             <a id="downloadAsset_${asset.idActivo}" class="btn btn-success" href=""> ${getActivoPatente}  <i class="fa fa-cloud-download"></i></a>
                         </div>
 
@@ -199,7 +199,7 @@ export default class extends AbstractView {
                                             <h5>Área</h5>
                                         </label>
                                         <div class="controls">
-                                            <select id="assetAreasOptions" required>
+                                            <select id="assetAreasOptions" required disabled>
                                             </select>
                                         </div>
                                     </div>
@@ -606,20 +606,13 @@ const fillAssetLogOrders = () => {
             let classTr = ''
             let stringContainer = ""
             let getEstadosOrdenActivo = [];
+            let getCategoriasOrdenActivoCosto = [];
 
             const onlyCurrentAssetOrders = data.filter((orden) => orden.activoIdActivo == idUrl)
 
             for (const orden of onlyCurrentAssetOrders) {
 
                 if (orden.activoIdActivo == idUrl) {
-
-                    let total = 'CLP '
-
-                    if (orden.total != "") {
-                        total = total.concat((parseFloat(orden.total) + 0.00).toFixed(2).toString().replace(".", ","))
-                    } else {
-                        total = '';
-                    }
 
                     getOrdenTaller = ``;
                     const taller = getTalleres.find((taller) => taller.idTallerServicio == orden.tallerServicioIdTallerServicio);
@@ -632,9 +625,24 @@ const fillAssetLogOrders = () => {
                         getOrdenTipoOrden = tipoOrden.nombre;
                     }
 
+                    getCategoriasOrdenActivoCosto = listAllElement(orden.ordenCategorias);
+                    let costoOrdenActivo = 0;
+                    let totalOrdenActivo = ``;
+                    getCategoriasOrdenActivoCosto.forEach(elem => {
+                        if (elem.costo != "") {
+                            costoOrdenActivo = (parseFloat(elem.costo) + parseFloat(costoOrdenActivo)).toFixed(2);
+                        }
+                    })
+                    if(isNaN(costoOrdenActivo)){
+                        totalOrdenActivo = "";
+                    } else {
+                        totalOrdenActivo = "$ " + costoOrdenActivo.toString().replace(".", ",");
+                    }
+
+
+
                     getEstadosOrdenActivo = listAllElement(orden.ordenEstados);
                     let fechaUltimoEstado = "1900-01-01T00:00";
-
                     getEstadosOrdenActivo.forEach(elem => {
 
                         if (new Date(elem["fechaAsignado"]) > new Date(fechaUltimoEstado)) {
@@ -702,7 +710,7 @@ const fillAssetLogOrders = () => {
                             <td>${orden.fechaCreacion.slice(0, 10)}</td>
                             <td>${orden.fechaInicial.slice(0, 10)}</td>
                             <td>${getOrdenTaller}</td>
-                            <td>${total}</td>
+                            <td>${totalOrdenActivo}</td>
                             <td class="align-center">
                                 <a id="editOrder_${orden.idOrden}" class="btn" href="/ordenes/${orden.idOrden}"><i class="icon-pencil"></i></a>
                             </td>
@@ -842,13 +850,9 @@ const guardarActivoJSON = () => {
     activoJSON.documentos.push(docRevisionTecnica);
 
     const planesSeleccionados = document.getElementById('buttonsSelectedPlan').getElementsByClassName('name-plan');
-    //let contPlans = 0; //sin uso
     for (const element of planesSeleccionados) {
-
+        
         banderaPlanes = true;
-
-        //contPlans++; //sin uso
-
         const plan = getPlanes.find((plan) => plan.nombre == element.textContent);
         if (plan) {
 

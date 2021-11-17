@@ -24,6 +24,12 @@ const getJson = (urlJson, title) => {
     return result;
 }
 
+//Ordenes
+let ordenesJSON = 'http://192.168.0.13:8080/static/js/data/orders.JSON';
+let titleOrdenesJSON = "Órdenes";
+let getOrdenes = [];
+getOrdenes = getJson(ordenesJSON, titleOrdenesJSON);
+
 //Tipos de mantenimientos
 let ordersTypeJSON = 'http://192.168.0.13:8080/static/js/data/ordersType.JSON';
 let titleOrdersTypeJSON = "Tipos de mantenimientos";
@@ -77,6 +83,12 @@ let gpsJSON = 'http://192.168.0.13:8080/static/js/data/gps.JSON';
 let titleGpsJSON = 'GPS BLACKGPS';
 let getGPS = [];
 getGPS = getJson(gpsJSON, titleGpsJSON);
+
+//GEOCERCA CABECERA de BlackGPS
+let headerGeoJSON = 'http://192.168.0.13:8080/static/js/data/headergeo.JSON';
+let titleHeaderGeoJSON = "GEOCERCA CABECERA BLACKGPS";
+let getHeaderGeo = [];
+getHeaderGeo = getJson(headerGeoJSON, titleHeaderGeoJSON);
 
 //Talleres
 let talleresJSON = 'http://192.168.0.13:8080/static/js/data/workshops.JSON';
@@ -763,6 +775,7 @@ let regiones = [
 export {
     frecuenciaPeriodo,
     regiones,
+    getOrdenes,
     getTiposMantenimientos,
     getEstados,
     getAreas,
@@ -776,6 +789,7 @@ export {
     getGPS,
     getMarcas,
     getModelos,
+    headerGeoJSON,
     //getRegiones,
     loadSelectContent,
     loadDivSelectedPlan,
