@@ -25,11 +25,7 @@ const getJson = (urlJson, title) => {
 }
 
 //Ordenes
-<<<<<<< HEAD
 let ordenesJSON = 'http://192.168.0.13:8080/static/js/data/orders.JSON';
-=======
-let ordenesJSON = 'http://192.168.1.114:8080/static/js/data/orders.JSON';
->>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleOrdenesJSON = "Órdenes";
 let getOrdenes = [];
 getOrdenes = getJson(ordenesJSON, titleOrdenesJSON);
@@ -89,11 +85,7 @@ let getGPS = [];
 getGPS = getJson(gpsJSON, titleGpsJSON);
 
 //GEOCERCA CABECERA de BlackGPS
-<<<<<<< HEAD
 let headerGeoJSON = 'http://192.168.0.13:8080/static/js/data/headergeo.JSON';
-=======
-let headerGeoJSON = 'http://192.168.1.114:8080/static/js/data/headergeo.JSON';
->>>>>>> c4d991099d7ecc12d7df75dddecd695004927df3
 let titleHeaderGeoJSON = "GEOCERCA CABECERA BLACKGPS";
 let getHeaderGeo = [];
 getHeaderGeo = getJson(headerGeoJSON, titleHeaderGeoJSON);
