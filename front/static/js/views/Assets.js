@@ -57,7 +57,7 @@ export default class extends AbstractView {
 
         $.ajax({
             type: 'GET',
-            url: 'http://192.168.1.114:8080/static/js/data/assets.JSON',
+            url: 'http://192.168.0.14:8080/static/js/data/assets.JSON',
             dataType: 'json',
             success: function (data, status, jqXHR) {
                 customTable();
